@@ -4,14 +4,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.com.a.dao.MemberDao;
+import kh.com.a.dao.GoodsDao;
 
 @Repository
-public class MemberDaoImpl implements MemberDao {
+public class GoodsDaoImpl implements GoodsDao {
 
 	@Autowired
 	SqlSession sqlSession;
 	
-	private String namespace = "Member.";
-	
+	private String namespace = "Goods.";
 }
