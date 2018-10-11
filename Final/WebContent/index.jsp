@@ -8,5 +8,9 @@
 </head>
 <body>
 
+<%
+response.sendRedirect("goodswrite.do");
+%>
+
 </body>
 </html>
