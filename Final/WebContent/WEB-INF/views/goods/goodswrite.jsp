@@ -4,7 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
 <fmt:requestEncoding value="UTF-8"/>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <form name="frmForm" id="_frmForm" action="pdsupload.do" method="post" 
@@ -41,6 +41,7 @@ value="id" size="50"/></td>
 </table>
 </form>
 
+<!-- Smart Editor -->
 <script type="text/javascript">
       var oEditors = [];
       // 추가 글꼴 목록
@@ -48,7 +49,7 @@ value="id" size="50"/></td>
       nhn.husky.EZCreator.createInIFrame({
          oAppRef : oEditors,
          elPlaceHolder : "ir1",
-         sSkinURI : "./smarteditor/SmartEditor2Skin.html",
+         sSkinURI : "smarteditor/SmartEditor2Skin.html",
          htParams : {
             bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
             bUseVerticalResizer : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
