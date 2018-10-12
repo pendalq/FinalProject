@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-<form name="frmForm" id="_frmForm" action="pdsupload.do" method="post" 
+<form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
 <table class="list_table">
 <colgroup>
@@ -26,11 +26,32 @@ value="id" size="50"/></td>
 </tr>
 <tr>
 <th>파일업로드</th>
-<td style="text-align: left"><input type="file" name="fileload" style=" width : 400px;"></td>
+<td style="text-align: left">
+<input type="file" name="image" id="image" style=" width : 400px;">
+<div>
+<img id="image_section" src="">
+</div>
+</td>
+</tr>
+<tr>
+<th>카테고리</th>
+<td>
+<select id="category">
+<option value="Refrigerator" selected="selected">냉장고</option>
+<option value="purifier">정수기</option>
+<option value="TV">TV</option>
+</select>
+</td>
+</tr>
+<tr>
+<th>옵션</th>
+<td id="option">
+
+</td>
 </tr>
 <tr>
 <th>내용</th>
-<td style="text-align: left"><textarea id="ir1" name="ir1" style="height: 600px; width: 800px"></textarea></td>
+<td style="text-align: left"><textarea id="ir1" name="content" style="height: 600px; width: 800px"></textarea></td>
 </tr>
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
@@ -40,6 +61,38 @@ value="id" size="50"/></td>
 </tr>
 </table>
 </form>
+
+<script type="text/javascript">
+$('#category').change(function(){
+	if(this.value == "Refrigerator"){
+		$('#option').append("<table><tr><th>제조사</th><td><span><input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG <input type='radio' id='samsung' name='brand' value='samsung'>samsung <input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo </td></tr></span>"
+		 + "<tr><th>용량</th><td><span><input type='radio' id='100L' name='liter' value='100L' checked='checked'>100L <input type='radio' id='200L' name='liter' value='200L'>200L <input type='radio' id='300L' name='liter' value='300L'>300L </td></tr></table>");
+	}else if(this.value == "purifier"){
+		
+	}else if(this.value == "TV"){
+		
+	}
+});
+</script>
+
+<script type="text/javascript">
+function readURL(input) {
+	
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            $('#image_section').attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+ 
+$("#image").change(function(){
+    readURL(this);
+});
+</script>
 
 <!-- Smart Editor -->
 <script type="text/javascript">
@@ -95,3 +148,5 @@ $("#_btnLogin").click(function() {
 	$("#_frmForm").submit();	
 });
 </script>
+
+

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.com.a.dao.GoodsDao;
+import kh.com.a.model.GoodsDto;
 
 @Repository
 public class GoodsDaoImpl implements GoodsDao {
@@ -13,4 +14,9 @@ public class GoodsDaoImpl implements GoodsDao {
 	SqlSession sqlSession;
 	
 	private String namespace = "Goods.";
+
+	@Override
+	public void insertGoods(GoodsDto dto) throws Exception {
+		sqlSession.insert("writeGoods", dto);
+	}
 }

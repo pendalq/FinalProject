@@ -5,4 +5,9 @@
   
 <mapper namespace="Goods">
 
+<insert id="writeGoods" parameterType="kh.com.a.model.GoodsDto">
+	INSERT INTO GOODS
+	VALUE(GOODS_SEQ.NEXTVAL, #{id}, #{image}, #{name}, #{category}, #{brand}, #{price}, #{option}, #{content}, 0, SYSDATE)
+</insert>
+
 </mapper>

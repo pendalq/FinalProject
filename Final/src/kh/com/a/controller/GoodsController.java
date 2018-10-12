@@ -1,7 +1,11 @@
 package kh.com.a.controller;
 
+import java.io.File;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import kh.com.a.arrow.FUpUtil;
+import kh.com.a.model.GoodsDto;
 import kh.com.a.service.GoodsService;
 
 @Controller
@@ -25,9 +33,34 @@ public class GoodsController {
 		
 		logger.info("GoodsController goodswrite " + new Date());
 		
-		model.addAttribute("doc_title", "��ǰ ���");
+		model.addAttribute("doc_title", "상품 등록");
 		
 		return "goodswrite.tiles";
+	}
+	
+	@RequestMapping(value="goodswriteAf.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String goodswriteAf(Model model, GoodsDto dto, HttpServletRequest req, @RequestParam(value="image", required=false)MultipartFile imageload) throws Exception {
+		
+		logger.info("GoodsController goodswriteAf " + new Date());
+		
+		dto.setImage(imageload.getOriginalFilename());
+		
+		String fupload = req.getServletContext().getRealPath("/") + "Final/upload";
+		
+		String f = dto.getImage();
+		String newFile = FUpUtil.getNewFile(f);
+		
+		dto.setImage(newFile);
+		
+		File file = new File(fupload + "/" + newFile);		
+		logger.info("경로와 파일명:" + fupload + "/" + newFile);
+		
+		//goodsService.insertGoods(dto);
+		
+		//실제로 업로드 되는 부분		
+		FileUtils.writeByteArrayToFile(file, imageload.getBytes());
+		
+		return "redirect:/goodswrite.do";
 	}
 	
 }
