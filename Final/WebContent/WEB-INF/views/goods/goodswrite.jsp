@@ -9,7 +9,7 @@
 
 <form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
-<input type="hidden" id="options" name="options" value="">
+
 <table class="list_table">
 <colgroup>
 <col style="width:100px;" />
@@ -18,32 +18,39 @@ enctype="multipart/form-data">
 
 <tr>
 <th>아이디</th>
-<td style="text-align: left"><input type="text" name='id' readonly="readonly"
+<td style="text-align: left"><input type="text" id='id' name='id' readonly="readonly"
 value="id" size="50"/></td>
 </tr>
 <tr>
 <th>제목</th>
-<td style="text-align: left"><input type="text" name='title' size="50"/></td>
+<td style="text-align: left"><input type="text" id="title" name='title' size="50"/></td>
 </tr>
+
 <tr>
 <th>파일업로드</th>
 <td style="text-align: left">
-<input type="file" name="image" id="image" style=" width : 400px;">
-<div>
+<input type="file" name="fileload" id="fileload" style=" width : 400px;">
+<!-- <div>
 <img id="image_section" src="">
-</div>
+</div> -->
 </td>
 </tr>
+
+
 <tr>
 <th>카테고리</th>
 <td>
-<select id="category" name="category">
+<select id="categorys">
 <option value="Refrigerator" selected="selected">냉장고</option>
 <option value="purifier">정수기</option>
 <option value="TV">TV</option>
 </select>
+<input type="hidden" id="category" name="category" value="">
 </td>
-</tr>
+</tr> 
+
+
+
 <tr>
 <th>옵션</th>
 <td id="option">
@@ -51,9 +58,9 @@ value="id" size="50"/></td>
 	<tr>
 		<th>제조사</th>
 		<td>
-			<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG 
-			<input type='radio' id='samsung' name='brand' value='samsung'>samsung 
-			<input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo 
+			<input type='radio' id='lg' name='brands' value='lg' checked='checked'>LG 
+			<input type='radio' id='samsung' name='brands' value='samsung'>samsung 
+			<input type='radio' id='daewoo' name='brands' value='daewoo'>daewoo 
 		</td>
 	</tr>
 	<tr>
@@ -82,18 +89,30 @@ value="id" size="50"/></td>
 		</td>
 	</tr>
 </table>
+<input type="hidden" id="brand" name="brand" value="">
+<input type="hidden" id="options" name="options" value="">
 </td>
+</tr>
+
+
+
+<tr>
+<th>가격</th>
+<td><input type="text" id='price' name="price" style="width: 100%"></td>
 </tr>
 <tr>
 <th>내용</th>
 <td style="text-align: left"><textarea id="ir1" name="content" style="height: 600px; width: 800px"></textarea></td>
 </tr>
+
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
-	<span><a href="#none" id="_btnLogin" title="글쓰기" onclick="submitContents(this)"><img src="image/bwrite.png" alt="로그인" /></a>
+	<span><a href="#none" id="_btnLogin" title="글쓰기"><img src="image/bwrite.png" alt="로그인" /></a>
 </span>
 </td>
 </tr>
+ 
+
 </table>
 </form>
 
@@ -102,11 +121,11 @@ value="id" size="50"/></td>
 
 
 <script type="text/javascript">
-$('#category').change(function(){
+$('#categorys').change(function(){
 	if(this.value == "Refrigerator"){
-		$('#option').empty().append("<table><tr><th>제조사</th><td><input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
-				+"<input type='radio' id='samsung' name='brand' value='samsung'>samsung "
-				+"<input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo "
+		$('#option').empty().append("<table><tr><th>제조사</th><td><input type='radio' id='lg' name='brands' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='samsung' name='brands' value='samsung'>samsung "
+				+"<input type='radio' id='daewoo' name='brands' value='daewoo'>daewoo "
 				+"</td></tr><tr><th>품목</th><td>"
 				+"<input type='radio' id='four' name='subject' value='fourDoor' checked='checked'>4문형"
 				+"<input type='radio' id='three' name='subject' value='threeDoor'>3문형"
@@ -120,12 +139,14 @@ $('#category').change(function(){
 				+"<input type='radio' id='third' name='efficiency' value='third_effi'>3등급"
 				+"<input type='radio' id='fourth' name='efficiency' value='fourth_effi'>4등급"
 				+"<input type='radio' id='fifth' name='efficiency' value='fifth_effi'>5등급"
-				+"</td></tr></table>");
+				+"</td></tr>"
+				+"<input type='hidden' id='brand' name='brand' value=''>"
+				+"<input type='hidden' id='options' name='options' value=''></table>");
 	}else if(this.value == "purifier"){
 		$('#option').empty().append("<table><tr><th>제조사</th><td>"
-				+"<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
-				+"<input type='radio' id='skmagic' name='brand' value='skmagic'>skmagic "
-				+"<input type='radio' id='picogram' name='brand' value='picogram'>picogram "
+				+"<input type='radio' id='lg' name='brands' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='skmagic' name='brands' value='skmagic'>skmagic "
+				+"<input type='radio' id='picogram' name='brands' value='picogram'>picogram "
 				+"</td></tr><tr><th>품목</th><td>"
 				+"<input type='radio' id='hotcool' name='subject' value='hotcool' checked='checked'>냉온정수기"
 				+"<input type='radio' id='cold' name='subject' value='cold'>냉정수기"
@@ -134,12 +155,14 @@ $('#category').change(function(){
 				+"<input type='radio' id='middle' name='shape' value='middle' checked='checked'>미들형"
 				+"<input type='radio' id='stand' name='shape' value='stand'>스탠드형"
 				+"<input type='radio' id='undersink' name='shape' value='undersink'>언더씽크형"
-				+"</td></tr></table>");
+				+"</td></tr>"
+				+"<input type='hidden' id='brand' name='brand' value=''>"
+				+"<input type='hidden' id='options' name='options' value=''></table>");
 	}else if(this.value == "TV"){
 		$('#option').empty().append("<table><tr><th>제조사</th><td>"
-				+"<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
-				+"<input type='radio' id='samsung' name='brand' value='samsung'>samsung "
-				+"<input type='radio' id='sony' name='brand' value='sony'>sony "
+				+"<input type='radio' id='lg' name='brands' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='samsung' name='brands' value='samsung'>samsung "
+				+"<input type='radio' id='sony' name='brands' value='sony'>sony "
 				+"</td></tr><tr><th>해상도</th><td>"
 				+"<input type='radio' id='ultrahd' name='resolution' value='ultrahd' checked='checked'>울트라HD "
 				+"<input type='radio' id='fullhd' name='resolution' value='fullhd'>풀HD "
@@ -150,7 +173,9 @@ $('#category').change(function(){
 				+"<input type='radio' id='pdp' name='kinds' value='pdp'>PDP TV "
 				+"</td></tr><tr><th>화면크기</th><td>"
 				+"<input type='text' id='size' style='width: 200px'> INCH "
-				+"</td></tr></table>");
+				+"</td></tr>"
+				+"<input type='hidden' id='brand' name='brand' value=''>"
+				+"<input type='hidden' id='options' name='options' value=''></table>");
 	}
 });
 </script>
@@ -168,8 +193,8 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
- 
-$("#image").change(function(){
+  
+$("#fileload").change(function(){
     readURL(this);
 });
 </script>
@@ -216,30 +241,35 @@ $("#image").change(function(){
 
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	
-	 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-	if($("#category option:selected").val()=="Refrigerator"){
+    $("#category").val($("#categorys option:selected").val());
+	if($("#category").val()=="Refrigerator"){
 		var subject = $('input:radio[name=subject]:checked').val();
 		var efficiency = $('input:radio[name=efficiency]:checked').val();
+		var brand = $('input:radio[name=brands]:checked').val();
 		var liter = $('#liter').val();
 		$("#options").val(subject + "/" + liter + "/" + efficiency);
-		alert($("#options").val());
-	}else if($("#category option:selected").val()=="purifier"){
+		$("#brand").val(brand);
+		//alert($("#options").val());
+	}else if($("#category").val()=="purifier"){
 		var subject = $('input:radio[name=subject]:checked').val();
 		var shape = $('input:radio[name=shape]:checked').val();
+		var brand = $('input:radio[name=brands]:checked').val();
+		$("#brand").val(brand);
 		$("#options").val(subject + "/" + shape);
-		alert($("#options").val());
-	}else if($("#category option:selected").val()=="TV"){
+		//alert($("#options").val());
+	}else if($("#category").val()=="TV"){
 		var resolution = $('input:radio[name=resolution]:checked').val();
 		var kinds = $('input:radio[name=kinds]:checked').val();
 		var size = $('#size').val();
+		var brand = $('input:radio[name=brands]:checked').val();
+		$("#brand").val(brand);
 		$("#options").val(resolution + "/" + kinds + "/" + size);
-		alert($("#options").val());
+		//alert($("#options").val());
 	}
-    try {
-      // elClickedObj.form.submit();
-    } catch (e) {
-    }	
+	alert("id="+$("#id").val()+", title="+$("#title").val()+", category="+$("#category").val()+", brand="+$("#brand").val()+", options="+$("#options").val()+", price="+$("#price").val()+", content="+$("#ir1").val());
+	$("#_frmForm").submit();
 });
 </script>
 

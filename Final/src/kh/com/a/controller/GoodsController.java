@@ -38,27 +38,32 @@ public class GoodsController {
 		return "goodswrite.tiles";
 	}
 	
+
+	
 	@RequestMapping(value="goodswriteAf.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String goodswriteAf(Model model, GoodsDto dto, HttpServletRequest req, @RequestParam(value="image", required=false)MultipartFile imageload) throws Exception {
+	public String goodswriteAf(Model model, GoodsDto dto, HttpServletRequest req, 
+			@RequestParam(value="fileload", required=false)MultipartFile fileload) throws Exception {
 		
 		logger.info("GoodsController goodswriteAf " + new Date());
 		
-		dto.setImage(imageload.getOriginalFilename());
+		System.out.println(dto.toString());
 		
-		String fupload = req.getServletContext().getRealPath("/") + "Final/upload";
+		dto.setImageName(fileload.getOriginalFilename());
 		
-		String f = dto.getImage();
+		String fupload = req.getServletContext().getRealPath("/upload");
+		
+		String f = dto.getImageName();
 		String newFile = FUpUtil.getNewFile(f);
 		
-		dto.setImage(newFile);
+		dto.setImageName(newFile);
 		
 		File file = new File(fupload + "/" + newFile);		
 		logger.info("경로와 파일명:" + fupload + "/" + newFile);
 		
-		//goodsService.insertGoods(dto);
+		goodsService.insertGoods(dto);
 		
 		//실제로 업로드 되는 부분		
-		FileUtils.writeByteArrayToFile(file, imageload.getBytes());
+	//	FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 		
 		return "redirect:/goodswrite.do";
 	}
