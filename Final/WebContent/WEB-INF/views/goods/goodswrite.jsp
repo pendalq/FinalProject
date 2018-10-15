@@ -9,6 +9,7 @@
 
 <form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
+<input type="hidden" id="options" name="options" value="">
 <table class="list_table">
 <colgroup>
 <col style="width:100px;" />
@@ -36,7 +37,7 @@ value="id" size="50"/></td>
 <tr>
 <th>카테고리</th>
 <td>
-<select id="category">
+<select id="category" name="category">
 <option value="Refrigerator" selected="selected">냉장고</option>
 <option value="purifier">정수기</option>
 <option value="TV">TV</option>
@@ -46,7 +47,41 @@ value="id" size="50"/></td>
 <tr>
 <th>옵션</th>
 <td id="option">
-
+<table>
+	<tr>
+		<th>제조사</th>
+		<td>
+			<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG 
+			<input type='radio' id='samsung' name='brand' value='samsung'>samsung 
+			<input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo 
+		</td>
+	</tr>
+	<tr>
+		<th>품목</th>
+		<td>
+			<input type="radio" id='four' name='subject' value="fourDoor" checked="checked">4문형
+			<input type="radio" id='three' name='subject' value="threeDoor">3문형
+			<input type="radio" id='double' name='subject' value="doublegateDoor">양문형
+			<input type="radio" id='normal' name='subject' value="normal">일반형
+		</td>
+	</tr>
+	<tr>
+		<th>용량</th>
+		<td>
+			<input type='text' id='liter' style="width: 200px; text-align: right;" >L
+		</td>
+	</tr>
+	<tr>
+		<th>에너지효율</th>
+		<td>
+			<input type="radio" id="first" name="efficiency" value="first_effi" checked="checked">1등급
+			<input type="radio" id="second" name="efficiency" value="second_effi">2등급
+			<input type="radio" id="third" name="efficiency" value="third_effi">3등급
+			<input type="radio" id="fourth" name="efficiency" value="fourth_effi">4등급
+			<input type="radio" id="fifth" name="efficiency" value="fifth_effi">5등급
+		</td>
+	</tr>
+</table>
 </td>
 </tr>
 <tr>
@@ -62,15 +97,60 @@ value="id" size="50"/></td>
 </table>
 </form>
 
+
+
+
+
 <script type="text/javascript">
 $('#category').change(function(){
 	if(this.value == "Refrigerator"){
-		$('#option').append("<table><tr><th>제조사</th><td><span><input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG <input type='radio' id='samsung' name='brand' value='samsung'>samsung <input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo </td></tr></span>"
-		 + "<tr><th>용량</th><td><span><input type='radio' id='100L' name='liter' value='100L' checked='checked'>100L <input type='radio' id='200L' name='liter' value='200L'>200L <input type='radio' id='300L' name='liter' value='300L'>300L </td></tr></table>");
+		$('#option').empty().append("<table><tr><th>제조사</th><td><input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='samsung' name='brand' value='samsung'>samsung "
+				+"<input type='radio' id='daewoo' name='brand' value='daewoo'>daewoo "
+				+"</td></tr><tr><th>품목</th><td>"
+				+"<input type='radio' id='four' name='subject' value='fourDoor' checked='checked'>4문형"
+				+"<input type='radio' id='three' name='subject' value='threeDoor'>3문형"
+				+"<input type='radio' id='double' name='subject' value='doublegateDoor'>양문형"
+				+"<input type='radio' id='normal' name='subject' value='normal'>일반형"
+				+"</td></tr><tr><th>용량</th><td>"
+				+"<input type='text' id='liter' style='width: 200px; text-align: right;' >L "
+				+"</td></tr><tr><th>에너지효율</th><td>"
+				+"<input type='radio' id='first' name='efficiency' value='first_effi' checked='checked'>1등급"
+				+"<input type='radio' id='second' name='efficiency' value='second_effi'>2등급"
+				+"<input type='radio' id='third' name='efficiency' value='third_effi'>3등급"
+				+"<input type='radio' id='fourth' name='efficiency' value='fourth_effi'>4등급"
+				+"<input type='radio' id='fifth' name='efficiency' value='fifth_effi'>5등급"
+				+"</td></tr></table>");
 	}else if(this.value == "purifier"){
-		
+		$('#option').empty().append("<table><tr><th>제조사</th><td>"
+				+"<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='skmagic' name='brand' value='skmagic'>skmagic "
+				+"<input type='radio' id='picogram' name='brand' value='picogram'>picogram "
+				+"</td></tr><tr><th>품목</th><td>"
+				+"<input type='radio' id='hotcool' name='subject' value='hotcool' checked='checked'>냉온정수기"
+				+"<input type='radio' id='cold' name='subject' value='cold'>냉정수기"
+				+"<input type='radio' id='ice' name='subject' value='ice'>얼음정수기"
+				+"</td></tr><tr><th>형태</th><td>"
+				+"<input type='radio' id='middle' name='shape' value='middle' checked='checked'>미들형"
+				+"<input type='radio' id='stand' name='shape' value='stand'>스탠드형"
+				+"<input type='radio' id='undersink' name='shape' value='undersink'>언더씽크형"
+				+"</td></tr></table>");
 	}else if(this.value == "TV"){
-		
+		$('#option').empty().append("<table><tr><th>제조사</th><td>"
+				+"<input type='radio' id='lg' name='brand' value='lg' checked='checked'>LG "
+				+"<input type='radio' id='samsung' name='brand' value='samsung'>samsung "
+				+"<input type='radio' id='sony' name='brand' value='sony'>sony "
+				+"</td></tr><tr><th>해상도</th><td>"
+				+"<input type='radio' id='ultrahd' name='resolution' value='ultrahd' checked='checked'>울트라HD "
+				+"<input type='radio' id='fullhd' name='resolution' value='fullhd'>풀HD "
+				+"<input type='radio' id='normalhd' name='resolution' value='normalhd'>HD "
+				+"</td></tr><tr><th>종류</th><td>"
+				+"<input type='radio' id='ledtv' name='kinds' value='ledtv' checked='checked'>LED TV "
+				+"<input type='radio' id='oled' name='kinds' value='oled'>OLED TV "
+				+"<input type='radio' id='pdp' name='kinds' value='pdp'>PDP TV "
+				+"</td></tr><tr><th>화면크기</th><td>"
+				+"<input type='text' id='size' style='width: 200px'> INCH "
+				+"</td></tr></table>");
 	}
 });
 </script>
@@ -126,15 +206,7 @@ $("#image").change(function(){
       function showHTML() {
          var sHTML = oEditors.getById["ir1"].getIR();
          alert(sHTML);
-      }
-      function submitContents(elClickedObj) {
-         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-         // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-         try {
-            elClickedObj.form.submit();
-         } catch (e) {
-         }
-      }
+      } 
       function setDefaultFont() {
          var sDefaultFont = '궁서';
          var nFontSize = 24;
@@ -144,9 +216,32 @@ $("#image").change(function(){
 
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	
-	alert('글쓰기');	
-	$("#_frmForm").submit();	
+	 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
+     // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+	if($("#category option:selected").val()=="Refrigerator"){
+		var subject = $('input:radio[name=subject]:checked').val();
+		var efficiency = $('input:radio[name=efficiency]:checked').val();
+		var liter = $('#liter').val();
+		$("#options").val(subject + "/" + liter + "/" + efficiency);
+		alert($("#options").val());
+	}else if($("#category option:selected").val()=="purifier"){
+		var subject = $('input:radio[name=subject]:checked').val();
+		var shape = $('input:radio[name=shape]:checked').val();
+		$("#options").val(subject + "/" + shape);
+		alert($("#options").val());
+	}else if($("#category option:selected").val()=="TV"){
+		var resolution = $('input:radio[name=resolution]:checked').val();
+		var kinds = $('input:radio[name=kinds]:checked').val();
+		var size = $('#size').val();
+		$("#options").val(resolution + "/" + kinds + "/" + size);
+		alert($("#options").val());
+	}
+    try {
+      // elClickedObj.form.submit();
+    } catch (e) {
+    }	
 });
 </script>
+
 
 
