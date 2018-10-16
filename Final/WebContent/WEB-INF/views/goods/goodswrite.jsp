@@ -30,9 +30,9 @@ value="id" size="50"/></td>
 <th>파일업로드</th>
 <td style="text-align: left">
 <input type="file" name="fileload" id="fileload" style=" width : 400px;">
-<!-- <div>
+<div>
 <img id="image_section" src="">
-</div> -->
+</div>
 </td>
 </tr>
 

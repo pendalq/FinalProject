@@ -54,8 +54,8 @@ public class GoodsController {
 		
 		String f = dto.getImageName();
 		String newFile = FUpUtil.getNewFile(f);
-		
-		dto.setImageName(newFile);
+		String imageFilename = "<img src='/Final/upload/"+ newFile +"'>";
+		dto.setImageName(imageFilename);
 		
 		File file = new File(fupload + "/" + newFile);		
 		logger.info("경로와 파일명:" + fupload + "/" + newFile);
@@ -63,7 +63,7 @@ public class GoodsController {
 		goodsService.insertGoods(dto);
 		
 		//실제로 업로드 되는 부분		
-	//	FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+		FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 		
 		return "redirect:/goodswrite.do";
 	}
