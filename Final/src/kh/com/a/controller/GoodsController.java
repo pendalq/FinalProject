@@ -38,7 +38,6 @@ public class GoodsController {
 		return "goodswrite.tiles";
 	}
 	
-
 	
 	@RequestMapping(value="goodswriteAf.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String goodswriteAf(Model model, GoodsDto dto, HttpServletRequest req, 
@@ -61,7 +60,7 @@ public class GoodsController {
 		logger.info("경로와 파일명:" + fupload + "/" + newFile);
 		
 		goodsService.insertGoods(dto);
-		
+		 
 		//실제로 업로드 되는 부분		
 		FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 		
