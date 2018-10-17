@@ -14,17 +14,29 @@ List<MessageDto> mlist = (List<MessageDto>)request.getAttribute("mlist");
 </head>
 <body>
 
-<table>
+
+<table border="2">
 	<tr>
 		<th>글번호</th><th>제목</th><th>보낸사람</th><th>작성일</th>
+	</tr>
 		<%
+		if(mlist.size() != 0){
 			for(int i=0; i<mlist.size();i++){
 		%>
-				<td>i</td><td>${mlist.title }</td><td>${mlist.recieveid }</td><td>${mlist.wdate }</td> 
+			<tr>
+				<td><%=i %></td><td><%=mlist.get(i).getTitle() %></td><td><%=mlist.get(i).getSendid() %></td><td><%=mlist.get(i).getWdate() %></td>
+			</tr> 
 		<%
 			}
+		}else{
 		%>
-	</tr>
+			<tr>
+				<td></td><td>쪽지가 없습니다.</td><td></td><td></td>
+			</tr>
+		<%
+		}
+	%>
+	
 </table>
 
 </body>

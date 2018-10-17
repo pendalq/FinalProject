@@ -11,5 +11,8 @@
 		<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom.jsp"/>
 	</definition>
 
+	<definition name="message.tiles" template="/WEB-INF/views/message/message.jsp"/>	
+	
+	<definition name="messagewrite.tiles" template="/WEB-INF/views/message/messagewrite.jsp"/>
 </tiles-definitions>
 
