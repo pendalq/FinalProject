@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
+ 
+
 <tiles-definitions>
-	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">	 
+	  <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/login/login.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+
+	 <definition name="regi.tiles" extends="login.tiles">
+		<put-attribute name="content" value="/WEB-INF/login/regi.jsp"/>
+	</definition>
+	
+	<definition name="main.tiles" extends="login.tiles">		 
+		 <put-attribute name="content" value="/WEB-INF/views/main.jsp"/>	 
+	</definition>
+	
+	<definition name="mypage.tiles" extends="login.tiles">		 
+		<put-attribute name="content" value="/WEB-INF/views/mypage/mypage.jsp"/>	 
+	</definition>
+
+</tiles-definitions>
+
+
+
+<!-- 	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/login/login.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
-
 	<definition name="regi.tiles" extends="login.tiles">
 		<put-attribute name="content" value="/WEB-INF/views/login/regi.jsp"/>
 	</definition>
@@ -30,8 +53,6 @@
 	</definition>
 
 	<definition name="logout.tiles" extends="login.tiles">
-	</definition>
-
-
-</tiles-definitions>
+	</definition> -->
+ 
 
