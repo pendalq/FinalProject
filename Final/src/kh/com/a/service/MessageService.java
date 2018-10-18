@@ -10,4 +10,7 @@ public interface MessageService {
 	
 	public void writeMessage(MessageDto mdto) throws Exception;
 	
+	public MessageDto getMessage(int seq) throws Exception;
+	
+	public List<MessageDto> getSendList(String sendid) throws Exception;
 }

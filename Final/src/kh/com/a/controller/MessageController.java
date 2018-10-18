@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,9 +34,9 @@ public class MessageController {
 		//String id = ((MemberDto)req.getAttribute("login")).getId();
 		String id= "id2";
 		List<MessageDto> mlist = messageService.getMessageList(id);
-		
+		List<MessageDto> slist = messageService.getSendList(id);
 		model.addAttribute("mlist", mlist);
-		
+		model.addAttribute("slist", slist);
 		return "message.tiles";
 	}
 	
@@ -60,11 +61,13 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="messagedetail.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String messagedetail(Model model, int seq) {
+	public String messagedetail(Model model, int seq) throws Exception {
 		
 		logger.info("MessageController messageswriteAf " + new Date());
 		
+		MessageDto mdto = messageService.getMessage(seq);
 		
+		model.addAttribute("mdto", mdto);
 		
 		return "messagedetail.tiles";
 	}

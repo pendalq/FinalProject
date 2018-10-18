@@ -27,6 +27,17 @@ public class MessageDaoImpl implements MessageDao {
 	public void writeMessage(MessageDto mdto) throws Exception {
 		sqlSession.insert(namespace + "writeMessage", mdto);
 	}
+
+	@Override
+	public MessageDto getMessage(int seq) throws Exception {
+		return sqlSession.selectOne(namespace + "getMessage", seq);
+	}
+
+	@Override
+	public List<MessageDto> getSendList(String sendid) throws Exception {
+		List<MessageDto> slist = sqlSession.selectList(namespace + "getSendList", sendid);
+		return slist;
+	}
 	
 	
 }

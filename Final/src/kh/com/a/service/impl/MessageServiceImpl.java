@@ -24,5 +24,15 @@ public class MessageServiceImpl implements MessageService {
 	public void writeMessage(MessageDto mdto) throws Exception {
 		messageDao.writeMessage(mdto);
 	}
+
+	@Override
+	public MessageDto getMessage(int seq) throws Exception {
+		return messageDao.getMessage(seq);
+	}
+
+	@Override
+	public List<MessageDto> getSendList(String sendid) throws Exception {
+		return messageDao.getSendList(sendid);
+	}
 	
 }

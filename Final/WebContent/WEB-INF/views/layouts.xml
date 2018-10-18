@@ -14,5 +14,7 @@
 	<definition name="message.tiles" template="/WEB-INF/views/message/message.jsp"/>	
 	
 	<definition name="messagewrite.tiles" template="/WEB-INF/views/message/messagewrite.jsp"/>
+	
+	<definition name="messagedetail.tiles" template="/WEB-INF/views/message/messagedetail.jsp"/>
 </tiles-definitions>
 

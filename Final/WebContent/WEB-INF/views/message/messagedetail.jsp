@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td style="text-align: left"><textarea id="content" name="content" style="height: 600px; width: 800px" readonly="readonly" value="${mdto.content }"></textarea></td>
+			<td style="text-align: left"><textarea id="content" name="content" style="height: 600px; width: 800px" readonly="readonly" >${mdto.content }</textarea></td>
 		</tr>
 	</table>
 
