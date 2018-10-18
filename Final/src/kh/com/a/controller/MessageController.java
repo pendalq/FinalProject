@@ -32,7 +32,7 @@ public class MessageController {
 		logger.info("MessageController messageswrite " + new Date());
 		
 		//String id = ((MemberDto)req.getAttribute("login")).getId();
-		String id= "id2";
+		String id= "id";
 		List<MessageDto> mlist = messageService.getMessageList(id);
 		List<MessageDto> slist = messageService.getSendList(id);
 		model.addAttribute("mlist", mlist);
@@ -72,4 +72,27 @@ public class MessageController {
 		return "messagedetail.tiles";
 	}
 	
+	@RequestMapping(value="rdel.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String rdel(HttpServletRequest req) throws Exception{
+		
+		logger.info("MessageController rdel " + new Date());
+		
+		String[] checkdel = req.getParameterValues("rcheck");
+		
+		messageService.rdelMessage(checkdel);
+		
+		return "redirect:/message.do";
+	}
+	
+	@RequestMapping(value="sdel.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String sdel(HttpServletRequest req) throws Exception{
+		
+		logger.info("MessageController rdel " + new Date());
+		
+		String[] checkdel = req.getParameterValues("scheck");
+		
+		messageService.sdelMessage(checkdel);
+		
+		return "redirect:/message.do";
+	}
 }

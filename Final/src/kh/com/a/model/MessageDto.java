@@ -24,13 +24,13 @@ public class MessageDto {
 	private String title;
 	private String content;
 	private String wdate;
-	private int del;
+	private int rdel;
+	private int sdel;
 	
 	public MessageDto() {}
-	
-	
 
-	public MessageDto(int seq, String receiveid, String sendid, String title, String content, String wdate, int del) {
+	public MessageDto(int seq, String receiveid, String sendid, String title, String content, String wdate, int rdel,
+			int sdel) {
 		super();
 		this.seq = seq;
 		this.receiveid = receiveid;
@@ -38,10 +38,9 @@ public class MessageDto {
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
-		this.del = del;
+		this.rdel = rdel;
+		this.sdel = sdel;
 	}
-
-
 
 	public MessageDto(String receiveid, String sendid, String title, String content) {
 		super();
@@ -51,97 +50,79 @@ public class MessageDto {
 		this.content = content;
 	}
 
-
-
 	public int getSeq() {
 		return seq;
 	}
-
-
 
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 
-
-
 	public String getReceiveid() {
 		return receiveid;
 	}
-
-
 
 	public void setReceiveid(String receiveid) {
 		this.receiveid = receiveid;
 	}
 
-
-
 	public String getSendid() {
 		return sendid;
 	}
-
-
 
 	public void setSendid(String sendid) {
 		this.sendid = sendid;
 	}
 
-
-
 	public String getTitle() {
 		return title;
 	}
-
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
-
 	public String getContent() {
 		return content;
 	}
-
-
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-
-
 	public String getWdate() {
 		return wdate;
 	}
-
-
 
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
 
-
-
-	public int getDel() {
-		return del;
+	public int getRdel() {
+		return rdel;
 	}
 
-
-
-	public void setDel(int del) {
-		this.del = del;
+	public void setRdel(int rdel) {
+		this.rdel = rdel;
 	}
 
+	public int getSdel() {
+		return sdel;
+	}
 
+	public void setSdel(int sdel) {
+		this.sdel = sdel;
+	}
 
 	@Override
 	public String toString() {
 		return "MessageDto [seq=" + seq + ", receiveid=" + receiveid + ", sendid=" + sendid + ", title=" + title
-				+ ", content=" + content + ", wdate=" + wdate + ", del=" + del + "]";
+				+ ", content=" + content + ", wdate=" + wdate + ", rdel=" + rdel + ", sdel=" + sdel + "]";
 	}
+	
+	
+
+
 	
 	
 	

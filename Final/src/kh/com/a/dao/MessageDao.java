@@ -13,4 +13,8 @@ public interface MessageDao {
 	public MessageDto getMessage(int seq) throws Exception;
 	
 	public List<MessageDto> getSendList(String sendid) throws Exception;
+	
+	public void rdelMessage(String[] delSeq) throws Exception;
+	
+	public void sdelMessage(String[] delSeq) throws Exception;
 }

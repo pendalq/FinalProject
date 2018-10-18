@@ -1,6 +1,9 @@
 package kh.com.a.dao.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,32 @@ public class MessageDaoImpl implements MessageDao {
 	public List<MessageDto> getSendList(String sendid) throws Exception {
 		List<MessageDto> slist = sqlSession.selectList(namespace + "getSendList", sendid);
 		return slist;
+	}
+
+	@Override
+	public void rdelMessage(String[] delSeq) throws Exception {
+		List<String> delSeqlist = new ArrayList<>();
+		for(String item:delSeq) {
+			delSeqlist.add(item);
+		}
+		Map<String, List<String>> delSeqMap = new HashMap<>();
+		
+		delSeqMap.put("delSeq", delSeqlist);
+		
+		sqlSession.update(namespace + "rdelMessage", delSeqMap);
+	}
+
+	@Override
+	public void sdelMessage(String[] delSeq) throws Exception {
+		List<String> delSeqlist = new ArrayList<>();
+		for(String item:delSeq) {
+			delSeqlist.add(item);
+		}
+		Map<String, List<String>> delSeqMap = new HashMap<>();
+		
+		delSeqMap.put("delSeq", delSeqlist);
+		
+		sqlSession.update(namespace + "sdelMessage", delSeqMap);
 	}
 	
 	

@@ -34,5 +34,15 @@ public class MessageServiceImpl implements MessageService {
 	public List<MessageDto> getSendList(String sendid) throws Exception {
 		return messageDao.getSendList(sendid);
 	}
+
+	@Override
+	public void rdelMessage(String[] delSeq) throws Exception {
+		messageDao.rdelMessage(delSeq);
+	}
+
+	@Override
+	public void sdelMessage(String[] delSeq) throws Exception {
+		messageDao.sdelMessage(delSeq);
+	}
 	
 }
