@@ -110,6 +110,8 @@ public class MemberController {
 	@RequestMapping(value="loginAF.do" , method={RequestMethod.GET, RequestMethod.POST})
 	public String loginAf(HttpServletRequest req , MemberDto mdto) throws Exception {
 		logger.info("MemberController loginAF" + new Date());
+		logger.info("MemberController loginAF MDTO는" +  mdto);
+		
 		
 		MemberDto login = null;
 		login = memberService.login(mdto);
@@ -118,6 +120,7 @@ public class MemberController {
 		
 		if(login != null && !login.getId().equals("")) {
 			logger.info("loginAF 성공");
+			
 			req.getSession().setAttribute("loginID", login.getId() );
 			req.getSession().setAttribute("loginAuth", login.getAuth() );
 			
@@ -163,6 +166,15 @@ public class MemberController {
 		
 		
 		//return "updateInfo.tiles";
+	}
+	
+	@RequestMapping(value="logout.do" , method= {RequestMethod.GET , RequestMethod.POST})
+	public String logout(HttpServletRequest req) {
+		logger.info("userMypageCtrl logout.do" + new Date());
+		
+		req.getSession().invalidate();
+
+		return "main.tiles";
 	}
 	
 

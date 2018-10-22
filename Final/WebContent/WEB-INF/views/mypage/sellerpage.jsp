@@ -100,7 +100,10 @@ $(".memInfoUpdate").click(function() {
 
 $("#sellerRegiGoods").click(function() {
 	alert("sellerRegiGoods 함수 실행");
-//	location.href = "updateInfo.do";
+	location.href = "goodswrite.do";
+
+
+
 });
 
 

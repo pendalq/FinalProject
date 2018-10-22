@@ -43,6 +43,9 @@ public class sellerPageController {
 	 		*/
 	 		//사용자 qna list
 	 		List<QnADto> qnaList = sServ.getMyQnaList(id);
+	 		for (int i = 0; i < qnaList.size(); i++) {
+				qnaList.get(i).setWdate(qnaList.get(i).getWdate().substring(0, 10));
+			}
 	 		model.addAttribute("myqnalist", qnaList);
 	 		logger.info( "qnaList=" + qnaList);
 

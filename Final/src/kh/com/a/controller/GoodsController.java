@@ -64,7 +64,7 @@ public class GoodsController {
 		//실제로 업로드 되는 부분		
 		FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 		
-		return "redirect:/goodswrite.do";
+		return "redirect:/sellerpage.do";
 	}
 	
 }
