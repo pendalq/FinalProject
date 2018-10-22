@@ -143,9 +143,6 @@ nav ul li a span {
   line-height: 50px;
   transition: opacity 0.1s ease-in-out;
 }
-
-
-
 </style>
 </head>
 <body>
