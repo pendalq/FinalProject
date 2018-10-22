@@ -64,9 +64,7 @@
 				</textarea>
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
-			<td style="text-align: left;">
-				<a href="sendMsg.do">${goodsdetail.id }</a>
-			</td>
+			<td style="text-align: left;">${goodsdetail.id } | <a href="messagewrite.do">쪽지 보내기</a></td>
 		</tr>
 		<tr class="name">
 			<th style="text-align: left;">업체이름</th>
