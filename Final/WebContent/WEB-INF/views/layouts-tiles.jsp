@@ -16,30 +16,34 @@
 </head>
 <body>
 
-<table border="1" width="100%" height="100%" bordercolor="Gray">
+<div>
 
-<tr align="center"> <!-- header -->
-	<td height="10%" colspan="2">
+<!-- header -->
+	<div>
 		<tiles:insertAttribute name="header"/>
-	</td>
-</tr>
+	</div>
+	<div>
+		<tiles:insertAttribute name="header_second"/>
+	</div>
+	
+	<!-- leftMain -->
+	<div>
+		<tiles:insertAttribute name="interGoods"/>	
+	</div>
 
-<tr> 	<!-- menu, content -->
-	<td height="10%" align="left" valign="top">
-		<tiles:insertAttribute name="menu"/>
-	</td>
-	<td>
+	<!-- menu, content -->
+	<div>
 		<tiles:insertAttribute name="content"/>
-	</td>
-</tr>
+	</div>
 
-<tr> 	<!-- footer -->
-	<td height="10%" colspan="2">
+
+ 	<!-- footer -->
+	<div>
 		<tiles:insertAttribute name="footer"/>
-	</td>
-</tr>
+	</div>
 
-</table>
+
+</div>
 
 </body>
 </html>
