@@ -7,7 +7,7 @@ public interface MemberDao {
 
 	boolean addMember(MemberDto mem ) throws Exception;
 	
-	public MemberDto login(MemberDto mem) throws Exception;
+	MemberDto login(MemberDto mem) throws Exception;
 
-	public int checkID(MemberDto mem);
+	int checkID(MemberDto mem);
 }

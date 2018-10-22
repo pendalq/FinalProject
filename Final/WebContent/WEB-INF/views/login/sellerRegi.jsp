@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +11,8 @@
 </head>
 <body>
 
+
+<h1>판매자등록</h1>
 <form action="" method="post" id="_regiForm" name="regiForm">
 					
 					<table class="content_table" style="width: 75%">
@@ -44,27 +46,26 @@
 					</tr>
 					
 					<tr>
-						<th>주소</th>
+						<th>사업장 주소</th>
 						<td>
-							<input type="text" name="address" id="_address" size="30" data-msg="이름을 ">
+							<input type="text" name="address" id="_address" size="30" data-msg="사업장 주소를">
 						</td>	
 					</tr>
 					
 					<tr>
-						<th>핸드폰 번호</th>
+						<th>사업장 연락처</th>
 						<td>
-							<input type="text" name="phone" id="_phone" size="30" data-msg="이메일을 ">
+							<input type="text" name="phone" id="_phone" size="30" data-msg="연락처를  ">
 						</td>	
 					</tr>
 					
 					<tr>
-						<th>이름</th>
+						<th>기업 이름</th>
 						<td>
-							<input type="text" name="name" id="_name" size="30" data-msg="이메일을 ">
+							<input type="text" name="name" id="_name" size="30" data-msg="기업 이름을 ">
 						</td>	
 					</tr>
-  
-					
+
 					<tr>
 						<td colspan="2" style="height: 50px; text-align: center">
 						<a href="#none" id="regiBTN" title="회원가입">
@@ -77,11 +78,9 @@
 						
 						</td>					
 					</tr>
-					
-					
-					
+						
 					</table>
-					
+						<input type="hidden" value="2" name="auth">
 					
 					</form>
 
@@ -162,8 +161,7 @@ function idCheckMsg(msg) {
 	}
 </script>
 
+
+
 </body>
-
-
-
 </html>

@@ -41,7 +41,7 @@ $("#loginBTN").click(function() {
 
 $("#regiBTN").click(function() { 
 	alert("regiBTN");
-	location.href = "regi.do";
+	location.href = "choiceRegi.do";
 });
 </script>
  
