@@ -13,7 +13,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	private String namespace = "member.";
+	private String namespace = "Member.";
 	
 	@Override
 	public boolean addMember(MemberDto mem) throws Exception {

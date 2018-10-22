@@ -56,7 +56,7 @@
 	 				<button type="button" id="sellerRegiGoods">렌탈상품등록하기</a>
 	 			</td>
 				<td>
-						 <a href="sellerRental.do">seller Rental Detail</a>
+						 <a href="goodswrite.do">seller Rental Detail</a>
 				</td>		
 
 	</tr>		 

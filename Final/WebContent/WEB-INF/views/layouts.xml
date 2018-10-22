@@ -3,7 +3,7 @@
 
  
 
-<tiles-definitions>
+<tiles-definitions> 
 	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">	 
 	  <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
       <put-attribute name="content" value="/WEB-INF/views/login/login.jsp"/>
@@ -21,38 +21,20 @@
 	<definition name="mypage.tiles" extends="login.tiles">		 
 		<put-attribute name="content" value="/WEB-INF/views/mypage/mypage.jsp"/>	 
 	</definition>
-
-</tiles-definitions>
-
-
-
-<!-- 	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/login/login.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
-	</definition>
-	<definition name="regi.tiles" extends="login.tiles">
-		<put-attribute name="content" value="/WEB-INF/views/login/regi.jsp"/>
-	</definition>
-	
-	<definition name="bbslist.tiles" extends="login.tiles">
-		<put-attribute name="content" value="/WEB-INF/views/bbs/bbslist.jsp"/>
-	</definition>
-	
-		<definition name="bbsdetail.tiles" extends="login.tiles">
-		<put-attribute name="content" value="/WEB-INF/views/bbs/bbsdetail.jsp"/>
-	</definition>
-	
-	<definition name="bbsupdate.tiles" extends="login.tiles">
-		<put-attribute name="content" value="/WEB-INF/views/bbs/bbsupdate.jsp"/>
-	</definition>
-	
-	<definition name="bbswrite.tiles" extends="login.tiles">
-		<put-attribute name="content" value="/WEB-INF/views/bbs/bbswrite.jsp"/>
-	</definition>
-
-	<definition name="logout.tiles" extends="login.tiles">
-	</definition> -->
  
+	<definition name="goodswrite.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="common" value="/WEB-INF/views/common/common.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="top_inc" value="/WEB-INF/views/common/top.jsp"/>
+		<put-attribute name="top_menu" value="/WEB-INF/views/common/top_menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/goods/goodswrite.jsp"/>
+		<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom.jsp"/>
+	</definition>
+
+	<definition name="message.tiles" template="/WEB-INF/views/message/message.jsp"/>	
+ 
+	<definition name="messagewrite.tiles" template="/WEB-INF/views/message/messagewrite.jsp"/>
+ 
+	<definition name="messagedetail.tiles" template="/WEB-INF/views/message/messagedetail.jsp"/>
+</tiles-definitions> 
 
