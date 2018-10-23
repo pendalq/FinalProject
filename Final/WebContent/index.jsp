@@ -8,5 +8,11 @@
 </head>
 <body>
 
+
+  <%
+  response.sendRedirect("mainbbslist.do");
+  %>
+  
+
 </body>
 </html>

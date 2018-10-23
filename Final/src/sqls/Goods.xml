@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Goods">
+
+<insert id="writeGoods" parameterType="kh.com.a.model.GoodsDto">
+	INSERT INTO GOODS
+	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
+</insert>
+
+</mapper>
