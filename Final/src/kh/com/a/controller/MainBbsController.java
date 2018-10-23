@@ -56,13 +56,13 @@ public class MainBbsController {
 		
 		
 		InterDto idto = new InterDto();
-		
-		idto.setId(((MemberDto)req.getAttribute("login")).getId());
+		String id = (String)req.getSession().getAttribute("loginID");
+		idto.setId(id);
 		logger.info("MainBbsController getGoodsDetail" + idto);
 		
 		//idto.setId("ID2");
 		
-		if ( idto.getId() == null) {
+		if ( id != null) {
 		
 			
 			idto.setGseq(seq);
