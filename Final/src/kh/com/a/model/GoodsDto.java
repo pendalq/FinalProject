@@ -1,28 +1,33 @@
 package kh.com.a.model;
+ 
+import java.io.Serializable;
 
-/*
-CREATE TABLE GOODS(
-SEQ NUMBER(8) NOT NULL,
-ID VARCHAR2(50) NOT NULL,
-IMAGE VARCHAR2(450) NOT NULL,
-NAME VARCHAR2(50) NOT NULL,
-CATEGORY VARCHAR2(50) NOT NULL,
-BRAND VARCHAR2(50) NOT NULL,
-PRICE NUMBER(8) NOT NULL,
-OPTIONS VARCHAR2(50) NOT NULL,
-CONTENT VARCHAR2(4000) NOT NULL,
-RENTALCOUNT NUMBER(8) NOT NULL,
-WDATE DATE NOT NULL,
+public class GoodsDto implements Serializable{
+/*	CREATE TABLE GOODS(
+			SEQ NUMBER(8) NOT NULL,
+			ID VARCHAR2(50) NOT NULL,
+			IMAGE VARCHAR2(450) NOT NULL,
+			TITLE VARCHAR2(50) NOT NULL,
+			CATEGORY VARCHAR2(50) NOT NULL,
+			BRAND VARCHAR2(50) NOT NULL,
+			PRICE NUMBER(8) NOT NULL,
+			OPTIONS VARCHAR2(50) NOT NULL,
+			CONTENT VARCHAR2(4000) NOT NULL,
+			RENTALCOUNT NUMBER(8) NOT NULL,
+			WDATE DATE NOT NULL,
 
-CONSTRAINT PK_SEQ PRIMARY KEY(SEQ)
-);
+			CONSTRAINT PK_SEQ PRIMARY KEY(SEQ)
+			);
+
+			ALTER TABLE GOODS
+			ADD CONSTRAINT FK_ID_GOODS
+			FOREIGN KEY (ID)
+			REFERENCES MEMBER(ID);
 */
-
-public class GoodsDto {
-
+	
 	private int seq;
 	private String id;
-	private String imageName;
+	private String imageName; 
 	private String title;
 	private String category;
 	private String brand;
@@ -31,15 +36,16 @@ public class GoodsDto {
 	private String content;
 	private int rentalcount;
 	private String wdate;
+	private float liked;
 	
 	public GoodsDto() {}
 
 	public GoodsDto(int seq, String id, String imageName, String title, String category, String brand, int price,
-			String options, String content, int rentalcount, String wdate) {
+			String options, String content, int rentalcount, String wdate, float liked) {
 		super();
 		this.seq = seq;
 		this.id = id;
-		this.imageName = imageName;
+		this.imageName = imageName; 
 		this.title = title;
 		this.category = category;
 		this.brand = brand;
@@ -48,9 +54,10 @@ public class GoodsDto {
 		this.content = content;
 		this.rentalcount = rentalcount;
 		this.wdate = wdate;
+ 
 	}
 
-	public GoodsDto(String id, String title, String category, String brand, String options, int price, String content) {
+	public GoodsDto(String id, String title, String category, String brand, String options, int price, String content ,float liked) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -58,7 +65,8 @@ public class GoodsDto {
 		this.brand = brand;
 		this.price = price;
 		this.options = options;
-		this.content = content;
+		this.content = content; 
+		this.liked = liked; 
 	}
 
 	public int getSeq() {
@@ -83,6 +91,7 @@ public class GoodsDto {
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+ 
 	}
 
 	public String getTitle() {
@@ -148,15 +157,20 @@ public class GoodsDto {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
+ 
+	public float getLiked() {
+		return liked;
+	}
+
+	public void setLiked(float liked) {
+		this.liked = liked;
+	}
 
 	@Override
 	public String toString() {
-		return "GoodsDto [seq=" + seq + ", id=" + id + ", imageName=" + imageName + ", title=" + title + ", category=" + category
-				+ ", brand=" + brand + ", price=" + price + ", options=" + options + ", content=" + content
-				+ ", rentalcount=" + rentalcount + ", wdate=" + wdate + "]";
+		return "GoodsDto [seq=" + seq + ", id=" + id + ", imageName=" + imageName + ", title=" + title + ", category="
+				+ category + ", brand=" + brand + ", price=" + price + ", options=" + options + ", content=" + content
+				+ ", rentalcount=" + rentalcount + ", wdate=" + wdate + ", liked=" + liked + "]";
 	}
 
-
-	
-	
 }

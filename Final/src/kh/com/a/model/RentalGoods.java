@@ -3,35 +3,49 @@ package kh.com.a.model;
 public class RentalGoods {
 
 	private String title;
-	private String image;
-	private int seq;
-	
-	private String brand;
-	private String options;
+	private String imagename;
+	private int seq;  //
+	 
 	
 	private String sdate;
 	private String re_turn;
 	private String term;
 	private int returndday;
 	
-
+	
+	private int gseq; //
+	private String su_id; //판매자아이디
+	private String brand;
+	private int price;
+	private String options;
+	//private String content;
+	//private int rentalcount;
+	private String wdate;
+	
+	
+	private String ru_id; //대여자아이디
+	private String address;
+	private String phone;
+	private String name;
+	
+	
 	public RentalGoods() {
 		
 	}
 
-	public RentalGoods(int seq, String title, String image) {
+	public RentalGoods(int seq, String title, String imagename) {
 		super();
 		this.seq = seq;
 		this.title = title;
-		this.image = image;
+		this.imagename = imagename;
 	}
 
 	
-	public RentalGoods(String title, String image, int seq, String brand, String options, String sdate, String re_turn,
+	public RentalGoods(String title, String imagename, int seq, String brand, String options, String sdate, String re_turn,
 			String term, int returndday) {
 		super();
 		this.title = title;
-		this.image = image;
+		this.imagename = imagename;
 		this.seq = seq;
 		this.brand = brand;
 		this.options = options;
@@ -40,6 +54,10 @@ public class RentalGoods {
 		this.term = term;
 		this.returndday = returndday;
 	}
+	
+	
+
+	 
 
 	public String getTitle() {
 		return title;
@@ -49,12 +67,12 @@ public class RentalGoods {
 		this.title = title;
 	}
 
-	public String getImage() {
-		return image;
+	public String getimagename() {
+		return imagename;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setimagename(String imagename) {
+		this.imagename = imagename;
 	}
 
 	public int getSeq() {
@@ -113,24 +131,28 @@ public class RentalGoods {
 		this.returndday = returndday;
 	}
 
-	@Override
-	public String toString() {
-		return "RentalGoods [title=" + title + ", image=" + image + ", seq=" + seq + ", brand=" + brand + ", options="
-				+ options + ", sdate=" + sdate + ", re_turn=" + re_turn + ", term=" + term + ", returndday="
-				+ returndday + "]";
+	public String getImagename() {
+		return imagename;
 	}
 
-	
-	
-	
-	
-	 
-	 
-	
-	
-	
-	
-	
-	 
-	
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+
+ 
 }
+	
+	
+	
+	
+	
+	 
+	 
+	
+	
+	
+	
+	
+	 
+	
+ 

@@ -10,7 +10,30 @@ FROM QNA
 WHERE ID=#{id}
 </select>
  
+<select id="SRental3" parameterType="java.lang.String" resultType="kh.com.a.model.GoodsDto"> 
+SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE 
+FROM GOODS
+WHERE ID=#{id}
+</select>
 
+<!--  seller rental(dto) detail -->
+<select id="GoodsDto" parameterType="java.lang.Integer" resultType="kh.com.a.model.GoodsDto">
+SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE 
+FROM GOODS 
+WHERE SEQ=#{seq}
+</select>
+
+<!-- lent manage 1o-->
+<select id="lentmanage" parameterType="java.lang.String" resultType="kh.com.a.model.RentalGoods">
+SELECT R.SEQ , R.ID AS SU_ID , G.TITLE , R.WDATE , R.SDATE , M.ADDRESS, M.PHONE, M.NAME
+FROM GOODS G , RENTAL R , MEMBER M
+WHERE G.SEQ = R.GSEQ 
+AND R.ID = M.ID
+AND G.ID=#{id} 
+</select>
+
+
+ 
 
 
 </mapper>

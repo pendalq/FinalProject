@@ -24,16 +24,20 @@
    </td>
 </tr>
 
-<%-- 
+
 <tr>
    <td height="10%">
       <tiles:insertAttribute name="header_second"/>
    </td>
 </tr>
-   
- --%>
- 
- 
+
+<tr>
+   <td>
+      <tiles:insertAttribute name="interGoods"/>
+   </td>
+</tr>
+    
+
 <tr>    <!-- menu, content -->
    <td>
       <tiles:insertAttribute name="main"/>
@@ -50,7 +54,6 @@
 
 </body>
 </html>
-
 
 
 

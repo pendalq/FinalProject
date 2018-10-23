@@ -31,5 +31,6 @@ SELECT NVL(COUNT(*),0)
 FROM MEMBER
 WHERE ID=#{id}
 </select>
+ 
 
 </mapper>

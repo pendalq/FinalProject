@@ -38,8 +38,8 @@ public class userMypageController {
  
  		//사용자 rental list
  		List<RentalGoods> rental3 = userMyServ.Rental3(id);
- 		model.addAttribute("rental3", rental3);
- 		logger.info( "rental3=" + rental3);
+ 		model.addAttribute("srental3", rental3);
+ 		logger.info( "srental3=" + rental3);
  		
  		
  		//사용자 qna list

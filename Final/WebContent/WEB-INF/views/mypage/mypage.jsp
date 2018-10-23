@@ -90,9 +90,9 @@ ${myrental3.title }
 				</c:if>
 				<td>
 					${myrental3.title }
-					${myrental3.seq }		
-						   <a href='userRental.do?seq=${myrental3.seq }'>
-						${myrental3.image }
+				<%-- 	${myrental3.seq }	 --%>	
+						   <a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
+						${myrental3.imagename }
 					</a>
 				</td>		
 	</c:forEach>

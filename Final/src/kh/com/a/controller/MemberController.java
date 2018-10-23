@@ -120,11 +120,11 @@ public class MemberController {
 		
 		if(login != null && !login.getId().equals("")) {
 			logger.info("loginAF 성공");
-			
+			System.out.println("로그인 정보 id = " + login.getId() + " auth = " + login.getAuth());
 			req.getSession().setAttribute("loginID", login.getId() );
 			req.getSession().setAttribute("loginAuth", login.getAuth() );
 			
-			return "main.tiles";	   
+			return "redirect:/mainbbslist.do";	   
 			
 		}else {
 			logger.info("loginAF 실패");
@@ -162,8 +162,8 @@ public class MemberController {
 		}if(auth == 2) {			
 			return "sellserUpdateInfo.tiles";
 		}
-		return "main.tiles";	
-		
+		//return "main.tiles";	
+		return "redirect:/mainbbslist.do";	
 		
 		//return "updateInfo.tiles";
 	}
@@ -173,8 +173,9 @@ public class MemberController {
 		logger.info("userMypageCtrl logout.do" + new Date());
 		
 		req.getSession().invalidate();
-
-		return "main.tiles";
+		//req.getSession().getAttribute("loginID");
+	 
+		return "redirect:/mainbbslist.do";	
 	}
 	
 

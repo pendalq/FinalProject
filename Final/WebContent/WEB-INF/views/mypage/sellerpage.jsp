@@ -39,27 +39,38 @@
 <div class="sellerTable">
 <h2>여기는_ seller _page</h2>
 <br>
-<table>
+<table class="menu" border="1px soild">
 	<tr>
-		<td>
+		<td colspan="2">
 			${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
 			 	
 		</td>
 	</tr>
+	<tr>
+		<td><button type="button" id="sellerRegiGoods">  렌탈상품등록하기 </td>
+		<td><button type="button" id="lentManage">  대여관리</td>
+	</tr>
 </table>
 
-
-<h2 style="text-align: center;">등록중된 렌탈 상품 </h2>
+<h2 style="text-align: center;">등록되어있는 렌탈 상품 </h2>
 <table class="retalinglist" > 
-	 	<tr class="trtag">
-	 			<td>
-	 				<button type="button" id="sellerRegiGoods">렌탈상품등록하기</a>
-	 			</td>
+ 
+	 	<tr>
+	 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="sellerRental3" varStatus="vs">
+ 			<c:if test="${empty srental3 }">	
+ 				<td>
+					렌탈 중인 상품이 없습니다
+				</td>
+			</c:if>			 		
 				<td>
-						 <a href="goodswrite.do">seller Rental Detail</a>
+				 <a href='sellerRental.do?seq=${sellerRental3.seq }'>
+					${sellerRental3.imageName }
+					${sellerRental3.title } 
+				</a>	
 				</td>		
-
-	</tr>		 
+		</c:forEach>
+		</tr>
+			 
 	
 	
 </table>
@@ -98,13 +109,19 @@ $(".memInfoUpdate").click(function() {
 	location.href = "updateInfo.do";
 });
 
+$("#lentManage").click(function() {
+	alert("lentManage 함수 실행");
+	location.href = "lentManage.do";
+});
+
+
+
 $("#sellerRegiGoods").click(function() {
 	alert("sellerRegiGoods 함수 실행");
 	location.href = "goodswrite.do";
-
-
-
 });
+
+
 
 
 

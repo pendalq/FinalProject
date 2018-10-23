@@ -8,8 +8,9 @@
 </head>
 <body>
 
+
   <%
-  response.sendRedirect("main.do");
+  response.sendRedirect("mainbbslist.do");
   %>
   
 
