@@ -34,7 +34,7 @@
 		<td>${buyer.phone }</td>
 	</tr>
 	<tr>
-		<td><a href="#none" id="_btnLogin" title="결제"><img src="image/bwrite.png" alt="결제" /></a></td>
+		<td><a href="#none" id="getpay" title="결제"><img src="image/bwrite.png" alt="결제" /></a></td>
 	</tr>
 </table>
 
@@ -42,7 +42,7 @@
 <script type="text/javascript">
 IMP.init("imp27698374");
 
-$("_btnLogin").click(function(){
+$("#getpay").click(function(){
 	//IMP.request_pay(param, callback) 호출
 	IMP.request_pay({ // param
 	    pg: "html5_inicis",
