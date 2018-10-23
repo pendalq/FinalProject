@@ -19,7 +19,7 @@ enctype="multipart/form-data">
 <tr>
 <th>아이디</th>
 <td style="text-align: left"><input type="text" id='id' name='id' readonly="readonly"
-value="id" size="50"/></td>
+value="${loginID }"  size="50"/></td>
 </tr>
 <tr>
 <th>제목</th>

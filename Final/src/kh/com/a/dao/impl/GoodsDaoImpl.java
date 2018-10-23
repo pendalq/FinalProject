@@ -12,11 +12,11 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	@Autowired
 	SqlSession sqlSession;
-	
-	private String namespace = "Goods.";
+	 
+	private String namespace = "goods.";
 
 	@Override
 	public void insertGoods(GoodsDto dto) throws Exception {
-		sqlSession.insert("writeGoods", dto);
+		sqlSession.insert( namespace + "writeGoods", dto);
 	}
 }

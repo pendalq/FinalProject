@@ -8,9 +8,11 @@
 </head>
 <body>
 
-<%
-response.sendRedirect("goodswrite.do");
-%>
+
+  <%
+  response.sendRedirect("mainbbslist.do");
+  %>
+  
 
 </body>
 </html>
