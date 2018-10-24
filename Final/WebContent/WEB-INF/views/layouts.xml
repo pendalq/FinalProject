@@ -80,6 +80,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp"/>
 </definition>
 
+<definition name="payment.tiles" extends="mainview.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/payment/payment.jsp"/>
+</definition>
+
 
 </tiles-definitions>
 

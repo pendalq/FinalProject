@@ -9,5 +9,7 @@ public interface MemberDao {
 	
 	MemberDto login(MemberDto mem) throws Exception;
 
-	int checkID(MemberDto mem);
+	int checkID(MemberDto mem) throws Exception;
+	
+	MemberDto getMemberInfo(String id) throws Exception;
 }

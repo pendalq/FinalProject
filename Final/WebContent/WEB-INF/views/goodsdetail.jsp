@@ -95,7 +95,7 @@
 		
 		
 		<tr>
-			<td><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></td>
+			<td><a href="./rental.do?seq=${goodsdetail.seq }" id="" title="렌탈하기">렌탈하기</a></td>
 			<td>
 				<c:if test="${interCheck.id eq login && interCheck.gseq eq goodsdetail.seq}">
 					<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>

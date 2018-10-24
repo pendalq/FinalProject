@@ -22,7 +22,7 @@ ORDER BY WDATE DESC
 	WHERE ROWNUM &lt;=6
 </select>
 
-<select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="kh.com.a.model.GoodsDto">
+<select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="java.lang.Integer">
 	SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
 	FROM GOODS
 	WHERE SEQ=#{seq}

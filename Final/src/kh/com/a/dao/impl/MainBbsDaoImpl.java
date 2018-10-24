@@ -36,6 +36,7 @@ public class MainBbsDaoImpl implements MainBbsDao {
 
 	@Override
 	public GoodsDto getGoodsDetail(int seq) throws Exception {
+		System.out.println(seq);
 		return sqlSession.selectOne(namespace+"getGoodsDetail", seq);
 	}
 

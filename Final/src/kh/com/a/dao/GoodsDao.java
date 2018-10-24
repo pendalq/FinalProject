@@ -6,4 +6,6 @@ public interface GoodsDao {
 
 	public void insertGoods(GoodsDto dto) throws Exception;
 	
+	public GoodsDto getGoodsDetail(int seq) throws Exception;
+	
 }

@@ -19,4 +19,9 @@ public class GoodsDaoImpl implements GoodsDao {
 	public void insertGoods(GoodsDto dto) throws Exception {
 		sqlSession.insert( namespace + "writeGoods", dto);
 	}
+
+	@Override
+	public GoodsDto getGoodsDetail(int seq) throws Exception {
+		return sqlSession.selectOne(namespace + "getGoodsDetail", seq);
+	}
 }
