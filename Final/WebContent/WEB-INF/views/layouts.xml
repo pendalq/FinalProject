@@ -6,11 +6,50 @@
 <tiles-definitions> 
 	<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">	 
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-	<put-attribute name="header_second" value="/WEB-INF/views/common/header_second.jsp"/>
-	<put-attribute name="interGoods" value="/WEB-INF/views/common/interGoods.jsp"/>
+		<put-attribute name="header_second" value="/WEB-INF/views/common/header_second.jsp"/>
+		<put-attribute name="interGoods" value="/WEB-INF/views/common/interGoods.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/views/main.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 	</definition>
+	<!-- 공지사항 -->
+	<definition name="Noticelist.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Notice/Noticelist.jsp"/>
+	</definition>
+	
+	<definition name="update.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Notice/update.jsp"/>
+	</definition>
+	
+	<definition name="view.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Notice/view.jsp"/>
+	</definition>
+	
+	<definition name="write.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Notice/write.jsp"/>
+	</definition>
+	<!-- QnA -->
+	
+	<definition name="QnAlist.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAlist.jsp"/>
+	</definition>
+	
+	<definition name="QnADetail.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/QnA/QnADetail.jsp"/>
+	</definition>
+	
+	<definition name="QnAUpdate.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAUpdate.jsp"/>
+	</definition>
+	
+	<definition name="QnAWrite.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAWrite.jsp"/>
+	</definition>
+	
+	<definition name="QnAReply.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAReply.jsp"/>
+	</definition>
+	
+	
 	
 	<definition name="login.tiles" extends="main.tiles">
 		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
