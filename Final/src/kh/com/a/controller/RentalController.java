@@ -34,10 +34,9 @@ public class RentalController {
 		String id = (String) req.getSession().getAttribute("loginID");
 		System.out.println(id);
 		System.out.println(seq);
-		MemberService memberService = new MemberServiceImpl();
-		MainBbsService mService = new MainBbsServiceImpl();
-		GoodsDto goods = mService.getGoodsDetail(seq);
-		MemberDto buyer = memberService.getMemberInfo(id);
+		
+		GoodsDto goods = rentalService.getGoodsInfo(seq);
+		MemberDto buyer = rentalService.getMemberInfo(id);
 		
 		model.addAttribute("goods", goods);
 		model.addAttribute("buyer", buyer);
