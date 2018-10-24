@@ -17,10 +17,16 @@
 	</definition>
 
 	 <definition name="regi.tiles" extends="main.tiles"> 	
-		<put-attribute name="main" value="/WEB-INF/login/regi.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
 	</definition>
 	
+	<definition name="userRegi.tiles" extends="main.tiles"> 	
+		<put-attribute name="main" value="/WEB-INF/views/login/userRegi.jsp"/>
+	</definition>
 	
+	<definition name="sellerRegi.tiles" extends="main.tiles"> 	
+		<put-attribute name="main" value="/WEB-INF/views/login/sellerRegi.jsp"/>
+	</definition>
 
 	<definition name="mypage.tiles" extends="main.tiles">		 
 		<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>	 
