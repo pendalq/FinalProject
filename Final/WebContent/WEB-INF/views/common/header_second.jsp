@@ -97,25 +97,10 @@
 		<ul class="menubar_sub">
 			<li class="top_menu"><a href="#" title="카테고리" class="menulink">카테고리</a></li>
 			<li class="top_menu"><a href="#" title="냉장고" class="menulink">냉장고</a>
-				<ul class="hide">
-					<li><a class="submenulink" href="#">양문형</a></li>
-					<li><a class="submenulink" href="#">단문형</a></li>
-					<li><a class="submenulink" href="#">김치냉장고</a></li>
-				</ul>
 			</li>
 			<li class="top_menu"><a href="#" title="TV" class="menulink">TV</a>
-				<ul class="hide">
-					<li><a class="submenulink" href="#">60인치</a></li>
-					<li><a class="submenulink" href="#">45인치</a></li>
-					<li><a class="submenulink" href="#">32인치</a></li>
-				</ul>
 			</li>
-			<li class="top_menu"><a href="#" title="PC" class="menulink">PC</a>
-				<ul class="hide">
-					<li><a class="submenulink" href="#">조립식</a></li>
-					<li><a class="submenulink" href="#">데스크탑</a></li>
-					<li><a class="submenulink" href="#">노트북</a></li>
-				</ul>
+			<li class="top_menu"><a href="#" title="정수기" class="menulink">정수기</a>
 			</li>
 			<li class="top_menu"><a href="#" title="QnA" class="menulink">QnA</a></li>
 		</ul>

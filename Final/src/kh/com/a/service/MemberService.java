@@ -8,6 +8,8 @@ public interface MemberService {
 	
 	public MemberDto login(MemberDto mem) throws Exception;
 
-	public int checkID(MemberDto mem);
+	public int checkID(MemberDto mem) throws Exception;
+	
+	public MemberDto getMemberInfo(String id) throws Exception;
 
 }

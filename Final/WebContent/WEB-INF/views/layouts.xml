@@ -56,23 +56,32 @@
 	</definition>
 	
 	
-	<definition name="message.tiles" extends="main.tiles"/>	
- 
-	<definition name="messagewrite.tiles" extends="main.tiles"/>
- 
-	<definition name="messagedetail.tiles" extends="main.tiles"/>
+	<definition name="message.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/message/message.jsp"/>
+	</definition>	
+ 	
+	<definition name="messagewrite.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/message/messagewrite.jsp"/>
+ 	</definition>
+	<definition name="messagedetail.tiles" extends="main.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/message/messagedetail.jsp"/>
+	</definition>
 
 
 <definition name="mainview.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
 	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
 	<put-attribute name="header_second" value="/WEB-INF/views/common/header_second.jsp"/>
 	<put-attribute name="interGoods" value="/WEB-INF/views/common/interGoods.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/Main.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 </definition>
 
 <definition name="goodsdetail.tiles" extends="mainview.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp"/>
+</definition>
+
+<definition name="payment.tiles" extends="mainview.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/payment/payment.jsp"/>
 </definition>
 
 

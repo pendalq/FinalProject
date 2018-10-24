@@ -63,7 +63,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="checkID.do", method={RequestMethod.GET, RequestMethod.POST})
-	public MemIdCheck checkID(MemberDto mdto) {
+	public MemIdCheck checkID(MemberDto mdto) throws Exception{
 		logger.info("MemberController checkID" + new Date());
 		
 		System.out.println(mdto);

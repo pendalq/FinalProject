@@ -30,11 +30,18 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public int checkID(MemberDto mem) {
+	public int checkID(MemberDto mem) throws Exception {
 	  System.out.println(mem);
 	  int i = memberDao.checkID(mem);
 	  System.out.println(i + "i는");
 		return memberDao.checkID(mem);
+	}
+
+
+	@Override
+	public MemberDto getMemberInfo(String id) throws Exception {
+		System.out.println(id);
+		return memberDao.getMemberInfo(id);
 	}
 	
 	

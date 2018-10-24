@@ -46,7 +46,7 @@ public class MessageController {
 		logger.info("MessageController messageswrite " + new Date());
 		
 		model.addAttribute("mdto", mdto);
-				
+		
 		return "messagewrite.tiles";
 	}
 	

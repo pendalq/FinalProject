@@ -28,6 +28,7 @@ public class MainBbsServiceImpl implements MainBbsService {
 
 	@Override
 	public GoodsDto getGoodsDetail(int seq) throws Exception {
+		System.out.println(seq);
 		return mainbbsdao.getGoodsDetail(seq);
 	}
 

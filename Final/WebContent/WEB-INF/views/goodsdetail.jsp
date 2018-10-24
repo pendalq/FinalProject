@@ -61,12 +61,10 @@
 	<tbody>
 		<tr class="idAndimage">
 			<th rowspan="8" style="text-align: center;">
-				<textarea rows="19" cols="48" name="image" id="_image">
-				${goodsdetail.image }
-				</textarea>
+				${goodsdetail.imageName }
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
-			<td style="text-align: left;">${goodsdetail.id } | <a href="messagewrite.do">쪽지 보내기</a></td>
+			<td style="text-align: left;">${goodsdetail.id } | <a href="./messagewrite.do?sendid=${loginID}&receiveid=${goodsdetail.id }">쪽지 보내기</a></td>
 		</tr>
 		<tr class="name">
 			<th style="text-align: left;">업체이름</th>
@@ -97,7 +95,7 @@
 		
 		
 		<tr>
-			<td><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></td>
+			<td><a href="./rental.do?seq=${goodsdetail.seq }" id="" title="렌탈하기">렌탈하기</a></td>
 			<td>
 				<c:if test="${interCheck.id eq login && interCheck.gseq eq goodsdetail.seq}">
 					<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>
@@ -112,9 +110,7 @@
 		
 		<tr class="content">
 			<td colspan="3" style="text-align: left;">
-				<textarea rows="20" cols="115" name="content" id="_content">
-					${goodsdetail.content }
-				</textarea>
+				${goodsdetail.content }
 			</td>
 		</tr>
 	</tbody>	
@@ -353,7 +349,7 @@
 
 </form>
 
-<%} %>
+<%}    %>
 
 <script type="text/javascript">
 $("#updateRental").click(function() {
@@ -406,15 +402,8 @@ $(function () {
 		});
 	});
 });
- 
-   
- $("#doRental").click(function () {
-	$("#_frm").attr({ "target":"_self", "action":"gotoRental.do"}).submit();
-});
- 
- 
 
- $(document).ready(function () {
+$(document).ready(function () {
 	 
 	 for(i = 1;i< ${reviewDetailList.size()} + 1; i++){
 //	 alert("reviewshow1");
@@ -432,8 +421,7 @@ function func(i) {
 	$("#_reviewcontent" + i).slideToggle("slow");
 
 }
-  
- 
+
 </script>
 
 

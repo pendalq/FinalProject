@@ -17,12 +17,12 @@
 	<table border="2">
 		<tr>
 			<th>아이디</th>
-			<td style="text-align: left"><input type="text" id='id' name='sendid' readonly="readonly" value="id" size="50"/>
+			<td style="text-align: left"><input type="text" id='id' name='sendid' readonly="readonly" value="${mdto.sendid }" size="50"/>
 			</td>
 		</tr>
 		<tr>
 			<th>받는사람</th>
-			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="id2" size="50"/>
+			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="${mdto.receiveid }" size="50"/>
 		</tr>
 		<tr>
 			<th>제목</th>
