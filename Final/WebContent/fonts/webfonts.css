@@ -1,0 +1,9 @@
+@font-face{
+    font-family: NotoSansKR;
+    src: url(NotoSansKR-Regular.eot); /* IE9 호환성 보기 */
+    src: local("☺"),
+    url(NotoSansKR-Regular.eot?#iefix) format('embedded-opentype'),/*IE 6~8*/
+    url(NotoSansKR-Regular.woff) format('woff'); /*표준 브라우저*/
+    font-style: normal;
+    font-weight: normal;
+}
