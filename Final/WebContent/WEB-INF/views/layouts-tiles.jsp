@@ -19,22 +19,19 @@
 <table border="1" width="100%" height="100%" bordercolor="Gray">
 
 <tr align="center"> <!-- header -->
-	<td height="10%" colspan="2">
+	<td height="10%">
 		<tiles:insertAttribute name="header"/>
 	</td>
 </tr>
 
-<tr> 	<!-- menu, content -->
-	<td height="10%" align="left" valign="top">
-		<tiles:insertAttribute name="menu"/>
-	</td>
+<tr> 	<!-- content -->
 	<td>
 		<tiles:insertAttribute name="content"/>
 	</td>
 </tr>
 
 <tr> 	<!-- footer -->
-	<td height="10%" colspan="2">
+	<td height="10%">
 		<tiles:insertAttribute name="footer"/>
 	</td>
 </tr>
