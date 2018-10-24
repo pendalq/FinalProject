@@ -42,7 +42,7 @@
 		<td>총 금액 : <span id="allprice" style="align: right;">${goods.price }</span>원</td>
 	</tr>
 	<tr>
-		<td><a href="#none" id="getpay" title="결제" style="text-align: right">결제</a></td>
+		<td><a id="getpay" title="결제" style="text-align: right">결제</a></td>
 	</tr>
 </table>
 
@@ -56,31 +56,28 @@ $(document).ready(function(){
 $("#getpay").click(function(){
 	var IMP = window.IMP;
 	//IMP.request_pay(param, callback) 호출
-	 IMP.request_pay({
-	pg : 'kakao', // 결제방식
-    pay_method : 'card',	// 결제 수단
-    merchant_uid : '${loginID}' + new Date().getTime(),
-   	name : '${goods.title}:결제테스트',	// order 테이블에 들어갈 주문명 혹은 주문 번호
-    amount : '0',	// 결제 금액
-    buyer_email : '',	// 구매자 email
-   	buyer_name :  '${buyer.name}',	// 구매자 이름
-    buyer_tel :  '${buyer.phone}',	// 구매자 전화번호
-    buyer_addr :  '${buyer.address}',	// 구매자 주소
-    buyer_postcode :  '',	// 구매자 우편번호
-   // m_redirect_url : './rental.do?seq=${goods.seq}'	// 결제 완료 후 보낼 컨트롤러의 메소드명
+	IMP.request_pay({
+	    pg : 'kakao', // version 1.1.0부터 지원.
+	    pay_method : 'card',
+	    merchant_uid : 'merchant_' + new Date().getTime(),
+	    name : '주문명:결제테스트',
+	    amount : 1,
+	    buyer_email : '',
+	    buyer_name : '${buyer.name}',
+	    buyer_tel : '${buyer.phone}',
+	    buyer_addr : '${buyer.address}',
+	    buyer_postcode : '123-456',
+	    //m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 	}, function(rsp) {
-		if ( rsp.success ) { // 성공시
-			var msg = '결제가 완료되었습니다.';
-			msg += '고유ID : ' + rsp.imp_uid;
-			msg += '상점 거래ID : ' + rsp.merchant_uid;
-			msg += '결제 금액 : ' + rsp.paid_amount;
-			msg += '카드 승인번호 : ' + rsp.apply_num;
-		} else { // 실패시
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-		}
-	}
-);
+	    if ( rsp.success ) {
+	      var msg = '결제가 완료되었습니다.';
+	      location.href="./paysuccess.do?id=${loginID}&gseq=${goods.seq}&term=$('#term option:selected').val()"
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	    }
+	    alert(msg);
+	});
 });
 
 $("#term").on("change",function(){
