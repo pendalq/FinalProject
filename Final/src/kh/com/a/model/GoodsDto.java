@@ -69,6 +69,7 @@ public class GoodsDto implements Serializable{
 		this.liked = liked; 
 	}
 
+
 	public int getSeq() {
 		return seq;
 	}
@@ -156,7 +157,7 @@ public class GoodsDto implements Serializable{
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
- 
+
 	public float getLiked() {
 		return liked;
 	}
