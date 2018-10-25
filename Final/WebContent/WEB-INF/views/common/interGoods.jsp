@@ -99,7 +99,7 @@ $(document).ready(function () {
 			type:"POST",
 			data:{
 				"command":"youAreInterestedIn",
-				"id":$("#idname").val()
+				"id":$("#id").val()
 			},
 			success:function(data){
 	//			alert("관심상품목록");

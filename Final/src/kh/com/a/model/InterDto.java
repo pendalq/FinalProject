@@ -6,14 +6,31 @@ public class InterDto implements Serializable{
 	private int seq;
 	private String id;
 	private int gseq;
+	private String imageName;
 	
 	public InterDto() {}
+	
+	
+	
+	
 
 	public InterDto(int seq, String id, int gseq) {
 		super();
 		this.seq = seq;
 		this.id = id;
 		this.gseq = gseq;
+	}
+
+
+
+
+
+	public InterDto(int seq, String id, int gseq, String imageName) {
+		super();
+		this.seq = seq;
+		this.id = id;
+		this.gseq = gseq;
+		this.imageName = imageName;
 	}
 
 	public int getSeq() {
@@ -40,10 +57,19 @@ public class InterDto implements Serializable{
 		this.gseq = gseq;
 	}
 
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	@Override
 	public String toString() {
-		return "InterDto [seq=" + seq + ", id=" + id + ", gseq=" + gseq + "]";
+		return "InterDto [seq=" + seq + ", id=" + id + ", gseq=" + gseq + ", imageName=" + imageName + "]";
 	}
+
 	
 	
 }

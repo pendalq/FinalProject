@@ -61,6 +61,11 @@ public class MainBbsServiceImpl implements MainBbsService {
 	public List<ReviewDto> getReviewDetailList(int seq) throws Exception {
 		return mainbbsdao.getReviewDetailList(seq);
 	}
+
+	@Override
+	public List<InterDto> youAreInterestedIn(String id) throws Exception {
+		return mainbbsdao.youAreInterestedIn(id);
+	}
 	
 	
 }

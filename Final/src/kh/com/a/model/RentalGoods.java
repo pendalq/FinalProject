@@ -5,7 +5,6 @@ public class RentalGoods {
 	private String title;
 	private String imagename;
 	private int seq;  //
-	 
 	
 	private String sdate;
 	private String re_turn;
@@ -19,7 +18,7 @@ public class RentalGoods {
 	private int price;
 	private String options;
 	private String wdate;	
-	
+
 	public RentalGoods() {
 		
 	}
@@ -70,6 +69,7 @@ public class RentalGoods {
 		this.seq = seq;
 	}
 
+
 	public String getSdate() {
 		return sdate;
 	}
@@ -93,7 +93,7 @@ public class RentalGoods {
 	public void setTerm(String term) {
 		this.term = term;
 	}
-
+	
 	public int getReturndday() {
 		return returndday;
 	}
@@ -101,6 +101,7 @@ public class RentalGoods {
 	public void setReturndday(int returndday) {
 		this.returndday = returndday;
 	}
+
 
 	public int getGseq() {
 		return gseq;
@@ -148,26 +149,7 @@ public class RentalGoods {
 
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
-	}
-	
-	
+	} 
 
-	 
-
- 
 }
-	
-	
-	
-	
-	
-	 
-	 
-	
-	
-	
-	
-	
-	 
-	
- 
+

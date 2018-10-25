@@ -64,6 +64,7 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value="checkID.do", method={RequestMethod.GET, RequestMethod.POST})
 	public MemIdCheck checkID(MemberDto mdto) throws Exception{
+
 		logger.info("MemberController checkID" + new Date());
 		
 		System.out.println(mdto);
@@ -110,8 +111,8 @@ public class MemberController {
 	@RequestMapping(value="loginAF.do" , method={RequestMethod.GET, RequestMethod.POST})
 	public String loginAf(HttpServletRequest req , MemberDto mdto) throws Exception {
 		logger.info("MemberController loginAF" + new Date());
-		logger.info("MemberController loginAF MDTO는" +  mdto);
-		
+
+
 		
 		MemberDto login = null;
 		login = memberService.login(mdto);
@@ -120,12 +121,13 @@ public class MemberController {
 		
 		if(login != null && !login.getId().equals("")) {
 			logger.info("loginAF 성공");
+			
 			System.out.println("로그인 정보 id = " + login.getId() + " auth = " + login.getAuth());
 			req.getSession().setAttribute("loginID", login.getId() );
 			req.getSession().setAttribute("loginAuth", login.getAuth() );
 			
 			return "redirect:/mainbbslist.do";	   
-			
+
 		}else {
 			logger.info("loginAF 실패");
 			req.getSession().invalidate();
@@ -162,22 +164,21 @@ public class MemberController {
 		}if(auth == 2) {			
 			return "sellserUpdateInfo.tiles";
 		}
-		//return "main.tiles";	
+
 		return "redirect:/mainbbslist.do";	
-		
-		//return "updateInfo.tiles";
-	}
-	
-	@RequestMapping(value="logout.do" , method= {RequestMethod.GET , RequestMethod.POST})
-	public String logout(HttpServletRequest req) {
-		logger.info("userMypageCtrl logout.do" + new Date());
-		
-		req.getSession().invalidate();
-		//req.getSession().getAttribute("loginID");
-	 
-		return "redirect:/mainbbslist.do";	
+
 	}
 	
 
- 	
+
+	   @RequestMapping(value="logout.do" , method= {RequestMethod.GET , RequestMethod.POST})
+	   public String logout(HttpServletRequest req) {
+	      logger.info("userMypageCtrl logout.do" + new Date());
+	      
+	      req.getSession().invalidate();
+	      //req.getSession().getAttribute("loginID");
+	    
+	      return "redirect:/mainbbslist.do";   
+	   }
+
 }	

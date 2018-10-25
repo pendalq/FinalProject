@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import kh.com.a.insertPatemeter.getUrentalList;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
@@ -29,7 +30,6 @@ public class sellerPageController {
 	 @Autowired
 	 sellerPageService sServ;
 	 
-	 
 	 @RequestMapping(value="sellerpage.do" , method= {RequestMethod.GET, RequestMethod.POST})
 		//public String sellerRental(Model model, HttpServletRequest req ,int seq ) throws Exception{
 		  public String sellerpage(Model model,HttpServletRequest req) throws Exception{
@@ -38,7 +38,6 @@ public class sellerPageController {
 			
 			//String id = ((MemberDto) req.getSession().getAttribute("login")).getId();
 	 		String id =	(String) req.getSession().getAttribute("loginID");
-	 
 	 		
 	 		
 	 		//사용자 rental list  >>판매자
@@ -93,7 +92,7 @@ public class sellerPageController {
 		 
 			 		
 		return "lentManage.tiles";
-	}
 
+	}
 
 }

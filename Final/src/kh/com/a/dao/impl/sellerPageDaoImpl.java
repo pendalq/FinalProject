@@ -11,7 +11,7 @@ import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
- 
+
 
 @Repository
 public class sellerPageDaoImpl implements sellerPageDao {
