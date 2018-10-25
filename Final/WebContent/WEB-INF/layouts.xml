@@ -129,6 +129,12 @@
 	<put-attribute name="main" value="/WEB-INF/views/payment/payment.jsp"/>
 </definition>
 
+<definition name="goodsList.tiles"
+		extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/goodsAllList/goodsList.jsp" />
+	</definition>
+
 
 </tiles-definitions>
 

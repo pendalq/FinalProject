@@ -6,7 +6,7 @@
 	int pageNumber;				// 현재 페이지 번호
 	int pageCountPerScreen;		// 스크린당 페이지수 	
 	int recordCountPerPage;		// 페이지당 글수
-		
+	 
 	
 	String st1 = request.getParameter("totalRecordCount");
 	if(st1 == null)	totalRecordCount = 0;
@@ -69,7 +69,7 @@
 		<%
 		if (screenStartPageIndex > 1){
 			%>
-			<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1%>');"><img src="image/arrow_prev.gif" alt="이전페이지" style="width:9px; height:9px;"/></a>&nbsp;	
+			<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1%>');"><img src="image/arrow_back.gif" alt="이전페이지" style="width:9px; height:9px;"/></a>&nbsp;	
 			<%
 		}
 		    	
