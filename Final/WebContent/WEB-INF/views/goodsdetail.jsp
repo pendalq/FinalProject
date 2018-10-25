@@ -234,9 +234,7 @@
 	<tbody>
 		<tr class="idAndimage">
 			<th rowspan="8" style="text-align: center;">
-				<textarea rows="19" cols="48" name="image" id="_image">
-				${goodsdetail.image }
-				</textarea>
+				${goodsdetail.imageName }
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
 			<td style="text-align: left;">${goodsdetail.id } </td>
@@ -280,9 +278,7 @@
 		
 		<tr class="content">
 			<td colspan="3" style="text-align: left;">
-				<textarea rows="20" cols="115" name="content" id="_content">
-					${goodsdetail.content }
-				</textarea>
+				${goodsdetail.content }
 			</td>
 		</tr>
 	</tbody>	
