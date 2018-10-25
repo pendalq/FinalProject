@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import kh.com.a.dao.RentalDao;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
+import kh.com.a.model.RentalGoods;
 import kh.com.a.service.RentalService;
 
 @Service
@@ -22,6 +23,11 @@ public class RentalServiceImpl implements RentalService {
 	@Override
 	public GoodsDto getGoodsInfo(int seq) throws Exception {
 		return rentalDao.getGoodsInfo(seq);
+	}
+
+	@Override
+	public void doRental(RentalGoods rental) throws Exception {
+		rentalDao.doRental(rental);
 	}
 	
 }

@@ -14,20 +14,11 @@ public class RentalGoods {
 	
 	
 	private int gseq; //
-	private String su_id; //판매자아이디
+	private String id; //판매자아이디
 	private String brand;
 	private int price;
 	private String options;
-	//private String content;
-	//private int rentalcount;
-	private String wdate;
-	
-	
-	private String ru_id; //대여자아이디
-	private String address;
-	private String phone;
-	private String name;
-	
+	private String wdate;	
 	
 	public RentalGoods() {
 		

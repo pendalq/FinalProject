@@ -23,7 +23,7 @@ public class GoodsListController {
 	@Autowired
 	GoodsListService goodsListService;
 
-	@RequestMapping(value = "goodsList.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "goodslist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String goodsAllList(Model model, GoodsParam param) throws Exception {
 		logger.info("GoodsListController AllList" + new Date());
 
@@ -90,6 +90,8 @@ public class GoodsListController {
 				model.addAttribute("categoryName", "냉장고 옵션");
 			} else if (param.getCategory().equals("tv")) {
 				model.addAttribute("categoryName", "TV 옵션");
+			}else {
+				model.addAttribute("categoryName", "옵션");
 			}
 		} else {
 			model.addAttribute("categoryName", "옵션");

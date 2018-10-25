@@ -23,7 +23,7 @@
 			$("#_pageNumber").val(pageNumber);
 			alert('1234');
 			$("#form_search").attr("target", "_self").attr("action",
-				"goodsList.do").submit();
+				"goodslist.do").submit();
 		}
 		
 	</script>
@@ -33,11 +33,6 @@
 <body>
 	<!-- 전체 페이지 -->
 	<div id="wrap">
-		<a href="javascript:displayGrid();" class="btn-grid">grid</a>
-		<!-- 헤더 -->
-		<header id="wrap-header">
-			<h1 style="text-align: center; line-height: 168px">Header</h1>
-		</header>
 		<!-- 메인 -->
 		<main id="wrap-container">
 			<!-- 메인 상단 (검색 / 카테고리) -->
@@ -239,7 +234,7 @@
 							<li>
 								<button class="btn_buttonBar" value="refrigerator">
 									<div class="btn-backImage washerBak"></div>
-									<span class="btn-title">세탁기</span>
+									<span class="btn-title">냉장고</span>
 								</button>
 							</li>
 							<li>
@@ -262,10 +257,10 @@
 						<c:forEach items="${goods}" var="goods" varStatus="vs">
 							<li class="item">
 								<div class="item-image">
-									<img src="<%=request.getContextPath()%>/image/titleImages/${goods.imageloc}" alt="삼성세탁기">
+									${goods.imageName }<%-- <img src="<%=request.getContextPath()%>/image/titleImages/${goods.imageloc}" alt="삼성세탁기"> --%>
 								</div>
 								<div class="item-imageHover">
-									<a href="#" class="btn-rental"><span>렌탈 신청하기</span></a>
+									<a href="goodsdetail.do?seq=${goods.seq }" class="btn-rental"><span>렌탈 신청하기</span></a>
 								</div>
 								<div class="item-detail">
 									<em class="item-brand">${goods.brand}</em>
