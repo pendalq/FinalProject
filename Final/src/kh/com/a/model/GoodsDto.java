@@ -27,7 +27,7 @@ public class GoodsDto implements Serializable{
 	
 	private int seq;
 	private String id;
-	private String image;
+	private String imageName;
 	private String title;
 	private String category;
 	private String brand;
@@ -40,12 +40,12 @@ public class GoodsDto implements Serializable{
 	
 	public GoodsDto() {}
 
-	public GoodsDto(int seq, String id, String image, String title, String category, String brand, int price,
+	public GoodsDto(int seq, String id, String imageName, String title, String category, String brand, int price,
 			String options, String content, int rentalcount, String wdate, float liked) {
 		super();
 		this.seq = seq;
 		this.id = id;
-		this.image = image;
+		this.imageName = imageName;
 		this.title = title;
 		this.category = category;
 		this.brand = brand;
@@ -73,12 +73,12 @@ public class GoodsDto implements Serializable{
 		this.id = id;
 	}
 
-	public String getImage() {
-		return image;
+	public String getImageName() {
+		return imageName;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	public String getTitle() {
@@ -155,7 +155,7 @@ public class GoodsDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "GoodsDto [seq=" + seq + ", id=" + id + ", image=" + image + ", title=" + title + ", category="
+		return "GoodsDto [seq=" + seq + ", id=" + id + ", imageName=" + imageName + ", title=" + title + ", category="
 				+ category + ", brand=" + brand + ", price=" + price + ", options=" + options + ", content=" + content
 				+ ", rentalcount=" + rentalcount + ", wdate=" + wdate + ", liked=" + liked + "]";
 	}

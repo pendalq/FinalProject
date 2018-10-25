@@ -1,6 +1,10 @@
 package kh.com.a.model;
 
-/*
+ 
+
+/*DROP TABLE MEMBER
+CASCADE CONSTRAINTS;
+
 CREATE TABLE MEMBER(
 ID VARCHAR2(50),
 PW VARCHAR2(50) NOT NULL,
@@ -12,6 +16,7 @@ AUTH NUMBER(8)NOT NULL,
 CONSTRAINT PK_ID PRIMARY KEY(ID)
 );
 */
+
 
 public class MemberDto {
 

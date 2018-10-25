@@ -51,20 +51,22 @@
 
 <table class="list_table" style="width: 90%">
 	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
-	<input type="hidden" name="id" id="id" value="ID2">
+	<input type="hidden" name="_id" id="_id" value="${loginID }">
  	<colgroup>
 
 	</colgroup> 
 	
 	<tbody>
+	<%-- 	loginID:${loginID } --%>
+	 <%-- ${loginID }  --%>
 		<tr class="idAndimage">
 			<th rowspan="8" style="text-align: center;">
 				<textarea rows="19" cols="48" name="image" id="_image">
-				${goodsdetail.image }
+				${goodsdetail.imageName }
 				</textarea>
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
-			<td style="text-align: left;">${goodsdetail.id } | <a href="messagewrite.do">쪽지 보내기</a></td>
+			<td style="text-align: left;">${goodsdetail.id } | <a href="#" id="memberCheck">쪽지 보내기</a></td>
 		</tr>
 		<tr class="name">
 			<th style="text-align: left;">업체이름</th>
@@ -95,16 +97,35 @@
 		
 		
 		<tr>
-			<td><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></td>
-			<td>
-				<c:if test="${interCheck.id eq login && interCheck.gseq eq goodsdetail.seq}">
-					<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>
-				</c:if>
-				<c:if test="${interCheck.id ne login || interCheck.gseq ne goodsdetail.seq }">
-					<a href="#none" id="putInterest" title="관심상품에저장">관심상품에저장</a>
-				</c:if>
+			<c:choose>
+				<c:when test="${loginAuth eq 1 }">
+		
 				
-			</td>
+					<td><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></td>
+					<td>
+						<c:if test="${interCheck.id eq loginID && interCheck.gseq eq goodsdetail.seq}">
+							<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>
+						</c:if>
+						<c:if test="${interCheck.id ne loginID || interCheck.gseq ne goodsdetail.seq }">
+							<a href="#none" id="putInterest" title="관심상품에저장">관심상품에저장</a>
+						</c:if>
+						
+					</td>
+					
+				</c:when>
+				<c:when test="${loginAuth eq 2 && loginID eq goodsdetail.id}">
+					<td colspan="2">
+						<a href="#none" id="goodsUpdate" title="글 수정하기">글 수정하기</a>
+					</td>
+				</c:when>
+				<c:when test="${loginAuth eq 2 && loginID ne goodsdetail.id }">
+					<td></td>
+				</c:when>
+				<c:otherwise>
+					<td colspan="2"><a href="#none" id="gotoLogin" title="로그인하기">로그인하기</a></td>
+				</c:otherwise>
+			</c:choose>
+			
 		</tr>
 		
 		
@@ -120,10 +141,10 @@
 
 <table class="list_table" style="width: 90%">
 	<th style="text-align: right;">
-		<c:if test="${not empty login}">
+		<c:if test="${loginID ne '0'}">
 			<a href="#none" id="gotoWriteReview" title="후기작성">후기작성</a>
 		</c:if>
-		<c:if test="${empty login }">
+		<c:if test="${loginID eq '0' }">
 			<div style="text-align: center;">로그인하면 후기 작성 가능</div>
 		</c:if>
 	</th>
@@ -178,8 +199,7 @@
 					</c:when>
 					<c:otherwise>
 						<img alt="" src="image/star0.png">
-					</c:otherwise>
-					
+					</c:otherwise>				
 				</c:choose>
 			</td>
 			<td>${rd.wdate }</td>
@@ -211,20 +231,23 @@ $("#putInterest").click(function () {
 
 
 $(function () {
+	
+//	alert($("#_id").val());
+	
 	$("#putInterest").click(function () {
 		$.ajax({
 			url:"putInterest.do",
 			type:"POST",
 			data:{
 				"command":"putInterest",
-				"id":$("#id").val(),
+				"id":$("#_id").val(),
 				"gseq":$("#seq").val()
 			},
 			success:function (data) {
 				alert("관심상품 목록에 추가되었습니다");
 			},
-			error:function () {
-				alert("에러남");
+			error:function (request, error) {
+			         alert("message:"+request.responseText);
 			}
 		});
 	});
@@ -276,6 +299,29 @@ function func(i) {
 	$("#_reviewcontent" + i).slideToggle("slow");
 
 }
+
+
+
+$("#memberCheck").click(function () {
+	var value = "<c:out value="${loginID}" />";
+	
+	if(value == ""){
+	$("#memberCheck").attr("href","login.do");
+	}else{
+		$("#memberCheck").attr("href","messagewrite.do");
+	}
+});
+
+
+$("#goodsUpdate").click(function () {
+	$("#_frm").attr({ "target":"_self", "action":"gotoGoodsUpdate.do"}).submit();
+});
+
+$("#gotoLogin").click(function () {
+	$("#_frm").attr({ "target":"_self", "action":"login.do"}).submit();
+});
+
+
   
  
 </script>

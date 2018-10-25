@@ -5,4 +5,32 @@
   
 <mapper namespace="member">
 
+
+<insert id="addMember" parameterType="kh.com.a.model.MemberDto">
+INSERT INTO MEMBER(ID,PW,ADDRESS,PHONE,NAME,AUTH)
+VALUES(#{id},#{pw},#{address},#{phone},#{name},#{auth})
+</insert>
+
+<!-- 로그인 , 사용자 정보 확인-->
+<select id="login" parameterType="kh.com.a.model.MemberDto" resultType="kh.com.a.model.MemberDto">
+SELECT ID , AUTH
+FROM MEMBER
+WHERE ID=#{id} AND PW=#{pw}
+</select> 
+
+<!-- 회원정보수정 -->
+<select id="loginId" parameterType="kh.com.a.model.MemberDto" resultType="kh.com.a.model.MemberDto">
+SELECT ID,ADDRESS,PHONE,NAME,AUTH
+FROM MEMBER
+WHERE ID=#{id}  
+</select> 
+
+<select id="checkID" parameterType="kh.com.a.model.MemberDto" resultType="java.lang.Integer">
+SELECT NVL(COUNT(*),0)
+FROM MEMBER
+WHERE ID=#{id}
+</select>
+
+ 
 </mapper>
+ 

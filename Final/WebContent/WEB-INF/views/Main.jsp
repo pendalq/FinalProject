@@ -13,6 +13,9 @@
 <meta charset="UTF-8">
 <title>Main</title>
 </head>
+
+
+
 <body>
 	<div>최신 상품</div>
 	<table class="list_table" style="width: 90%" border="1px">
@@ -46,7 +49,7 @@
 			<c:forEach items="${mainbbslist }" var="mbl" varStatus="vs">
 				<tr class="_hover_tr">
 					<td>${mbl.seq }</td>
-					<td>${mbl.image }</td>
+					<td>${mbl.imageName }</td>
 					<td><a href="goodsdetail.do?seq=${mbl.seq }"> ${mbl.title }
 					</a></td>
 					<td>${mbl.category }</td>
@@ -89,7 +92,7 @@
 			<c:forEach items="${mainbbslist2 }" var="mbl2" varStatus="vs2">
 				<tr class="_hover_tr">
 					<td>${mbl2.seq }</td>
-					<td>${mbl2.image }</td>
+					<td>${mbl2.imageName }</td>
 					<td><a href='goodsdetail.do?seq=${mbl2.seq }'> ${mbl2.title }
 					</a></td>
 					<td>${mbl2.category }</td>

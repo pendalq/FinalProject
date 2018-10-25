@@ -22,5 +22,6 @@ public interface MainBbsService {
 	public boolean delInterest(InterDto idto) throws Exception;
 	
 	
+	public List<InterDto> youAreInterestedIn(String id) throws Exception;
 	
 }

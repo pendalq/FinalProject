@@ -27,7 +27,7 @@ public class MainBbsController {
 	MainBbsService mainbbsservice;
 	
 	@RequestMapping(value="mainbbslist.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String getMainGoodsList(Model model) throws Exception {
+	public String getMainGoodsList(Model model, HttpServletRequest req) throws Exception {
 		logger.info("MainBbsController getMainGoodsList");
 		
 		List<GoodsDto> recentGoodsList = mainbbsservice.getRecentGoods();
@@ -40,10 +40,16 @@ public class MainBbsController {
 		model.addAttribute("reviewlist", reviewList);
 		
 		
-		model.addAttribute("login", "ID");
+/*		String id = (String)req.getSession().getAttribute("loginID");
+		model.addAttribute("loginID", id);
 		
+		int auth = (int)req.getSession().getAttribute("loginAuth");
+		model.addAttribute("loginAuth", auth);
 		
-		return "mainview.tiles";
+		if(id==null||auth==null) {
+			
+		}*/
+		return "main.tiles";
 	}
 	
 	
@@ -54,8 +60,16 @@ public class MainBbsController {
 		
 		InterDto idto = new InterDto();
 		
-//		idto.setId(((MemberDto)req.getAttribute("login")).getId());
-		idto.setId("ID2");
+		
+		
+		if(req.getSession().getAttribute("loginID") == null) {
+			idto.setId("0");
+		}else {
+			idto.setId((String)req.getSession().getAttribute("loginID"));
+		}
+		
+		
+		
 		idto.setGseq(seq);
 		
 		
@@ -69,7 +83,19 @@ public class MainBbsController {
 		model.addAttribute("reviewDetail", reviewdto);
 		model.addAttribute("reviewDetailList", reviewdetaillist);
 		
-		model.addAttribute("login", "ID2");
+		
+		String id=(String)req.getSession().getAttribute("loginID");
+		
+		
+		if(id != null) {
+			model.addAttribute("loginID", id);
+			model.addAttribute("loginAuth",(int)req.getSession().getAttribute("loginAuth"));
+		}else {
+			model.addAttribute("loginID", "0");
+			model.addAttribute("loginAuth", 0);
+		}
+		
+
 		
 		
 		
@@ -81,7 +107,7 @@ public class MainBbsController {
 	public boolean putInterest(Model model, InterDto idto) throws Exception{
 		logger.info("MainBbsController putInterest");
 		
-		//System.out.println("idto:" + idto.toString());
+		System.out.println("idto:" + idto.toString());
 		
 		boolean result = mainbbsservice.putInterest(idto);
 		
@@ -100,6 +126,28 @@ public class MainBbsController {
 		
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="youAreInterestedIn.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public List<InterDto> youAreInterestedIn(HttpServletRequest req, String id) throws Exception{
+		logger.info("MainBbsController youAreInterestedIn");
+		
+		
+		
+		
+		if(req.getSession().getAttribute("loginID")==null) {
+			id="0";
+		}else {
+			id=(String)req.getSession().getAttribute("loginID");
+		}
+		
+		List<InterDto> ilist = mainbbsservice.youAreInterestedIn(id);
+		
+		System.out.println(ilist.toString());
+		
+		return ilist;
+	}
+	
 	
 	
 
