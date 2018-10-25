@@ -15,29 +15,32 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-#headers{
-	background-color: #2d2d2d;
+/* .content {
+padding-bottom: 10%;
 }
 
+ 
+.footer {
+
+bottom: 0;
+width: 100%;
+height: 10%;
+background-color: silver;
+
+}
+ */
 </style>
+
 </head>
 <body>
 
 <table width="100%" height="100%" border="0">
 
 <tr> <!-- header -->
-   <td height="10%" class="headers">
+   <td style="position: static;">
       <tiles:insertAttribute name="header"/>
    </td>
 </tr>
-
-
-<tr>
-   <td height="10%" class="headers">
-      <tiles:insertAttribute name="header_second"/>
-   </td>
-</tr>
-
 <tr>
 	<td>
 		<tiles:insertAttribute name="interGoods"/>
@@ -52,7 +55,7 @@
 </tr>
 
 <tr>    <!-- footer -->
-   <td height="10%">
+  <td class="footer">
       <tiles:insertAttribute name="footer"/>
    </td>
 </tr>

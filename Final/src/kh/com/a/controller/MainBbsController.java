@@ -117,7 +117,7 @@ public class MainBbsController {
 	
 	@ResponseBody
 	@RequestMapping(value="delInterest.do",method= {RequestMethod.GET, RequestMethod.POST})
-	public boolean delInterest(Model model, InterDto idto) throws Exception{
+	public boolean delInterest(InterDto idto) throws Exception{
 		logger.info("MainBbsController delInterest");
 		System.out.println(idto.toString());
 		boolean result = mainbbsservice.delInterest(idto);
@@ -148,7 +148,15 @@ public class MainBbsController {
 		return ilist;
 	}
 	
-	
+	@RequestMapping(value="goodsDel.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public String goodsDel(int seq) throws Exception{
+		logger.info("MainBbsController goodsDelete");
+		
+		System.out.println(seq);
+		mainbbsservice.goodsDel(seq);
+		
+		return "redirect:/mainbbslist.do";
+	}
 	
 
 }

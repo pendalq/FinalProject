@@ -22,5 +22,5 @@ public interface MainBbsDao {
 	
 	List<InterDto> youAreInterestedIn(String id) throws Exception;
 	
-	
+	void goodsDel(int seq) throws Exception;
 }

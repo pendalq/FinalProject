@@ -114,8 +114,11 @@
 					
 				</c:when>
 				<c:when test="${loginAuth eq 2 && loginID eq goodsdetail.id}">
-					<td colspan="2">
+					<td>
 						<a href="#none" id="goodsUpdate" title="글 수정하기">글 수정하기</a>
+					</td>
+					<td>
+						<a href="#none" id="goodsDelete" title="글 삭제하기">글 삭제하기</a>
 					</td>
 				</c:when>
 				<c:when test="${loginAuth eq 2 && loginID ne goodsdetail.id }">
@@ -137,17 +140,6 @@
 			</td>
 		</tr>
 	</tbody>	
-</table>
-
-<table class="list_table" style="width: 90%">
-	<th style="text-align: right;">
-		<c:if test="${loginID ne '0'}">
-			<a href="#none" id="gotoWriteReview" title="후기작성">후기작성</a>
-		</c:if>
-		<c:if test="${loginID eq '0' }">
-			<div style="text-align: center;">로그인하면 후기 작성 가능</div>
-		</c:if>
-	</th>
 </table>
 
 
@@ -305,7 +297,7 @@ function func(i) {
 $("#memberCheck").click(function () {
 	var value = "<c:out value="${loginID}" />";
 	
-	if(value == ""){
+	if(value == "0"){
 	$("#memberCheck").attr("href","login.do");
 	}else{
 		$("#memberCheck").attr("href","messagewrite.do");
@@ -321,6 +313,9 @@ $("#gotoLogin").click(function () {
 	$("#_frm").attr({ "target":"_self", "action":"login.do"}).submit();
 });
 
+$("#goodsDelete").click(function () {
+	$("#_frm").attr({ "target":"_self", "action":"goodsDel.do"}).submit();
+});
 
   
  

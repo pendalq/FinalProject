@@ -28,6 +28,10 @@ ORDER BY WDATE DESC
 	WHERE SEQ=#{seq}
 </select>
 
+<select id="goodsDel" parameterType="kh.com.a.model.GoodsDto">
+	DELETE FROM GOODS
+	WHERE SEQ=#{seq}
+</select>
 
 
 </mapper>

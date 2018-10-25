@@ -14,7 +14,7 @@ WHERE ID=#{id}
 
 <!-- mypage rental list -->
 <select id="Rental3" parameterType="java.lang.String" resultType="kh.com.a.model.RentalGoods">
-SELECT G.IMAGE , G.TITLE , G.SEQ
+SELECT G.IMAGENAME , G.TITLE , G.SEQ
 FROM GOODS G, RENTAL R
 WHERE G.SEQ = R.GSEQ
 AND R.ID=#{id}
@@ -22,7 +22,7 @@ AND R.ID=#{id}
 
 <!--  user rental(dto) detail -->
 <select id="getUrentalDto" parameterType="kh.com.a.insertPatemeter.getUrentalList" resultType="kh.com.a.model.RentalGoods">
-SELECT G.SEQ, G.IMAGE , G.TITLE , G.BRAND , G.OPTIONS, R.SDATE , R.RE_TURN , R.TERM, TO_DATE(R.RE_TURN) -TO_DATE(SYSDATE) AS returndday
+SELECT G.SEQ, G.IMAGENAME , G.TITLE , G.BRAND , G.OPTIONS, R.SDATE , R.RE_TURN , R.TERM, TO_DATE(R.RE_TURN) -TO_DATE(SYSDATE) AS returndday
 FROM GOODS G , RENTAL R
 WHERE G.SEQ = R.GSEQ
 AND G.ID=#{id}
@@ -32,6 +32,7 @@ AND R.GSEQ=#{seq}
 
 <!-- 회원정보 UPDATE -->
 
+ 
 <!-- 잔여일수 계산 -->
 
 

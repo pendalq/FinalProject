@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/initial.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/button.css"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -13,8 +15,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 
-
-</head>
 <div style="width: 100%; height: 53px; border-bottom: 1px solid #5e5e5e; background-color: #2d2d2d;">
    <div style="width: 100%; height: 100%; clear: both; display: inline-block;">
       <div id="logo_image" style="width: 30%; float: left; display: inline;">
