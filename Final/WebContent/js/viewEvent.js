@@ -360,15 +360,22 @@ $(document).ready(function () {
         alert(optionsArr.length + '///' + options);
         options = '';
     });
-
-    // 페이징을 위한 페이지 넘버  
-    function goPage(pageNumber) {	
-	$("#_pageNumber").val(pageNumber) ;
-	$("#form_search").attr("target","_self").attr("action","goodsAllList.do").submit();
-    }
-
-
-
-
+    
+    $('.btn_category, .btn_buttonBar').click(function() {
+    	$('#_keyword').val(null);
+    	$('#_options').val(null);
+    	if ($(this).val() == "1") {
+			$('#_searchNum').val(1);
+			$("#form_search").attr("target", "_self").attr("action",
+	    	"goodsList.do").submit();
+		}else{
+			$('#_searchNum').val(3);
+			$('#_category').val($(this).val())
+			alert($(this).val() + ' ///  ' + $('#_category').val())
+			$("#form_search").attr("target", "_self").attr("action",
+	    	"goodsList.do").submit();
+		}
+    })
 
 });
+

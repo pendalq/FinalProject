@@ -22,12 +22,13 @@ public class GoodsListController {
 
 	@Autowired
 	GoodsListService goodsListService;
-	
 
 	@RequestMapping(value = "goodsList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String goodsAllList(Model model, GoodsParam param) throws Exception {
-		logger.info("GoodsAllListController AllList" + new Date());
-		
+		logger.info("GoodsListController AllList" + new Date());
+
+		System.out.println("controller check Befor : " + param.toString());
+
 		// paging 처리
 		int sn = param.getPageNumber();
 		int start = (sn) * param.getRecordCountPerPage() + 1;
@@ -36,28 +37,35 @@ public class GoodsListController {
 
 		param.setStart(start);
 		param.setEnd(end);
-		
-		// category가 all로 들어올 경우 category null로 초기화
-		if (param.getCategory() == "all") {
+
+//		 category가 all로 들어올 경우 category null로 초기화
+		if (param.getSearchNum() == 1) {
 			param.setCategory(null);
 			param.setKeyword(null);
 			param.setOptions(null);
+		} else if (param.getKeyword() != null && param.getKeyword() != "") {
+			param.setSearchNum(2);
+			param.setCategory(null);
+			param.setOptions(null);
+		} else if (param.getSearchNum() == 3) {
+			param.setKeyword(null);
+			param.setOptions(null);
 		}
-		
-		System.out.println("controller check : " + param.toString());
-		
+
+		System.out.println("controller check After : " + param.toString());
 
 		// 총 글의 갯수
 		int totalRecordCount = goodsListService.getGoodsCount(param);
-		
+
 		// 게시물 받아옴
 		List<GoodsDto> goodsList = goodsListService.getGoodsPagingList(param);
 		model.addAttribute("goods", goodsList);
 		System.out.println("controller   goodList success");
 
-		System.out.println("options :  " + param.getOptions());
-		System.out.println("category:  " + param.getCategory());
-		System.out.println("keyword:  " + param.getKeyword());
+		System.out.println("options :" + param.getOptions());
+		System.out.println("category:" + param.getCategory());
+		System.out.println("keyword:" + param.getKeyword());
+		System.out.println("searchNum:" + param.getSearchNum());
 
 		// paging 처리 2
 		model.addAttribute("pageNumber", sn);
@@ -69,7 +77,23 @@ public class GoodsListController {
 
 		// 선택한 카테고리와 검색한 단어를 설정
 		model.addAttribute("category", param.getCategory());
-		model.addAttribute("keyword",param.getKeyword());
+		model.addAttribute("keyword", param.getKeyword());
+		// searchNum 초기화
+		param.setSearchNum(0);
+		model.addAttribute("searchNum", param.getSearchNum());
+
+		// 카테고리 한글이름으로 보냄
+		if (param.getCategory() != null) {
+			if (param.getCategory().equals("purifier")) {
+				model.addAttribute("categoryName", "정수기 옵션");
+			} else if (param.getCategory().equals("refrigerator")) {
+				model.addAttribute("categoryName", "냉장고 옵션");
+			} else if (param.getCategory().equals("tv")) {
+				model.addAttribute("categoryName", "TV 옵션");
+			}
+		} else {
+			model.addAttribute("categoryName", "옵션");
+		}
 
 		return "goodsList.tiles";
 	}

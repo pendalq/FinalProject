@@ -2,29 +2,59 @@ package kh.com.a.model;
 
 public class GoodsParam {
 
-	private int seq; // seq 
+	// --------------- search
+	private String keyword;
+	private String category; // category
+	private String options; // goods option
+	private int searchNum;
+
+	
+	//----- 게시물 정보 
+	
+	private int seq; // seq
 	private String id; // id
 	private String imageloc; // imageloc path
 	private String title; // goods name
-	private String category; // category
 	private String brand; // brand name
 	private int price; // goods price
-	private String options; // goods option
 	private String content; // goods content
 	private int rentalCount; // goods rentalCount
-	private String wdate ; // wdate 
-	
-	// --------------- search
-	private String keyword;
-	
+	private String wdate; // wdate
+
 	// --------------- paging
-	
+
 	private int recordCountPerPage = 15;
 	private int pageNumber = 0;
-	
+
 	private int start = 1;
 	private int end = 15;
 	
+	// ----- getter setter
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getOptions() {
+		return options;
+	}
+	public void setOptions(String options) {
+		this.options = options;
+	}
+	public int getSearchNum() {
+		return searchNum;
+	}
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
+	}
 	public int getSeq() {
 		return seq;
 	}
@@ -37,10 +67,10 @@ public class GoodsParam {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getimageloc() {
+	public String getImageloc() {
 		return imageloc;
 	}
-	public void setimageloc(String imageloc) {
+	public void setImageloc(String imageloc) {
 		this.imageloc = imageloc;
 	}
 	public String getTitle() {
@@ -48,12 +78,6 @@ public class GoodsParam {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
 	}
 	public String getBrand() {
 		return brand;
@@ -66,12 +90,6 @@ public class GoodsParam {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public String getOptions() {
-		return options;
-	}
-	public void setOptions(String options) {
-		this.options = options;
 	}
 	public String getContent() {
 		return content;
@@ -90,12 +108,6 @@ public class GoodsParam {
 	}
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
-	}
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
 	}
 	public int getRecordCountPerPage() {
 		return recordCountPerPage;
@@ -121,12 +133,15 @@ public class GoodsParam {
 	public void setEnd(int end) {
 		this.end = end;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "GoodsParam [seq=" + seq + ", id=" + id + ", imageloc=" + imageloc + ", title=" + title + ", category="
-				+ category + ", brand=" + brand + ", price=" + price + ", options=" + options + ", content=" + content
-				+ ", rentalCount=" + rentalCount + ", wdate=" + wdate + ", keyword=" + keyword + ", recordCountPerPage="
-				+ recordCountPerPage + ", pageNumber=" + pageNumber + ", start=" + start + ", end=" + end + "]";
+		return "GoodsParam [keyword=" + keyword + ", category=" + category + ", options=" + options + ", searchNum="
+				+ searchNum + ", seq=" + seq + ", id=" + id + ", imageloc=" + imageloc + ", title=" + title + ", brand="
+				+ brand + ", price=" + price + ", content=" + content + ", rentalCount=" + rentalCount + ", wdate="
+				+ wdate + ", recordCountPerPage=" + recordCountPerPage + ", pageNumber=" + pageNumber + ", start="
+				+ start + ", end=" + end + "]";
 	}
-	
+
 }

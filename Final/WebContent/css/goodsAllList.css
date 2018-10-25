@@ -70,7 +70,8 @@ button {
 .searchForm{
     position: absolute;
     top: 15px;
-    left: 156px;
+    /* left: 156px; */
+    left: 160px;
     height: 46px;
     width: 441px;
     margin-left: 246px;
@@ -173,7 +174,7 @@ button {
 }
 
 /* 카테고리 버튼 */
-.btn-category{  
+.btn_category{  
     position: relative;
     left:0px;
     margin-top: 10px;
@@ -188,7 +189,7 @@ button {
     color: #484848;
 }
 
-.btn-category:hover{
+.btn_category:hover{
     box-shadow: 0 2px 4px rgba(0,0,0,0.1), 
     0 4px 12px rgba(26, 26, 29, 0.08);
 }
@@ -213,17 +214,20 @@ button {
     display: block;
     position: relative;
     top: 14px;
-    left: 156px;
-    width: 64px;
+    /* left: 156px; */
+    left: 160px;
+/*  width: 64px; */
+    width: 158px;
     height: 30px;
-    padding-left: 8px;
+    /* padding-left: 8px; */
     margin-left: 246px;
     border: 1px solid #EBEBEB;
     border-radius: 3px;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
     font-size: 14px;
-    background: url(../image/goodsAllList/options.svg) no-repeat 44px 10px;
+    /* background: url(../image/goodsAllList/options.svg) no-repeat 44px 10px; */
+    background: url(../image/goodsAllList/options.svg) no-repeat 137px 10px;
     background-size: 9px 9px;
     transition: box-shadow 300ms ease 0s,
                 border 300ms ease 0s;
@@ -234,17 +238,20 @@ button {
     display: block;
     position: relative;
     top: 14px;
-    left: 156px;
-    width: 64px;
+    /* left: 156px; */
+    left: 160px;
+    /* width: 64px; */
+    width: 158px;
     height: 30px;
-    padding-left: 8px;
+    /* padding-left: 8px; */
     margin-left: 246px;
     border: 1px solid #c74040;
     border-radius: 3px;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
     font-size: 14px;
-    background: url(../image/goodsAllList/options-_focus.svg) no-repeat 44px 10px;
+/*  background: url(../image/goodsAllList/options-_focus.svg) no-repeat 44px 10px; */
+    background: url(../image/goodsAllList/options-_focus.svg) no-repeat 137px 10px;
     background-size: 9px 9px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1), 
     0 4px 12px rgba(26, 26, 29, 0.08);
@@ -430,7 +437,7 @@ button {
 .buttonBar-list{
     display: flex;
 }
-.btn-buttonBar{
+.btn_buttonBar{
     position: relative;
     width: 158px;
     height: 60px;
@@ -446,7 +453,7 @@ button {
     0 4px 12px rgba(26, 26, 29, 0.08);
 }
 
-.btn-buttonBar:hover{
+.btn_buttonBar:hover{
     box-shadow: 1px 5px 7px rgba(0,0,0,0.1),
     3px 7px 15px rgba(26, 26, 29, 0.08);
 }
@@ -483,6 +490,7 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 173px;
+    margin-bottom :100px;
 }
 .item-list{
     display: flex;
@@ -506,10 +514,10 @@ button {
 
 .item-ul{
     display: grid;
-    grid-gap: 80px 30px;
+    grid-gap: 75px 30px;
     width: 1100px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 391px);
+    grid-auto-rows: minmax(auto, 390px);
     list-style-type: none;
 }
 

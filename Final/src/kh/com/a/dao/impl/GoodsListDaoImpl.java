@@ -19,6 +19,7 @@ public class GoodsListDaoImpl implements GoodsListDao {
 	private String namespace = "goodsList.";
 
 	@Override
+	// 총 게시물 출력 ( 사용 안함 )
 	public List<GoodsDto> getGoodsAllList() throws Exception {
 
 		List<GoodsDto> list = sqlSession.selectList(namespace + "getGoodsAllList");
@@ -31,9 +32,12 @@ public class GoodsListDaoImpl implements GoodsListDao {
 	}
 
 	@Override
+	// 요청 된 게시물 15개 출
 	public List<GoodsDto> getGoodsPagingList(GoodsParam param) throws Exception {
 
+		// 다오 파라메타 확인 
 		System.out.println("DAO GoodParam : " + param.toString());
+		
 		List<GoodsDto> list = sqlSession.selectList(namespace + "getGoodsPagingList", param);
 
 		for (int i = 0; i < list.size(); i++) {
@@ -44,6 +48,7 @@ public class GoodsListDaoImpl implements GoodsListDao {
 	}
 
 	@Override
+	// 요청 된 게시물 갯수 출력 
 	public int getGoodsCount(GoodsParam param) throws Exception {
 		
 		int num = 0;

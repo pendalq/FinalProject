@@ -23,16 +23,8 @@
 			$("#_pageNumber").val(pageNumber);
 			alert('1234');
 			$("#form_search").attr("target", "_self").attr("action",
-				"goodsAllList.do").submit();
+				"goodsList.do").submit();
 		}
-		
-		/* var str='${keyword}';
-		$(document).ready(function(){	
-			$('#_keyword').val(str);
-			if($("#_s_keyword").val().trim() == ""){
-				alert('123');
-			}	
-		});  */
 		
 	</script>
 
@@ -55,11 +47,12 @@
 				<div class="searchForm" onclick="focusingIn()">
 					<div class="search-tap">
 						<div class="searchbar">
-							<form action="goodsList.do" method="post" id="form_search">
+							<form action="" method="post" id="form_search">
 								<button type="button" id="btn_search"></button>	
-								<input type="text" name="keyword" id="_keyword" value="${keyword }" class="list-search" placeholder="찾으시는 상품을 검색하세요." autocomplete="off"> 		
-								<input type="hidden" name="category" id="_category" class="in-category" value="${category } ">
-								<input type="hidden" name="options" class="in-options" value="${options }">
+								<input type="text" name="keyword" id="_keyword" value="${keyword}" class="list-search" placeholder="찾으시는 상품을 검색하세요." autocomplete="off" required="required"> 		
+								<input type="hidden" name="category" id="_category" class="in-category" value="${category} ">
+								<input type="hidden" name="options" id="_options" class="in-options" value="${options}">
+							 	<input type="hidden" name="searchNum" id="_searchNum" value="${searchNum}">
 								<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
 								<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage"value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
 							</form>
@@ -68,27 +61,27 @@
 					<div id="search-options" class="search-options">
 						<span class="title-category">찾으시는 상품이 있으신가요?</span>
 						<ul class="category">
-							<li><button type="button" class="btn-category" value="all">모두</button></li>
-							<li><button type="button" class="btn-category" value="purifier">정수기</button></li>
-							<li><button type="button" class="btn-category" value="refrigerator">냉장고</button></li>
-							<li><button type="button" class="btn-category" value="tv">TV</button></li>
+							<li><button type="button" class="btn_category" value="1">모두</button></li>
+							<li><button type="button" class="btn_category" value="purifier">정수기</button></li>
+							<li><button type="button" class="btn_category" value="refrigerator">냉장고</button></li>
+							<li><button type="button" class="btn_category" value="tv">TV</button></li>
 						</ul>
 						<!-- 에이젝스 검색 출력 -->
 					</div>
 				</div>
 
 				<!-- 카테고리 값 저장 ---------------------------------- -->
-				<c:set var="c_category" value="${category }" />
+				<c:set var="c_category" value="${category}" />
 				<%-- <c:out value="${c_category }"/> --%>
 
-				<!-- 카테고리 값에 따른 옵션창 on/off ---------------------------------- -->
+				<!-- 카테고리 값에 따른 옵션창 on/off ---------------------------------- --> 
 				<c:if test="${c_category != null && c_category != '' }">
 					<div class="option-header">
-						<button type="button" id="btn-option" class="btn-option" value="false">옵션</button>
+						<button type="button" id="btn-option" class="btn-option" value="false">${categoryName}</button>
 						<div id="option-main" class="option-main">
 
 							<c:choose>
-								<c:when test="${c_category == 'purifier' }">
+								<c:when test="${c_category == 'purifier'}">
 									<!-- ---------------------정수기 옵션-------------------- -->
 									<ul class="water-option ani-option">
 										<li class="water-brand">
@@ -125,7 +118,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == 'refrigerator' }">
+								<c:when test="${c_category == 'refrigerator'}">
 									<!-- ---------------------냉장고 옵션-------------------- -->
 									<ul class="refrigerator-option ani-option">
 										<li class="refrigerator-brand">
@@ -175,7 +168,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == 'tv' }">
+								<c:when test="${c_category == 'tv'}">
 									<!-- ---------------------TV 옵션-------------------- -->
 									<ul class="tv-option ani-option">
 										<li class="tv-brand">
@@ -226,31 +219,31 @@
 						</div>
 					</div>
 				</c:if>
-				<!-- 카테고리 옵션창 if문  ---------------------------------- -->
+				<!-- 카테고리 옵션창 if문 끝 ---------------------------------- -->
 			</section>
 
 			<!-- 상품 리스트 -->
 			<section id="container-main">
 
 				<!-- ---------- 카테고리가 null or '' 경우 카테고리 버튼 생성 -------------------- -->
-				<c:if test="${c_category == null || c_category == ''  }">
+				<c:if test="${c_category == null || c_category == ''}">
 					<!-- 상품 카테고리 링크 버튼 -->
 					<div class="buttonBar">
 						<ul class="buttonBar-list">
 							<li>
-								<button class="btn-buttonBar">
+								<button class="btn_buttonBar" value="purifier">
 									<div class="btn-backImage waterBak"></div>
 									<span class="btn-title">정수기</span>
 								</button>
 							</li>
 							<li>
-								<button class="btn-buttonBar">
+								<button class="btn_buttonBar" value="refrigerator">
 									<div class="btn-backImage washerBak"></div>
 									<span class="btn-title">세탁기</span>
 								</button>
 							</li>
 							<li>
-								<button class="btn-buttonBar">
+								<button class="btn_buttonBar" value="tv">
 									<div class="btn-backImage tvBak"></div>
 									<span class="btn-title">TV</span>
 								</button>
@@ -286,10 +279,10 @@
 					<!---------------------------------------------페이징--------------------------------------------->
 					<div id="paging_wrap">
 						<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
-							<jsp:param value="${pageNumber }" name="pageNumber" />
-							<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
-							<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
-							<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
+							<jsp:param value="${pageNumber}" name="pageNumber" />
+							<jsp:param value="${pageCountPerScreen}" name="pageCountPerScreen" />
+							<jsp:param value="${recordCountPerPage}" name="recordCountPerPage" />
+							<jsp:param value="${totalRecordCount}" name="totalRecordCount" />
 						</jsp:include>
 					</div>
 				</div>

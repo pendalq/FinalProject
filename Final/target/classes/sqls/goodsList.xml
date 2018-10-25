@@ -16,44 +16,36 @@
 		FROM GOODS
 		ORDER BY SEQ DESC
 	</select>
-	
+
 
 	<!-- 게시물 15개 및 검색 출력 -->
 	<select id="getGoodsPagingList"
 		parameterType="kh.com.a.model.GoodsParam"
 		resultType="kh.com.a.model.GoodsDto">
 		SELECT * FROM(SELECT A.*, ROWNUM RNUM FROM (SELECT * FROM GOODS
-		<if test="keyword !='' and keyword != null">
-			WHERE TITLE LIKE '%'||#{keyword}||'%'
-		</if>
+		<choose>
+			<when test="searchNum == 2">
+				WHERE TITLE||CATEGORY||BRAND LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchNum == 3">
+				WHERE CATEGORY LIKE '%'||#{category}||'%'
+			</when>
+		</choose>
 		ORDER BY SEQ DESC)A) WHERE RNUM BETWEEN ${start} AND ${end}
-
-		<!-- SELECT SEQ, ID, IMAGE, TITLE, CATEGORY, BRAND,PRICE, OPTIONS, CONTENT, 
-			RENTALCOUNT, WDATE FROM(SELECT A.*, ROWNUM RNUM FROM (SELECT SEQ, ID, IMAGE, 
-			TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE FROM 
-			GOODS <if test="keyword !='' and keyword != null"> WHERE TITLE LIKE '%'||#{keyword}}||'%' 
-			</if> ORDER BY SEQ DESC)A) WHERE RNUM BETWEEN ${start} AND ${end} -->
-
 	</select>
 
 	<select id="getGoodsCount"
 		parameterType="kh.com.a.model.GoodsParam"
 		resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM GOODS
-		<if test="keyword !='' and keyword != null">
-			<if test="category == '' or category == null">
-				WHERE TITLE LIKE '%'||#{keyword}||'%'
-			</if>
-			<if test="category != '' and category != null">
-				WHERE TITLE LIKE '%'||#{keyword}||'%'
-				AND CATEGORY LIKE
-				'%'||#{category}||'%'
-			</if>
-		</if>
-		<if
-			test="(keyword =='' or keyword == null) and (category != '' and category != null)">
+		<choose>
+			<when test="searchNum == 2">
+				WHERE TITLE||CATEGORY||BRAND LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchNum == 3">
 			WHERE CATEGORY LIKE '%'||#{category}||'%'
-		</if>
+			</when>
+		</choose>
 	</select>
 
 </mapper>
