@@ -45,10 +45,6 @@ public class RentalGoods {
 		this.term = term;
 		this.returndday = returndday;
 	}
-	
-	
-
-	 
 
 	public String getTitle() {
 		return title;
@@ -58,11 +54,11 @@ public class RentalGoods {
 		this.title = title;
 	}
 
-	public String getimagename() {
+	public String getImagename() {
 		return imagename;
 	}
 
-	public void setimagename(String imagename) {
+	public void setImagename(String imagename) {
 		this.imagename = imagename;
 	}
 
@@ -72,22 +68,6 @@ public class RentalGoods {
 
 	public void setSeq(int seq) {
 		this.seq = seq;
-	}
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public String getOptions() {
-		return options;
-	}
-
-	public void setOptions(String options) {
-		this.options = options;
 	}
 
 	public String getSdate() {
@@ -113,7 +93,7 @@ public class RentalGoods {
 	public void setTerm(String term) {
 		this.term = term;
 	}
-	
+
 	public int getReturndday() {
 		return returndday;
 	}
@@ -122,13 +102,57 @@ public class RentalGoods {
 		this.returndday = returndday;
 	}
 
-	public String getImagename() {
-		return imagename;
+	public int getGseq() {
+		return gseq;
 	}
 
-	public void setImagename(String imagename) {
-		this.imagename = imagename;
+	public void setGseq(int gseq) {
+		this.gseq = gseq;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getOptions() {
+		return options;
+	}
+
+	public void setOptions(String options) {
+		this.options = options;
+	}
+
+	public String getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+	
+	
+
+	 
 
  
 }
