@@ -23,6 +23,8 @@ public class QnAController {
 	@Autowired
 	QnAService qnAService;
 	
+
+	
 	@RequestMapping(value="QnAlist.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String bbsList(Model model, BbsParam param) throws Exception{		
 		logger.info("QnA 게시판을 불러오는 곳입니다.");
