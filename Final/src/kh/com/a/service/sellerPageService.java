@@ -12,7 +12,9 @@ public interface sellerPageService {
 	
 	public List<GoodsDto> Rental3(String id) throws Exception;
 	
+	public GoodsDto GoodsDto(int seq) throws Exception;
+	
 	public List<RentalGoods> manageRentalList(String id) throws Exception;
 
-	public GoodsDto GoodsDto(int seq) throws Exception;
+	
 }

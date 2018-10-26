@@ -10,4 +10,7 @@ public interface MemberService {
 
 	public int checkID(MemberDto mem);
 
+	public MemberDto getmemDto(String id) throws Exception;
+	
+	public MemberDto updatememDto(MemberDto mem) throws Exception;
 }

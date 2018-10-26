@@ -10,4 +10,8 @@ public interface MemberDao {
 	MemberDto login(MemberDto mem) throws Exception;
 
 	int checkID(MemberDto mem);
+
+	MemberDto getmemDto(String id) throws Exception;
+	
+	MemberDto updatememDto(MemberDto mem) throws Exception;
 }

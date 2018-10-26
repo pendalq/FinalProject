@@ -35,6 +35,24 @@ public class MemberServiceImpl implements MemberService {
 	  int i = memberDao.checkID(mem);
 	  System.out.println(i + "i는");
 		return memberDao.checkID(mem);
+		
+	}
+
+    //public MemberDto getmemDto(String id) throws Exception;
+	@Override
+	public MemberDto getmemDto(String id) throws Exception {
+		 System.out.println("getmemDto" + id);
+
+		 return memberDao.getmemDto(id);
+	}
+
+
+	@Override
+	public MemberDto updatememDto(MemberDto mem) throws Exception {
+		System.out.println("updatememDto" + mem);
+
+		
+		return memberDao.updatememDto(mem);
 	}
 	
 	

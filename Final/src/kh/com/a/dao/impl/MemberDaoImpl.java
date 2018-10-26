@@ -41,6 +41,28 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return num;
 	}
+
+	@Override
+	public MemberDto getmemDto(String id) throws Exception {
+		
+		
+		System.out.println("MemberDaoImpl mem = " + id);
+		
+		MemberDto MemberDto = sqlSession.selectOne(namespace +"getmemDto", id);
+		
+		System.out.println("MemberDaoImpl MemberDto = " + MemberDto);
+		
+		return MemberDto;
+	}
+
+	@Override
+	public MemberDto updatememDto(MemberDto mem) throws Exception {
+		System.out.println("MemberDaoImpl MemberDto = " + mem);
+		
+		MemberDto updatememDto = sqlSession.selectOne(namespace + "udateMem" ,mem);
+		
+		return updatememDto;
+	}
 	
 	
 	

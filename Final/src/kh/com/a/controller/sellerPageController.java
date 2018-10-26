@@ -80,20 +80,33 @@ public class sellerPageController {
 	}*/
 	
 	@RequestMapping(value="lentManage.do" ,method= {RequestMethod.GET, RequestMethod.POST})
-	//public String lentManage(Model model, HttpServletRequest req ) throws Exception{
 	public String lentManage(Model model , HttpServletRequest req) throws Exception{
 		logger.info("sellerPageController lentManage.do" + new Date());
 		
 		String id =	(String) req.getSession().getAttribute("loginID");
 		
-		//SELECT R.SEQ , R.ID AS SU_ID , M.ADDRESS , M.PHONE , G.TITLE , R.WDATE , R.SDATE , M.NAME
+		//SELECT R.SEQ , R.ID AS SU_ID , G.TITLE , R.WDATE , R.SDATE , R.RE_TURN
 		List<RentalGoods> manageRentalList = sServ.manageRentalList(id);
-		model.addAttribute("manageRentalList", manageRentalList);
 		
-		 
+		model.addAttribute("manageRentalList", manageRentalList);
+		logger.info("sellerPageController lentManage manageRentalList" + manageRentalList);
+		
+		
+		
+		
 			 		
 		return "lentManage.tiles";
 	}
 
-
+	 @RequestMapping(value="changeStatus.do" ,method= {RequestMethod.GET, RequestMethod.POST})
+	public String changestatus(String status) {
+		logger.info("  changeStatus.do" + new Date());
+	
+	 
+		
+		
+		return status;
+	} 
+	
 }
+

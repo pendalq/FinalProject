@@ -1,71 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-
-
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-
-.UserRegiForm table{
-	margin-left : auto;
-	margin-right : auto; 
-	 
-} 
-
-.UserRegiTb td{
- 	border: solid 1px #cccccc;
-	background: #eeeeee;
-}
-.UserRegiTb th{
-	border: solid 1px #cccccc;
-	background: #eeeeee;
-} 
-</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<div class="UserRegiForm">
-<h1>개인 회원 등록</h1>
-<form action="" method="post" id="_regiForm" name="regiForm">
-					
-					<table class="UserRegiTb" style="width: 60%" >
+<c:if test="${memdto.auth eq 1}">
+
+		<form action="" method="post" id="_updateForm" name="updateForm">	
+				<table class="content_table" style="width: 75%">
 					<colgroup>
 						<col style="width:30%">
 						<col style="width:70%">
 					</colgroup>	
 					
+				
 					<tr>
-						<th rowspan="2">아이디</th>
+						<th>아이디</th>
 						<td>
-							<input type="text" id="c_id" size="30" placeholder="아이디 입력">
-							<a href="#none" id="_btnGetId" title="회원가입">
-								<img alt="회원가입" src="img/idcheck.png" style="size: 2.5em;">
-							</a>
-							<div id="_rgetid"></div>
-						</td>					
-					</tr>
-					<tr>
-						
-						<td>
-							<input type="text" name="id" id="_userid" size="30" data-msg="아이디를" readonly="readonly">
-							
+							<input type="hidden" value="${memdto.auth }">
+							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }">
 						</td>	
 					</tr>
+					
 					
 					<tr>
 						<th>패스워드</th>
 						<td>
-							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를1"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 						</td>	
 					</tr>
 					<tr>
 						<th>패스워드 확인</th>
 						<td>
-							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를2"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
+                        	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+						</td>
+						
+							
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input type="text" name="name" id="_name" size="30" value="${memdto.name }" required="required" autofocus="autofocus"  data-msg="이름을" >
+						</td>	
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td>
+							<input type="text" name="phone" id="_phone" size="30" value="${memdto.phone} " required="required" autofocus="autofocus"  data-msg="연락처를" >
+						</td>	
+					</tr>
+					
+					<tr>
+						<th>주소</th>
+						<td>
+							<input type="text" name="address" id="_address" size="60" data-msg="주소를 " value="${memdto.address} ">
+							<input type="button" onclick="execDaumPostcode()" value="주소 검색"><br>
+							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
+							<a href="mypage.do">마이페이지로</a>
+						</td>	
+					</tr>			
+				</table>
+			</form>
+			</c:if>
+			
+			
+			
+			
+			<c:if test="${memdto.auth eq 2 || memdto.auth eq 3 }">
+
+		<form action="" method="post" id="_updateForm" name="updateForm" >	
+				<table class="content_table" style="width: 75%">
+					<colgroup>
+						<col style="width:30%">
+						<col style="width:70%">
+					</colgroup>	
+					
+				
+					<tr>
+						<th>아이디</th>
+						<td>
+							<input type="hidden" value="${memdto.auth }">
+							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }">
+						</td>	
+					</tr>
+					<tr>
+						<th>패스워드</th>
+						<td>
+							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를3"  maxlength="14" placeholder="15자 이하의 비밀번호 입력" value="">
+						</td>	
+					</tr>
+					<tr>
+						<th>패스워드 확인</th>
+						<td>
+							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를4"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
                         	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 						</td>
@@ -74,46 +113,72 @@
 					</tr>
 					
 					<tr>
-						<th>이름</th>
+						<th>사업장 주소</th>
 						<td>
-							<input type="text" name="name" id="_name" size="30" data-msg="이름을 " required="required" autofocus="autofocus" maxlength="19" placeholder="이름">
+							<input type="text" name="address" id="_address" size="30" required="required" value="${memdto.address }" autofocus="autofocus" value="${memdto.address} ">
 						</td>	
 					</tr>
 					
 					<tr>
-						<th>연락처</th>
+						<th>사업장 연락처</th>
 						<td>
-							<input type="text" name="phone" id="_phone" size="10" data-msg="연락처를 " placeholder="연락처 입력" autofocus required maxlength="13">
+							<input type="text" name="phone" id="_phone" size="30" value="${memdto.phone} " required="required" autofocus="autofocus">
 						</td>	
 					</tr>
 					
 					<tr>
-						<th>주소</th>
+						<th>기업 이름</th>
 						<td>
-							<input type="text" name="address" id="_address" size="60" data-msg="주소를 ">
-							<input type="button" onclick="execDaumPostcode()" value="주소 검색"><br>
-							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+							<input type="text" name="name" id="_name" size="30" value="${memdto.name }" required="required" autofocus="autofocus">
 						</td>	
 					</tr>
-
-					</table>
-						<input type="hidden" value="1" name="auth">
-						<a href="#none" id="regiBTN" title="회원가입">
-							<img alt="회원가입" src="img/regiBTN.png">
-						</a>
-						<a href="#none" id="logBTN" title="로그인">
-							<img alt="회원가입" src="img/logBTN.png">
-						</a>
-						
-						
-					</form>
-				</div>
-
-
+					<tr>
+						<td>
+							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
+							<a href="mypage.do">마이페이지로</a>
+						</td>	
+					</tr>			
+				</table>
+			</form>
+			</c:if>
+			
+		 
 <script type="text/javascript">
-//아이디 문자 입력 제한
-</script>
-				
+//회원가입버튼 눌렀을때
+$("#updateInfo").click(function() {
+	
+	
+	if($("#_pw").val() == ""){
+		alert($("#_pw").attr("data-msg") + " 확인해 주십시오");
+		$("#_pw").focus();
+	}else if($("#_pwck").val() == ""){
+		alert($("#_pwck").attr("data-msg") + " 확인해 주십시오");
+		$("#_pwck").focus();
+	}else if($("#_pw").val()  != $("#_pwck").val() ){
+		alert($("#_pw").attr("data-msg") + " 확인해 주십시오");
+	
+		
+		
+		
+	}else if($("#_name").val() == ""){
+		alert($("#_name").attr("data-msg") + " 확인해 주십시오");
+		$("#_name").focus();
+	} 
+	else if($("#_phone").val() == ""){
+		alert($("#_phone").attr("data-msg") + " 확인해 주십시오");
+		$("#_phone").focus();
+	
+	}else if($("#_address").val() == ""){
+		alert($("#_address").attr("data-msg") + " 확인해 주십시오");
+		$("#_address").focus();
+	}else{	 
+		$("#_updateForm").attr("action","updateInfoAf.do").submit();
+	} 
+	
+		
+});
+ </script>		 
+		 
 <script type="text/javascript">
 //비밀번호 입력제한
 $(function(){
@@ -136,9 +201,10 @@ $(function(){
         }
     });
 });
-
 </script>
+
 <script type="text/javascript">
+//이름 특수문자 입력 제한
 $(document).ready(function() {
 
     $("input[name=name]").keyup(function(event){
@@ -152,57 +218,8 @@ $(document).ready(function() {
     });
 
    });
-
 </script>
-
 <script type="text/javascript">
-$("#_btnGetId").click(function() {
-	var id = $("#c_id").val();
-	if(id == ""){
-		alert("아이디를 입력해 주십시오");
-	}else{
-		idCheckFunc(id);
-	}	
-});
-
-$("#logBTN").click(function() {
-	location.href="login.do"; 
-});
-
-function idCheckFunc(id) {
-	//alert("idCheckFunc");
-	
-	$.ajax({
-		
-		type:"post",
-		url:"checkID.do",
-		async:true,
-		data:"id=" + id,
-		success:function(msg){
-			alert("ajax success")
-			idCheckMsg(msg);
-		},
-	 	error : function(){
-            alert("ajax error");
-        }
-
-
-	});
-}	
-function idCheckMsg(msg) {
-	
-		if(msg.message == 'YES'){
-			$("#_rgetid").html("사용할 수 없는 아이디");
-			$("#_rgetid").css("background-color", "#ff0000");
-			$("#_rgetid").val("");		
-		}else{
-			$("#_rgetid").html("사용가능 아이디");
-			$("#_rgetid").css("background-color", "#0000ff");
-			$("#_userid").val( $("#c_id").val() );		
-		}		
-	
-	}
-	
 //연락처 입력제한
 var phone =document.getElementById('_phone');
 phone.onkeyup = function(event){
@@ -240,50 +257,6 @@ if (str.length < 4) {
 return str;
 }
 </script>
-
-
-
-<script type="text/javascript">
-//회원가입버튼 눌렀을때
-$("#regiBTN").click(function() {
-	if($("#_userid").val()==""){
-		alert($("#_userid").attr("data-msg") +"확인해 주세요");
-		$("#_userid").focus();
-	} 
-	else if($("#_pw").val() == ""){
-		alert($("#_pw").attr("data-msg") + " 확인해 주십시오");
-		$("#_pw").focus();
-		
-	}else if($("#_pwck").val() == ""){
-		alert($("#_pwck").attr("data-msg") + " 확인해 주십시오");
-		$("#_pwck").focus();
-		
-	}else if($("#_pw").val()  != $("#_pwck").val() ){
-		alert($("#_pw").attr("data-msg") + " 확인해 주십시오");
-	
-	}else if($("#_name").val() == ""){
-		alert($("#_name").attr("data-msg") + " 확인해 주십시오");
-		$("#_name").focus();
-	} 
-	else if($("#_phone").val() == ""){
-		alert($("#_phone").attr("data-msg") + " 확인해 주십시오");
-		$("#_phone").focus();
-	
-	}else if($("#_address").val() == ""){
-		alert($("#_address").attr("data-msg") + " 확인해 주십시오");
-		$("#_address").focus();
-	}
-	
-	
-	
-	else{	 
-		$("#_regiForm").attr("action","regiAF.do").submit();
-	} 
-	
-		
-});
- </script>
-
 <!-- 주소검색 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 API KEY를 사용하세요&libraries=services"></script>
@@ -353,8 +326,8 @@ $("#regiBTN").click(function() {
     }
 </script> 
  
+
+
+
 </body>
-
-
-
 </html>
