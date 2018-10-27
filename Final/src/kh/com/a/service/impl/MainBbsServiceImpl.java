@@ -28,6 +28,7 @@ public class MainBbsServiceImpl implements MainBbsService {
 
 	@Override
 	public GoodsDto getGoodsDetail(int seq) throws Exception {
+		System.out.println(seq);
 		return mainbbsdao.getGoodsDetail(seq);
 	}
 
@@ -59,6 +60,11 @@ public class MainBbsServiceImpl implements MainBbsService {
 	@Override
 	public List<ReviewDto> getReviewDetailList(int seq) throws Exception {
 		return mainbbsdao.getReviewDetailList(seq);
+	}
+
+	@Override
+	public List<InterDto> youAreInterestedIn(String id) throws Exception {
+		return mainbbsdao.youAreInterestedIn(id);
 	}
 	
 	

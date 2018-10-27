@@ -26,7 +26,7 @@
 						<td>
 							<input type="text" id="c_id" size="30">
 							<a href="#none" id="_btnGetId" title="회원가입">
-								<img alt="회원가입" src="img/idcheck.png">
+								<img alt="회원가입" src="image/idcheck.png">
 							</a>
 							<div id="_rgetid"></div>
 						</td>					
@@ -69,11 +69,12 @@
 					<tr>
 						<td colspan="2" style="height: 50px; text-align: center">
 						<a href="#none" id="regiBTN" title="회원가입">
-							<img alt="회원가입" src="img/regiBTN.png">
+
+							<img alt="회원가입" src="image/regiBTN.png">
 						</a>
 						
 						<a href="#none" id="logBTN" title="로그인">
-							<img alt="회원가입" src="img/logBTN.png">
+							<img alt="회원가입" src="image/logBTN.png">
 						</a>
 						
 						</td>					

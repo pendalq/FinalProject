@@ -11,11 +11,20 @@
 <col style="width:auto;" />
 </colgroup>
 
+
+<%! String loginId; %>
+<%
+
+loginId =String.valueOf(request.getSession().getAttribute("loginID"));
+
+%>
+
+
 <tbody>	
 	<tr class="id">
 		<th>아이디</th>
 		<td style="text-align: left">
-			<input type="text" name="id" readonly="readonly" value='${login.id}' size="60"/>
+			<input type="text" name="id" readonly="readonly" value=<%=loginId %> size="60"/>
 		</td>
 	</tr>
 	<tr>

@@ -1,16 +1,6 @@
+<%-- 
+ <%@page import="kh.com.a.model.GoodsDto"%>
 
-
-
-
-
-
-
-
-
-
-
-
-<%-- <%@page import="kh.com.a.model.GoodsDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,10 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 여기는 셀러 렌탈 
 이 다음페이지는 렌탈 디테일 
-
 <%
 GoodsDto gdto = (GoodsDto)request.getAttribute("sellerGoodsDto");
 %>
@@ -145,4 +133,5 @@ value="${loginID }"  size="50"/></td>
 
 
 </body>
-</html> --%>
+</html>
+ --%>

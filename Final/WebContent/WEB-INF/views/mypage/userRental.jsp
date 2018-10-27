@@ -58,7 +58,7 @@ RentalGoods rdto = (RentalGoods)request.getAttribute("rDetail");
 		<col width="70px">
 	</colgroup>
       <tr>
-         <td rowspan="2" colspan="2"> <%=rdto.getimagename() %> </td>
+         <td rowspan="2" colspan="2"> <%=rdto.getImagename() %> </td>
          <td><%=rdto.getTitle() %></td>
       </tr>
       <tr>

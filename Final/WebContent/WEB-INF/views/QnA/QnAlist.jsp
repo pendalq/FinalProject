@@ -19,17 +19,25 @@
 		<table>
 			<tr>
 				<td>검색 :</td>
-				<td><select id="_s_category" name="s_category">
+				<td>
+				<select id="_s_category" name="s_category">
 						<option value="" selected="selected">선택</option>
-						<option value="category">카테고리</option>
 						<option value="title">제목</option>
 						<option value="contents">내용</option>
-				</select></td>
-				<td><input type="text" id="_s_keyword" name="s_keyword"
-					value="" /></td>
-				<td><span>
+				</select>
+				</td>
+					<td>
+						<input type="text" id="_s_keyword" name="s_keyword"
+						value="" />
+					</td>
+					<td>
+						
+					</td>
+				<td>
+				<span>
 						<button type="button" id="_btnSearch">검색</button>
-				</span></td>
+				</span>
+				</td>
 			</tr>
 		</table>
 
@@ -58,6 +66,7 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
+				
 			</tr>
 		</thead>
 

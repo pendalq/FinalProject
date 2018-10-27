@@ -21,4 +21,11 @@
    	WHERE GSEQ=#{gseq} AND ID=#{id}
   </delete>
   
+  <select id="youAreInterestedIn" parameterType="kh.com.a.model.InterDto" resultType="kh.com.a.model.InterDto">
+  	SELECT I.ID, I.SEQ, I.GSEQ, G.IMAGENAME
+	FROM INTER I, GOODS G
+	WHERE I.ID=#{id} AND I.GSEQ=G.SEQ
+	ORDER BY I.SEQ DESC 
+  </select>
+  
   </mapper>

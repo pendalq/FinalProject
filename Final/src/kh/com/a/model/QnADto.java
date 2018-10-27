@@ -1,5 +1,6 @@
 package kh.com.a.model;
 
+
 import java.io.Serializable;
 
 /*CREATE TABLE QNA(
@@ -19,8 +20,9 @@ CONSTRAINT FK_ID_QNA FOREIGN KEY(ID) REFERENCES MEMBER(ID)
 );*/
 
 
+
 public class QnADto implements Serializable{
-   
+
    private int seq;
    private String category;
    private String id;

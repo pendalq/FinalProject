@@ -17,5 +17,11 @@ public class GoodsServiceImpl implements GoodsService {
 	public void insertGoods(GoodsDto dto) throws Exception {
 		goodsDao.insertGoods(dto);
 	}
+
+	@Override
+	public GoodsDto getGoodsdetail(int seq) throws Exception {
+		System.out.println(seq);
+		return goodsDao.getGoodsDetail(seq);
+	}
 	
 }

@@ -36,6 +36,7 @@ public class MainBbsDaoImpl implements MainBbsDao {
 
 	@Override
 	public GoodsDto getGoodsDetail(int seq) throws Exception {
+		System.out.println(seq);
 		return sqlSession.selectOne(namespace+"getGoodsDetail", seq);
 	}
 
@@ -72,6 +73,12 @@ public class MainBbsDaoImpl implements MainBbsDao {
 	public List<ReviewDto> getReviewDetailList(int seq) throws Exception {
 		List<ReviewDto> reviewdetaillist = sqlSession.selectList(namespace3 + "getReviewDetailList", seq);
 		return reviewdetaillist;
+	}
+
+	@Override
+	public List<InterDto> youAreInterestedIn(String id) throws Exception {
+		List<InterDto> list = sqlSession.selectList(namespace2 + "youAreInterestedIn", id);
+		return list;
 	}
 	
 	

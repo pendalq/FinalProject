@@ -8,7 +8,7 @@
 <select id="getRecentGoods" resultType="kh.com.a.model.GoodsDto">
 SELECT G.WDATE, G.RENTALCOUNT, G.CONTENT, G.OPTIONS, G.PRICE, G.BRAND,
 	G.CATEGORY, G.TITLE, G.IMAGENAME, G.ID, G.SEQ, T.ALIKED LIKED
-	FROM GOODS G, (SELECT GSEQ, ALIKED FROM(SELECT GSEQ, AVG(LIKED) ALIKED
+	FROM GOODS G, (SELECT GSEQ, ALIKED FROM(SELECT GSEQ, NVL(AVG(LIKED),0) ALIKED
 					FROM REVIEW GROUP BY GSEQ)) T
 WHERE 1=1 AND G.SEQ=T.GSEQ(+) AND ROWNUM &lt;=6
 ORDER BY WDATE DESC
@@ -22,7 +22,7 @@ ORDER BY WDATE DESC
 	WHERE ROWNUM &lt;=6
 </select>
 
-<select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="kh.com.a.model.GoodsDto">
+<select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="java.lang.Integer">
 	SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
 	FROM GOODS
 	WHERE SEQ=#{seq}
@@ -30,9 +30,10 @@ ORDER BY WDATE DESC
 
 <insert id="writeGoods" parameterType="kh.com.a.model.GoodsDto">
 	INSERT INTO GOODS
-	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
+	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imagename}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
 </insert>
 
 
+	
 
 </mapper>
