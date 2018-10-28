@@ -42,7 +42,7 @@
 		<td>총 금액 : <span id="allprice" style="align: right;">${goods.price }</span>원</td>
 	</tr>
 	<tr>
-		<td><a id="getpay" title="결제" style="text-align: right">결제</a></td>
+		<td><button id="getpay" title="결제" style="text-align: right">결제</button></td>
 	</tr>
 </table>
 

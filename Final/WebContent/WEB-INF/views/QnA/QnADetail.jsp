@@ -56,7 +56,7 @@
 			</c:if>
 			<!-- 관리자가 로그인 했을 때 활성화 -->
 			<c:choose>
-			<c:when test="${auth==4 }">
+			<c:when test="${auth==1 or auth==2 or auth==3 or auth==4 }">
 			<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
 			</c:when> 
 			</c:choose>

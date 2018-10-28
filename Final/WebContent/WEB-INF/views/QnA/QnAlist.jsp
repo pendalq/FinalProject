@@ -116,7 +116,7 @@
 	</div>
 
 	<!-- 로그인 하면 쓸 수 있도록 왜 시바 안나오는 거지?  -->
-  <c:if test="${loginAuth == 4}">
+  <c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
 		<div id="buttons_wrap">
 			<span class="button blue">
 				<button type="button" id="_btnAdd">글쓰기</button>
