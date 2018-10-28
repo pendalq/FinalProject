@@ -66,7 +66,7 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
-				
+				<th>작성날짜</th>
 			</tr>
 		</thead>
 
@@ -110,14 +110,19 @@
 		</jsp:include>
 	</div>
 
-	<!--  -->
-
-	<div id="buttons_wrap">
-		<span class="button blue">
-			<button type="button" id="_btnAdd">글쓰기</button>
-		</span>
-	</div>
-
+	<!-- 로그인 하면 쓸 수 있도록 왜 시바 안나오는 거지?  -->
+ <c:choose>
+ 	<c:when test="${ !empty list} }">
+		<div id="buttons_wrap">
+			<span class="button blue">
+				<button type="button" id="_btnAdd">글쓰기</button>
+			</span>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<p> 시발 왜 안나와 </p>
+	</c:otherwise>
+</c:choose>
 	<script type="text/javascript">
 		
 		$(document).ready(function() {

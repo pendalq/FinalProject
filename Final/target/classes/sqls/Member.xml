@@ -6,7 +6,6 @@
 <mapper namespace="Member">
 
 
-
 <insert id="addMember" parameterType="kh.com.a.model.MemberDto">
 INSERT INTO MEMBER(ID,PW,ADDRESS,PHONE,NAME,AUTH)
 VALUES(#{id},#{pw},#{address},#{phone},#{name},#{auth})
@@ -19,12 +18,18 @@ FROM MEMBER
 WHERE ID=#{id} AND PW=#{pw}
 </select> 
 
-<!-- 회원정보수정 -->
-<select id="getMember" parameterType="java.lang.String" resultType="kh.com.a.model.MemberDto">
-SELECT ID,ADDRESS,PHONE,NAME
+<!-- 회원정보 -->
+<select id="getmemDto" parameterType="java.lang.String" resultType="kh.com.a.model.MemberDto">
+SELECT ID,ADDRESS,PHONE,NAME,AUTH
 FROM MEMBER
 WHERE ID=#{id}  
 </select> 
+
+<update id="udateMem" parameterType="kh.com.a.model.MemberDto">
+UPDATE MEMBER
+SET PW=#{pw},ADDRESS=#{address},PHONE=#{phone},NAME=#{name}
+WHERE ID=#{id}
+</update>
 
 <select id="checkID" parameterType="kh.com.a.model.MemberDto" resultType="java.lang.Integer">
 SELECT NVL(COUNT(*),0)
@@ -32,5 +37,11 @@ FROM MEMBER
 WHERE ID=#{id}
 </select>
  
+
+<select id="getMemberId" resultType="kh.com.a.model.adminDto">
+	SELECT ID,ADDRESS,AUTH
+	FROM MEMBER
+</select>
+
 
 </mapper>

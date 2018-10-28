@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kh.com.a.model.BbsParam;
 import kh.com.a.model.QnADto;
+import kh.com.a.model.adminDto;
+import kh.com.a.service.MemberService;
 import kh.com.a.service.QnAService;
 @Controller
 public class QnAController {
@@ -22,7 +24,8 @@ public class QnAController {
 	
 	@Autowired
 	QnAService qnAService;
-	
+	@Autowired
+	MemberService  memberService;
 
 	
 	@RequestMapping(value="QnAlist.do", method= {RequestMethod.GET, RequestMethod.POST})
@@ -49,13 +52,27 @@ public class QnAController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		// 글의 갯수 
-		int totalRecordCount = qnAService.getBbsCount(param);
+		
+		List<adminDto> list = memberService.getMemberId();
+		
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString());
+		}
+		
+		model.addAttribute("list", list);
+		
+	 
+		
 		List<QnADto> QnAlist = qnAService.getBbsPagingList(param);
 		model.addAttribute("QnAlist", QnAlist);
 		for (int i = 0; i < QnAlist.size(); i++) {
 			System.out.println(QnAlist.get(i).toString());
 		}
+		// 글의 갯수
+		int totalRecordCount = qnAService.getBbsCount(param);
+	
+		
+		
 		model.addAttribute("pageNumber", sn);
 		model.addAttribute("pageCountPerScreen", 10);
 		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
@@ -77,7 +94,9 @@ public class QnAController {
 		QnADto qna=null;
 		qnAService.readCount(seq);
 		qna=qnAService.getBbs(seq);
+		List<adminDto> list = memberService.getMemberId();
 		model.addAttribute("qna", qna);
+		model.addAttribute("list", list);
 		return "QnADetail.tiles";
 	}
 	

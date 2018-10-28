@@ -49,12 +49,15 @@
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
 		<span>
+		<!-- login id 와 해당 글 쓴 id 가 일치했을 때 뜸  -->
 			<c:if test="${qna.id eq login.id}">
 			<a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
 			<a href="#none" id="_btnDel" title="삭제하기"><img src="image/del.png" alt="삭제하기" /></a>
 			</c:if>
 			<!-- 관리자가 로그인 했을 때 활성화 -->
+			<c:if test="${list.auth eq 4 }">
 			<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
+			</c:if>
 		</span>
 		</td>
 	</tr>

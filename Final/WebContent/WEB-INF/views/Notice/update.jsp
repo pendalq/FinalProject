@@ -44,7 +44,7 @@
 				<tr>
 					<th>작성날짜</th>
 					<td><input type="text" value="${dto.wdate }" name="wdate"
-						required="required" autofocus="autofocus"></td>
+					readonly="readonly"	required="required" autofocus="autofocus"></td>
 				</tr>
 				<tr>
 					<th>조회수</th>
