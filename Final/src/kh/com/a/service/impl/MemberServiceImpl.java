@@ -37,12 +37,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.checkID(mem);
 	}
 
-
 	@Override
 	public MemberDto getMemberInfo(String id) throws Exception {
 		System.out.println(id);
 		return memberDao.getMemberInfo(id);
 	}
+
 	
 	
 }

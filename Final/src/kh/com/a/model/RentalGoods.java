@@ -5,7 +5,6 @@ public class RentalGoods {
 	private String title;
 	private String imagename;
 	private int seq;  //
-	 
 	
 	private String sdate;
 	private String re_turn;
@@ -14,21 +13,12 @@ public class RentalGoods {
 	
 	
 	private int gseq; //
-	private String su_id; //판매자아이디
+	private String id; //판매자아이디
 	private String brand;
 	private int price;
 	private String options;
-	//private String content;
-	//private int rentalcount;
-	private String wdate;
-	
-	
-	private String ru_id; //대여자아이디
-	private String address;
-	private String phone;
-	private String name;
-	
-	
+	private String wdate;	
+
 	public RentalGoods() {
 		
 	}
@@ -54,10 +44,6 @@ public class RentalGoods {
 		this.term = term;
 		this.returndday = returndday;
 	}
-	
-	
-
-	 
 
 	public String getTitle() {
 		return title;
@@ -67,11 +53,11 @@ public class RentalGoods {
 		this.title = title;
 	}
 
-	public String getimagename() {
+	public String getImagename() {
 		return imagename;
 	}
 
-	public void setimagename(String imagename) {
+	public void setImagename(String imagename) {
 		this.imagename = imagename;
 	}
 
@@ -83,21 +69,6 @@ public class RentalGoods {
 		this.seq = seq;
 	}
 
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public String getOptions() {
-		return options;
-	}
-
-	public void setOptions(String options) {
-		this.options = options;
-	}
 
 	public String getSdate() {
 		return sdate;
@@ -131,28 +102,54 @@ public class RentalGoods {
 		this.returndday = returndday;
 	}
 
-	public String getImagename() {
-		return imagename;
+
+	public int getGseq() {
+		return gseq;
 	}
 
-	public void setImagename(String imagename) {
-		this.imagename = imagename;
+	public void setGseq(int gseq) {
+		this.gseq = gseq;
 	}
 
- 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getOptions() {
+		return options;
+	}
+
+	public void setOptions(String options) {
+		this.options = options;
+	}
+
+	public String getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	} 
+
 }
-	
-	
-	
-	
-	
-	 
-	 
-	
-	
-	
-	
-	
-	 
-	
- 
+

@@ -21,6 +21,7 @@ public class sellerPageServiceImpl implements sellerPageService{
 	public List<QnADto> getMyQnaList(String id) throws Exception {
 		
 		return sdao.getMyQnaList(id);
+
 	}
 
 	@Override
@@ -45,9 +46,7 @@ public class sellerPageServiceImpl implements sellerPageService{
 		
 		return sdao.GoodsDto(seq);
 	}
-	
-	
- 
+
 	
 	
 }

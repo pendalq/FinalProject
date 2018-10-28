@@ -30,9 +30,10 @@ ORDER BY WDATE DESC
 
 <insert id="writeGoods" parameterType="kh.com.a.model.GoodsDto">
 	INSERT INTO GOODS
-	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
+	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imagename}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
 </insert>
 
 
+	
 
 </mapper>

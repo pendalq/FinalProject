@@ -95,14 +95,10 @@
 <div id="header_list" style="background-color: #2d2d2d;">
 	<div id="menubar_top">
 		<ul class="menubar_sub">
-			<li class="top_menu"><a href="#" title="카테고리" class="menulink">카테고리</a></li>
-			<li class="top_menu"><a href="#" title="냉장고" class="menulink">냉장고</a>
-			</li>
-			<li class="top_menu"><a href="#" title="TV" class="menulink">TV</a>
-			</li>
-			<li class="top_menu"><a href="#" title="정수기" class="menulink">정수기</a>
-			</li>
-			<li class="top_menu"><a href="#" title="QnA" class="menulink">QnA</a></li>
+			<li class="top_menu"><a href="./mainbbslist.do" title="메인" class="menulink">메인</a></li>
+			<li class="top_menu"><a href="./goodslist.do" title="상품정보" class="menulink">상품정보</a>
+			<li class="top_menu"><a href="./Noticelist.do" title="상품정보" class="menulink">공지사항</a>
+			<li class="top_menu"><a href="./QnAlist.do" title="QnA" class="menulink">QnA</a></li>
 		</ul>
 	</div>
 </div>

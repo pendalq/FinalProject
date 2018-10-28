@@ -13,28 +13,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+#headers{
+	background-color: #2d2d2d;
+}
+
+</style>
 </head>
 <body>
 
-<table width="100%" height="100%">
+<table width="100%" height="100%" border="0">
 
 <tr> <!-- header -->
-   <td height="10%" colspan="2">
+   <td height="10%" class="headers">
       <tiles:insertAttribute name="header"/>
    </td>
 </tr>
 
 
 <tr>
-   <td height="10%">
+   <td height="10%" class="headers">
       <tiles:insertAttribute name="header_second"/>
    </td>
 </tr>
 
 <tr>
-   <td>
-      <tiles:insertAttribute name="interGoods"/>
-   </td>
+	<td>
+		<tiles:insertAttribute name="interGoods"/>
+	</td>
 </tr>
     
 
@@ -45,7 +52,7 @@
 </tr>
 
 <tr>    <!-- footer -->
-   <td height="10%" colspan="2">
+   <td height="10%">
       <tiles:insertAttribute name="footer"/>
    </td>
 </tr>
@@ -54,25 +61,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

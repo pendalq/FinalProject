@@ -5,4 +5,9 @@
   
 <mapper namespace="rental">
 
+<insert id="doRental" parameterType="kh.com.a.model.RentalGoods">
+	INSERT INTO RENTAL
+	VALUES(RENTAL_SEQ.NEXTVAL, #{id}, #{gseq}, #{term}, NULL, NULL)
+</insert>
+
 </mapper>

@@ -45,7 +45,7 @@ public class GoodsDto implements Serializable{
 		super();
 		this.seq = seq;
 		this.id = id;
-		this.imageName = imageName; 
+		this.imageName = imageName;
 		this.title = title;
 		this.category = category;
 		this.brand = brand;
@@ -69,6 +69,7 @@ public class GoodsDto implements Serializable{
 		this.liked = liked; 
 	}
 
+
 	public int getSeq() {
 		return seq;
 	}
@@ -91,7 +92,6 @@ public class GoodsDto implements Serializable{
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
- 
 	}
 
 	public String getTitle() {
@@ -157,7 +157,7 @@ public class GoodsDto implements Serializable{
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
- 
+
 	public float getLiked() {
 		return liked;
 	}

@@ -70,9 +70,6 @@
 				</td>		
 		</c:forEach>
 		</tr>
-			 
-	
-	
 </table>
 
 
@@ -114,16 +111,10 @@ $("#lentManage").click(function() {
 	location.href = "lentManage.do";
 });
 
-
-
 $("#sellerRegiGoods").click(function() {
 	alert("sellerRegiGoods 함수 실행");
 	location.href = "goodswrite.do";
 });
-
-
-
-
 
 </script>
 

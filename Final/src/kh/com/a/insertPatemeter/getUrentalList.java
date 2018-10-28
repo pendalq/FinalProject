@@ -1,7 +1,7 @@
 package kh.com.a.insertPatemeter;
 
 public class getUrentalList {
- 
+
 	String id;
 	int seq;
 	

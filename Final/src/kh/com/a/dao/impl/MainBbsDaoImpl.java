@@ -74,6 +74,12 @@ public class MainBbsDaoImpl implements MainBbsDao {
 		List<ReviewDto> reviewdetaillist = sqlSession.selectList(namespace3 + "getReviewDetailList", seq);
 		return reviewdetaillist;
 	}
+
+	@Override
+	public List<InterDto> youAreInterestedIn(String id) throws Exception {
+		List<InterDto> list = sqlSession.selectList(namespace2 + "youAreInterestedIn", id);
+		return list;
+	}
 	
 	
 	
