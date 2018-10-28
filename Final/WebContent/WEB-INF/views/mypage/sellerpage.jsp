@@ -53,6 +53,8 @@
 </table>
 
 <h2 style="text-align: center;">등록되어있는 렌탈 상품 </h2>
+
+
 <table class="retalinglist" > 
  
 	 	<tr>
@@ -70,6 +72,9 @@
 				</td>		
 		</c:forEach>
 		</tr>
+			 
+	
+	
 </table>
 
 
@@ -111,10 +116,16 @@ $("#lentManage").click(function() {
 	location.href = "lentManage.do";
 });
 
+
+
 $("#sellerRegiGoods").click(function() {
 	alert("sellerRegiGoods 함수 실행");
 	location.href = "goodswrite.do";
 });
+
+
+
+
 
 </script>
 
