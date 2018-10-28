@@ -55,9 +55,11 @@
 			<a href="#none" id="_btnDel" title="삭제하기"><img src="image/del.png" alt="삭제하기" /></a>
 			</c:if>
 			<!-- 관리자가 로그인 했을 때 활성화 -->
-			<c:if test="${list.auth eq 4 }">
+			<c:choose>
+			<c:when test="${auth==4 }">
 			<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
-			</c:if>
+			</c:when> 
+			</c:choose>
 		</span>
 		</td>
 	</tr>

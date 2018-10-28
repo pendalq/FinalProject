@@ -59,6 +59,8 @@
 			<col style="width: 70px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
 		</colgroup>
 
 		<thead>
@@ -67,6 +69,7 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성날짜</th>
+				<th>조회수</th>
 			</tr>
 		</thead>
 
@@ -94,6 +97,8 @@
 						</c:if></td>
 
 					<td>${qna.id}</td>
+					<td>${qna.wdate }</td>
+					<td>${qna.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -111,18 +116,13 @@
 	</div>
 
 	<!-- 로그인 하면 쓸 수 있도록 왜 시바 안나오는 거지?  -->
- <c:choose>
- 	<c:when test="${ !empty list} }">
+  <c:if test="${loginAuth == 4}">
 		<div id="buttons_wrap">
 			<span class="button blue">
 				<button type="button" id="_btnAdd">글쓰기</button>
 			</span>
 		</div>
-	</c:when>
-	<c:otherwise>
-		<p> 시발 왜 안나와 </p>
-	</c:otherwise>
-</c:choose>
+	</c:if> 
 	<script type="text/javascript">
 		
 		$(document).ready(function() {
