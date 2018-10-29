@@ -12,7 +12,7 @@
 		<put-attribute name="interGoods"
 			value="/WEB-INF/views/common/interGoods.jsp" />
 		<put-attribute name="main"
-			value="/WEB-INF/views/Main.jsp" />
+			value="/WEB-INF/views/main.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
