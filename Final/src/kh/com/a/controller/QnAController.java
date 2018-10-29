@@ -2,6 +2,8 @@ package kh.com.a.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kh.com.a.model.BbsParam;
 import kh.com.a.model.QnADto;
+import kh.com.a.model.adminDto;
+import kh.com.a.service.MemberService;
 import kh.com.a.service.QnAService;
 @Controller
 public class QnAController {
@@ -22,12 +26,19 @@ public class QnAController {
 	
 	@Autowired
 	QnAService qnAService;
+	@Autowired
+	MemberService  memberService;
+
 	
 	@RequestMapping(value="QnAlist.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String bbsList(Model model, BbsParam param) throws Exception{		
+	public String bbsList(Model model, BbsParam param, HttpServletRequest req ) throws Exception{		
 		logger.info("QnA 게시판을 불러오는 곳입니다.");
 		
-		
+		if(req.getSession().getAttribute("loginAuth") != null) {
+			model.addAttribute("loginAuth", (int)req.getSession().getAttribute("loginAuth"));
+		}else { 
+			return "redirect:/login.do";
+		}
 		// paging 처리
 		int sn = param.getPageNumber();
 		int start = (sn) * param.getRecordCountPerPage() + 1;
@@ -47,13 +58,22 @@ public class QnAController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		// 글의 갯수 
-		int totalRecordCount = qnAService.getBbsCount(param);
+		
+		
+		
+		
+	 
+		
 		List<QnADto> QnAlist = qnAService.getBbsPagingList(param);
-		model.addAttribute("QnAlist", QnAlist);
+		
 		for (int i = 0; i < QnAlist.size(); i++) {
 			System.out.println(QnAlist.get(i).toString());
 		}
+		// 글의 갯수
+		int totalRecordCount = qnAService.getBbsCount(param);
+	
+		
+		model.addAttribute("QnAlist", QnAlist);
 		model.addAttribute("pageNumber", sn);
 		model.addAttribute("pageCountPerScreen", 10);
 		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
@@ -70,12 +90,16 @@ public class QnAController {
 	
 	@RequestMapping(value = "QnADetail.do", 
 			method = {RequestMethod.GET, RequestMethod.POST})
-	public String QnADetail(int seq,Model model) throws Exception {
+	public String QnADetail(int seq,Model model,HttpServletRequest req) throws Exception {
 		logger.info(" QnA  !!!!!detail 로 이동합니다!!");
 		QnADto qna=null;
 		qnAService.readCount(seq);
 		qna=qnAService.getBbs(seq);
+		List<adminDto> list = memberService.getMemberId();
 		model.addAttribute("qna", qna);
+		System.out.println("리스트가 잘 나오는지 확인좀 해보자 " + list.toString());
+		model.addAttribute("list", list);
+		model.addAttribute("auth", (int) req.getSession().getAttribute("loginAuth"));
 		return "QnADetail.tiles";
 	}
 	
@@ -105,22 +129,22 @@ public class QnAController {
 	
 	@RequestMapping(value = "QnAreply.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
-	public String QnAreply(QnADto qna, Model model)throws Exception {
+	public String QnAreply(QnADto qna, Model model,HttpServletRequest req)throws Exception {
 		logger.info(" reply 합니다 합니다 합니다");
 			
 		QnADto rbbs = qnAService.getBbs(qna.getSeq());
 		model.addAttribute("qna", rbbs);
+		model.addAttribute("loginId", req.getSession().getAttribute("loginID"));
 		return "QnAReply.tiles";
 	}
 	
 	@RequestMapping(value = "QnAreplyAf.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
-	public String QnAreplyAf(QnADto qna, Model model) {
+	public String QnAreplyAf(QnADto qna, Model model) throws Exception {
 		logger.info(" reply 올리셨네요 처리할게요!!!!");
-	
-		try {
-			qnAService.reply(qna);
-		} catch (Exception e) {	}
+			System.out.println("값이 나오는지 출력하는 곳 qna = " + qna.toString());
+		qnAService.reply(qna);
+		
 			
 		return "redirect:/QnAlist.do";
 	}

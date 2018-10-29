@@ -21,6 +21,7 @@
 
 <a href="#none" id="regiBTN" title="회원가입">
 	<img alt="회원가입" src="img/regiBTN.png">
+
 </a>
 
 </form>

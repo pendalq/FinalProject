@@ -5,17 +5,26 @@
 
 <form name="frmForm" id="_frmForm" method="post" action="bbswriteAf.do">
 
-<table class="list_table" style="width:85%;">
+<table width="89%" class="list_table" style="width:85%;">
 <colgroup>
 <col style="width:200px;" />
 <col style="width:auto;" />
 </colgroup>
 
+
+<%! String loginId; %>
+<%
+
+loginId =String.valueOf(request.getSession().getAttribute("loginID"));
+
+%>
+
+
 <tbody>	
 	<tr class="id">
 		<th>아이디</th>
 		<td style="text-align: left">
-			<input type="text" name="id" readonly="readonly" value='${login.id}' size="60"/>
+			<input type="text" name="id" readonly="readonly" value=<%=loginId %> size="60"/>
 		</td>
 	</tr>
 	<tr>
@@ -37,18 +46,15 @@
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td style="text-align: left">
-			<textarea rows="10" cols="50" name='content' id="_content"></textarea>
-		</td>
+		<td style="text-align: left"><textarea rows="10" cols="50" name='content' id="_content"></textarea>		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
-			<span>					
-	 			<a href="#none" id="_btnLogin" title="글쓰기">		
-					<img src="image/bwrite.png" alt="로그인" />
-				</a>
-			</span>
-		</td>
+			<p id="_btnLogin" title="글쓰기" href="#none"><span id="_btnLogin" title="글쓰기" href="#none"><a href="#none" id="_btnLogin" title="글쓰기">		
+			  <img src="image/bwrite.png" alt="로그인" />
+		    </a>
+		    </span>
+	    </p></td>
 	</tr>
 </tbody>
 

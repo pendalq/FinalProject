@@ -11,7 +11,7 @@ import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
- 
+
 
 @Repository
 public class sellerPageDaoImpl implements sellerPageDao {
@@ -57,8 +57,8 @@ public class sellerPageDaoImpl implements sellerPageDao {
 	public List<RentalGoods> manageRentalList(String id) throws Exception{
 		System.out.println(" sellerPageDaoImpl GoodsDto입니다" + id);
 		
-		List<RentalGoods> GoodsDto = sqlSession.selectList(namespace + "GoodsDto" , id);
-		System.out.println(" sellerPageDaoImpl GoodsDto " + GoodsDto);
+		List<RentalGoods> GoodsDto = sqlSession.selectList(namespace + "lentmanage" , id);
+		System.out.println(" sellerPageDaoImpl GoodsDto " + GoodsDto.toString());
 		
 		
 		

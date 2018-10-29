@@ -19,17 +19,25 @@
 		<table>
 			<tr>
 				<td>검색 :</td>
-				<td><select id="_s_category" name="s_category">
+				<td>
+				<select id="_s_category" name="s_category">
 						<option value="" selected="selected">선택</option>
-						<option value="category">카테고리</option>
 						<option value="title">제목</option>
 						<option value="contents">내용</option>
-				</select></td>
-				<td><input type="text" id="_s_keyword" name="s_keyword"
-					value="" /></td>
-				<td><span>
+				</select>
+				</td>
+					<td>
+						<input type="text" id="_s_keyword" name="s_keyword"
+						value="" />
+					</td>
+					<td>
+						
+					</td>
+				<td>
+				<span>
 						<button type="button" id="_btnSearch">검색</button>
-				</span></td>
+				</span>
+				</td>
 			</tr>
 		</table>
 
@@ -51,6 +59,8 @@
 			<col style="width: 70px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
 		</colgroup>
 
 		<thead>
@@ -58,6 +68,8 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
+				<th>작성날짜</th>
+				<th>조회수</th>
 			</tr>
 		</thead>
 
@@ -85,6 +97,8 @@
 						</c:if></td>
 
 					<td>${qna.id}</td>
+					<td>${qna.wdate }</td>
+					<td>${qna.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -101,14 +115,14 @@
 		</jsp:include>
 	</div>
 
-	<!--  -->
-
-	<div id="buttons_wrap">
-		<span class="button blue">
-			<button type="button" id="_btnAdd">글쓰기</button>
-		</span>
-	</div>
-
+	<!-- 로그인 하면 쓸 수 있도록 왜 시바 안나오는 거지?  -->
+  <c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
+		<div id="buttons_wrap">
+			<span class="button blue">
+				<button type="button" id="_btnAdd">글쓰기</button>
+			</span>
+		</div>
+	</c:if> 
 	<script type="text/javascript">
 		
 		$(document).ready(function() {

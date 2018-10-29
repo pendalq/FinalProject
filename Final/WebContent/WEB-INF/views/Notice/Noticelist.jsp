@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	<table border="1px" >
+	<table border="1px">
 		<colgroup>
 			<col width="122" />
 			<col width="592" />
@@ -54,7 +54,7 @@
 			</c:forEach>
 
 		</tbody>
-		
+
 	</table>
 	<!-- 페이징 처리 -->
 	<div id="paging_wrap">
@@ -67,28 +67,42 @@
 	</div>
 
 	<!-- 페이징 끝 -->
+
+	<%!
+	String auth;
+	int iauth;
+	%>
+	<%
+	
+	 	//auth = String.valueOf(request.getSession().getAttribute("loginAuth"));
+		auth = (request.getSession().getAttribute("loginAuth")==null? "a" : String.valueOf(request.getSession().getAttribute("loginAuth")));
+			if(auth != "a"){
+				 iauth = Integer.valueOf(auth);
+			 }
+	
+	%>
+	<% if(auth != null && iauth == 4){ %>
+
 	<div id="buttons_wrap">
 		<span class="button blue">
 			<button type="button" id="_btnAdd">글쓰기</button>
 		</span>
 	</div>
+	<%} %>
 
 
-<script type="text/javascript">
-$("#_btnAdd").click(function() {
-	alert('글쓰기');
-	//$("#_frmForm").attr({ "target":"_self", "action":"bbswrite.do" }).submit();
-	location.href = "write.do";
-});
-function goPage(pageNumber) {
-	$("#_pageNumber").val(pageNumber);
-	$("#_frmFormSearch").attr("target", "_self").attr("action",
-			"Noticelist.do").submit();
-}
-
-
-
-</script>
+	<script type="text/javascript">
+		$("#_btnAdd").click(function() {
+			alert('글쓰기');
+			//$("#_frmForm").attr({ "target":"_self", "action":"bbswrite.do" }).submit();
+			location.href = "write.do";
+		});
+		function goPage(pageNumber) {
+			$("#_pageNumber").val(pageNumber);
+			$("#_frmFormSearch").attr("target", "_self").attr("action",
+					"Noticelist.do").submit();
+		}
+	</script>
 
 </body>
 </html>

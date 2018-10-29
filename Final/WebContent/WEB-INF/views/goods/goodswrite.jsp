@@ -41,8 +41,8 @@ value="${loginID }"  size="50"/></td>
 <th>카테고리</th>
 <td>
 <select id="categorys">
-<option value="Refrigerator" selected="selected">냉장고</option>
-<option value="purifier">정수기</option>
+<option value="냉장고" selected="selected">냉장고</option>
+<option value="정수기">정수기</option>
 <option value="TV">TV</option>
 </select>
 <input type="hidden" id="category" name="category" value="">
@@ -244,7 +244,7 @@ $("#_btnLogin").click(function() {
 	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
     $("#category").val($("#categorys option:selected").val());
-	if($("#category").val()=="Refrigerator"){
+	if($("#category").val()=="냉장고"){
 		var subject = $('input:radio[name=subject]:checked').val();
 		var efficiency = $('input:radio[name=efficiency]:checked').val();
 		var brand = $('input:radio[name=brands]:checked').val();
@@ -252,7 +252,7 @@ $("#_btnLogin").click(function() {
 		$("#options").val("품목:" + subject + "/용량:" + liter + "L/에너지효율:" + efficiency);
 		$("#brand").val(brand);
 		//alert($("#options").val());
-	}else if($("#category").val()=="purifier"){
+	}else if($("#category").val()=="정수기"){
 		var subject = $('input:radio[name=subject]:checked').val();
 		var shape = $('input:radio[name=shape]:checked').val();
 		var brand = $('input:radio[name=brands]:checked').val();

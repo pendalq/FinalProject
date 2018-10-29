@@ -1,10 +1,13 @@
 package kh.com.a.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.com.a.dao.MemberDao;
 import kh.com.a.model.MemberDto;
+import kh.com.a.model.adminDto;
 import kh.com.a.service.MemberService;
 
 @Service
@@ -30,18 +33,36 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public int checkID(MemberDto mem) throws Exception {
+	public int checkID(MemberDto mem) {
 	  System.out.println(mem);
 	  int i = memberDao.checkID(mem);
 	  System.out.println(i + "i는");
 		return memberDao.checkID(mem);
+		
+	}
+
+    //public MemberDto getmemDto(String id) throws Exception;
+	@Override
+	public MemberDto getmemDto(String id) throws Exception {
+		 System.out.println("getmemDto" + id);
+
+		 return memberDao.getmemDto(id);
 	}
 
 
 	@Override
-	public MemberDto getMemberInfo(String id) throws Exception {
-		System.out.println(id);
-		return memberDao.getMemberInfo(id);
+	public MemberDto updatememDto(MemberDto mem) throws Exception {
+		System.out.println("updatememDto" + mem);
+
+		
+		return memberDao.updatememDto(mem);
+	}
+
+
+	@Override
+	public List<adminDto> getMemberId() throws Exception {
+		
+		return memberDao.getMemberId();
 	}
 	
 	
