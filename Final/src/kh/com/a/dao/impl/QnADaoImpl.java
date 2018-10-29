@@ -62,6 +62,11 @@ public class QnADaoImpl implements QnADao {
 		return sqlSession.selectOne(namespace+"getBbs", seq);
 	}
 
+	@Override
+	public boolean readCount(int seq) throws Exception {
+		sqlSession.update(namespace+"readCount",seq);
+		return true;
+	}
 
 	@Override
 	public void replyBbsUpdate(QnADto qna) throws Exception {

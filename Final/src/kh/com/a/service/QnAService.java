@@ -33,6 +33,9 @@ public interface QnAService {
 	//QnAdetail list 처리
 	public QnADto getBbs(int seq) throws Exception;
 	//QnAdetail list 처리 끝
+
+	//조회수 , reply
+	boolean readCount(int seq) throws Exception;
 	
 	public void reply(QnADto qna) throws Exception;
 	

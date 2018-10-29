@@ -22,6 +22,8 @@ public interface QnADao {
 
 	public QnADto getBbs(int seq) throws Exception;
 
+	public boolean readCount(int seq) throws Exception;
+
 	public void replyBbsUpdate(QnADto qna) throws Exception;
 
 	public void replyBbsInsert(QnADto qna) throws Exception;

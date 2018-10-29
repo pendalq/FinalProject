@@ -7,7 +7,7 @@
 <mapper namespace="QnA">
 
 	<select resultType="kh.com.a.model.QnADto" id="getBbsList">
-		SELECT SEQ, ID,REF, STEP, DEPT,CATEGORY,TITLE, CONTENT, WDATE, DEL
+		SELECT SEQ, ID,REF, STEP, DEPT,CATEGORY,TITLE, CONTENT, WDATE, PARENT, DEL,READCOUNT
 		FROM QNA
 		ORDER BY REF DESC, STEP ASC 
 		</select>
@@ -16,9 +16,10 @@
 	
 	<select resultType="kh.com.a.model.QnADto" id="getBbsPagingList"
 		parameterType="kh.com.a.model.BbsParam">
-		SELECT SEQ, ID, CATEGORY,REF, STEP, DEPT,TITLE, CONTENT, WDATE, DEL
+		SELECT SEQ, ID, CATEGORY,REF, STEP, DEPT,TITLE, CONTENT, WDATE,
+		PARENT, DEL, READCOUNT
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY REF DESC, STEP ASC) AS RNUM,SEQ, ID,CATEGORY, REF, STEP, DEPT,TITLE,
-		CONTENT, WDATE, DEL
+		CONTENT, WDATE, PARENT, DEL, READCOUNT
 		FROM QNA
 		WHERE 1=1
 
@@ -57,8 +58,8 @@
 
 	<insert id="writeBbs" parameterType="kh.com.a.model.QnADto">
 		INSERT INTO
-		QNA(SEQ,CATEGORY,ID,REF,STEP,DEPT,TITLE,CONTENT,WDATE,DEL)
-		VALUES(QNA_SEQ.nextval,#{category},#{id},(SELECT NVL(MAX(REF),0)+1 FROM QNA),0,0,#{title},#{content},SYSDATE,0) 
+		QNA(SEQ,CATEGORY,ID,REF,STEP,DEPT,TITLE,CONTENT,WDATE,PARENT,DEL,READCOUNT)
+		VALUES(QNA_SEQ.nextval,#{category},#{id},(SELECT NVL(MAX(REF),0)+1 FROM QNA),0,0,#{title},#{content},SYSDATE,0,0,0) 
 		</insert>
 
 	<update id="replyBbsUpdate"
@@ -70,7 +71,7 @@
 
 	<insert id="replyBbsInsert"
 		parameterType="kh.com.a.model.QnADto">
-		INSERT INTO QNA(SEQ,CATEGORY , ID,REF, STEP, DEPT,TITLE,CONTENT, WDATE, DEL)
+		INSERT INTO QNA(SEQ,CATEGORY , ID,REF, STEP, DEPT,TITLE,CONTENT, WDATE, PARENT, DEL,READCOUNT)
 		VALUES(QNA_SEQ.NEXTVAL,#{category},#{id},
 		(SELECT REF FROM QNA WHERE SEQ=#{seq}),
 		(SELECT STEP FROM QNA WHERE SEQ=#{seq})+1,
@@ -79,7 +80,7 @@
 
 	<select resultType="kh.com.a.model.QnADto" id="getBbs"
 		parameterType="java.lang.Integer">
-		SELECT SEQ,CATEGORY ,ID, REF, STEP, DEPT, TITLE,CONTENT,WDATE, DEL
+		SELECT SEQ,CATEGORY ,ID, REF, STEP, DEPT, TITLE,CONTENT,WDATE, PARENT, DEL, READCOUNT
 		FROM QNA
 		WHERE SEQ=#{seq} </select>
 

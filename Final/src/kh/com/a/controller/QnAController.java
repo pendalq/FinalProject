@@ -35,14 +35,10 @@ public class QnAController {
 		logger.info("QnA 게시판을 불러오는 곳입니다.");
 		
 		if(req.getSession().getAttribute("loginAuth") != null) {
-			
 			model.addAttribute("loginAuth", (int)req.getSession().getAttribute("loginAuth"));
-			
-		}else {
+		}else { 
 			return "redirect:/login.do";
 		}
-		
-		
 		// paging 처리
 		int sn = param.getPageNumber();
 		int start = (sn) * param.getRecordCountPerPage() + 1;
@@ -63,6 +59,10 @@ public class QnAController {
 		param.setEnd(end);
 		
 		
+		
+		
+		
+	 
 		
 		List<QnADto> QnAlist = qnAService.getBbsPagingList(param);
 		
@@ -93,6 +93,7 @@ public class QnAController {
 	public String QnADetail(int seq,Model model,HttpServletRequest req) throws Exception {
 		logger.info(" QnA  !!!!!detail 로 이동합니다!!");
 		QnADto qna=null;
+		qnAService.readCount(seq);
 		qna=qnAService.getBbs(seq);
 		List<adminDto> list = memberService.getMemberId();
 		model.addAttribute("qna", qna);
