@@ -100,7 +100,7 @@
 			<c:choose>
 				<c:when test="${loginAuth eq 1 }">
 				
-					<td><a href="/rental.do?seq=${goodsdetail.seq }" id="doRental" title="렌탈하기">렌탈하기</a></td>
+					<td><a href="./rental.do?seq=${goodsdetail.seq }" id="doRental" title="렌탈하기">렌탈하기</a></td>
 					<td>
 						<c:if test="${interCheck.id eq loginID && interCheck.gseq eq goodsdetail.seq}">
 							<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>

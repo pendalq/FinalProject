@@ -54,6 +54,7 @@ $(document).ready(function(){
 });
 
 $("#getpay").click(function(){
+	
 	var IMP = window.IMP;
 	//IMP.request_pay(param, callback) 호출
 	IMP.request_pay({
@@ -61,7 +62,7 @@ $("#getpay").click(function(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    name : '주문명:결제테스트',
-	    amount : 1,
+	    amount : 100,
 	    buyer_email : '',
 	    buyer_name : '${buyer.name}',
 	    buyer_tel : '${buyer.phone}',
@@ -71,7 +72,7 @@ $("#getpay").click(function(){
 	}, function(rsp) {
 	    if ( rsp.success ) {
 	      var msg = '결제가 완료되었습니다.';
-	      location.href="./paysuccess.do?id=${loginID}&gseq=${goods.seq}&term=$('#term option:selected').val()"
+	      location.href="./paysuccess.do?id=${loginID}&gseq=${goods.seq}&term="+$('#term option:selected').val();
 	    } else {
 	        var msg = '결제에 실패하였습니다.';
 	        msg += '에러내용 : ' + rsp.error_msg;
