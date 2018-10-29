@@ -39,7 +39,7 @@
 
 <form name="frmForm" id="_frmForm" method="post" action="bbsreplyAf.do">
 <input type="hidden" name="seq"   value="${qna.seq}"/>
-
+<input type="hidden" name="category" value="${qna.category }">
 <table class="list_table" style="width:85%;">
 <colgroup>
 <col style="width:200px;" />
@@ -51,7 +51,7 @@
 <tr class="id">
 	<th>아이디</th>
 	<td style="text-align: left"><input type="text" name="id" readonly="readonly" 
-	value='${login.id}' size="60"/></td>
+	value='${loginId}' size="60"/></td>
 </tr>
 <tr>
 	<th>제목</th>

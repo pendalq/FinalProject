@@ -1,181 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
- 
 
-<tiles-definitions> 
-	<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">	 
-		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-		<put-attribute name="header_second" value="/WEB-INF/views/common/header_second.jsp"/>
-		<put-attribute name="interGoods" value="/WEB-INF/views/common/interGoods.jsp"/>
-		<put-attribute name="main" value="/WEB-INF/views/Main.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+
+<tiles-definitions>
+	<definition name="main.tiles"
+		template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="header_second"
+			value="/WEB-INF/views/common/header_second.jsp" />
+		<put-attribute name="interGoods"
+			value="/WEB-INF/views/common/interGoods.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/Main.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	<!-- 공지사항 -->
 	<definition name="Noticelist.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Notice/Noticelist.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/Notice/Noticelist.jsp" />
 	</definition>
-	
+
 	<definition name="update.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Notice/update.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/Notice/update.jsp" />
 	</definition>
-	
+
 	<definition name="view.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Notice/view.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/Notice/view.jsp" />
 	</definition>
-	
+
 	<definition name="write.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Notice/write.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/Notice/write.jsp" />
 	</definition>
 	<!-- QnA -->
-	
+
 	<definition name="QnAlist.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAlist.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/QnA/QnAlist.jsp" />
 	</definition>
-	
+
 	<definition name="QnADetail.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/QnA/QnADetail.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/QnA/QnADetail.jsp" />
 	</definition>
-	
+
 	<definition name="QnAUpdate.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAUpdate.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/QnA/QnAUpdate.jsp" />
 	</definition>
-	
+
 	<definition name="QnAWrite.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAWrite.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/QnA/QnAWrite.jsp" />
 	</definition>
-	
+
 	<definition name="QnAReply.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/QnA/QnAReply.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/QnA/QnAReply.jsp" />
 	</definition>
-	
-	
-	
+
+
+
 	<definition name="login.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/login.jsp" />
 	</definition>
 
-	 <definition name="regi.tiles" extends="main.tiles"> 	
-		<put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
-	</definition>
-	
-	<definition name="userRegi.tiles" extends="main.tiles"> 	
-		<put-attribute name="main" value="/WEB-INF/views/login/userRegi.jsp"/>
-	</definition>
-	
-	<definition name="sellerRegi.tiles" extends="main.tiles"> 	
-		<put-attribute name="main" value="/WEB-INF/views/login/sellerRegi.jsp"/>
+	<definition name="regi.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/regi.jsp" />
 	</definition>
 
-	<definition name="mypage.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>	 
-	</definition>
-	
-	<definition name="sellerpage.tiles" extends="login.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellerpage.jsp"/>	 
-	</definition>
-	
-	<definition name="userUpdateInfo.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/userUpdateInfo.jsp"/>	 
-	</definition>
-	
-	<definition name="sellserUpdateInfo.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellserUpdateInfo.jsp"/>	 
+	<definition name="userRegi.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/userRegi.jsp" />
 	</definition>
 
-	<definition name="userRental.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/userRental.jsp"/>	 
+	<definition name="sellerRegi.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/sellerRegi.jsp" />
 	</definition>
-	
-	<definition name="sellerRental.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellerRental.jsp"/>	 
-	</definition>
-	
 
-	<definition name="lentManage.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/LentManage.jsp"/>	 
+	<definition name="mypage.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/mypage.jsp" />
+	</definition>
+
+	<definition name="sellerpage.tiles" extends="login.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/sellerpage.jsp" />
+	</definition>
+
+	<definition name="MemUpdateInfo.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/MemUpdateInfo.jsp" />
+	</definition>
+
+	<definition name="userRental.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/userRental.jsp" />
+	</definition>
+
+	<definition name="sellerRental.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/sellerRental.jsp" />
+	</definition>
+
+
+	<definition name="lentManage.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/LentManage.jsp" />
 	</definition>
 
 	<definition name="goodswrite.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/goods/goodswrite.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/goods/goodswrite.jsp" />
 	</definition>
-	
-	
+
+
 	<definition name="message.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/message/message.jsp"/>
-	</definition>	
- 	
+		<put-attribute name="main"
+			value="/WEB-INF/views/message/message.jsp" />
+	</definition>
+
 	<definition name="messagewrite.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/message/messagewrite.jsp"/>
- 	</definition>
+		<put-attribute name="main"
+			value="/WEB-INF/views/message/messagewrite.jsp" />
+	</definition>
 	<definition name="messagedetail.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/message/messagedetail.jsp"/>
+		<put-attribute name="main"
+			value="/WEB-INF/views/message/messagedetail.jsp" />
 	</definition>
 
 
-<definition name="mainview.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
-	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-	<put-attribute name="header_second" value="/WEB-INF/views/common/header_second.jsp"/>
-	<put-attribute name="interGoods" value="/WEB-INF/views/common/interGoods.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/main.jsp"/>
-	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
-</definition>
+	<definition name="mainview.tiles"
+		template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="header_second"
+			value="/WEB-INF/views/common/header_second.jsp" />
+		<put-attribute name="interGoods"
+			value="/WEB-INF/views/common/interGoods.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/main.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
 
-<definition name="goodsdetail.tiles" extends="mainview.tiles">
+	<definition name="goodsdetail.tiles" extends="mainview.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp" />
+	</definition>
 
-	<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp"/>
-</definition>
+	<definition name="payment.tiles" extends="mainview.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/payment/payment.jsp" />
+	</definition>
 
-<definition name="payment.tiles" extends="mainview.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/payment/payment.jsp"/>
-</definition>
-
-<definition name="goodsList.tiles"
-		extends="main.tiles">
+	<definition name="goodsList.tiles" extends="main.tiles">
 		<put-attribute name="main"
 			value="/WEB-INF/views/goodsAllList/goodsList.jsp" />
 	</definition>
 
 
-	 <definition name="regi.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
+	<definition name="regi.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/regi.jsp" />
 	</definition>
 
-	 <definition name="userRegi.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/login/userRegi.jsp"/>
+	<definition name="userRegi.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/userRegi.jsp" />
 	</definition>
-	
+
 	<definition name="sellerRegi.tiles" extends="main.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/login/sellerRegi.jsp"/>
-	</definition>
-	
-		<definition name="mypage.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/mypage.jsp"/>	 
-	</definition>
-	
-	<definition name="sellerpage.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellerpage.jsp"/>	 
+		<put-attribute name="main"
+			value="/WEB-INF/views/login/sellerRegi.jsp" />
 	</definition>
 
-	
-	<definition name="userRental.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/userRental.jsp"/>	 
+	<definition name="mypage.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/mypage.jsp" />
 	</definition>
-	
-	<definition name="sellerRental.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellerRental.jsp"/>	 
+
+	<definition name="sellerpage.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/sellerpage.jsp" />
 	</definition>
-	
-	
-	<definition name="userUpdateInfo.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/userUpdateInfo.jsp"/>	 
+
+
+	<definition name="userRental.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/userRental.jsp" />
 	</definition>
-	
-	<definition name="sellserUpdateInfo.tiles" extends="main.tiles">		 
-		<put-attribute name="main" value="/WEB-INF/views/mypage/sellserUpdateInfo.jsp"/>	 
+
+	<definition name="sellerRental.tiles" extends="main.tiles">
+		<put-attribute name="main"
+			value="/WEB-INF/views/mypage/sellerRental.jsp" />
 	</definition>
-	
-	
-	
+
+	<definition name="adminMyPage.tiles" extends="main.tiles">
+
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/adminMyPage.jsp" />
+
+	</definition>
+
+
 
 
 </tiles-definitions>

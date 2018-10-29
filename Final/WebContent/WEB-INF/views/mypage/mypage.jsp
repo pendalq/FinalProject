@@ -51,16 +51,14 @@ background-color:  #dddddd;
 </head>
 <body>
  
+
 <div class="mypageTable">
 <h2>여기는_ 유저 _마이페이지</h2>
 <table>
-	
-	
-	
 	<tr>
 		<td>
 			${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
-			 	
+			
 		</td>
 	</tr>
 	
@@ -133,6 +131,7 @@ ${myrental3.title }
 $(".memInfoUpdate").click(function() {
 	//alert("userInfoUpdate 함수 실행");
 	location.href = "updateInfo.do";
+	
 });
 
 /* $("#myqnalist").click(function() {

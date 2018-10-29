@@ -101,6 +101,7 @@
 				<c:when test="${loginAuth eq 1 }">
 				
 					<td><a href="./rental.do?seq=${goodsdetail.seq }" id="doRental" title="렌탈하기">렌탈하기</a></td>
+
 					<td>
 						<c:if test="${interCheck.id eq loginID && interCheck.gseq eq goodsdetail.seq}">
 							<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>
@@ -423,7 +424,7 @@ $(function () {
 
 $(document).ready(function () {
 	 
-	 for(i = 1;i< ${reviewDetailList.size()} + 1; i++){
+	 for(int i = 1;i< ${reviewDetailList.size()} + 1; i++){
 //	 alert("reviewshow1");
 		$("#_reviewcontent"+i).hide();
 //		alert("reviewshow2");

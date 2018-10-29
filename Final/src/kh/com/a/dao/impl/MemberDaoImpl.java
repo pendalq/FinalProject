@@ -1,11 +1,14 @@
 package kh.com.a.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.com.a.dao.MemberDao;
 import kh.com.a.model.MemberDto;
+import kh.com.a.model.adminDto;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -43,10 +46,35 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public MemberDto getMemberInfo(String id) throws Exception {
-		MemberDto mem = sqlSession.selectOne(namespace + "getMember", id);
-		return mem;
+	public MemberDto getmemDto(String id) throws Exception {
+		
+		
+		System.out.println("MemberDaoImpl mem = " + id);
+		
+		MemberDto MemberDto = sqlSession.selectOne(namespace +"getmemDto", id);
+		
+		System.out.println("MemberDaoImpl MemberDto = " + MemberDto);
+		
+		return MemberDto;
 	}
+
+	@Override
+	public MemberDto updatememDto(MemberDto mem) throws Exception {
+		System.out.println("MemberDaoImpl MemberDto = " + mem);
+		
+		MemberDto updatememDto = sqlSession.selectOne(namespace + "udateMem" ,mem);
+		
+		return updatememDto;
+	}
+
+	@Override
+	public List<adminDto> getMemberId() throws Exception {
+		List<adminDto> list = sqlSession.selectList(namespace + "getMemberId");
+		return list;
+	}
+	
+	
+	
 	
 	
 }

@@ -78,8 +78,7 @@ public class QnADaoImpl implements QnADao {
 	@Override
 	public void replyBbsInsert(QnADto qna) throws Exception {
 		sqlSession.insert(namespace+"replyBbsInsert", qna);
-		
-		
+
 	}
 	
 	

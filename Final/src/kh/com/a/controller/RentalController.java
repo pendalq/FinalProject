@@ -43,6 +43,10 @@ public class RentalController {
 		GoodsDto goods = rentalService.getGoodsInfo(seq);
 		MemberDto buyer = rentalService.getMemberInfo(id);
 		
+		
+		System.out.println("goods = " + goods.toString());
+		System.out.println("memberDto = " + buyer.toString());
+		
 		model.addAttribute("goods", goods);
 		model.addAttribute("buyer", buyer);
 			
