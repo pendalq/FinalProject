@@ -37,6 +37,10 @@ SELECT NVL(COUNT(*),0)
 FROM MEMBER
 WHERE ID=#{id}
 </select>
+
+<select id="getMemberId" resultType="kh.com.a.model.adminDto">
+SELECT ID,ADDRESS,AUTHFROM MEMBER 
+</select>
  
 
 </mapper>
