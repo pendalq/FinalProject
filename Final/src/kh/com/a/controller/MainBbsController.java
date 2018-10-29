@@ -102,9 +102,10 @@ public class MainBbsController {
 		return "goodsdetail.tiles";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value="putInterest.do",method= {RequestMethod.GET, RequestMethod.POST})
-	public boolean putInterest(Model model, InterDto idto) throws Exception{
+	public boolean putInterest(InterDto idto) throws Exception{
 		logger.info("MainBbsController putInterest");
 		
 		System.out.println("idto:" + idto.toString());

@@ -10,20 +10,6 @@ public class InterDto implements Serializable{
 	
 	public InterDto() {}
 	
-	
-	
-	
-
-	public InterDto(int seq, String id, int gseq) {
-		super();
-		this.seq = seq;
-		this.id = id;
-		this.gseq = gseq;
-	}
-
-
-
-
 
 	public InterDto(int seq, String id, int gseq, String imageName) {
 		super();

@@ -14,40 +14,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css">
-/* .content {
-padding-bottom: 10%;
-}
 
- 
-.footer {
-
-bottom: 0;
-width: 100%;
-height: 10%;
-background-color: silver;
-
-}
- */
-</style>
 
 </head>
 <body>
 
-<table width="100%" height="100%" border="0">
+<table>
 
 <tr> <!-- header -->
-   <td style="position: static;">
+   <td>
       <tiles:insertAttribute name="header"/>
    </td>
 </tr>
-<tr>
-	<td>
-		<tiles:insertAttribute name="interGoods"/>
-	</td>
-</tr>
-    
-
 <tr>    <!-- menu, content -->
    <td>
       <tiles:insertAttribute name="main"/>

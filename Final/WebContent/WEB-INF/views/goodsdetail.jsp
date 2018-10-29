@@ -46,12 +46,12 @@
 
 
 
-<form action="frm" id="_frm" method="post" action="putInterest.do">
 
-
-<table class="list_table" style="width: 90%">
 	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
 	<input type="hidden" name="_id" id="_id" value="${loginID }">
+
+<table class="list_table" style="width: 90%">
+<form action="frm" id="_frm" method="post" action="putInterest.do">
  	<colgroup>
 
 	</colgroup> 
@@ -109,7 +109,6 @@
 						<c:if test="${interCheck.id ne loginID || interCheck.gseq ne goodsdetail.seq }">
 							<a href="#none" id="putInterest" title="관심상품에저장">관심상품에저장</a>
 						</c:if>
-						
 					</td>
 					
 				</c:when>
@@ -222,50 +221,52 @@ $("#putInterest").click(function () {
   */
 
 
-$(function () {
-	
-//	alert($("#_id").val());
-	
-	$("#putInterest").click(function () {
-		$.ajax({
-			url:"putInterest.do",
-			type:"POST",
-			data:{
-				"command":"putInterest",
-				"id":$("#_id").val(),
-				"gseq":$("#seq").val()
-			},
-			success:function (data) {
-				alert("관심상품 목록에 추가되었습니다");
-			},
-			error:function (request, error) {
-			         alert("message:"+request.responseText);
-			}
+  $(function () {
+		
+//		alert($("#_id").val());
+		
+		$("#putInterest").click(function () {
+			$.ajax({
+				url:"putInterest.do",
+				type:"POST",
+				data:{
+					"command":"putInterest",
+					"id":$("#_id").val(),
+					"gseq":$("#seq").val()
+				},
+				success:function (data) {
+					alert("관심상품 목록에 추가되었습니다");
+				},
+				error:function (request, error) {
+				         alert("message:"+request.responseText);
+				}
+			});
+			location.reload();
 		});
 	});
-});
   
-  
-$(function () {
-	$("#delInterest").click(function () {
-		$.ajax({
-			url : "delInterest.do",
-			type : "POST",
-			data : {
-				command : "delInterest",
-				id : $("#id").val(),
-				gseq : $("#seq").val()
-			},
-			success : function (data) {
-				alert("관심상품 목록에서 삭제되었습니다")
-			},
-			error : function () {
-				alert("에러났어욤");
-			}
+  $(function () {
+		$("#delInterest").click(function () {
+			$.ajax({
+				url:"delInterest.do",
+				type:"POST",
+				data:{
+					"command":"delInterest",
+					"id":$("#_id").val(),
+					"gseq":$("#seq").val()
+				},
+				success:function(data){
+					alert("관심상품 목록에서 삭제되었습니다");
+				},
+				error:function(request, error){
+					alert("에러났어욤");
+					 alert("message:"+request.responseText);
+				}
+			});
+			location.reload();
 		});
 	});
-});
- 
+	 
    
  $("#doRental").click(function () {
 	$("#_frm").attr({ "target":"_self", "action":"gotoRental.do"}).submit();
@@ -317,7 +318,7 @@ $("#goodsDelete").click(function () {
 	$("#_frm").attr({ "target":"_self", "action":"goodsDel.do"}).submit();
 });
 
-  
+
  
 </script>
 

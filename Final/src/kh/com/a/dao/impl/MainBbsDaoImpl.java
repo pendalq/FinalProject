@@ -41,8 +41,8 @@ public class MainBbsDaoImpl implements MainBbsDao {
 
 	@Override
 	public boolean putInterest(InterDto idto) throws Exception {
-		sqlSession.insert(namespace2 + "putInterest", idto);
-		return true;
+		int result = sqlSession.insert(namespace2 + "putInterest", idto);
+		return result > 0 ? true : false;
 	}
 
 	@Override
