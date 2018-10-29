@@ -6,6 +6,7 @@
 <mapper namespace="Member">
 
 
+
 <insert id="addMember" parameterType="kh.com.a.model.MemberDto">
 INSERT INTO MEMBER(ID,PW,ADDRESS,PHONE,NAME,AUTH)
 VALUES(#{id},#{pw},#{address},#{phone},#{name},#{auth})
@@ -37,11 +38,5 @@ FROM MEMBER
 WHERE ID=#{id}
 </select>
  
-
-<select id="getMemberId" resultType="kh.com.a.model.adminDto">
-	SELECT ID,ADDRESS,AUTH
-	FROM MEMBER
-</select>
-
 
 </mapper>
