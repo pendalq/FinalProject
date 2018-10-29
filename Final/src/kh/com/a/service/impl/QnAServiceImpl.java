@@ -57,12 +57,6 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public boolean readCount(int seq) throws Exception {
-
-		return QnAdao.readCount(seq);
-	}
-
-	@Override
 	public void reply(QnADto qna) throws Exception {
 		QnAdao.replyBbsUpdate(qna);
 		QnAdao.replyBbsInsert(qna);
