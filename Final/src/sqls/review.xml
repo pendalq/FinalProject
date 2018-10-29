@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+
+	<select id="getReviewPagingList"
+		parameterType="kh.com.a.model.ReviewParam"
+		resultType="kh.com.a.model.ReviewDto">
+		SELECT * FROM(SELECT A.*, ROWNUM RNUM FROM (SELECT * FROM
+		REVIEW WHERE GSEQ LIKE #{gseq}
+		ORDER BY SEQ DESC)A) WHERE RNUM
+		BETWEEN
+		${start} AND ${end}
+	</select>
+
+	<select id="getReviewCount"
+		parameterType="kh.com.a.model.ReviewParam"
+		resultType="java.lang.Integer">
+		SELECT COUNT(DECODE(GSEQ,#{gseq},1)) FROM REVIEW
+	</select>
+
+	<select id="getLikedAvg"
+		parameterType="kh.com.a.model.ReviewParam" resultType="_double">
+		SELECT
+		AVG(LIKED) FROM REVIEW WHERE GSEQ LIKE #{gseq}
+	</select>
+
+	<insert id="reviewWrite"
+		parameterType="kh.com.a.model.ReviewDto">
+		INSERT INTO REVIEW
+		(SEQ,ID,GSEQ,TITLE,CONTENT,WDATE,READCOUNT,LIKED)
+		VALUES(REVIEW_SEQ.NEXTVAL, #{id}, #{gseq}, #{title},
+		#{content}, SYSDATE, 0, #{liked}, 0)
+	</insert>
+
+	<select id="getReviewOne" parameterType="java.lang.Integer"
+		resultType="kh.com.a.model.ReviewDto">
+		SELECT * FROM REVIEW WHERE SEQ=#{seq}
+	</select>
+	
+	<update id="updateReview" parameterType="kh.com.a.model.ReviewDto">
+		UPDATE REVIEW SET TITLE=#{title}, CONTENT=#{content}, LIKED=#{liked} WHERE SEQ=#{seq}
+	</update>
+
+	<delete id="reviewDelete" parameterType="kh.com.a.model.ReviewDto">
+		DELETE REVIEW WHERE SEQ=#{seq}
+	</delete>
+	
+
+
+
+
+</mapper>

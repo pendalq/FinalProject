@@ -12,30 +12,29 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="regi.tiles" extends="goodsList.tiles">
+	<definition name="reviewList.tiles" extends="goodsList.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/login/regi.jsp" />
+			value="/WEB-INF/views/review/reviewList.jsp" />
+	</definition>
+	
+	<definition name="reviewWrite.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewWrite.jsp" />
+	</definition>
+	
+	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewUpdate.jsp" />
 	</definition>
 
-	<definition name="bbslist.tiles" extends="goodsList.tiles">
+	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/bbslist.jsp" />
+			value="/WEB-INF/views/review/reviewUpdate.jsp" />
 	</definition>
-
-	<definition name="bbsdetail.tiles" extends="goodsList.tiles">
+	
+	<definition name="testWeb.tiles" extends="goodsList.tiles">
 		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/bbsdetail.jsp" />
-	</definition>
-
-	<definition name="bbsupdate.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/bbsupdate.jsp" />
-	</definition>
-
-	<definition name="bbswrite.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/bbswrite.jsp" />
+			value="/WEB-INF/views/review/testWeb.jsp" />
 	</definition>
 
 </tiles-definitions>
-

@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TEST WEB</title>
 </head>
 <body>
 <a href="goodsList.do"> go</a>
 <a href="reviewList.do?gseq=60">go2</a>
+<a href="reviewWriteAf.do">go3</a>
 </body>
 </html>

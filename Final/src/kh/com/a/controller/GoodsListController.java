@@ -90,6 +90,8 @@ public class GoodsListController {
 				model.addAttribute("categoryName", "냉장고 옵션");
 			} else if (param.getCategory().equals("tv")) {
 				model.addAttribute("categoryName", "TV 옵션");
+			}else{
+				model.addAttribute("categoryName", "옵션");
 			}
 		} else {
 			model.addAttribute("categoryName", "옵션");
