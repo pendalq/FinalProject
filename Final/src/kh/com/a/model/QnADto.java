@@ -32,14 +32,16 @@ public class QnADto implements Serializable{
    private int step;
    private int dept;
    private String wdate;
+   private int parent;
    private int del;
+   private int readcount;
    
    public QnADto() {
       
    }
 
 public QnADto(int seq, String category, String id, String title, String content, int ref, int step, int dept,
-		String wdate, int del) {
+		String wdate, int parent, int del, int readcount) {
 	super();
 	this.seq = seq;
 	this.category = category;
@@ -50,7 +52,9 @@ public QnADto(int seq, String category, String id, String title, String content,
 	this.step = step;
 	this.dept = dept;
 	this.wdate = wdate;
+	this.parent = parent;
 	this.del = del;
+	this.readcount = readcount;
 }
 
 public int getSeq() {
@@ -125,6 +129,14 @@ public void setWdate(String wdate) {
 	this.wdate = wdate;
 }
 
+public int getParent() {
+	return parent;
+}
+
+public void setParent(int parent) {
+	this.parent = parent;
+}
+
 public int getDel() {
 	return del;
 }
@@ -133,11 +145,21 @@ public void setDel(int del) {
 	this.del = del;
 }
 
+public int getReadcount() {
+	return readcount;
+}
+
+public void setReadcount(int readcount) {
+	this.readcount = readcount;
+}
+
 @Override
 public String toString() {
 	return "QnADto [seq=" + seq + ", category=" + category + ", id=" + id + ", title=" + title + ", content=" + content
-			+ ", ref=" + ref + ", step=" + step + ", dept=" + dept + ", wdate=" + wdate + ", del=" + del + "]";
+			+ ", ref=" + ref + ", step=" + step + ", dept=" + dept + ", wdate=" + wdate + ", parent=" + parent
+			+ ", del=" + del + ", readcount=" + readcount + "]";
 }
+   
    
    
    
