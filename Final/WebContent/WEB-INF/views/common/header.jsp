@@ -149,10 +149,11 @@
 
 	<div class="body__overlay"></div>
 	<!-- Start Offset Wrapper -->
+	<input type="hidden" id="idname" value="${loginID }">
 	<div class="offset__wrapper">
 
 		<!-- Start Offset MEnu -->
-		<div class="offsetmenu">
+		<div class="offsetmenu" id="interBtn">
 			<div class="offsetmenu__inner">
 				<div class="offsetmenu__close__btn">
 					<a href="#"><i class="zmdi zmdi-close"></i></a>
@@ -164,76 +165,15 @@
 						</a>
 					</div>
 					<p>관심상품</p>
+					<div id="boardlist"></div>
 				</div>
-				<ul class="sidebar__thumd">
-					<li><a href="#"><img src="design/images/sidebar-img/1.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/2.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/3.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/4.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/5.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/6.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/7.jpg"
-							alt="sidebar images"></a></li>
-					<li><a href="#"><img src="design/images/sidebar-img/8.jpg"
-							alt="sidebar images"></a></li>
-				</ul>
 
 			</div>
 		</div>
 		<!-- End Offset MEnu -->
 	</div>
 	<!-- End Offset Wrapper -->
-	<!-- Start Slider Area -->
-	<div class="slider__container slider--one">
-		<div class="slider__activation__wrap owl-carousel owl-theme">
-			<!-- Start Single Slide -->
-			<div class="slide slider__full--screen"
-				style="background: rgba(0, 0, 0, 0) url(image/bgsmp.jpg) no-repeat scroll center center/cover;">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-4 col-sm-12 col-xs-12">
-							<div class="slider__inner">
-								<h1>
-									New Product <span class="text--theme">Collection</span>
-								</h1>
-								<div class="slider__btn">
-									<a class="htc__btn" href="cart.html">shop now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Single Slide -->
-			<!-- Start Single Slide -->
-			<div class="slide slider__full--screen"
-				style="background: rgba(0, 0, 0, 0) url(images/slider/bg/2.png) no-repeat scroll center center/cover;">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-							<div class="slider__inner">
-								<h1>
-									New Product <span class="text--theme">Collection</span>
-								</h1>
-								<div class="slider__btn">
-									<a class="htc__btn" href="cart.html">shop now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Single Slide -->
-		</div>
-	</div>
-	<!-- Start Slider Area -->
+
 
 
 
@@ -242,9 +182,8 @@
 
 </div>
 
+<script type="text/javascript">
 
-
-<script>
 function memberlogout() {
 	   alert("로그아웃");
 	   location.href = "logout.do";
@@ -274,4 +213,54 @@ function memberlogout() {
 
 
 
+
+$(document).ready(function () {
+
+	$("#interBtn").click(function () {
+		$.ajax({
+			url:"youAreInterestedIn.do",
+			type:"POST",
+			data:{
+				"command":"youAreInterestedIn",
+				"id":$("#id").val()
+			},
+			success:function(data){
+	//			alert("관심상품목록");
+	//			var results = data.boardlist;
+				
+				var str='<ul class="sidebar__thumd">';
+				$.each(data,function(i, item){
+					/* str+='<td>'+results[i].imageName+'</td>'; */
+			//		alert(item.imageName);
+			//		alert(item.gseq);
+					var n=i+1;
+			//		alert(n);
+					str+='<li id="list'+n+'">'+item.imageName+'</li>';
+					str+='</ul>';
+					
+					
+					
+					$(document).on("click","#list"+n,function(){
+					//	alert("click");
+						location.href="goodsdetail.do?seq="+item.gseq;
+					});
+				});
+				$("#boardlist").empty();
+				$("#boardlist").append(str);
+
+
+			},
+			error:function(){
+				alert("에러");
+			}
+		});
+	});
+	
+	
+
+	
+	
+	
+
+});
 </script>
