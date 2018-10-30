@@ -70,7 +70,7 @@ public class sellerPageDaoImpl implements sellerPageDao {
 	public List<QnADto> getBbsPagingList(BbsParam param) throws Exception {
 		System.out.println(" sellerPageDaoImpl getMyQnaList 가져오기");
 		List<QnADto> list = sqlSession.selectList(namespace + "getBbsPagingList", param);
-		System.out.println(" 내보내 버리기");
+		System.out.println(" 판매자페이지 내보내 버리기");
 		return list;
 	}
 
@@ -79,7 +79,7 @@ public class sellerPageDaoImpl implements sellerPageDao {
 		int num = 0;
 		System.out.println(" sellerPageDaoImpl getMyQnaList 카운트 받아오기");
 		num = sqlSession.selectOne(namespace + "getBbsCount", param); 
-		System.out.println(" 카운트 내보내 버리기");
+		System.out.println("판매자페이지 카운트 내보내 버리기");
 		return num;
 	}
 	

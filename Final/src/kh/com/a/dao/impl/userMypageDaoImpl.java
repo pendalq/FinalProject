@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.com.a.dao.userMypageDao;
 import kh.com.a.insertPatemeter.getUrentalList;
+import kh.com.a.model.BbsParam;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
 
@@ -51,6 +52,24 @@ public class userMypageDaoImpl implements userMypageDao{
 		
 		return getRentalDto;
 	}
+
+	@Override
+	public List<QnADto> getBbsPagingList(BbsParam param) throws Exception {
+		System.out.println(" sellerPageDaoImpl getMyQnaList 가져오기");
+		List<QnADto> list = sqlSession.selectList(namespace + "getBbsPagingList", param);
+		System.out.println("  마이페이지에 내보내 버리기");
+		return list;
+	}
+
+	@Override
+	public int getBbsCount(BbsParam param) throws Exception {
+		int num = 0;
+		System.out.println(" sellerPageDaoImpl getMyQnaList 카운트 받아오기");
+		num = sqlSession.selectOne(namespace + "getBbsCount", param); 
+		System.out.println("마이페이지 카운트 내보내 버리기");
+		return num;
+	}
+	
 	
 	
 	

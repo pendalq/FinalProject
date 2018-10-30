@@ -144,15 +144,6 @@
 
 <script type="text/javascript">
 
-$("#_btnSearch").click(function() {
-	//alert('search');						
-	$("#_frmFormSearch").attr({
-		"target" : "_self",
-		"action" : "sellerpage.do"
-	}).submit();
-
-});
-
 
 function goPage(pageNumber) {
 	$("#_pageNumber").val(pageNumber);

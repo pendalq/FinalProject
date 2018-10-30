@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kh.com.a.insertPatemeter.getUrentalList;
+import kh.com.a.model.BbsParam;
+import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
@@ -30,7 +32,7 @@ public class userMypageController {
 	
 	
  	@RequestMapping(value="mypage.do" , method= {RequestMethod.GET, RequestMethod.POST})
- 	public String mypage(Model model,HttpServletRequest req) throws Exception {
+ 	public String mypage(BbsParam param,Model model,HttpServletRequest req) throws Exception {
  		logger.info("userMypageController mypage.do" + new Date());
 
  		//String id = ((MemberDto) req.getSession().getAttribute("login")).getId();
@@ -42,10 +44,39 @@ public class userMypageController {
  		model.addAttribute("srental3", rental3);
  		logger.info( "srental3=" + rental3);
  		
- 		//사용자 qna list
- 		List<QnADto> qnaList = userMyServ.getMyQnaList(id);
- 		model.addAttribute("myqnalist", qnaList);
- 		logger.info( "qnaList=" + qnaList);
+ 	// paging 처리
+ 			int sn = param.getPageNumber();
+ 			int start = (sn) * param.getRecordCountPerPage() + 1;
+ 			int end = (sn + 1) * param.getRecordCountPerPage();
+ 			/*
+ 			 * 0 0 * 10 + 1 -> 1 0+1 * 10 -> 10 1 1 * 10 + 1 -> 11 1+1 * 10 -> 20
+ 			 * 
+ 			 * [1][2][3][4][5][6][7][8][9][10]
+ 			 */
+
+ 			param.setStart(start);
+ 			param.setEnd(end);
+ 			param.setId(id);
+
+ 			// 페이징도 불러오기
+ 			// 사용자 qna list
+ 			// List<QnADto> qnaList = sServ.getMyQnaList(id);
+ 			// 자신이 올린 글의 갯수 확인
+ 			System.out.println(" 파람값이 들어있는지 확인 합니다."+ param.toString());
+ 			List<QnADto> myqnalist = userMyServ.getBbsPagingList(param);
+
+ 			for (int i = 0; i < myqnalist.size(); i++) {
+ 				System.out.println(myqnalist.get(i).toString());
+ 			}
+ 			// 글의 갯수
+ 			int totalRecordCount = userMyServ.getBbsCount(param);
+
+ 			model.addAttribute("myqnalist", myqnalist);
+ 			model.addAttribute("pageNumber", sn);
+ 			model.addAttribute("pageCountPerScreen", 10);
+ 			model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
+ 			model.addAttribute("totalRecordCount", totalRecordCount);
+ 		logger.info( "qnaList=" + myqnalist);
 
  		
  		return "mypage.tiles";
