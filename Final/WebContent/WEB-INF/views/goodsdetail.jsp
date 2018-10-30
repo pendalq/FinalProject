@@ -221,7 +221,7 @@
 
 
 <%if(request.getSession().getAttribute("loginID") != null && 
-					((int)request.getSession().getAttribute("loginAuth")) == 2){ %>
+					(((int)request.getSession().getAttribute("loginAuth")) == 2) || ((int)request.getSession().getAttribute("loginAuth") == 3) || (int)request.getSession().getAttribute("loginAuth") == 4) { %>
 
 <form action="frm" id="_frm" method="post" action="putInterest.do">
 
@@ -321,7 +321,7 @@
 		</c:if>
 		
 		<c:forEach items="${reviewDetailList }" var="rd" varStatus="vs">
-		<tr class="review" style="text-align: center;">
+		<tr class="review"  style="text-align: center;">
 			<td>${vs.count}</td>
 			<td id="reviewshow${vs.count }" class="reviewshow" onclick="func(${vs.count })">${rd.title }</td>
 			<td>${rd.id }</td>
@@ -424,6 +424,7 @@ $(function () {
 
 $(document).ready(function () {
 	 
+	
 	 for(int i = 1;i< ${reviewDetailList.size()} + 1; i++){
 //	 alert("reviewshow1");
 		$("#_reviewcontent"+i).hide();

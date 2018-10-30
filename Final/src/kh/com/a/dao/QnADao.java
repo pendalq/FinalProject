@@ -27,5 +27,7 @@ public interface QnADao {
 	public void replyBbsUpdate(QnADto qna) throws Exception;
 
 	public void replyBbsInsert(QnADto qna) throws Exception;
+	
+	public List<QnADto> getMyQnA(QnADto dto) throws Exception;
 
 }

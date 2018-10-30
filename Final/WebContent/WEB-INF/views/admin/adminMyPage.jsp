@@ -40,7 +40,7 @@
 						<td id="userIds">${list.id}</td>
 						<td>${list.address }</td>
 						<td><p>승인대기중</p></td>
-						<td><button id="approval" name="approval">승인</button></td>
+						<td><button id="approval${vs.index }" class="approval" name="approval" value="${list.id }">승인</button></td>
 					</tr>
 			</c:if>	
 		</c:forEach>	
@@ -73,7 +73,7 @@
 						<td id="userIdc">${list.id}</td>
 						<td>${list.address}</td>
 						<td><p>승인완료</p></td>
-						<td><button id="cancel" name="cancel">취소</button></td>
+						<td><button id="cancel${vs.index}" class="cancel" name="cancel"  value="${list.id }" >취소</button></td>
 					</tr>
 			</c:if>	
 		</c:forEach>
@@ -83,18 +83,16 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	$("#approval").click(function () {
-		location.href="adminAf.do?id="+$("#userIds").text() + "&auth="+$("#sauth").val();
+	$(".approval").click(function () {
+		/* var value = this.val(); */
+		location.href="adminAf.do?id="+$(this).val()+"&auth="+$("#sauth").val();
 	});
 });
 
-</script>
-
-<script type="text/javascript">
 //내려주기
 $(document).ready(function() {
-	$("#cancel").click(function () {
-		location.href="adminAf.do?id="+$("#userIdc").text() + "&auth="+$("#cauth").val();
+	$(".cancel").click(function () {
+		location.href="adminAf.do?id="+$(this).val() + "&auth="+$("#cauth").val();
 	});
 });
 

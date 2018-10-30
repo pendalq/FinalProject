@@ -69,4 +69,10 @@ public class QnAServiceImpl implements QnAService {
 
 	}
 
+	@Override
+	public List<QnADto> getMyQnA(QnADto dto) throws Exception {
+		
+		return QnAdao.getMyQnA(dto) ;
+	}
+
 }

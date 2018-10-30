@@ -41,4 +41,9 @@ public class RentalDaoImpl implements RentalDao {
 	public void updateSdate(RentalGoods rental) throws Exception {
 		sqlSession.update(namespace + "updateSdate", rental);
 	}
+
+	@Override
+	public void endRent(int seq) throws Exception {
+		sqlSession.delete(namespace + "endRent", seq);
+	}
 }

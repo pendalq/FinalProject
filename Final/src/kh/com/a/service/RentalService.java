@@ -15,4 +15,6 @@ public interface RentalService {
 	public RentalGoods getRentalInfo(int seq) throws Exception;
 	
 	public void updateSdate(RentalGoods rental) throws Exception;
+	
+	public void endRent(int seq) throws Exception;
 }

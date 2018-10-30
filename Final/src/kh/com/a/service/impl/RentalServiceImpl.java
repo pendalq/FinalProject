@@ -39,5 +39,10 @@ public class RentalServiceImpl implements RentalService {
 	public void updateSdate(RentalGoods rental) throws Exception {
 		rentalDao.updateSdate(rental);
 	}
+
+	@Override
+	public void endRent(int seq) throws Exception {
+		rentalDao.endRent(seq);
+	}
 	
 }

@@ -25,7 +25,8 @@
 }
 
 .sellerTable table tr td{
-	border: 1px solid #c7c7bc; 
+	border: 1px solid #c7c7bc;
+	text-align: center;
 	line-height: 2.5em;
 	cursor: pointer;
 	width : 200px;	
@@ -35,11 +36,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 <div class="sellerTable">
 <h2>여기는_ seller _page</h2>
 <br>
-<table class="menu" border="1px soild">
+<table class="menu" border="1">
 	<tr>
 		<td colspan="2">
 			${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
@@ -47,8 +48,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td><button type="button" id="sellerRegiGoods">  렌탈상품등록하기 </td>
-		<td><button type="button" id="lentManage">  대여관리</td>
+		<td><button type="button" id="sellerRegiGoods">렌탈상품등록하기</button></td>
+		<td><button type="button" id="lentManage">대여관리</button></td>
 	</tr>
 </table>
 
@@ -86,13 +87,15 @@
 		<th>제목</th>
 		<th>날짜</th>
 	</tr>
+	<c:if test="${empty myqnalist }">
 	<tr>
+		<td></td><td></td>
 		<td>
-			<c:if test="${empty myqnalist }">
 				등록한 문의가 없습니다
-			</c:if>
 		</td>
+		<td></td>
 	</tr>
+	</c:if>
 	<c:forEach items="${myqnalist }" var="myqna" varStatus="vs">
 		<tr id="myqnalist">
 			 

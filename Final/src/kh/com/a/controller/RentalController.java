@@ -1,5 +1,6 @@
 package kh.com.a.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,24 +63,32 @@ public class RentalController {
 		
 		logger.info("RentalController rentalstatusupdate " + new Date());
 		
-		if(status.equals("rental_ing")) {
-		
-		Date rdate = new Date();
-		
-		RentalGoods rental = rentalService.getRentalInfo(seq);
-		
-		rdate.setMonth(rdate.getMonth() + Integer.parseInt(rental.getTerm()));
-		
-		System.out.println("" + rdate.getYear() + "/" + rdate.getMonth() + "/" + rdate.getDate());
-		
-		rental.setRe_turn("" + rdate.getYear() + "/" + rdate.getMonth() + "/" + rdate.getDate());
-		
-		rentalService.updateSdate(rental);
-		
-		}else {
-			return "redirect:/lentManage.do";
+		if(status.equals("startRent")) {
+			
+			Calendar cal = Calendar.getInstance();
+			
+			RentalGoods rental = rentalService.getRentalInfo(seq);
+			
+			int year = cal.YEAR;
+			int month = cal.MONTH + 1;
+			int date = cal.get(cal.DATE);
+			
+			month = month + Integer.parseInt(rental.getTerm());
+			
+			if(month > 12) {
+				month = month - 12;
+				year++;
+			}
+			
+			rental.setRe_turn("" + year + "/" + month + "/" + date);
+			
+			rentalService.updateSdate(rental);
+			
+		}else if(status.equals("endRent")){
+			rentalService.endRent(seq);
 		}
-		return "redirect:/mainbbslist.do";
+		
+		return "redirect:/lentManage.do";
 	}
 	
 }

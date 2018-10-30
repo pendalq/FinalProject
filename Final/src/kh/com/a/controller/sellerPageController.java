@@ -19,6 +19,7 @@ import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
+import kh.com.a.service.GoodsService;
 import kh.com.a.service.sellerPageService;
 
 @Controller
@@ -29,6 +30,8 @@ public class sellerPageController {
 	
 	 @Autowired
 	 sellerPageService sServ;
+	 
+	 
 	 
 	 @RequestMapping(value="sellerpage.do" , method= {RequestMethod.GET, RequestMethod.POST})
 		//public String sellerRental(Model model, HttpServletRequest req ,int seq ) throws Exception{
@@ -61,22 +64,12 @@ public class sellerPageController {
 		} 
 	 
 	 @RequestMapping(value="sellerRental.do" , method= {RequestMethod.GET, RequestMethod.POST})
-	 public String sellerRental() {
+	 public String sellerRental(int seq) throws Exception {
 		 
-		 
-		 return "goodsdetail.tiles";
+		 	 return "redirect:/goodsdetail.do?seq=" + seq;
 	 }
 	 
-/*	@RequestMapping(value="sellerRental.do" , method= {RequestMethod.GET, RequestMethod.POST})
-	public String sellerRental(Model model, HttpServletRequest req ,int seq ) throws Exception{
-		logger.info("sellerPageController sellerRental.do" + new Date());
-	
-		//seller rental ing  detail
-		GoodsDto sellerRentalDetail = sServ.GoodsDto(seq);
-		model.addAttribute("sellerGoodsDto", sellerRentalDetail);
-		
-	//	return "sellerRental.tiles";
-	}*/
+
 	
 	@RequestMapping(value="lentManage.do" ,method= {RequestMethod.GET, RequestMethod.POST})
 	//public String lentManage(Model model, HttpServletRequest req ) throws Exception{

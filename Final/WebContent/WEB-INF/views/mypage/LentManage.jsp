@@ -78,7 +78,10 @@
   		</c:choose>
  		<c:choose>
  			<c:when  test="${empty manageList.sdate }">
-  			<td id="updateStatus"><button id="updateStatusBTN" class="update" value="${manageList.seq }">수정</button></td>
+  			<td id="updateStatus"><button id="updateStatusBTN" class="update" value="${manageList.seq }">대여시작</button></td>
+  			</c:when>
+  			<c:when test="${manageList.returndday < 0 }">
+  			<td><button id="endRentBtn" class="endRent" value="${manageList.seq }">반납완료</button></td>
   			</c:when>
   			<c:otherwise>
   			<td></td>
@@ -95,14 +98,12 @@
 
 
 <script type="text/javascript">
-$("button").click(function() {
-	if($(this).attr("id") == "updateStatusBTN"){
-		$("#status").empty().append("<select name='status' id='status'><option value='' selected='selected' disabled='disabled'>--대여상태--</option><option value='prepare_rental'>대여대기중</option><option value='rental_ing'>대여중</option></select>");
-		$(this).attr("id","updateBtn");
-		$(this).text("확인");
-	}else if($(this).attr("id") == "updateBtn"){
-		location.href="./RenstalStatusUpdate.do?seq=" + $(this).val() + "&status="+$("#status option:selected").val();
-	}
+$(".update").click(function(){
+	location.href="./RenstalStatusUpdate.do?seq=" + $(this).val() + "&status=startRent";
+});
+
+$(".endRent").click(function(){
+	location.href="./RenstalStatusUpdate.do?seq=" + $(this).val() + "&status=endRent";
 });
 </script>
 

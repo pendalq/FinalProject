@@ -30,7 +30,7 @@ public class MainBbsController {
 
 	@RequestMapping(value = "mainbbslist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getMainGoodsList(Model model, HttpServletRequest req) throws Exception {
-		logger.info("MainBbsController getMainGoodsList");
+		logger.info("MainBbsController getMainGoodsList " + new Date());
 
 		List<GoodsDto> recentGoodsList = mainbbsservice.getRecentGoods();
 		model.addAttribute("mainbbslist", recentGoodsList);
