@@ -122,7 +122,7 @@ value="${loginID }"  size="50"/></td>
 
 <script type="text/javascript">
 $('#categorys').change(function(){
-	if(this.value == "Refrigerator"){
+	if(this.value == "냉장고"){
 		$('#option').empty().append("<table><tr><th>제조사</th><td><input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
 				+"<input type='radio' id='samsung' name='brands' value='SAMSUNG'>samsung "
 				+"<input type='radio' id='daewoo' name='brands' value='DAEWOO'>daewoo "
@@ -142,7 +142,7 @@ $('#categorys').change(function(){
 				+"</td></tr>"
 				+"<input type='hidden' id='brand' name='brand' value=''>"
 				+"<input type='hidden' id='options' name='options' value=''></table>");
-	}else if(this.value == "purifier"){
+	}else if(this.value == "정수기"){
 		$('#option').empty().append("<table><tr><th>제조사</th><td>"
 				+"<input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
 				+"<input type='radio' id='skmagic' name='brands' value='SK매직'>skmagic "

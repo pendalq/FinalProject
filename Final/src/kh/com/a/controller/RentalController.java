@@ -1,5 +1,6 @@
 package kh.com.a.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.RentalGoods;
-import kh.com.a.service.GoodsService;
-import kh.com.a.service.MainBbsService;
-import kh.com.a.service.MemberService;
 import kh.com.a.service.RentalService;
-import kh.com.a.service.impl.GoodsServiceImpl;
-import kh.com.a.service.impl.MainBbsServiceImpl;
-import kh.com.a.service.impl.MemberServiceImpl;
 
 @Controller
 public class RentalController {
@@ -61,6 +56,39 @@ public class RentalController {
 		rentalService.doRental(rental);
 		
 		return "redirect:/mainbbslist.do";
+	}
+	
+	@RequestMapping(value="RenstalStatusUpdate.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public String rentalstatusupdate(int seq, String status, Model model) throws Exception {
+		
+		logger.info("RentalController rentalstatusupdate " + new Date());
+		
+		if(status.equals("startRent")) {
+			
+			Calendar cal = Calendar.getInstance();
+			
+			RentalGoods rental = rentalService.getRentalInfo(seq);
+			
+			int year = cal.YEAR;
+			int month = cal.MONTH + 1;
+			int date = cal.get(cal.DATE);
+			
+			month = month + Integer.parseInt(rental.getTerm());
+			
+			if(month > 12) {
+				month = month - 12;
+				year++;
+			}
+			
+			rental.setRe_turn("" + year + "/" + month + "/" + date);
+			
+			rentalService.updateSdate(rental);
+			
+		}else if(status.equals("endRent")){
+			rentalService.endRent(seq);
+		}
+		
+		return "redirect:/lentManage.do";
 	}
 	
 }

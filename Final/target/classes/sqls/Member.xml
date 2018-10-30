@@ -39,8 +39,7 @@ WHERE ID=#{id}
 </select>
 
 <select id="getMemberId" resultType="kh.com.a.model.adminDto">
-SELECT 
-ID,ADDRESS,AUTH
+SELECT ID,ADDRESS,AUTH
 FROM MEMBER 
 </select>
  

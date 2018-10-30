@@ -76,8 +76,17 @@
   			</c:when>
   			 
   		</c:choose>
- 	
-  			<td id="updateStatus"><input type="button" id="updateStatusBTN" value="수정"   ${manageList.seq }></td>
+ 		<c:choose>
+ 			<c:when  test="${empty manageList.sdate }">
+  			<td id="updateStatus"><button id="updateStatusBTN" class="update" value="${manageList.seq }">대여시작</button></td>
+  			</c:when>
+  			<c:when test="${manageList.returndday < 0 }">
+  			<td><button id="endRentBtn" class="endRent" value="${manageList.seq }">반납완료</button></td>
+  			</c:when>
+  			<c:otherwise>
+  			<td></td>
+  			</c:otherwise>
+  		</c:choose>
   	</tr>				 
 	  		
   	</c:forEach>
@@ -89,54 +98,13 @@
 
 
 <script type="text/javascript">
-$("#updateStatusBTN").click(function() {
-	$("#status").empty();
-	  
-	
-	
-	$("#status").append("<select name='status' id='select_status'><option value='' selected='selected' disabled='disabled'>--대여상태--</option><option value='prepare_rental'>대여대기중</option><option value='rental_ing'>대여중</option></select>");
-	    //$("#updateStatusBTN").attr('id', 'updateBtn');
-	  //  $("#updateStatusBTN").attr('value', '확인');
-	  // $("#updateBtn").val('확인');
-	 // $("#updateBtn").attr('value','<input type="submit" value="확인"/>'); 
-	 	$("#updateStatus").empty();
-		//$("#updateStatus").append("<input type='button' id='updateStatusBTN' value='수정'><input type='button' id='updateBtn' onclick='changestatus()' value='확인'>");
-	 	$("#updateStatus").append("<input type='button' id='updateBtn' onclick='changestatus()' value='확인'>");
-
+$(".update").click(function(){
+	location.href="./RenstalStatusUpdate.do?seq=" + $(this).val() + "&status=startRent";
 });
 
-
-
-// 확인버튼을 눌렀을때 해당 dto의 SDATE를 DB에 넣어줘야함
-function changestatus() {
-	
-/* 	location.href='changestatus.do?seq="${manageList.seq }"'; */
-	
-	alert('${manageList.seq }');
-	//alert("changestatus function");
-	
-	/*    var selectItem = document.getElementById("select_status");
-	 alert('선택된 옵션 text 값=' + selectItem.options[selectItem.selectedIndex].text);
-	
-	 if(selectItem.equals("대여중")) {
-		 $("#status").empty();
-		 $("#status").append("대여중");
-		 $("#updateStatus").empty();
-		 $("#updateStatus").append("<input type='button' id='updateStatusBTN' value='수정'>");
-	 }else if((selectItem.equals("대여대기중")){
-			 $("#status").empty();
-			 $("#status").append("대여대기중");
-			 $("#updateStatus").empty();
-			 $("#updateStatus").append("<input type='button' id='updateStatusBTN' value='수정'>");
-		 }
-		 
-	 }
-	  */
-	
-}; 
-
- 
-
+$(".endRent").click(function(){
+	location.href="./RenstalStatusUpdate.do?seq=" + $(this).val() + "&status=endRent";
+});
 </script>
 
 

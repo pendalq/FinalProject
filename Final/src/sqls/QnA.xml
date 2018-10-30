@@ -108,4 +108,17 @@
 
 
 
+	<select id="getMyQnA" parameterType="kh.com.a.model.BbsParam" resultType="kh.com.a.model.QnADto">
+      SELECT SEQ, ID, CATEGORY,REF, STEP, DEPT,TITLE, CONTENT, WDATE,
+      PARENT, DEL, READCOUNT
+      FROM (SELECT ROW_NUMBER() OVER(ORDER BY REF DESC, STEP ASC) AS RNUM,SEQ, ID,CATEGORY, REF, STEP, DEPT,TITLE,
+      CONTENT, WDATE, PARENT, DEL, READCOUNT
+      FROM QNA
+      WHERE ID=#{id}
+      ) A
+      WHERE RNUM BETWEEN ${start} AND ${end}
+   </select>
+
+
+
 </mapper>
