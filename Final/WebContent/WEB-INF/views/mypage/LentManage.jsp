@@ -50,46 +50,50 @@
 	    <th>대여 상태</th>
 		<th>기타</th>
    </tr>
-	  
-<!--   {empty manageRentalList} -->
-  
-  	<c:forEach begin="0" step="1" items="${manageRentalList }" var="manageList" varStatus="vs">
-  		<tr>
-  		<%-- <c:if test="${empty manageList}">
-  			<td colspan="6">대여된 상품이 없습니다</td>
-  		</c:if> --%>
+	<c:choose>
+		<c:when test="${empty manageRentalList}">
+	  		<tr>
+	  			<td colspan="6" style="text-align: center">대여된 상품이 없습니다</td>
+	  		</tr>
+		</c:when>
+  		<c:otherwise>
+  			<c:forEach begin="0" step="1" items="${manageRentalList }" var="manageList" varStatus="vs">
   		
-	  		<td>${manageList.seq }</td>
-  			<td><a href="#">${manageList.id }</a></td>
-  			<td>${manageList.title }</td>
-  			<td>${manageList.wdate} </td>
-  		
-  		<c:choose>
-  			<c:when test="${empty manageList.sdate }">
-  				<td id="status">대여대기중</td>
-  			</c:when>
-  			<c:when test="${!empty manageList.sdate  and  manageList.returndday >= 0}">
-  				<td id="status">대여중</td>
-  			</c:when>
-  			<c:when test="${ manageList.returndday < 0 }">
-  				<td id="status">대여종료</td>
-  			</c:when>
-  			 
-  		</c:choose>
- 		<c:choose>
- 			<c:when  test="${empty manageList.sdate }">
-  			<td id="updateStatus"><button id="updateStatusBTN" class="update" value="${manageList.seq }">대여시작</button></td>
-  			</c:when>
-  			<c:when test="${manageList.returndday < 0 }">
-  			<td><button id="endRentBtn" class="endRent" value="${manageList.seq }">반납완료</button></td>
-  			</c:when>
-  			<c:otherwise>
-  			<td></td>
-  			</c:otherwise>
-  		</c:choose>
-  	</tr>				 
-	  		
-  	</c:forEach>
+  				<tr>
+			  		<td>${manageList.seq }</td>
+		  			<td><a href="#">${manageList.id }</a></td>
+		  			<td>${manageList.title }</td>
+		  			<td>${manageList.wdate} </td>
+		  		
+			  		<c:choose>
+			  			<c:when test="${empty manageList.sdate }">
+			  				<td id="status">대여대기중</td>
+			  			</c:when>
+			  			<c:when test="${!empty manageList.sdate  and  manageList.returndday >= 0}">
+			  				<td id="status">대여중</td>
+			  			</c:when>
+			  			<c:when test="${ manageList.returndday < 0 }">
+			  				<td id="status">대여종료</td>
+			  			</c:when>
+			  			 
+			  		</c:choose>
+			 		<c:choose>
+			 			<c:when  test="${empty manageList.sdate }">
+			  			<td id="updateStatus"><button id="updateStatusBTN" class="update" value="${manageList.seq }">대여시작</button></td>
+			  			</c:when>
+			  			<c:when test="${manageList.returndday < 0 }">
+			  			<td><button id="endRentBtn" class="endRent" value="${manageList.seq }">반납완료</button></td>
+			  			</c:when>
+			  			<c:otherwise>
+			  			<td></td>
+			  			</c:otherwise>
+		  			</c:choose>
+  			
+  				</tr>				 
+	 		
+ 	 		</c:forEach>
+ 	 	</c:otherwise>
+	</c:choose> 
  
   
   

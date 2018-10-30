@@ -34,7 +34,7 @@ WHERE SEQ = #{seq}
 <update id="updateSdate" parameterType="kh.com.a.model.RentalGoods">
 UPDATE RENTAL
 SET SDATE = SYSDATE,
-	RETURN = #{re_turn}
+	RETURN = TO_DATE(#{re_turn}, 'YYYY-MM-DD')
 WHERE SEQ = #{seq}
 </update>
 

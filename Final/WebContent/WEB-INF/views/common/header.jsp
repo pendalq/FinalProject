@@ -63,9 +63,9 @@
 					if (request.getSession().getAttribute("loginID") != null
 							&& ((int) request.getSession().getAttribute("loginAuth")) == 1) {
 				%>
-				<a href="#none" onclick="gotomypage()" title="MYPAGE"
-					style="color: white;">MYPAGE</a> <a href="#none"
-					onclick="memberlogout()" title="LOGOUT" style="color: white;">LOGOUT</a>
+				<a href="#none" onclick="goMessage()" title="MESSAGE" style="color: white;">MESSAGE</a>
+				<a href="#none" onclick="gotomypage()" title="MYPAGE" style="color: white;">MYPAGE</a> 
+				<a href="#none" onclick="memberlogout()" title="LOGOUT" style="color: white;">LOGOUT</a>
 				<%
 					}
 				%>
@@ -75,9 +75,9 @@
 					if (request.getSession().getAttribute("loginID") != null
 							&& ((int) request.getSession().getAttribute("loginAuth")) == 2) {
 				%>
-				<a href="#none" onclick="gosellerpage()" title="PROFILE"
-					style="color: white;">PROFILE</a> <a href="#none"
-					onclick="memberlogout()" title="LOGOUT" style="color: white;">LOGOUT</a>
+				<a href="#none" onclick="goMessage()" title="MESSAGE" style="color: white;">MESSAGE</a>
+				<a href="#none" onclick="gosellerpage()" title="PROFILE" style="color: white;">PROFILE</a> 
+				<a href="#none" onclick="memberlogout()" title="LOGOUT" style="color: white;">LOGOUT</a>
 				<%
 					}
 				%>
@@ -86,7 +86,8 @@
 					if (request.getSession().getAttribute("loginID") != null
 							&& ((int) request.getSession().getAttribute("loginAuth")) == 3) {
 				%>
-				<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
+				<a href="#none" onclick="goMessage()" title="MESSAGE" style="color: white;">MESSAGE</a>
+				<a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a>
 				<%
 					}
 				%>
@@ -95,8 +96,9 @@
 					if (request.getSession().getAttribute("loginID") != null
 							&& ((int) request.getSession().getAttribute("loginAuth")) == 4) {
 				%>
-				<li><a href="#none" onclick="goadmin()" title="admin">관리자페이지</a></li>
-				<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
+				<a href="#none" onclick="goMessage()" title="MESSAGE" style="color: white;">MESSAGE</a>
+				<a href="#none" onclick="goadmin()" title="admin">관리자페이지</a>
+				<a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a>
 				<%
 					}
 				%>
@@ -139,5 +141,9 @@
 		alert("관리자페이지");
 		location.href="admin.do";
 		
+	}
+	
+	function goMessage() {
+		location.href = "message.do";
 	}
 </script>

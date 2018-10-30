@@ -69,9 +69,11 @@ public class RentalController {
 			
 			RentalGoods rental = rentalService.getRentalInfo(seq);
 			
-			int year = cal.YEAR;
-			int month = cal.MONTH + 1;
-			int date = cal.get(cal.DATE);
+			int year = cal.get(cal.YEAR);
+			int month = cal.get(cal.MONTH) + 1;
+			int date = cal.get(cal.DATE) - 1;
+			
+			System.out.println("" + year + "/" + month + "/" + date);
 			
 			month = month + Integer.parseInt(rental.getTerm());
 			
@@ -80,7 +82,18 @@ public class RentalController {
 				year++;
 			}
 			
-			rental.setRe_turn("" + year + "/" + month + "/" + date);
+			System.out.println("" + year + "-" + month + "-" + date);
+			if(month < 10) {
+				if(month == 2 && date > 28) {
+					month++;
+					date = date - 28;
+					rental.setRe_turn("" + year + "-0" + month + "-" + date);
+				}else {
+					rental.setRe_turn("" + year + "-0" + month + "-" + date);
+				}
+			}else {
+				rental.setRe_turn("" + year + "-" + month + "-" + date);
+			}
 			
 			rentalService.updateSdate(rental);
 			

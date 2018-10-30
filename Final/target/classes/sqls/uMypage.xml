@@ -22,10 +22,10 @@ AND R.ID=#{id}
 
 <!--  user rental(dto) detail -->
 <select id="getUrentalDto" parameterType="kh.com.a.insertPatemeter.getUrentalList" resultType="kh.com.a.model.RentalGoods">
-SELECT G.SEQ, G.IMAGENAME , G.TITLE , G.BRAND , G.OPTIONS, R.SDATE , R.RE_TURN , R.TERM, TO_DATE(R.RE_TURN) -TO_DATE(SYSDATE) AS returndday
+SELECT G.SEQ, G.IMAGENAME , G.TITLE , G.BRAND , G.OPTIONS, R.SDATE , R.RETURN AS RE_TURN , R.TERM, TO_DATE(R.RETURN)-TO_DATE(SYSDATE) AS returndday
 FROM GOODS G , RENTAL R
 WHERE G.SEQ = R.GSEQ
-AND G.ID=#{id}
+AND R.ID=#{id}
 AND R.GSEQ=#{seq}
 </select>
 
