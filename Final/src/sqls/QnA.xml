@@ -105,9 +105,6 @@
 		WHERE SEQ=#{seq} 
 		</update>
 
-
-
-
 	<select id="getMyQnA" parameterType="kh.com.a.model.BbsParam" resultType="kh.com.a.model.QnADto">
       SELECT SEQ, ID, CATEGORY,REF, STEP, DEPT,TITLE, CONTENT, WDATE,
       PARENT, DEL, READCOUNT
@@ -118,7 +115,6 @@
       ) A
       WHERE RNUM BETWEEN ${start} AND ${end}
    </select>
-
 
 
 </mapper>

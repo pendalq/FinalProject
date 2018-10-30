@@ -25,7 +25,7 @@ WHERE SEQ=#{seq}
 
 <!-- lent manage 1o-->
 <select id="lentmanage" parameterType="java.lang.String" resultType="kh.com.a.model.RentalGoods">
-SELECT R.SEQ , R.ID, G.TITLE , R.WDATE , R.SDATE , M.ADDRESS, M.PHONE, M.NAME
+SELECT R.SEQ , R.ID, G.TITLE , R.WDATE , R.SDATE , M.ADDRESS, M.PHONE, M.NAME, TO_DATE(R.RETURN)-TO_DATE(SYSDATE) AS returndday
 FROM GOODS G , RENTAL R , MEMBER M
 WHERE G.SEQ = R.GSEQ 
 AND R.ID = M.ID

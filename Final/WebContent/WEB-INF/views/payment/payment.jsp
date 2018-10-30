@@ -39,10 +39,10 @@
 		</td>
 	</tr>
 	<tr>
-		<td>총 금액 : <span id="allprice" style="align: right;">${goods.price }</span>원</td>
+		<td colspan="8">총 금액 : <span id="allprice" style="align: right;">${goods.price }</span>원</td>
 	</tr>
 	<tr>
-		<td><button id="getpay" title="결제" style="text-align: right">결제</button></td>
+		<td colspan="8"><button id="getpay" title="결제" style="text-align: right">결제</button></td>
 	</tr>
 </table>
 

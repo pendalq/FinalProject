@@ -106,7 +106,6 @@ public class sellerPageController {
 		}
 		
 		model.addAttribute("manageRentalList", manageRentalList);
-
 		return "lentManage.tiles";
 
 	}

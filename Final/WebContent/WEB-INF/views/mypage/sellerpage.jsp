@@ -76,6 +76,7 @@
 </table>
 
 <h2 style="text-align: center;">문의한 게시판</h2>
+
 <!-- 리스트 -->
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
@@ -175,9 +176,6 @@ $("#goQnADetail").click(function () {
 	location.href = "QnADetail.do?seq="+$("#deseq").val();
 	
 });
-
-
-
 
 </script>
 

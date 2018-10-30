@@ -66,32 +66,22 @@ background-color:  #dddddd;
 
 
 <h2 style="text-align: center;">최근 렌탈 중인 상품 </h2>
-<table class="retallist" > 
-	
-<%--  	
-	<tr>
-		<c:if test = "${empty rental3 }">
-			렌탈 중인 상품이 없습니다 
-		</c:if>	
-	</tr> 
-	
-${myrental3.title }
-			<a href="userRental.do">
-				${myrental3.image }
- --%>
+<table class="retallist" > 	
  	<tr class="trtag">
-	<c:forEach begin="0" end="2" step="1" items="${rental3 }" var="myrental3" varStatus="vs">
-				<c:if test = "${empty rental3 }">
+	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
+				<c:if test = "${empty srental3 }">
 					<td>
 						렌탈 중인 상품이 없습니다
 					</td>
 				</c:if>
 				<td>
-					${myrental3.title }
+					
 				<%-- 	${myrental3.seq }	 --%>	
 						   <a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
 						${myrental3.imagename }
+						
 					</a>
+					${myrental3.title }
 				</td>		
 	</c:forEach>
 	</tr>		 
