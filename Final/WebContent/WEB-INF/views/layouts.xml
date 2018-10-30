@@ -139,7 +139,7 @@
 		<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp" />
 	</definition>
 
-	<definition name="payment.tiles" extends="mainview.tiles">
+	<definition name="payment.tiles" extends="main.tiles">
 		<put-attribute name="main"
 			value="/WEB-INF/views/payment/payment.jsp" />
 	</definition>
