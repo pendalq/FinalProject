@@ -34,24 +34,24 @@
 			<tbody>
 				<tr>
 					<th>공지 번호</th>
-					<td><input type="text" name="seq"  value="${dto.seq }" readonly="readonly"></td>
+					<td>${dto.seq }</td>
 				</tr>
 				<tr>
 					<th>제목</th>
-					<td><input type="text" name="title" value="${dto.title }" readonly="readonly"></td>
+					<td>${dto.title }</td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><pre><input type="text" name="content" value="${dto.content }" readonly="readonly"></pre></td>
+					<td>${dto.content }</td>
 				</tr>
 				<tr>
 					<th>작성일</th>
-					<td><input type="text" name="wdate" value="${dto.wdate }" readonly="readonly"></td>
+					<td>${dto.wdate }</td>
 				</tr>
 
 				<tr>
 					<th>조회수</th>
-					<td><input type="text" name="readCount" value="${dto.readCount }" readonly="readonly"></td>
+					<td>${dto.readCount }</td>
 				</tr>
 			</tbody>
 			<tfoot>

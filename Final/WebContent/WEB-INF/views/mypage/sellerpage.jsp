@@ -98,7 +98,7 @@
 			 
 				<td>${myqna.seq }</td>
 				<td>${myqna.category }</td>
-				<td>${myqna.title }</td>
+				<td id="goQnADetail">${myqna.title }</td>
 				<td>${myqna.wdate }</td>
 		</tr>
 	</c:forEach>
@@ -123,6 +123,12 @@ $("#sellerRegiGoods").click(function() {
 	location.href = "goodswrite.do";
 });
 
+$("#goQnADetail").click(function () {
+	
+	alert("QnADetail로 이동합니다");
+	location.href = "goQnADetail.do?id="+${myqnalist.id } + "&title=" + ${myqnalist.title};
+	
+});
 
 
 

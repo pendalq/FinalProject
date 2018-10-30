@@ -17,6 +17,7 @@ import kh.com.a.model.QnADto;
 import kh.com.a.model.adminDto;
 import kh.com.a.service.MemberService;
 import kh.com.a.service.QnAService;
+import kh.com.a.service.sellerPageService;
 @Controller
 public class QnAController {
 
@@ -28,6 +29,7 @@ public class QnAController {
 	QnAService qnAService;
 	@Autowired
 	MemberService  memberService;
+	
 
 	
 	@RequestMapping(value="QnAlist.do", method= {RequestMethod.GET, RequestMethod.POST})
@@ -93,6 +95,8 @@ public class QnAController {
 	public String QnADetail(int seq,Model model,HttpServletRequest req) throws Exception {
 		logger.info(" QnA  !!!!!detail 로 이동합니다!!");
 		QnADto qna=null;
+		
+		
 		qnAService.readCount(seq);
 		qna=qnAService.getBbs(seq);
 		List<adminDto> list = memberService.getMemberId();
@@ -103,6 +107,15 @@ public class QnAController {
 		return "QnADetail.tiles";
 	}
 	
+	@RequestMapping(value = "goQnADetail.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String goQnaADetail(QnADto dto , Model model) throws Exception {
+			
+	List<QnADto> MyQnA =qnAService.getMyQnA(dto);
+	
+		
+		
+		
+	}
 	//detail 끝
 	//update 시작
 	@RequestMapping(value = "QnAUpdate.do", 

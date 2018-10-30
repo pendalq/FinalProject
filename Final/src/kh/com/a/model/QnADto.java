@@ -39,6 +39,11 @@ public class QnADto implements Serializable{
    public QnADto() {
       
    }
+   
+   public QnADto(String id, String title) {
+	   this.id = id;
+	   this.title=title;
+   }
 
 public QnADto(int seq, String category, String id, String title, String content, int ref, int step, int dept,
 		String wdate, int parent, int del, int readcount) {

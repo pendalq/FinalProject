@@ -7,7 +7,7 @@
 
 <insert id="doRental" parameterType="kh.com.a.model.RentalGoods">
 	INSERT INTO RENTAL
-	VALUES(RENTAL_SEQ.NEXTVAL, #{id}, #{gseq}, #{term}, NULL, NULL)
+	VALUES(RENTAL_SEQ.NEXTVAL, #{id}, #{gseq}, #{term}, NULL, NULL , SYSDATE)
 </insert>
 
 <select id="getMember" parameterType="java.lang.String" resultType="kh.com.a.model.MemberDto">
