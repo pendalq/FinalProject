@@ -208,9 +208,30 @@
 			value="/WEB-INF/views/admin/adminMyPage.jsp" />
 
 	</definition>
+	
+	<definition name="reviewList.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewList.jsp" />
+	</definition>
+	
+	<definition name="reviewWrite.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewWrite.jsp" />
+	</definition>
+	
+	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewUpdate.jsp" />
+	</definition>
 
-
-
+	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/reviewUpdate.jsp" />
+	</definition>
+	
+	<definition name="testWeb.tiles" extends="goodsList.tiles">
+		<put-attribute name="content"
+			value="/WEB-INF/views/review/testWeb.jsp" />
+	</definition>
 
 </tiles-definitions>
-
