@@ -67,7 +67,9 @@ public class QnAController {
 		}
 		// 글의 갯수
 		int totalRecordCount = qnAService.getBbsCount(param);
-	
+		for (int i = 0; i < QnAlist.size(); i++) {
+			QnAlist.get(i).setWdate(QnAlist.get(i).getWdate().substring(0, 10));
+		}
 		
 		model.addAttribute("QnAlist", QnAlist);
 		model.addAttribute("pageNumber", sn);

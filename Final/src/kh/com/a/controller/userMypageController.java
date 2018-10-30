@@ -70,7 +70,9 @@ public class userMypageController {
  			}
  			// 글의 갯수
  			int totalRecordCount = userMyServ.getBbsCount(param);
-
+ 			for (int i = 0; i < myqnalist.size(); i++) {
+ 				myqnalist.get(i).setWdate(myqnalist.get(i).getWdate().substring(0, 10));
+ 			}
  			model.addAttribute("myqnalist", myqnalist);
  			model.addAttribute("pageNumber", sn);
  			model.addAttribute("pageCountPerScreen", 10);

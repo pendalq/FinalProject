@@ -51,14 +51,17 @@ public class NoitceController {
 				
 		//페이징 처리 끝
 				
-		List<NoticeDTO> noticelist = NoitceService.getNoticelist();
+		
 			/*System.out.println(noticelist.get(0).toString());*/
 			
 				int totalRecordCount = NoitceService.getBbsCount(param);
 				List<NoticeDTO> NoticeList = NoitceService.getBbsPagingList(param);
-				model.addAttribute("noticelist", noticelist);
-				model.addAttribute("NoticeList", NoticeList);
-					
+				
+				for (int i = 0; i < NoticeList.size(); i++) {
+					NoticeList.get(i).setWdate(NoticeList.get(i).getWdate().substring(0, 10));
+				}
+				
+				model.addAttribute("noticelist", NoticeList);	
 				model.addAttribute("pageNumber", sn);
 				model.addAttribute("pageCountPerScreen", 10);
 				model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());

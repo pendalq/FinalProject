@@ -123,7 +123,6 @@ text-align: center;
 <button id="rdel">선택삭제</button>
 <button id="sdel">선택삭제</button>
 
-<a href="messagewrite.do">쓰기</a>
 
 <script type="text/javascript">
 $(document).ready(function(){
