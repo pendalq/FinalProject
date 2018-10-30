@@ -133,6 +133,14 @@ public class BbsParam {
 	public void setEnd(int end) {
 		this.end = end;
 	}
+	@Override
+	public String toString() {
+		return "BbsParam [seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth=" + depth
+				+ ", title=" + title + ", content=" + content + ", wdate=" + wdate + ", parent=" + parent + ", del="
+				+ del + ", readcount=" + readcount + ", s_category=" + s_category + ", s_keyword=" + s_keyword
+				+ ", recordCountPerPage=" + recordCountPerPage + ", pageNumber=" + pageNumber + ", start=" + start
+				+ ", end=" + end + "]";
+	}
 	
 	
 

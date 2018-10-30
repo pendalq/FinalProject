@@ -5,7 +5,7 @@
   
 <mapper namespace="seller">
 <select id="getMyQnaList" parameterType="java.lang.String" resultType="kh.com.a.model.QnADto">
-SELECT SEQ, CATEGORY, ID, TITLE, CONTENT, REF, STEP, DEPT, WDATE, DEL
+SELECT SEQ, CATEGORY, ID, TITLE, CONTENT, REF, STEP, DEPT, WDATE, PARENT,DEL, READCOUNT 
 FROM QNA
 WHERE ID=#{id}
 </select>
@@ -32,7 +32,24 @@ AND R.ID = M.ID
 AND G.ID=#{id} 
 </select>
 
+<select resultType="kh.com.a.model.QnADto" id="getBbsPagingList"
+		parameterType="kh.com.a.model.BbsParam">
+		SELECT SEQ, ID, CATEGORY,REF, STEP, DEPT,TITLE, CONTENT, WDATE,
+		PARENT, DEL, READCOUNT
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY REF DESC, STEP ASC) AS RNUM,SEQ, ID,CATEGORY, REF, STEP, DEPT,TITLE,
+		CONTENT, WDATE, PARENT, DEL, READCOUNT
+		FROM QNA
+		WHERE id=#{id}
+		) A
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
 
+	<select resultType="java.lang.Integer" id="getBbsCount"
+		parameterType="kh.com.a.model.BbsParam">
+		SELECT NVL(COUNT(*), 0) AS CNT
+		FROM QNA
+		WHERE id=#{id}
+	</select>
 
 </mapper>
  

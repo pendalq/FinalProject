@@ -60,12 +60,6 @@ public class QnAController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		
-		
-		
-		
-	 
-		
 		List<QnADto> QnAlist = qnAService.getBbsPagingList(param);
 		
 		for (int i = 0; i < QnAlist.size(); i++) {
@@ -88,6 +82,7 @@ public class QnAController {
 		return "QnAlist.tiles";
 	}
 	
+	
 	//detail 시작
 	
 	@RequestMapping(value = "QnADetail.do", 
@@ -107,15 +102,7 @@ public class QnAController {
 		return "QnADetail.tiles";
 	}
 	
-	@RequestMapping(value = "goQnADetail.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String goQnaADetail(QnADto dto , Model model) throws Exception {
-			
-	List<QnADto> MyQnA =qnAService.getMyQnA(dto);
 	
-		
-		
-		
-	}
 	//detail 끝
 	//update 시작
 	@RequestMapping(value = "QnAUpdate.do", 

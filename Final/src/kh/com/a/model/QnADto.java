@@ -1,6 +1,5 @@
 package kh.com.a.model;
 
-
 import java.io.Serializable;
 
 /*CREATE TABLE QNA(
@@ -19,155 +18,143 @@ CONSTRAINT PK_SEQ_QNA PRIMARY KEY(SEQ),
 CONSTRAINT FK_ID_QNA FOREIGN KEY(ID) REFERENCES MEMBER(ID)
 );*/
 
+public class QnADto{
 
+	private int seq;
+	private String category;
+	private String id;
+	private String title;
+	private String content;
+	private int ref;
+	private int step;
+	private int dept;
+	private String wdate;
+	private int parent;
+	private int del;
+	private int readcount;
+	
+	public QnADto() {
+		
+	}
 
-public class QnADto implements Serializable{
+	public QnADto(int seq, String category, String id, String title, String content, int ref, int step, int dept,
+			String wdate, int parent, int del, int readcount) {
+		super();
+		this.seq = seq;
+		this.category = category;
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.ref = ref;
+		this.step = step;
+		this.dept = dept;
+		this.wdate = wdate;
+		this.parent = parent;
+		this.del = del;
+		this.readcount = readcount;
+	}
 
-   private int seq;
-   private String category;
-   private String id;
-   private String title;
-   private String content;
-   private int ref;
-   private int step;
-   private int dept;
-   private String wdate;
-   private int parent;
-   private int del;
-   private int readcount;
-   
-   public QnADto() {
-      
-   }
-   
-   public QnADto(String id, String title) {
-	   this.id = id;
-	   this.title=title;
-   }
+	public int getSeq() {
+		return seq;
+	}
 
-public QnADto(int seq, String category, String id, String title, String content, int ref, int step, int dept,
-		String wdate, int parent, int del, int readcount) {
-	super();
-	this.seq = seq;
-	this.category = category;
-	this.id = id;
-	this.title = title;
-	this.content = content;
-	this.ref = ref;
-	this.step = step;
-	this.dept = dept;
-	this.wdate = wdate;
-	this.parent = parent;
-	this.del = del;
-	this.readcount = readcount;
-}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
-public int getSeq() {
-	return seq;
-}
+	public String getCategory() {
+		return category;
+	}
 
-public void setSeq(int seq) {
-	this.seq = seq;
-}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-public String getCategory() {
-	return category;
-}
+	public String getId() {
+		return id;
+	}
 
-public void setCategory(String category) {
-	this.category = category;
-}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-public String getId() {
-	return id;
-}
+	public String getTitle() {
+		return title;
+	}
 
-public void setId(String id) {
-	this.id = id;
-}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-public String getTitle() {
-	return title;
-}
+	public String getContent() {
+		return content;
+	}
 
-public void setTitle(String title) {
-	this.title = title;
-}
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-public String getContent() {
-	return content;
-}
+	public int getRef() {
+		return ref;
+	}
 
-public void setContent(String content) {
-	this.content = content;
-}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
 
-public int getRef() {
-	return ref;
-}
+	public int getStep() {
+		return step;
+	}
 
-public void setRef(int ref) {
-	this.ref = ref;
-}
+	public void setStep(int step) {
+		this.step = step;
+	}
 
-public int getStep() {
-	return step;
-}
+	public int getDept() {
+		return dept;
+	}
 
-public void setStep(int step) {
-	this.step = step;
-}
+	public void setDept(int dept) {
+		this.dept = dept;
+	}
 
-public int getDept() {
-	return dept;
-}
+	public String getWdate() {
+		return wdate;
+	}
 
-public void setDept(int dept) {
-	this.dept = dept;
-}
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
 
-public String getWdate() {
-	return wdate;
-}
+	public int getParent() {
+		return parent;
+	}
 
-public void setWdate(String wdate) {
-	this.wdate = wdate;
-}
+	public void setParent(int parent) {
+		this.parent = parent;
+	}
 
-public int getParent() {
-	return parent;
-}
+	public int getDel() {
+		return del;
+	}
 
-public void setParent(int parent) {
-	this.parent = parent;
-}
+	public void setDel(int del) {
+		this.del = del;
+	}
 
-public int getDel() {
-	return del;
-}
+	public int getReadcount() {
+		return readcount;
+	}
 
-public void setDel(int del) {
-	this.del = del;
-}
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
 
-public int getReadcount() {
-	return readcount;
-}
+	@Override
+	public String toString() {
+		return "QnADto [seq=" + seq + ", category=" + category + ", id=" + id + ", title=" + title + ", content="
+				+ content + ", ref=" + ref + ", step=" + step + ", dept=" + dept + ", wdate=" + wdate + ", parent="
+				+ parent + ", del=" + del + ", readcount=" + readcount + "]";
+	}
 
-public void setReadcount(int readcount) {
-	this.readcount = readcount;
-}
-
-@Override
-public String toString() {
-	return "QnADto [seq=" + seq + ", category=" + category + ", id=" + id + ", title=" + title + ", content=" + content
-			+ ", ref=" + ref + ", step=" + step + ", dept=" + dept + ", wdate=" + wdate + ", parent=" + parent
-			+ ", del=" + del + ", readcount=" + readcount + "]";
-}
-   
-   
-   
-   
-   
-   
 }

@@ -80,12 +80,6 @@ public class QnADaoImpl implements QnADao {
 		sqlSession.insert(namespace+"replyBbsInsert", qna);
 
 	}
-
-	@Override
-	public List<QnADto> getMyQnA(QnADto dto) throws Exception {
-			sqlSession.selectList(namespace+"getMyQnA", dto);
-		return null;
-	}
 	
 	
 	
