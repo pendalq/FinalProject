@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
  
 import kh.com.a.dao.sellerPageDao;
+import kh.com.a.model.BbsParam;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
@@ -45,6 +46,18 @@ public class sellerPageServiceImpl implements sellerPageService{
 		
 		
 		return sdao.GoodsDto(seq);
+	}
+
+	@Override
+	public List<QnADto> getBbsPagingList(BbsParam param) throws Exception {
+		
+		return sdao.getBbsPagingList(param);
+	}
+
+	@Override
+	public int getBbsCount(BbsParam param) throws Exception {
+		
+		return sdao.getBbsCount(param);
 	}
 
 	

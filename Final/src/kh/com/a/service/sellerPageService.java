@@ -2,7 +2,7 @@ package kh.com.a.service;
 
 import java.util.List;
 
-
+import kh.com.a.model.BbsParam;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
@@ -17,4 +17,7 @@ public interface sellerPageService {
 
 	public GoodsDto GoodsDto(int seq) throws Exception;
 
+	public List<QnADto> getBbsPagingList(BbsParam param) throws Exception;
+	
+	public int getBbsCount(BbsParam param) throws Exception;
 }

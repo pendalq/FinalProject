@@ -39,7 +39,6 @@ public interface QnAService {
 	
 	public void reply(QnADto qna) throws Exception;
 	
-	public List<QnADto> getMyQnA(QnADto dto) throws Exception; 
 	
 
 }

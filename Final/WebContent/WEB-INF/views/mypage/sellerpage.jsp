@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -11,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 <style type="text/css">
 
 .sellerTable{
@@ -78,37 +75,84 @@
 	
 </table>
 
-
 <h2 style="text-align: center;">문의한 게시판</h2>
-<table class="qnalist">
-	<tr>
-		<th>번호</th>
-		<th>category</th>
-		<th>제목</th>
-		<th>날짜</th>
-	</tr>
-	<c:if test="${empty myqnalist }">
-	<tr>
-		<td></td><td></td>
-		<td>
-				등록한 문의가 없습니다
-		</td>
-		<td></td>
-	</tr>
-	</c:if>
-	<c:forEach items="${myqnalist }" var="myqna" varStatus="vs">
-		<tr id="myqnalist">
-			 
-				<td>${myqna.seq }</td>
-				<td>${myqna.category }</td>
-				<td>${myqna.title }</td>
-				<td>${myqna.wdate }</td>
-		</tr>
-	</c:forEach>
-</table>
+
+<!-- 리스트 -->
+
+	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
+
+	<table class="list_table" style="width: 85%;">
+		<colgroup>
+			<col style="width: 70px;" />
+			<col style="width: auto;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+		</colgroup>
+
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<c:if test="${empty myqnalist}">
+				<tr>
+					<td colspan="3">작성된 글이 없습니다.</td>
+				</tr>
+			</c:if>
+
+			<c:forEach items="${myqnalist}" var="myqnalist" varStatus="vs">
+				<jsp:setProperty property="dept" name="ubbs" value="${myqnalist.dept}" />
+								
+				<tr class="_hover_tr">
+					<td>${vs.count}</td>
+
+					<td style="text-align: left">
+					<jsp:getProperty property="arrow" name="ubbs" /> 
+						<c:if test="${myqnalist.del == 0 }">
+							<a href='QnADetail.do?seq=${myqnalist.seq}'> ${myqnalist.title} </a>
+						</c:if> 
+						<c:if test="${myqnalist.del == 1 }">
+								이 글은 작성자에 의해서 삭제 되었습니다
+									
+						</c:if></td>
+
+					<td>${myqnalist.id}</td>
+					<td>${myqnalist.wdate }</td>
+					<td>${myqnalist.readcount }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
+
+	<!-- 페이징 처리 -->
+	<div id="paging_wrap">
+		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
+			<jsp:param value="${pageNumber }" name="pageNumber" />
+			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
+			<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
+			<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
+		</jsp:include>
+	</div>
 </div>
 
 <script type="text/javascript">
+
+
+function goPage(pageNumber) {
+	$("#_pageNumber").val(pageNumber);
+	$("#_frmFormSearch").attr("target", "_self").attr("action",
+			"QnAlist.do").submit();
+}
+
+
 $(".memInfoUpdate").click(function() {
 	//alert("userInfoUpdate 함수 실행");
 	location.href = "updateInfo.do";
@@ -126,10 +170,12 @@ $("#sellerRegiGoods").click(function() {
 	location.href = "goodswrite.do";
 });
 
-
-
-
-
+$("#goQnADetail").click(function () {
+	
+	alert("QnADetail로 이동합니다");
+	location.href = "QnADetail.do?seq="+$("#deseq").val();
+	
+});
 </script>
 
 </body>

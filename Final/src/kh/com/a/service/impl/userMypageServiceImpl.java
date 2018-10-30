@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.com.a.dao.userMypageDao;
 import kh.com.a.insertPatemeter.getUrentalList;
+import kh.com.a.model.BbsParam;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
 import kh.com.a.service.userMypageService;
@@ -35,6 +36,18 @@ public class userMypageServiceImpl implements userMypageService {
 		System.out.println(" userMypageServiceImpl getRentalDto입니다");
 		
 		return uMDao.getRentalDto(dto); 
+	}
+
+	@Override
+	public List<QnADto> getBbsPagingList(BbsParam param) throws Exception {
+		
+		return uMDao.getBbsPagingList(param);
+	}
+
+	@Override
+	public int getBbsCount(BbsParam param) throws Exception {
+		
+		return uMDao.getBbsCount(param);
 	}
 
  
