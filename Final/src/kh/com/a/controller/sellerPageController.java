@@ -87,9 +87,14 @@ public class sellerPageController {
 		
 		//SELECT R.SEQ , R.ID AS SU_ID , M.ADDRESS , M.PHONE , G.TITLE , R.WDATE , R.SDATE , M.NAME
 		List<RentalGoods> manageRentalList = sServ.manageRentalList(id);
+		
+		for (int i = 0; i < manageRentalList.size(); i++) {
+			manageRentalList.get(i).setWdate(manageRentalList.get(i).getWdate().substring(0, 10));
+		}
+		
 		model.addAttribute("manageRentalList", manageRentalList);
 		
-		 
+		
 			 		
 		return "lentManage.tiles";
 

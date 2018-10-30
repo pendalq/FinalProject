@@ -23,10 +23,19 @@ select
 seq,id, imageName, title ,category ,brand ,price, options, content,rentalcount ,wdate
 from goods
 where seq =#{seq}
-
-
 </select>
 
+<select id="getRentalInfo" parameterType="java.lang.Integer" resultType="kh.com.a.model.RentalGoods">
+SELECT SEQ, ID, GSEQ, TERM
+FROM RENTAL
+WHERE SEQ = #{seq}
+</select>
 
+<update id="updateSdate" parameterType="kh.com.a.model.RentalGoods">
+UPDATE RENTAL
+SET SDATE = SYSDATE,
+	RETURN = #{re_turn}
+WHERE SEQ = #{seq}
+</update>
 
 </mapper>

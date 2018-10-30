@@ -12,4 +12,7 @@ public interface RentalService {
 	
 	public void doRental(RentalGoods rental) throws Exception;
 	
+	public RentalGoods getRentalInfo(int seq) throws Exception;
+	
+	public void updateSdate(RentalGoods rental) throws Exception;
 }

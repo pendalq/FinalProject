@@ -31,4 +31,14 @@ public class RentalDaoImpl implements RentalDao {
 	public void doRental(RentalGoods rental) throws Exception {
 		sqlSession.insert( namespace +"doRental", rental);
 	}
+
+	@Override
+	public RentalGoods getRentalInfo(int seq) throws Exception {
+		return sqlSession.selectOne(namespace + "getRentalInfo", seq);
+	}
+
+	@Override
+	public void updateSdate(RentalGoods rental) throws Exception {
+		sqlSession.update(namespace + "updateSdate", rental);
+	}
 }

@@ -15,13 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.MemberDto;
 import kh.com.a.model.RentalGoods;
-import kh.com.a.service.GoodsService;
-import kh.com.a.service.MainBbsService;
-import kh.com.a.service.MemberService;
 import kh.com.a.service.RentalService;
-import kh.com.a.service.impl.GoodsServiceImpl;
-import kh.com.a.service.impl.MainBbsServiceImpl;
-import kh.com.a.service.impl.MemberServiceImpl;
 
 @Controller
 public class RentalController {
@@ -60,6 +54,31 @@ public class RentalController {
 		
 		rentalService.doRental(rental);
 		
+		return "redirect:/mainbbslist.do";
+	}
+	
+	@RequestMapping(value="RenstalStatusUpdate.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public String rentalstatusupdate(int seq, String status, Model model) throws Exception {
+		
+		logger.info("RentalController rentalstatusupdate " + new Date());
+		
+		if(status.equals("rental_ing")) {
+		
+		Date rdate = new Date();
+		
+		RentalGoods rental = rentalService.getRentalInfo(seq);
+		
+		rdate.setMonth(rdate.getMonth() + Integer.parseInt(rental.getTerm()));
+		
+		System.out.println("" + rdate.getYear() + "/" + rdate.getMonth() + "/" + rdate.getDate());
+		
+		rental.setRe_turn("" + rdate.getYear() + "/" + rdate.getMonth() + "/" + rdate.getDate());
+		
+		rentalService.updateSdate(rental);
+		
+		}else {
+			return "redirect:/lentManage.do";
+		}
 		return "redirect:/mainbbslist.do";
 	}
 	
