@@ -7,10 +7,6 @@
 		template="/WEB-INF/views/layouts-tiles.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="header_second"
-			value="/WEB-INF/views/common/header_second.jsp" />
-		<put-attribute name="interGoods"
-			value="/WEB-INF/views/common/interGoods.jsp" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/main.jsp" />
 		<put-attribute name="footer"
@@ -137,21 +133,9 @@
 	</definition>
 
 
-	<definition name="mainview.tiles"
-		template="/WEB-INF/views/layouts-tiles.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="header_second"
-			value="/WEB-INF/views/common/header_second.jsp" />
-		<put-attribute name="interGoods"
-			value="/WEB-INF/views/common/interGoods.jsp" />
-		<put-attribute name="main"
-			value="/WEB-INF/views/main.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/common/footer.jsp" />
-	</definition>
 
-	<definition name="goodsdetail.tiles" extends="mainview.tiles">
+
+	<definition name="goodsdetail.tiles" extends="main.tiles">
 		<put-attribute name="main" value="/WEB-INF/views/goodsdetail.jsp" />
 	</definition>
 
@@ -210,27 +194,27 @@
 	</definition>
 	
 	<definition name="reviewList.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
+		<put-attribute name="main"
 			value="/WEB-INF/views/review/reviewList.jsp" />
 	</definition>
 	
 	<definition name="reviewWrite.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
+		<put-attribute name="main"
 			value="/WEB-INF/views/review/reviewWrite.jsp" />
 	</definition>
 	
 	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
+		<put-attribute name="main"
 			value="/WEB-INF/views/review/reviewUpdate.jsp" />
 	</definition>
 
 	<definition name="reviewUpdate.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
+		<put-attribute name="main"
 			value="/WEB-INF/views/review/reviewUpdate.jsp" />
 	</definition>
 	
 	<definition name="testWeb.tiles" extends="goodsList.tiles">
-		<put-attribute name="content"
+		<put-attribute name="main"
 			value="/WEB-INF/views/review/testWeb.jsp" />
 	</definition>
 
