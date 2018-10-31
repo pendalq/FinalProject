@@ -28,7 +28,10 @@ $(document).ready(function(){
 	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
 	if($("#_s_keyword").val().trim() == ""){
 		document.frmForm1.s_category.value = "";
-	}	
+	}
+	if(str != ''){
+		$("#_s_category option[value="+str+"]").attr('selected','selected');
+	}
 }); 
 </script> 
 <!-- 검색 카테고리를 유지 end -->
@@ -48,7 +51,7 @@ $(document).ready(function(){
 				</td>
 					<td>
 						<input type="text" id="_s_keyword" name="s_keyword"
-						value="" placeholder="카테고리를 선택 후 검색해주세요"/>
+						value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
 					</td>
 				<td>
 				<span>
