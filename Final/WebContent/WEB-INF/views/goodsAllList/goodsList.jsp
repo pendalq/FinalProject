@@ -139,16 +139,6 @@
 										</li>
 										<li class="water-size">
 											<div class="option">
-												<span class="option-title">용량</span>
-												<ul>
-													<li><button type="button" id="smallLiter" class="btn-categoryOp" value="smallLiter">500L 이하</button></li>
-													<li><button type="button" id="mediumLiter" class="btn-categoryOp" value="mediumLiter">~</button></li>
-													<li><button type="button" id="bigLiter" class="btn-categoryOp" value="bigLiter">800L 이상</button></li>
-												</ul>
-											</div>
-										</li>
-										<li class="water-size">
-											<div class="option">
 												<span class="option-title">에너지 효율</span>
 												<ul>
 													<li><button type="button" id="firstEffi" class="btn-categoryOp" value="first_effi">1등급</button></li>
@@ -193,16 +183,6 @@
 													<li><button type="button" id="ledtv" class="btn-categoryOp" value="ledtv">LED</button></li>
 													<li><button type="button" id="oled" class="btn-categoryOp" value="oled">OLED</button></li>
 													<li><button type="button" id="pdp" class="btn-categoryOp" value="pdp">PDP</button></li>
-												</ul>
-											</div>
-										</li>
-										<li class="water-size">
-											<div class="option">
-												<span class="option-title">화면 크기</span>
-												<ul>
-													<li><button type="button" id="smallInch" class="btn-categoryOp" value="smallInch">39인치 이하</button></li>
-													<li><button type="button" id="mediumInch" class="btn-categoryOp" value="mediumInch">~</button></li>
-													<li><button type="button" id="bigInch" class="btn-categoryOp" value="bigInch">65인치 이상</button></li>
 												</ul>
 											</div>
 										</li>

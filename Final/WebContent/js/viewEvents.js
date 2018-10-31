@@ -6,7 +6,9 @@ function focusingIn() {
     var searchText = document.querySelector(".list-search");
     var searchFomr = document.querySelector(".searchForm");
     var searchTap = document.querySelector(".search-tap");
-
+    
+    
+    
     searchFomr.style.width = '534px';
     searchFomr.style.height = '180px';
 
@@ -24,7 +26,7 @@ function focusingIn() {
 }
 
 $(document).ready(function () {
-
+	var brand = '';
     var optionsArr = new Array();
     var options = '';
 
@@ -224,23 +226,6 @@ $(document).ready(function () {
             $('#threeDoor').attr('class', 'btn-categoryOp');
             optionsArr[0] = '4문형'
         }
-        // // 용량
-        else if ($(this).val() == 'smallLiter') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#mediumLiter').attr('class', 'btn-categoryOp');
-            $('#bigLiter').attr('class', 'btn-categoryOp');
-            optionsArr[1] = 'smallLiter'
-        } else if ($(this).val() == 'mediumLiter') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#smallLiter').attr('class', 'btn-categoryOp');
-            $('#bigLiter').attr('class', 'btn-categoryOp');
-            optionsArr[1] = 'mediumLiter'
-        } else if ($(this).val() == 'bigLiter') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#smallLiter').attr('class', 'btn-categoryOp');
-            $('#mediumLiter').attr('class', 'btn-categoryOp');
-            optionsArr[1] = 'bigLiter'
-        }
         // 에너지 효율
         else if ($(this).val() == 'first_effi') {
             $(this).attr('class', 'btn-categoryOpFocus');
@@ -248,35 +233,35 @@ $(document).ready(function () {
             $('#thirdEffi').attr('class', 'btn-categoryOp');
             $('#fourthEffi').attr('class', 'btn-categoryOp');
             $('#fifthEffi').attr('class', 'btn-categoryOp');
-            optionsArr[2] = '1등급'
+            optionsArr[1] = '1등급'
         } else if ($(this).val() == 'second_effi') {
             $(this).attr('class', 'btn-categoryOpFocus');
             $('#firstEffi').attr('class', 'btn-categoryOp');
             $('#thirdEffi').attr('class', 'btn-categoryOp');
             $('#fourthEffi').attr('class', 'btn-categoryOp');
             $('#fifthEffi').attr('class', 'btn-categoryOp');
-            optionsArr[2] = '2등급'
+            optionsArr[1] = '2등급'
         } else if ($(this).val() == 'third_effi') {
             $(this).attr('class', 'btn-categoryOpFocus');
             $('#firstEffi').attr('class', 'btn-categoryOp');
             $('#secondEffi').attr('class', 'btn-categoryOp');
             $('#fourthEffi').attr('class', 'btn-categoryOp');
             $('#fifthEffi').attr('class', 'btn-categoryOp');
-            optionsArr[2] = '3등급'
+            optionsArr[1] = '3등급'
         } else if ($(this).val() == 'fourth_effi') {
             $(this).attr('class', 'btn-categoryOpFocus');
             $('#firstEffi').attr('class', 'btn-categoryOp');
             $('#secondEffi').attr('class', 'btn-categoryOp');
             $('#thirdEffi').attr('class', 'btn-categoryOp');
             $('#fifthEffi').attr('class', 'btn-categoryOp');
-            optionsArr[2] = '4등급'
+            optionsArr[1] = '4등급'
         } else if ($(this).val() == 'fifth_effi') {
             $(this).attr('class', 'btn-categoryOpFocus');
             $('#firstEffi').attr('class', 'btn-categoryOp');
             $('#secondEffi').attr('class', 'btn-categoryOp');
             $('#thirdEffi').attr('class', 'btn-categoryOp');
             $('#fourthEffi').attr('class', 'btn-categoryOp');
-            optionsArr[2] = '5등급'
+            optionsArr[1] = '5등급'
         }
 
         // --------------------TV-------------------------------
@@ -298,7 +283,7 @@ $(document).ready(function () {
             brand = 'SONY';
         }
         // 해상도
-        else if ($(this).val() == 'normalHD') {
+        else if ($(this).val() == 'normalhd') {
             $(this).attr('class', 'btn-categoryOpFocus');
             $('#fullhd').attr('class', 'btn-categoryOp');
             $('#ultrahd').attr('class', 'btn-categoryOp');
@@ -331,23 +316,7 @@ $(document).ready(function () {
             $('#oled').attr('class', 'btn-categoryOp');
             optionsArr[1] = 'PDP';
         }
-        // 화면 패널
-        else if ($(this).val() == 'smallInch') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#mediumInch').attr('class', 'btn-categoryOp');
-            $('#bigInch').attr('class', 'btn-categoryOp');
-            optionsArr[2] = 'smallInch';
-        } else if ($(this).val() == 'mediumInch') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#smallInch').attr('class', 'btn-categoryOp');
-            $('#bigInch').attr('class', 'btn-categoryOp');
-            optionsArr[2] = 'mediumInch';
-        } else if ($(this).val() == 'bigInch') {
-            $(this).attr('class', 'btn-categoryOpFocus');
-            $('#smallInch').attr('class', 'btn-categoryOp');
-            $('#mediumInch').attr('class', 'btn-categoryOp');
-            optionsArr[2] = 'bigInch';
-        }
+
     });
 
     $('.optionSubmit').click(function () {
@@ -361,7 +330,16 @@ $(document).ready(function () {
             }            
         }
         alert(optionsArr.length + '/확인/' + options);
-        location.href="./goodslist.do?brand=" + brand + "&option=" + options + "&category=" + $("#_category").val() + "&searchNum=4";
+        loc = "./goodslist.do?searchNum=4&category="+$("#_category").val().trim();
+        if(brand != ''){
+        	loc += "&brand="+brand;
+        }
+        if(options != ''){
+        	loc += "&options="+options;
+        }
+        
+        
+        location.href= loc;
     });
     
     $('.btn_category, .btn_buttonBar').click(function() {
