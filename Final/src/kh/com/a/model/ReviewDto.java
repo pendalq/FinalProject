@@ -8,12 +8,12 @@ public class ReviewDto {
 	private String title;
 	private String content;
 	private String wdate;
-	private String readCount;
+	private int readcount;
 	private int liked;
 	
 	public ReviewDto() {}
 	
-	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, String readCount,
+	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, int readcount,
 			int liked) {
 		super();
 		this.seq = seq;
@@ -22,7 +22,7 @@ public class ReviewDto {
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
-		this.readCount = readCount;
+		this.readcount = readcount;
 		this.liked = liked;
 	}
 	
@@ -62,11 +62,11 @@ public class ReviewDto {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public String getReadCount() {
-		return readCount;
+	public int getReadcount() {
+		return readcount;
 	}
-	public void setReadCount(String readCount) {
-		this.readCount = readCount;
+	public void setReadCount(int readcount) {
+		this.readcount = readcount;
 	}
 	public int getLiked() {
 		return liked;
@@ -77,7 +77,7 @@ public class ReviewDto {
 	@Override
 	public String toString() {
 		return "ReviewDto [seq=" + seq + ", gseq=" + gseq + ", id=" + id + ", title=" + title + ", content=" + content
-				+ ", wdate=" + wdate + ", readCount=" + readCount + ", liked=" + liked + "]";
+				+ ", wdate=" + wdate + ", readCount=" + readcount + ", liked=" + liked + "]";
 	}
 	
 }
