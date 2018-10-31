@@ -122,19 +122,11 @@
 	</definition>
 
 
-	<definition name="message.tiles" extends="main.tiles">
-		<put-attribute name="main"
-			value="/WEB-INF/views/message/message.jsp" />
-	</definition>
+	<definition name="message.tiles" template="/WEB-INF/views/message/message.jsp"/>
 
-	<definition name="messagewrite.tiles" extends="main.tiles">
-		<put-attribute name="main"
-			value="/WEB-INF/views/message/messagewrite.jsp" />
-	</definition>
-	<definition name="messagedetail.tiles" extends="main.tiles">
-		<put-attribute name="main"
-			value="/WEB-INF/views/message/messagedetail.jsp" />
-	</definition>
+	<definition name="messagewrite.tiles" template="/WEB-INF/views/message/messagewrite.jsp"/>
+
+	<definition name="messagedetail.tiles" template="/WEB-INF/views/message/messagedetail.jsp"/>
 
 
 	<definition name="mainview.tiles"

@@ -50,10 +50,10 @@
   ((int)request.getSession().getAttribute("loginAuth")) == 1){ %>
 		
 <form action="frm" id="_frm" method="post" action="putInterest.do">
-
-<table class="list_table" style="width: 90%">
 	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
 	<input type="hidden" name="_id" id="_id" value="${loginID }">
+<table class="list_table" style="width: 90%">
+	
  	<colgroup>
 
 	</colgroup> 
@@ -66,7 +66,12 @@
 				${goodsdetail.imageName }
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
-			<td style="text-align: left;">${goodsdetail.id } | <a href="./messagewrite.do?sendid=${loginID}&receiveid=${goodsdetail.id }">쪽지 보내기</a></td>
+			<td style="text-align: left;">${goodsdetail.id } | 
+			<form action="./messagewrite.do" id="sendmessage" method="post">
+				<input type="hidden" name="sendid" value="${loginID }">
+				<input type="hidden" name="receiveid" value="${goodsdetail.id }">
+			<a href="#none" id="sendM">쪽지 보내기</a>
+			</form></td>
 		</tr>
 		<tr class="name">
 			<th style="text-align: left;">업체이름</th>
@@ -368,6 +373,16 @@
 <%}    %>
 
 <script type="text/javascript">
+
+$("#sendM").click(function(){
+	
+	loc = "./messagewrite.do?sendid=${loginID}&receiveid=${goodsdetail.id}";
+
+	window.open(loc, 'POP', 'top=100px, left=100px, height=400px, width=420px');
+
+	$('#sendmessage').submit();
+});
+
 $("#updateRental").click(function() {
 	//렌탈수정하기  
 
@@ -425,7 +440,7 @@ $(function () {
 $(document).ready(function () {
 	 
 	
-	 for(int i = 1;i< ${reviewDetailList.size()} + 1; i++){
+	 for(i = 1;i< ${reviewDetailList.size()} + 1; i++){
 //	 alert("reviewshow1");
 		$("#_reviewcontent"+i).hide();
 //		alert("reviewshow2");

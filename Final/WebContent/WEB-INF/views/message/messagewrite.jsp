@@ -17,20 +17,20 @@
 	<table border="2">
 		<tr>
 			<th>아이디</th>
-			<td style="text-align: left"><input type="text" id='id' name='sendid' readonly="readonly" value="${mdto.sendid }" size="50"/>
+			<td style="text-align: left"><input type="text" id='id' name='sendid' readonly="readonly" value="${mdto.sendid }" size="40"/>
 			</td>
 		</tr>
 		<tr>
 			<th>받는사람</th>
-			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="${mdto.receiveid }" size="50"/>
+			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="${mdto.receiveid }" size="40"/>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td style="text-align: left"><input type="text" id="title" name='title' size="50"/></td>
+			<td style="text-align: left"><input type="text" id="title" name='title' size="40"/></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td style="text-align: left"><textarea id="content" name="content" style="height: 600px; width: 800px"></textarea></td>
+			<td style="text-align: left"><textarea id="content" name="content" style="height: 200px; width: 308px"></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="height:50px; text-align:center;">

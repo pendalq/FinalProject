@@ -144,6 +144,6 @@
 	}
 	
 	function goMessage() {
-		location.href = "message.do";
+		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=400px');
 	}
 </script>
