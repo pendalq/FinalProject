@@ -16,7 +16,7 @@
 .retalInfo{
 	margin-left : auto;
 	margin-right : auto;
-	width: 100%;
+	width: 50%
 }
 
 .retalInfo td{
@@ -24,8 +24,14 @@
 	margin-bottom : 30px; 
 	text-align: center;
 	border-collapse:collapse;
-	height : 100%px;
 }
+
+.retalInfo th{
+	border: 1px solid #c7c7bc;  
+	text-align: center;
+	border-collapse:collapse;
+}
+
 
 
 </style>
@@ -47,22 +53,24 @@ RentalGoods rdto = (RentalGoods)request.getAttribute("rDetail");
 렌탈 정보
 <table class="retalInfo">
 	<colgroup>
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
-		<col width="70px">
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
 	</colgroup>
       <tr>
-         <td rowspan="2" colspan="2"> <%=rdto.getImagename() %> </td>
-         <td><%=rdto.getTitle() %></td>
+         <td rowspan="5" colspan="2" width="200px" height="300px"> <%=rdto.getImagename() %> </td>
+         <th>상품 글 제목</th>
+         <td colspan="2"><%=rdto.getTitle() %></td>
       </tr>
       <tr>
-         <td><%=rdto.getBrand() %></td>
+      	<th>브랜드 명</th>
+        <td colspan="2"><%=rdto.getBrand() %></td>
       </tr>
       <tr>
          <th>옵션</th>
@@ -79,10 +87,10 @@ RentalGoods rdto = (RentalGoods)request.getAttribute("rDetail");
          <td>일</td>
       </tr>
     
-    <tr><td colspan="3" style="height: 200px">비어있는공간</td></tr>
-	<tr><td colspan="3"><button type="button" onclick="extension()">기간연장</button></td></tr>
-	<tr><td colspan="3"><button type="button" onclick="writeReview()">후기작성</button></td></tr>
-	<tr><td colspan="3"><button type="button" onclick="gomypage()">마이페이지로</button></td></tr>
+    <tr><td colspan="5" style="height: 200px">비어있는공간</td></tr>
+	<tr><td colspan="5"><button type="button" onclick="extension()">기간연장</button></td></tr>
+	<tr><td colspan="5"><button type="button" onclick="writeReview()">후기작성</button></td></tr>
+	<tr><td colspan="5"><button type="button" onclick="gomypage()">마이페이지로</button></td></tr>
 </table>
 
  

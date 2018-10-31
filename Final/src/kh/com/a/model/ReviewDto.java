@@ -8,12 +8,12 @@ public class ReviewDto {
 	private String title;
 	private String content;
 	private String wdate;
-	private String readCount;
+	private int readCount;
 	private int liked;
 	
 	public ReviewDto() {}
 	
-	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, String readCount,
+	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, int readCount,
 			int liked) {
 		super();
 		this.seq = seq;
@@ -62,10 +62,10 @@ public class ReviewDto {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public String getReadCount() {
+	public int getReadCount() {
 		return readCount;
 	}
-	public void setReadCount(String readCount) {
+	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
 	public int getLiked() {

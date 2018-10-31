@@ -15,10 +15,11 @@ import kh.com.a.model.GoodsDto;
 import kh.com.a.model.GoodsParam;
 import kh.com.a.service.GoodsListService;
 
+
 @Controller
 public class GoodsListController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GoodsListController.class);
 
 	@Autowired
 	GoodsListService goodsListService;
@@ -50,6 +51,20 @@ public class GoodsListController {
 		} else if (param.getSearchNum() == 3) {
 			param.setKeyword(null);
 			param.setOptions(null);
+		} else if (param.getSearchNum() == 4) {
+			if(param.getOptions() != null) {
+				String options[] = param.getOptions().split("/");
+				if(options.length == 3) {
+					param.setOption1(options[0]);
+					param.setOption2(options[1]);
+					param.setOption3(options[2]);
+				}else if(options.length == 2) {
+					param.setOption1(options[0]);
+					param.setOption2(options[1]);
+				}else if(options.length == 1) {
+					param.setOption1(options[0]);
+				}
+			}
 		}
 
 		System.out.println("controller check After : " + param.toString());
