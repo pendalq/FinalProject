@@ -96,11 +96,17 @@ public class QnAController {
 		
 		qnAService.readCount(seq);
 		qna=qnAService.getBbs(seq);
+		
+		System.out.println("날짜 시간 안자른것 가져오기  == " + qna.getWdate());
+		qna.setWdate(qna.getWdate().substring(0, 10));
+		System.out.println(" 날짜 시간 자른것 가져오기 ==  " + qna.getWdate());
+		
 		List<adminDto> list = memberService.getMemberId();
 		model.addAttribute("qna", qna);
 		System.out.println("리스트가 잘 나오는지 확인좀 해보자 " + list.toString());
 		model.addAttribute("list", list);
 		model.addAttribute("auth", (int) req.getSession().getAttribute("loginAuth"));
+		model.addAttribute("loginid",(String)req.getSession().getAttribute("loginID") );
 		return "QnADetail.tiles";
 	}
 	
