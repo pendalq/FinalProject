@@ -10,6 +10,8 @@
 <meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -74,15 +76,7 @@ $(document).ready(function(){
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 85%;">
-		<colgroup>
-			<col style="width: 70px;" />
-			<col style="width: 100px;" />
-			<col style="width: auto;" />
-			<col style="width: 100px;" />
-			<col style="width: 100px;" />
-			<col style="width: 100px;" />
-		</colgroup>
+	<table class="table table-hover" style="width: 65%;">
 
 		<thead>
 			<tr>

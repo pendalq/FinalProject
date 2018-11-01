@@ -18,7 +18,7 @@
 			<th>받는사람</th>
 			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="${mdto.receiveid }" size="40"/>
 		</tr>
-		<tr>
+		<tr> 
 			<th>제목</th>
 			<td style="text-align: left"><input type="text" id="title" name='title' readonly="readonly" size="40"/ value="${mdto.title }"></td>
 		</tr>

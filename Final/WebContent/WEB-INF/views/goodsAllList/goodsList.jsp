@@ -281,10 +281,6 @@
 			<!-- 그리드 종료!! -->
 		</main>
 
-		<!-- 푸터 -->
-		<footer id="wrap-footer">
-			<h1 style="text-align: center; line-height: 148px;">footer</h1>
-		</footer>
 	</div>
 	<script type="text/javascript">
 
