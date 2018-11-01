@@ -43,6 +43,7 @@
 	</tr>
 	<tr>
 		<td colspan="8"><button id="getpay" title="결제" style="text-align: right">결제</button></td>
+		<td colspan="8"><button id="payTest" title="결제 테스트" style="text-align: right">결제테스트</button></td>
 	</tr>
 </table>
 
@@ -84,4 +85,11 @@ $("#getpay").click(function(){
 $("#term").on("change",function(){
 	$("#allprice").text($("#term option:selected").val()*${goods.price});
 });
+
+$("#payTest").click(function(){
+	alert('결제 테스트입니다.');
+	location.href="./paysuccess.do?id=${loginID}&gseq=${goods.seq}&term="+$('#term option:selected').val();
+});
+
+
 </script>

@@ -8,7 +8,6 @@ public class ReviewDto {
 	private String title;
 	private String content;
 	private String wdate;
-	private int readcount;
 	private int liked;
 	
 	public ReviewDto() {}
@@ -23,7 +22,6 @@ public class ReviewDto {
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
-		this.readcount = readcount;
 		this.liked = liked;
 	}
 	
@@ -64,12 +62,6 @@ public class ReviewDto {
 		this.wdate = wdate;
 	}
 
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadCount(int readcount) {
-		this.readcount = readcount;
-	}
 	public int getLiked() {
 		return liked;
 	}
@@ -79,7 +71,7 @@ public class ReviewDto {
 	@Override
 	public String toString() {
 		return "ReviewDto [seq=" + seq + ", gseq=" + gseq + ", id=" + id + ", title=" + title + ", content=" + content
-				+ ", wdate=" + wdate + ", readCount=" + readcount + ", liked=" + liked + "]";
+				+ ", wdate=" + wdate + " liked=" + liked + "]";
 	}
 	
 }

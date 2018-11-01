@@ -146,7 +146,6 @@
 						<a href='goodsdetail.do?seq=${rl.gseq}'>
 						${rl.title }</a></td>
 					<td>${rl.wdate }</td>
-					<td>${rl.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

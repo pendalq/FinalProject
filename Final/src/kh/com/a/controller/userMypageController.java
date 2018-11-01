@@ -32,7 +32,7 @@ public class userMypageController {
 	
 	
  	@RequestMapping(value="mypage.do" , method= {RequestMethod.GET, RequestMethod.POST})
- 	public String mypage(BbsParam param,Model model,HttpServletRequest req) throws Exception {
+ 	public String mypage(BbsParam param,Model model,HttpServletRequest req, String msg) throws Exception {
  		logger.info("userMypageController mypage.do" + new Date());
 
  		//String id = ((MemberDto) req.getSession().getAttribute("login")).getId();
@@ -78,6 +78,7 @@ public class userMypageController {
  			model.addAttribute("pageCountPerScreen", 10);
  			model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
  			model.addAttribute("totalRecordCount", totalRecordCount);
+ 			model.addAttribute("msg", msg);
  		logger.info( "qnaList=" + myqnalist);
 
  		
@@ -92,6 +93,7 @@ public class userMypageController {
 		//insert parameter
 		String id =	(String) req.getSession().getAttribute("loginID");
 		getUrentalList dto = new getUrentalList(id,seq);
+		model.addAttribute("dto", dto);
 		logger.info( "getUrentalList는" + dto);
 			
 		//mypage.jsp > retal detail.jsp
@@ -104,7 +106,10 @@ public class userMypageController {
 		
 		model.addAttribute("rDetail", rDetail);
 		logger.info( "rDetail=" + rDetail);
-
+		
+		//리뷰 작성에 필요한 id와 상품 seq 
+		model.addAttribute("getUrentalList", dto);
+		
 		return "userRental.tiles";
 		
 	}

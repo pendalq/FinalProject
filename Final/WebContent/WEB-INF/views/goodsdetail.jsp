@@ -13,6 +13,10 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- 리뷰에 필요한 css  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/reviewList.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/reviewList.css">
 
 <style type="text/css">
 	textarea{
@@ -23,28 +27,14 @@
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-	
-	.reviewshow{
-		cursor: pointer;
-	}
-	
-	.review:hover{
-		background-color: #EADADA;
-	}
-	
-	.review{
-		border-bottom: 1px solid black;
-		border-left-style: none;
-		border-right-style: none;
-	}
-	
-
 </style>
 <title>GoodsDetail</title>
 </head>
 <body>
-
-
+<%
+String sessionId = (String)request.getSession().getAttribute("loginID");
+%>
+<c:set var="sessionId" value="<%= sessionId%>"></c:set>
 
 <%if(request.getSession().getAttribute("loginID") != null && 
   ((int)request.getSession().getAttribute("loginAuth")) == 1){ %>
@@ -136,87 +126,115 @@
 		</tr>
 	</tbody>	
 </table>
-
-<table class="list_table" style="width: 90%">
-	<th style="text-align: right;">
-		<c:if test="${not empty login}">
-			<a href="#none" id="gotoWriteReview" title="후기작성">후기작성</a>
-		</c:if>
-		<c:if test="${empty login }">
-			<div style="text-align: center;">로그인하면 후기 작성 가능</div>
-		</c:if>
-	</th>
-</table>
-
-
-<table class="list_table" style="width: 90%">
-<colgroup>
-	<col style="width:70px"/>
-	<col style="width:300px"/>
-	<col style="width:70px"/>
-	<col style="width:70px"/>
-	<col style="width:130px"/>
-	<col style="width:70px"/>
-</colgroup>
-	<thead style="text-align: center;">
-		<th>글번호</th>
-		<th>제목</th>
-		<th>글쓴이</th>
-		<th>조회수</th>
-		<th>별점</th>
-		<th>등록일</th>		
-	</thead>
-	
-	<tbody>
-		<c:if test="${empty reviewDetail }">
-			<td colspan="6" style="text-align: center;">작성된 후기가 없습니다</td>
-		</c:if>
-		
-		<c:forEach items="${reviewDetailList }" var="rd" varStatus="vs">
-		<tr class="review" style="text-align: center;">
-			<td>${vs.count}</td>
-			<td id="reviewshow${vs.count }" class="reviewshow" onclick="func(${vs.count })">${rd.title }</td>
-			<td>${rd.id }</td>
-			<td>${rd.readcount }</td>
-			<td>
-				<c:choose>
-					<c:when test="${rd.liked==1 }">
-						<img alt="이미지없음" src="image/star1.png">
-					</c:when>
-					<c:when test="${rd.liked==2 }">
-						<img alt="" src="image/star2.png">
-					</c:when>
-					<c:when test="${rd.liked==3 }">
-						<img alt="" src="image/star3.png">
-					</c:when>
-					<c:when test="${rd.liked==4 }">
-						<img alt="" src="image/star4.png">
-					</c:when>
-					<c:when test="${rd.liked==5 }">
-						<img alt="" src="image/star5.png">
-					</c:when>
-					<c:otherwise>
-						<img alt="" src="image/star0.png">
-					</c:otherwise>
-					
-				</c:choose>
-			</td>
-			<td>${rd.wdate }</td>
-		</tr>
-		<tr class="reviewcontents" style="text-align: center;" id="reviewcontents">
-			<td colspan="6">
-				<textarea rows="20" cols="115" name="reviewcontent" 
-				id="_reviewcontent${vs.count }" class="reviewcontent"
-				style="border: none;">
-					${rd.content }
-				</textarea>
-			</td>
-		</tr>
-		</c:forEach> 
-	</tbody>
-</table>
-
 </form>
+
+<!-- ------------------------review html start ----------------------------- -->
+<section id="reviewList">
+        <h2>후기</h2>
+        <c:if test="${totalRecordCount == 0}">
+		<h2>등록된 후기가 없습니다.</h2>
+		</c:if>
+		<c:if test="${totalRecordCount >= 1}">
+        <div class="review_q">
+            <div class="review_likedAvg">
+            <c:choose>
+                <c:when test="${likedAvg < 1.5}">
+                <p class="">고객님들의 평균 만족도는 <em>최악</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 1.5 && likedAvg < 2.5}">
+                <p class="">고객님들의 평균 만족도는 <em>불만족</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 2.5 && likedAvg < 3.5}">
+                <p class="">고객님들의 평균 만족도는 <em>보통</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 3.5 && likedAvg < 4.5}">
+                <p class="">고객님들의 평균 만족도는 <em>만족</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 4.5}">
+                <p class="">고객님들의 평균 만족도는 <em>최고</em> 입니다.</p>
+                </c:when>
+            </c:choose>
+            </div>
+            <p class="review_count">총 <em>${totalRecordCount}</em> 개의 리뷰가 있습니다.</p>
+        </div>
+        <ul id="review_box">
+            <li class="review_header">
+                <span class="header_item">만족도</span>
+                <span class="header_item">제목</span>
+                <span class="header_item">작성자</span>
+                <span class="header_item">작성일</span>
+                <span>-</span>
+            </li>
+            <c:forEach items="${reviewList}" var="review" varStatus="vs">
+            <li class="review_itemOff">
+
+                <a href="javascript:void(0);" class="review_click" value="1">
+                    <div class="review_item_headerOff">
+                        <div class="review_liked item">
+                        <c:choose>
+                        	<c:when test="${review.liked == 1}">
+                            <img src="<%=request.getContextPath()%>/img/liked_1.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 2}">
+                            <img src="<%=request.getContextPath()%>/img/liked_2.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 3}">
+                            <img src="<%=request.getContextPath()%>/img/liked_3.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 4}">
+                            <img src="<%=request.getContextPath()%>/img/liked_4.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 5}">
+                            <img src="<%=request.getContextPath()%>/img/liked_5.svg" alt="" class="likedImg">
+                            </c:when>
+                        </c:choose>
+                        </div>
+                        <span class="review_title item">${review.title}</span>
+                        <span class="review_id item">${review.id}</span>
+                        <time class="review_wdate item" datetime="${review.wdate }">${review.wdate }</time>
+                        <span class="review_openImgOff"></span>
+                    </div>
+                </a>
+
+                <div class="review_item_mainOff">
+                    <div class="review_item_content item_main">
+                        <p class="review_content">
+                            ${review.content}
+                        </p>
+                    </div>
+					<c:if test="${sessionId == review.id }">
+                    <div class="review_item_footer item_main">
+                        <form id="reviewForm" action="" method="post">
+                            <input type="hidden" name="seq" value="${review.seq }">
+                            <input type="hidden" name="gseq" value="${review.gseq }">
+                            <input type="hidden" name="searchNum" id="_searchNum" value="${searchNum}">
+                            <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
+                            <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
+                        </form>
+                        <button type="button" class="btn_review" value="update">수정하기</button>
+                        <button type="button" class="btn_review" value="delete">삭제하기</button>
+                    </div>
+                    </c:if>
+                </div>
+            </li>
+            </c:forEach>
+        </ul>
+        
+        <!---페이징--->
+		<div id="paging_wrap">
+			<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
+			<jsp:param value="${pageNumber}" name="pageNumber" />
+			<jsp:param value="${pageCountPerScreen}" name="pageCountPerScreen" />
+			<jsp:param value="${recordCountPerPage}" name="recordCountPerPage" />
+			<jsp:param value="${totalRecordCount}" name="totalRecordCount" />
+			</jsp:include>
+		</div>
+		</c:if>
+		<span>${sessionId}</span>
+		<span>${review.id }</span>
+		<button type="button" id="btn_reviewWrite">글쓰기</button>
+</section>
+<!-- ------------------------review html end ----------------------------- -->
 <%} %>
 
 
@@ -284,97 +302,139 @@
 		</tr>
 	</tbody>	
 </table>
-
-<table class="list_table" style="width: 90%">
-	<th style="text-align: right;">
-		<c:if test="${loginID ne '0'}">
-			<a href="#none" id="gotoWriteReview" title="후기작성">후기작성</a>
-		</c:if>
-		<c:if test="${loginID eq '0' }">
-			<div style="text-align: center;">로그인하면 후기 작성 가능</div>
-		</c:if>
-	</th>
-</table>
-
-
-<table class="list_table" style="width: 90%">
-<colgroup>
-	<col style="width:70px"/>
-	<col style="width:300px"/>
-	<col style="width:70px"/>
-	<col style="width:70px"/>
-	<col style="width:130px"/>
-	<col style="width:70px"/>
-</colgroup>
-	<thead style="text-align: center;">
-		<th>글번호</th>
-		<th>제목</th>
-		<th>글쓴이</th>
-		<th>조회수</th>
-		<th>별점</th>
-		<th>등록일</th>		
-	</thead>
-	
-	<tbody>
-		<c:if test="${empty reviewDetail }">
-			<td colspan="6" style="text-align: center;">작성된 후기가 없습니다</td>
-		</c:if>
-		
-		<c:forEach items="${reviewDetailList }" var="rd" varStatus="vs">
-		<tr class="review"  style="text-align: center;">
-			<td>${vs.count}</td>
-			<td id="reviewshow${vs.count }" class="reviewshow" onclick="func(${vs.count })">${rd.title }</td>
-			<td>${rd.id }</td>
-			<td>${rd.readcount }</td>
-			<td>
-				<c:choose>
-					<c:when test="${rd.liked==1 }">
-						<img alt="이미지없음" src="image/star1.png">
-					</c:when>
-					<c:when test="${rd.liked==2 }">
-						<img alt="" src="image/star2.png">
-					</c:when>
-					<c:when test="${rd.liked==3 }">
-						<img alt="" src="image/star3.png">
-					</c:when>
-					<c:when test="${rd.liked==4 }">
-						<img alt="" src="image/star4.png">
-					</c:when>
-					<c:when test="${rd.liked==5 }">
-						<img alt="" src="image/star5.png">
-					</c:when>
-					<c:otherwise>
-						<img alt="" src="image/star0.png">
-					</c:otherwise>				
-				</c:choose>
-			</td>
-			<td>${rd.wdate }</td>
-		</tr>
-		<tr class="reviewcontents" style="text-align: center;" id="reviewcontents">
-			<td colspan="6">
-				<textarea rows="20" cols="115" name="reviewcontent" 
-				id="_reviewcontent${vs.count }" class="reviewcontent"
-				style="border: none;">
-					${rd.content }
-				</textarea>
-			</td>
-		</tr>
-		</c:forEach> 
-	</tbody>
-</table>
-
 </form>
 
+<!-- ------------------------review html start ----------------------------- -->
+  <section id="reviewList">
+        <h2>후기</h2>
+        <c:if test="${totalRecordCount == 0}">
+		<h2>등록된 후기가 없습니다.</h2>
+		</c:if>
+		<c:if test="${totalRecordCount >= 1}">
+        <div class="review_q">
+            <div class="review_likedAvg">
+            <c:choose>
+                <c:when test="${likedAvg < 1.5}">
+                <p class="">고객님들의 평균 만족도는 <em>최악</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 1.5 && likedAvg < 2.5}">
+                <p class="">고객님들의 평균 만족도는 <em>불만족</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 2.5 && likedAvg < 3.5}">
+                <p class="">고객님들의 평균 만족도는 <em>보통</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 3.5 && likedAvg < 4.5}">
+                <p class="">고객님들의 평균 만족도는 <em>만족</em> 입니다.</p>
+                </c:when>
+                <c:when test="${likedAvg > 4.5}">
+                <p class="">고객님들의 평균 만족도는 <em>최고</em> 입니다.</p>
+                </c:when>
+            </c:choose>
+            </div>
+            <p class="review_count">총 <em>${totalRecordCount}</em> 개의 리뷰가 있습니다.</p>
+        </div>
+        <ul id="review_box">
+            <li class="review_header">
+                <span class="header_item">만족도</span>
+                <span class="header_item">제목</span>
+                <span class="header_item">작성자</span>
+                <span class="header_item">작성일</span>
+                <span>-</span>
+            </li>
+            <c:forEach items="${reviewList}" var="review" varStatus="vs">
+            <li class="review_itemOff">
+
+                <a href="javascript:void(0);" class="review_click" value="1">
+                    <div class="review_item_headerOff">
+                        <div class="review_liked item">
+                        <c:choose>
+                        	<c:when test="${review.liked == 1}">
+                            <img src="<%=request.getContextPath()%>/img/liked_1.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 2}">
+                            <img src="<%=request.getContextPath()%>/img/liked_2.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 3}">
+                            <img src="<%=request.getContextPath()%>/img/liked_3.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 4}">
+                            <img src="<%=request.getContextPath()%>/img/liked_4.svg" alt="" class="likedImg">
+                            </c:when>
+                            <c:when test="${review.liked == 5}">
+                            <img src="<%=request.getContextPath()%>/img/liked_5.svg" alt="" class="likedImg">
+                            </c:when>
+                        </c:choose>
+                        </div>
+                        <span class="review_title item">${review.title}</span>
+                        <span class="review_id item">${review.id}</span>
+                        <time class="review_wdate item" datetime="${review.wdate }">${review.wdate }</time>
+                        <span class="review_openImgOff"></span>
+                    </div>
+                </a>
+
+                <div class="review_item_mainOff">
+                    <div class="review_item_content item_main">
+                        <p class="review_content">
+                            ${review.content}
+                        </p>
+                    </div>
+					<c:if test="${sessionId == review.id }">
+                    <div class="review_item_footer item_main">
+                        <form id="reviewForm" action="" method="post">
+                            <input type="hidden" name="seq" value="${review.seq }">
+                            <input type="hidden" name="gseq" value="${review.gseq }">
+                            <input type="hidden" name="searchNum" id="_searchNum" value="${searchNum}">
+                            <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
+                            <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
+                        </form>
+                        <button type="button" class="btn_review" value="update">수정하기</button>
+                        <button type="button" class="btn_review" value="delete">삭제하기</button>
+                    </div>
+                    </c:if>
+                </div>
+            </li>
+            </c:forEach>
+        </ul>
+        
+        <!---페이징--->
+		<div id="paging_wrap">
+			<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
+			<jsp:param value="${pageNumber}" name="pageNumber" />
+			<jsp:param value="${pageCountPerScreen}" name="pageCountPerScreen" />
+			<jsp:param value="${recordCountPerPage}" name="recordCountPerPage" />
+			<jsp:param value="${totalRecordCount}" name="totalRecordCount" />
+			</jsp:include>
+		</div>
+		</c:if>
+		<button type="button" id="btn_reviewWrite">글쓰기</button>
+</section>
+<!-- ------------------------review html end ----------------------------- -->
 <%}    %>
 
 <script type="text/javascript">
+
+$(".btn_review").click(function() {
+	if ($(this).val() == "update") {
+		alert("수정하기");
+		$("#reviewForm").attr({ "target":"_self", "action":"reviewUpdate.do" }).submit();
+	}else if($(this).val() == "delete"){
+		alert("삭제하기");
+		$("#reviewForm").attr({ "target":"_self", "action":"reviewDelete.do" }).submit();
+	}else{
+		alert("수정/삭제 오류");
+		return false;
+	}
+});
+
 $("#updateRental").click(function() {
 	//렌탈수정하기  
 
 
 });
 
-
+$('#btn_reviewWrite').click(function () {
+	alert('123123')
+})	
 
 
 
@@ -423,16 +483,6 @@ $(function () {
 });
 
 $(document).ready(function () {
-	 
-	
-	 for(int i = 1;i< ${reviewDetailList.size()} + 1; i++){
-//	 alert("reviewshow1");
-		$("#_reviewcontent"+i).hide();
-//		alert("reviewshow2");
-
-		
-	 }
-	
 
 });
 	

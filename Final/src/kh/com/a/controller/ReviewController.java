@@ -72,18 +72,20 @@ public class ReviewController {
 
 	//게시물 작성-------------------------------------	
 	@RequestMapping(value = "reviewWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewWrite(Model model,
-			HttpSession session, @RequestParam("goodsSeq") int goodsSeq) {
+	public String reviewWrite(Model model,ReviewDto reviewDto  ) {
 
 		logger.info("reviewWrite " + new Date());
 
 		
-		System.out.println("g_seq :  " + goodsSeq);
+		System.out.println("gseq :  " + reviewDto.getGseq() + "  id : " + reviewDto.getId() );
+		
+		String goodsName = reviewService.getGoodsName(reviewDto.getGseq());
+		System.out.println("상품 이름 출력 완료 :" + goodsName);
+		
+		model.addAttribute("reviewDto", reviewDto);
+		model.addAttribute("goodsName", goodsName);
 
-
-		model.addAttribute("id", (session.getAttribute("id")));
-		model.addAttribute("goodsSeq", goodsSeq);
-
+		System.out.println("reviewWrite.do 완료");
 		return "reviewWrite.tiles";
 	}
 
@@ -103,8 +105,10 @@ public class ReviewController {
 		} else {
 			System.out.println("작성 실패");
 		}
+		String msg = "1";
+		model.addAttribute("msg", msg);
 
-		return "testWeb.tiles";
+		return "redirect:/mypage.do";
 	}
 	
 	@RequestMapping(value = "reviewUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })

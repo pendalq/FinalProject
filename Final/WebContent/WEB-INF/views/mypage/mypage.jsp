@@ -16,6 +16,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<script type="text/javascript">
+if (${msg} == '1') {
+	alert("리뷰 작성을 완료하였습니다.");
+}
+</script>
+
 <style type="text/css">
 .mypageTable table{
 	border: 0px; 

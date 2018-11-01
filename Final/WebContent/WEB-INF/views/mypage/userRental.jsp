@@ -66,7 +66,7 @@ RentalGoods rdto = (RentalGoods)request.getAttribute("rDetail");
       <tr>
          <td rowspan="5" colspan="2" width="200px" height="300px"> <%=rdto.getImagename() %> </td>
          <th>상품 글 제목</th>
-         <td colspan="2"><%=rdto.getTitle() %></td>
+         <td colspan="2"><%=rdto.getTitle() %>//<%=rdto.getGseq()%>//<%=rdto.getId()%></td>
       </tr>
       <tr>
       	<th>브랜드 명</th>
@@ -100,7 +100,8 @@ function extension() {
 }
 
 function writeReview() {
-	alert("writeReview버튼 클릭");
+	alert('fdsfsfsaf');
+	location.href="reviewWrite.do?gseq=${getUrentalList.seq}&id=${getUrentalList.id}";
 }
 
 function gomypage() {
