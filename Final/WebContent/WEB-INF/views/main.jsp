@@ -43,10 +43,10 @@
 	href="<%=request.getContextPath() %>/design/css/custom.css">
 
  <script src="<c:out value="design/js/main.js"/>"></script>
-     <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
-    <script src="<c:out value="design/js/popper.min.js"/>"></script>
-    <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
-    <script src="<c:out value="design/js/plugins.js"/>"></script>
+ <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
+ <script src="<c:out value="design/js/popper.min.js"/>"></script>
+ <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
+ <script src="<c:out value="design/js/plugins.js"/>"></script>
     
     
     

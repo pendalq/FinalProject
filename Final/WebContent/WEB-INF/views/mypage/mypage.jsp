@@ -2,13 +2,13 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+<script src="<c:out value="design/js/main.js"/>"></script>
 
 <!DOCTYPE html>
 <html>
@@ -63,23 +63,14 @@ background-color:  #dddddd;
  
 
 <div class="mypageTable">
-<h2>여기는_ 유저 _마이페이지</h2>
-<table>
-	<tr>
-		<td>
-			${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
-			
-		</td>
-	</tr>
-	
-</table>
-
-
-<h2 style="text-align: center;">최근 렌탈 중인 상품 </h2>
+	<div style="margin-top: 50px; width:15%; position: relative; left: 1360px">
+		${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
+	</div>
+<h2 style="text-align: center; margin-top: 30px">최근 렌탈 중인 상품 </h2>
 <div id="myRental" style="border: 1px solid black; padding: 10px">
 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
 				<c:if test = "${empty srental3 }">
-						<span>렌탈 중인 상품이 없습니다</span>
+					<span>렌탈 중인 상품이 없습니다</span>
 				</c:if>
 					
 				<%-- 	${myrental3.seq }	 --%>
@@ -89,7 +80,7 @@ background-color:  #dddddd;
 						${myrental3.imagename }
 					</a>
 				</div>
-				<div style="width:300px; height: 50px; border: 1px solid black;">
+				<div style="width:300px; height: 50px; text-align:center; border-top: 1px solid black">
 						${myrental3.title }
 				</div>	
 				</div>
