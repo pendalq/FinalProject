@@ -12,7 +12,6 @@ public class ReviewDto {
 	private int liked;
 	
 	public ReviewDto() {}
-	
 
 	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, int readcount,
 			int liked) {
@@ -26,40 +25,51 @@ public class ReviewDto {
 		this.readcount = readcount;
 		this.liked = liked;
 	}
-	
+
 	public int getSeq() {
 		return seq;
 	}
+
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+
 	public int getGseq() {
 		return gseq;
 	}
+
 	public void setGseq(int gseq) {
 		this.gseq = gseq;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getWdate() {
 		return wdate;
 	}
+
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
@@ -67,19 +77,26 @@ public class ReviewDto {
 	public int getReadcount() {
 		return readcount;
 	}
-	public void setReadCount(int readcount) {
+
+	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+
 	public int getLiked() {
 		return liked;
 	}
+
 	public void setLiked(int liked) {
 		this.liked = liked;
 	}
+
 	@Override
 	public String toString() {
 		return "ReviewDto [seq=" + seq + ", gseq=" + gseq + ", id=" + id + ", title=" + title + ", content=" + content
-				+ ", wdate=" + wdate + ", readCount=" + readcount + ", liked=" + liked + "]";
+				+ ", wdate=" + wdate + ", readcount=" + readcount + ", liked=" + liked + "]";
 	}
+
+	
+	
 	
 }
