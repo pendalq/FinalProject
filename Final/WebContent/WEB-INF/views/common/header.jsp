@@ -38,6 +38,13 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/design/css/custom.css">
 	
+	
+	
+	
+	<!-- 추가 -->
+	
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/design/css/shortcode/header.css">
+	
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -55,6 +62,10 @@
 	cursor: pointer;
 }
 
+.interList:hover{
+	background-color: #c3d3d3;
+}
+
 </style>
 
 
@@ -62,8 +73,7 @@
 	<!-- Start Header Style -->
 	<header id="header" class="htc-header">
 		<!-- Start Mainmenu Area -->
-		<div id="sticky-header-with-topbar"
-			class="mainmenu__area sticky__header">
+		<div class="mainmenu__area sticky__header">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2 col-lg-2 col-6">
@@ -135,6 +145,7 @@
 							<%if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth"))==4){ %>
 								<li><a href="#none" onclick="관리자" title="admin">Admin</a></li>
+								<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>		
 
 							 <li class="toggle__menu d-none d-md-block"><span class="ti-menu"></span></li>

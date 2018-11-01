@@ -8,6 +8,7 @@
   <insert id="putInterest" parameterType="kh.com.a.model.InterDto">
   	INSERT INTO INTER(SEQ, ID, GSEQ)
   	VALUES(INTER_SEQ.NEXTVAL, #{id}, #{gseq})
+  	
   </insert>
   
   <select id="interCheck" parameterType="kh.com.a.model.InterDto" resultType="kh.com.a.model.InterDto">

@@ -22,6 +22,10 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="design/images/favicon.ico">
 <link rel="apple-touch-icon" href="design/apple-touch-icon.png">
+<!-- table css -->
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/design/_table.css">
+
+
 
 <!-- Bootstrap Fremwork Main Css -->
 <link rel="stylesheet"
@@ -41,7 +45,8 @@
 <!-- User style -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/design/css/custom.css">
-
+	
+	
  <script src="<c:out value="design/js/main.js"/>"></script>
      <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:out value="design/js/popper.min.js"/>"></script>
@@ -50,20 +55,7 @@
     
     
     
-    
-    <style type="text/css">
-    .list_table{
-    	border-left: none;
-    	border-right: none;
-    	border-top: 1px solid black;
-    	border-bottom: 1px solid black;
-    	width: 90%;
-    	
-    }
-    
 
-    
-    </style>
 
 </head>
 
@@ -645,23 +637,16 @@
             </div>
         </section>
         <!-- End Our Product Area -->
-	
-	<div>후기</div>
-	<table class="list_table" style="width: 90%">
-		<colgroup>
-			<col style="70px" />
-			<col style="70px" />
-			<col style="70px" />
-			<col style="70px" />
-			<col style="70px" />
-		</colgroup>
+	<div id="wrapper" style="width: 100%;">
+	<div style="text-align: center;"><h2>후기</h2></div>
+	<table id="keywords">
 		<thead>
-			<th>번호</th>
-			<th>아이디</th>
-			<th>물품번호</th>
-			<th>제목</th>
-			<th>등록일</th>
-			<th>조회수</th>
+			<th><span>번호</span></th>
+			<th><span>아이디</span></th>
+			<th><span>물품번호</span></th>
+			<th><span>제목</span></th>
+			<th><span>등록일</span></th>
+			<th><span>조회수</span></th>
 		</thead>
 		<tbody>
 			<c:if test="${empty reviewlist }">
@@ -671,19 +656,20 @@
 			</c:if>
 			
 			<c:forEach items="${reviewlist }" var="rl" varStatus="vs3">
-				<tr class="_hover_tr">
-					<td>${rl.seq }</td>
-					<td>${rl.id }</td>
-					<td>${rl.gseq }</td>
-					<td>
+				<tr>
+					<td class="lalign">${rl.seq }</td>
+					<td class="lalign">${rl.id }</td>
+					<td class="lalign">${rl.gseq }</td>
+					<td class="lalign">
 						<a href='goodsdetail.do?seq=${rl.gseq}'>
 						${rl.title }</a></td>
-					<td>${rl.wdate }</td>
-					<td>${rl.readcount }</td>
+					<td class="lalign">${rl.wdate }</td>
+					<td class="lalign">${rl.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 	
 
 </body>

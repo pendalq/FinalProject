@@ -74,22 +74,32 @@ public class MainBbsController {
 			GoodsDto goodsdto = mainbbsservice.getGoodsDetail(seq);
 			ReviewDto reviewdto = mainbbsservice.getReviewDetail(seq);
 			List<ReviewDto> reviewdetaillist = mainbbsservice.getReviewDetailList(seq);
-
+			
 			model.addAttribute("goodsdetail", goodsdto);
 			model.addAttribute("interCheck", interdto);
 			model.addAttribute("reviewDetail", reviewdto);
 			model.addAttribute("reviewDetailList", reviewdetaillist);
 
-			if (id != null) {
+		//	if (id != null) {
 				model.addAttribute("loginID", id);
 				model.addAttribute("loginAuth", (int) req.getSession().getAttribute("loginAuth"));
-			} else {
-				model.addAttribute("loginID", "0");
-				model.addAttribute("loginAuth", 0);
-			}
-
-		} 
-		return "goodsdetail.tiles";
+	//		} 
+				return "goodsdetail.tiles";
+		} else {
+			
+			GoodsDto goodsdto = mainbbsservice.getGoodsDetail(seq);
+			ReviewDto reviewdto = mainbbsservice.getReviewDetail(seq);
+			List<ReviewDto> reviewdetaillist = mainbbsservice.getReviewDetailList(seq);
+		//	System.out.println("제품 정보가 나오는지 확인 하기 = " + goodsdto.toString());
+			
+			model.addAttribute("goodsdetail", goodsdto);
+			model.addAttribute("reviewDetail", reviewdto);
+			model.addAttribute("reviewDetailList", reviewdetaillist);
+			
+			
+			return "goodsdetail.tiles";
+		}
+		
 	}
 
 	@ResponseBody

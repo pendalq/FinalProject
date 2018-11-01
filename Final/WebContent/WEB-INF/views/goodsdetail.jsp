@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -12,9 +15,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- table css -->
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/design/_table.css">
+	   
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Bootstrap Fremwork Main Css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- All Plugins css -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="css/custom.css">
 
+    <!-- Modernizr JS -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	
+	
+	
+
+    
 
 <style type="text/css">
+
+	*{
+		font-size: 15 !important;
+	}
+
+	table{
+		width: 80% !important;
+	}
+	
+	
 	textarea{
 		width: 100%;
 		height: 100%;
@@ -23,6 +62,7 @@
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		background-color: white !important;
+		
 	}
 	
 	.reviewshow{
@@ -41,6 +81,9 @@
 	
 
 </style>
+
+
+
 <title>GoodsDetail</title>
 </head>
 <body>
@@ -51,12 +94,9 @@
 	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
 	<input type="hidden" name="_id" id="_id" value="${loginID }">
 
-<table class="list_table" style="width: 90%">
+<table class="list_table" style="width: 90%" id="keywords">
 <form action="frm" id="_frm" method="post" action="putInterest.do">
- 	<colgroup>
 
-	</colgroup> 
-	
 	<tbody>
 	<%-- 	loginID:${loginID } --%>
 	 <%-- ${loginID }  --%>
@@ -143,15 +183,7 @@
 </table>
 
 
-<table class="list_table" style="width: 90%">
-<colgroup>
-	<col style="width:70px"/>
-	<col style="width:300px"/>
-	<col style="width:70px"/>
-	<col style="width:70px"/>
-	<col style="width:130px"/>
-	<col style="width:70px"/>
-</colgroup>
+<table class="list_table" style="width: 90%" id="keywords">
 	<thead style="text-align: center;">
 		<th>글번호</th>
 		<th>제목</th>
@@ -323,6 +355,10 @@ $("#goodsDelete").click(function () {
  
 </script>
 
-
+<%-- <script src="<c:out value="design/js/main.js"/>"></script>
+     <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
+    <script src="<c:out value="design/js/popper.min.js"/>"></script>
+    <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
+    <script src="<c:out value="design/js/plugins.js"/>"></script> --%>
 </body>
 </html>
