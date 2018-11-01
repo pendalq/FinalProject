@@ -14,50 +14,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css">
-#headers{
-	background-color: #2d2d2d;
-}
 
-</style>
+
 </head>
 <body>
 
-<table width="100%" height="100%" border="0">
 
-<tr> <!-- header -->
-   <td height="10%" class="headers">
+
+ <!-- header -->
+   <div>
       <tiles:insertAttribute name="header"/>
-   </td>
-</tr>
-
-
-<tr>
-   <td height="10%" class="headers">
-      <tiles:insertAttribute name="header_second"/>
-   </td>
-</tr>
-
-<tr>
-	<td>
-		<tiles:insertAttribute name="interGoods"/>
-	</td>
-</tr>
-    
-
-<tr>    <!-- menu, content -->
-   <td>
+	</div>
+    <!-- menu, content -->
+ 	<div>
       <tiles:insertAttribute name="main"/>
-   </td>
-</tr>
+	</div>
 
-<tr>    <!-- footer -->
-   <td height="10%">
+    <!-- footer -->
+	<div>
       <tiles:insertAttribute name="footer"/>
-   </td>
-</tr>
-
-</table>
-
+	</div>
 </body>
+
+
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

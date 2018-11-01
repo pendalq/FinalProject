@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style type="text/css">
   table {
     width: 100%;
@@ -25,11 +26,9 @@
   }
 
 
-
 </style>
 </head>
 <body>
-
 
 	<table style="text-align: center; width: 45%;">
 		<colgroup>
@@ -38,6 +37,7 @@
 			<col width="106" />
 			<col width="117" />
 		</colgroup>
+
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -59,7 +59,7 @@
 						<td><a href="view.do?seq=${list.seq}"> ${list.title} </a></td>
 					</c:if>
 					<c:if test="${list.del == 1 }">
-						<td colspan="4">해당글을 삭제되었습니다</td>
+						<td colspan="4">해당글은 삭제되었습니다</td>
 					</c:if>
 					<td>${list.wdate }</td>
 					<td>${list.readCount }</td>

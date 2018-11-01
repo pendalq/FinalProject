@@ -53,7 +53,7 @@ public class GoodsController {
 		
 		String f = dto.getImageName();
 		String newFile = FUpUtil.getNewFile(f);
-		String imageFilename = "<img src='/Final/upload/"+ newFile +"'>";
+		String imageFilename = "<img src='/final/upload/"+ newFile +"'>";
 		dto.setImageName(imageFilename);
 		
 		File file = new File(fupload + "/" + newFile);		
