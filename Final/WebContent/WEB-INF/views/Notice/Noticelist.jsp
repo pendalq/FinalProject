@@ -18,16 +18,34 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;  
+    margin-top: auto;
+    margin-bottom: auto;
   }
   th, td {
     border-bottom: 1px solid #444444;
     padding: 5px;
+   
   }
 
+thead {
+
+	background-color: #dee2e6;
+}
 
 </style>
 
-	<table>
+
+<div style="margin-top: 50px; margin-bottom: 50px">
+
+
+	<table 
+	class="table table-hover" style="width: 70%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;"
+ 	>
 		<colgroup>
 			<col width="122" />
 			<col width="592" />
@@ -77,6 +95,10 @@
 	</div>
 
 	<!-- 페이징 끝 -->
+</div>
+
+
+
 
 	<%!
 	String auth;
