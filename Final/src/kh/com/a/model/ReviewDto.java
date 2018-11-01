@@ -13,6 +13,7 @@ public class ReviewDto {
 	
 	public ReviewDto() {}
 	
+
 	public ReviewDto(int seq, int gseq, String id, String title, String content, String wdate, int readcount,
 			int liked) {
 		super();
@@ -62,6 +63,7 @@ public class ReviewDto {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
+
 	public int getReadcount() {
 		return readcount;
 	}

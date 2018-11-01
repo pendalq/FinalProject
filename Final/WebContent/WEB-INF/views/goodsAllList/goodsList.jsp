@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
 	<script src="<%=request.getContextPath()%>/js/grid.js"></script>
-	<script src="<%=request.getContextPath()%>/js/viewEvent.js"></script>
+	<script src="<%=request.getContextPath()%>/js/viewEvents.js"></script> 
 
 	<script type="text/javascript">
 		function goPage(pageNumber) {
@@ -57,9 +57,9 @@
 						<span class="title-category">찾으시는 상품이 있으신가요?</span>
 						<ul class="category">
 							<li><button type="button" class="btn_category" value="1">모두</button></li>
-							<li><button type="button" class="btn_category" value="purifier">정수기</button></li>
-							<li><button type="button" class="btn_category" value="refrigerator">냉장고</button></li>
-							<li><button type="button" class="btn_category" value="tv">TV</button></li>
+							<li><button type="button" class="btn_category" value="정수기">정수기</button></li>
+							<li><button type="button" class="btn_category" value="냉장고">냉장고</button></li>
+							<li><button type="button" class="btn_category" value="TV">TV</button></li>
 						</ul>
 						<!-- 에이젝스 검색 출력 -->
 					</div>
@@ -76,7 +76,7 @@
 						<div id="option-main" class="option-main">
 
 							<c:choose>
-								<c:when test="${c_category == 'purifier'}">
+								<c:when test="${c_category == '정수기'}">
 									<!-- ---------------------정수기 옵션-------------------- -->
 									<ul class="water-option ani-option">
 										<li class="water-brand">
@@ -113,7 +113,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == 'refrigerator'}">
+								<c:when test="${c_category == '냉장고'}">
 									<!-- ---------------------냉장고 옵션-------------------- -->
 									<ul class="refrigerator-option ani-option">
 										<li class="refrigerator-brand">
@@ -139,16 +139,6 @@
 										</li>
 										<li class="water-size">
 											<div class="option">
-												<span class="option-title">용량</span>
-												<ul>
-													<li><button type="button" id="smallLiter" class="btn-categoryOp" value="smallLiter">500L 이하</button></li>
-													<li><button type="button" id="mediumLiter" class="btn-categoryOp" value="mediumLiter">~</button></li>
-													<li><button type="button" id="bigLiter" class="btn-categoryOp" value="bigLiter">800L 이상</button></li>
-												</ul>
-											</div>
-										</li>
-										<li class="water-size">
-											<div class="option">
 												<span class="option-title">에너지 효율</span>
 												<ul>
 													<li><button type="button" id="firstEffi" class="btn-categoryOp" value="first_effi">1등급</button></li>
@@ -163,7 +153,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == 'tv'}">
+								<c:when test="${c_category == 'TV'}">
 									<!-- ---------------------TV 옵션-------------------- -->
 									<ul class="tv-option ani-option">
 										<li class="tv-brand">
@@ -196,16 +186,6 @@
 												</ul>
 											</div>
 										</li>
-										<li class="water-size">
-											<div class="option">
-												<span class="option-title">화면 크기</span>
-												<ul>
-													<li><button type="button" id="smallInch" class="btn-categoryOp" value="smallInch">39인치 이하</button></li>
-													<li><button type="button" id="mediumInch" class="btn-categoryOp" value="mediumInch">~</button></li>
-													<li><button type="button" id="bigInch" class="btn-categoryOp" value="bigInch">65인치 이상</button></li>
-												</ul>
-											</div>
-										</li>
 										<li id="li-optionSub"><button type="button" class="optionSubmit">적용</button></li>
 									</ul>
 								</c:when>	
@@ -226,19 +206,19 @@
 					<div class="buttonBar">
 						<ul class="buttonBar-list">
 							<li>
-								<button class="btn_buttonBar" value="purifier">
+								<button class="btn_buttonBar" value="정수기">
 									<div class="btn-backImage waterBak"></div>
 									<span class="btn-title">정수기</span>
 								</button>
 							</li>
 							<li>
-								<button class="btn_buttonBar" value="refrigerator">
+								<button class="btn_buttonBar" value="냉장고">
 									<div class="btn-backImage washerBak"></div>
 									<span class="btn-title">냉장고</span>
 								</button>
 							</li>
 							<li>
-								<button class="btn_buttonBar" value="tv">
+								<button class="btn_buttonBar" value="TV">
 									<div class="btn-backImage tvBak"></div>
 									<span class="btn-title">TV</span>
 								</button>

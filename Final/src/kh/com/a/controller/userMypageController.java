@@ -97,8 +97,10 @@ public class userMypageController {
 		//mypage.jsp > retal detail.jsp
 		RentalGoods rDetail = userMyServ.getRentalDto(dto);
 		
-		rDetail.setSdate(rDetail.getSdate().substring(0, 10));
-		rDetail.setRe_turn(rDetail.getRe_turn().substring(0, 10));
+		if(rDetail.getSdate() != null && rDetail.getRe_turn() != null) {
+			rDetail.setSdate(rDetail.getSdate().substring(0, 10));
+			rDetail.setRe_turn(rDetail.getRe_turn().substring(0, 10));
+		}
 		
 		model.addAttribute("rDetail", rDetail);
 		logger.info( "rDetail=" + rDetail);

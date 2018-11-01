@@ -50,11 +50,41 @@ $(document).ready(function(){
 	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
 	if($("#_s_keyword").val().trim() == ""){
 		document.frmForm1.s_category.value = "";
-	}	
+	}
+	if(str != ''){
+		$("#_s_category option[value="+str+"]").attr('selected','selected');
+	}
 }); 
 </script> 
 
 <!-- 검색 카테고리를 유지 end -->
+
+	<div>
+	<form name="frmForm1" id="_frmFormSearch" method="get"
+		action="QnAlist.do">
+		<table>
+			<tr>
+				<td>검색 :</td>
+				<td>
+				<select id="_s_category" name="s_category">
+						<option value="" selected="selected">선택</option>
+						<option value="title">제목</option>
+						<option value="category">카테고리</option>
+						<option value="contents">내용</option>
+				</select>
+				</td>
+					<td>
+						<input type="text" id="_s_keyword" name="s_keyword"
+						value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
+					</td>
+				<td>
+				<span>
+						<button type="button" id="_btnSearch">검색</button>
+				</span>
+				</td>
+			</tr>
+		</table>
+
 
 
 
