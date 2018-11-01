@@ -116,6 +116,7 @@
 
 							<%if(request.getSession().getAttribute("loginID") != null && 
                ((int)request.getSession().getAttribute("loginAuth")) == 1){ %>
+               				<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="gotomypage()" title="MYPAGE">Mypage</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
@@ -123,12 +124,14 @@
 
 							<%if(request.getSession().getAttribute("loginID") != null && 
                   ((int)request.getSession().getAttribute("loginAuth")) == 2){ %>
+                  			<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="gosellerpage()" title="PROFILE">Profile</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
 							
 							<% if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth")) == 3){%>
+							<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
 							
