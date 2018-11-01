@@ -57,7 +57,11 @@
     	border-right: none;
     	border-top: 1px solid black;
     	border-bottom: 1px solid black;
+    	width: 90%;
+    	
     }
+    
+
     
     </style>
 
@@ -76,7 +80,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product__menu">
-                                <button data-filter="*"  class="is-checked">최신상품</button>
+                                <!-- <button data-filter="*"  class="is-checked">최신상품</button> -->
+                                <h2 style="text-align: center;">최신상품</h2><br>
                             </div>
                         </div>
                     </div>
@@ -365,7 +370,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product__menu">
-                                <button data-filter="*"  class="is-checked">인기상품</button>
+                                 <h2 style="text-align: center;">인기상품</h2><br>
                             </div>
                         </div>
                     </div>

@@ -62,9 +62,9 @@
 	 <%-- ${loginID }  --%>
 		<tr class="idAndimage">
 			<th rowspan="8" style="text-align: center;">
-				<textarea rows="19" cols="48" name="image" id="_image">
+				
 				${goodsdetail.imageName }
-				</textarea>
+				
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
 			<td style="text-align: left;">${goodsdetail.id } | <a href="#" id="memberCheck">쪽지 보내기</a></td>
@@ -134,9 +134,9 @@
 		
 		<tr class="content">
 			<td colspan="3" style="text-align: left;">
-				<textarea rows="20" cols="115" name="content" id="_content" readonly="readonly">
+				<div>
 					${goodsdetail.content }
-				</textarea>
+				</div>
 			</td>
 		</tr>
 	</tbody>	

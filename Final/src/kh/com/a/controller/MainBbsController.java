@@ -88,9 +88,7 @@ public class MainBbsController {
 				model.addAttribute("loginAuth", 0);
 			}
 
-		} else {
-			return "login.tiles";
-		}
+		} 
 		return "goodsdetail.tiles";
 	}
 

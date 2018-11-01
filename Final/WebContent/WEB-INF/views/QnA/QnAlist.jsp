@@ -11,8 +11,54 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+
+
+.searchArea{
+   margin-left : auto;
+   margin-right : auto;
+   margin-bottom:  30px;
+}
+
+.selectbtn{
+	margin-left : auto;
+   margin-right : auto;
+
+}
+.selectitems , .searchtext{
+	
+    margin-right: 20px;
+    height: 25;
+}
+</style>
+
+
 </head>
 <body>
+
+<!-- 검색 카테고리를 유지 start -->
+<%
+String category = (String)request.getAttribute("s_category");
+if(category == null) category = "";
+%>
+
+<script type="text/javascript">
+var str='<%=category %>';
+$(document).ready(function(){	
+	document.frmForm1.s_category.value = str;
+	
+	// text에 문자를 입력하지 않았을 경우, 초기화 해준다.
+	if($("#_s_keyword").val().trim() == ""){
+		document.frmForm1.s_category.value = "";
+	}
+	if(str != ''){
+		$("#_s_category option[value="+str+"]").attr('selected','selected');
+	}
+}); 
+</script> 
+
+<!-- 검색 카테고리를 유지 end -->
+
 	<div>
 	<form name="frmForm1" id="_frmFormSearch" method="get"
 		action="QnAlist.do">
@@ -23,15 +69,13 @@
 				<select id="_s_category" name="s_category">
 						<option value="" selected="selected">선택</option>
 						<option value="title">제목</option>
+						<option value="category">카테고리</option>
 						<option value="contents">내용</option>
 				</select>
 				</td>
 					<td>
 						<input type="text" id="_s_keyword" name="s_keyword"
-						value="" />
-					</td>
-					<td>
-						
+						value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
 					</td>
 				<td>
 				<span>
@@ -41,12 +85,41 @@
 			</tr>
 		</table>
 
-		<input type="hidden" name="pageNumber" id="_pageNumber"
-			value="${(empty pageNumber)?0:pageNumber}" /> <input type="hidden"
-			name="recordCountPerPage" id="_recordCountPerPage"
-			value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
 
-	</form>
+
+
+
+	<div class="selectform" >
+		<form name="frmForm1" id="_frmFormSearch" method="get"
+			action="QnAlist.do">
+			<table class="searchArea">
+				<tr style="align-items: center;">
+					<td>
+					<select class="selectitems" id="_s_category" name="s_category">
+							<option value="" selected="selected">선택</option>
+							<option value="title">제목</option>
+							<option value="category">카테고리</option>
+							<option value="contents">내용</option>
+					</select>
+					</td>
+						<td>
+							<input type="text" class="searchtext" id="_s_keyword" name="s_keyword"
+							value="" placeholder="카테고리를 선택 후 검색해주세요"/>
+						</td>
+					<td>
+					<span>
+							<button type="button" id="_btnSearch">검색</button>
+					</span>
+					</td>
+				</tr>
+			</table>
+	
+			<input type="hidden" name="pageNumber" id="_pageNumber"
+				value="${(empty pageNumber)?0:pageNumber}" /> 
+			<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage"
+				value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
+	
+		</form>
 	</div>
 	<!-- 검색 view 끝 -->
 
@@ -54,9 +127,10 @@
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 85%;">
+	<table class="list_table" style="width: 55%;">
 		<colgroup>
 			<col style="width: 70px;" />
+			<col style="width: 100px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
 			<col style="width: 100px;" />
@@ -66,6 +140,7 @@
 		<thead>
 			<tr>
 				<th>번호</th>
+				<th>카테고리</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성날짜</th>
@@ -80,49 +155,58 @@
 				</tr>
 			</c:if>
 
-			<c:forEach items="${QnAlist}" var="qna" varStatus="vs">
-				<jsp:setProperty property="dept" name="ubbs" value="${qna.dept}" />
-								
-				<tr class="_hover_tr">
-					<td>${vs.count}</td>
+				<c:forEach items="${QnAlist}" var="qna" varStatus="vs">
+						<jsp:setProperty property="dept" name="ubbs" value="${qna.dept}" />
+										
+						<tr class="_hover_tr">
+							<td>${vs.count}</td>
+							
+							<td>${qna.category }</td>
+							
+							<td style="text-align: left">
+								<jsp:getProperty property="arrow" name="ubbs" /> 
+									<c:if test="${qna.del == 0 }">
+										<a href='QnADetail.do?seq=${qna.seq}'> ${qna.title} </a>
+									</c:if> 
+									 <c:if test="${qna.del == 1 }">
+											이 글은 작성자에 의해서 삭제 되었습니다
+												
+								</c:if> 
+							</td>
+		
+							<td>${qna.id}</td>
+							<td>${qna.wdate }</td>
+							<td>${qna.readcount }</td>
+						</tr>
+				</c:forEach>
+			</tbody>
+	
+		</table>
 
-					<td style="text-align: left">
-					<jsp:getProperty property="arrow" name="ubbs" /> 
-						<c:if test="${qna.del == 0 }">
-							<a href='QnADetail.do?seq=${qna.seq}'> ${qna.title} </a>
-						</c:if> 
-						<c:if test="${qna.del == 1 }">
-								이 글은 작성자에 의해서 삭제 되었습니다
-									
-						</c:if></td>
+			<!-- 페이징 처리 -->
+			<div id="paging_wrap">
+				<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
+					<jsp:param value="${pageNumber }" name="pageNumber" />
+					<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
+					<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
+					<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
+				</jsp:include>
+			</div>
 
-					<td>${qna.id}</td>
-					<td>${qna.wdate }</td>
-					<td>${qna.readcount }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
 
-	</table>
+		  	<c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
+				<div class="selectbtn" id="buttons_wrap">
+					<span class="button blue">
+						<button type="button" id="_btnAdd">글쓰기</button>
+					</span>
+				</div>
+			</c:if> 
 
-	<!-- 페이징 처리 -->
-	<div id="paging_wrap">
-		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
-			<jsp:param value="${pageNumber }" name="pageNumber" />
-			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
-			<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
-			<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
-		</jsp:include>
-	</div>
-
-	<!-- 로그인 하면 쓸 수 있도록 왜 시바 안나오는 거지?  -->
-  <c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
-		<div id="buttons_wrap">
-			<span class="button blue">
-				<button type="button" id="_btnAdd">글쓰기</button>
-			</span>
-		</div>
-	</c:if> 
+	
+	
+	
+	
+	
 	<script type="text/javascript">
 		
 		$(document).ready(function() {
@@ -138,12 +222,14 @@
 			location.href = "QnAWrite.do";
 		});
 		$("#_btnSearch").click(function() {
-			//alert('search');						
-			$("#_frmFormSearch").attr({
-				"target" : "_self",
-				"action" : "QnAlist.do"
-			}).submit();
-
+	    	if ($("#_s_keyword").val() == null) {
+					alert("검색어를 입력해주세요");
+			}else if($("#_s_keyword").val() != null){						
+				$("#_frmFormSearch").attr({
+					"target" : "_self",
+					"action" : "QnAlist.do"
+				}).submit();
+			}
 		});
 		
 		function goPage(pageNumber) {

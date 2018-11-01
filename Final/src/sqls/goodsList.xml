@@ -30,6 +30,21 @@
 			<when test="searchNum == 3">
 				WHERE CATEGORY LIKE '%'||#{category}||'%'
 			</when>
+			<when test="searchNum == 4">
+				WHERE 1=1 AND CATEGORY = #{category}
+				<if test="brand != null">
+					AND BRAND = #{brand}
+				</if>
+				<if test="option3 != null and option2 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%' AND OPTIONS LIKE '%'||#{option2}||'%' AND OPTIONS LIKE '%'||#{option3}||'%'
+				</if>
+				<if test="option3 == null and option2 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%' AND OPTIONS LIKE '%'||#{option2}||'%'
+				</if>
+				<if test="option2 == null and option1 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%'
+				</if>
+			</when>
 		</choose>
 		ORDER BY SEQ DESC)A) WHERE RNUM BETWEEN ${start} AND ${end}
 	</select>
@@ -44,6 +59,21 @@
 			</when>
 			<when test="searchNum == 3">
 			WHERE CATEGORY LIKE '%'||#{category}||'%'
+			</when>
+			<when test="searchNum == 4">
+				WHERE 1=1 AND CATEGORY = #{category}
+				<if test="brand != null">
+					AND BRAND = #{brand}
+				</if>
+				<if test="option3 != null and option2 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%' AND OPTIONS LIKE '%'||#{option2}||'%' AND OPTIONS LIKE '%'||#{option3}||'%'
+				</if>
+				<if test="option3 == null and option2 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%' AND OPTIONS LIKE '%'||#{option2}||'%'
+				</if>
+				<if test="option2 == null and option1 != null">
+					AND OPTIONS LIKE '%'||#{option1}||'%'
+				</if>
 			</when>
 		</choose>
 	</select>
