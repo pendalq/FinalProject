@@ -59,36 +59,6 @@ $(document).ready(function(){
 
 <!-- 검색 카테고리를 유지 end -->
 
-	<div>
-	<form name="frmForm1" id="_frmFormSearch" method="get"
-		action="QnAlist.do">
-		<table>
-			<tr>
-				<td>검색 :</td>
-				<td>
-				<select id="_s_category" name="s_category">
-						<option value="" selected="selected">선택</option>
-						<option value="title">제목</option>
-						<option value="category">카테고리</option>
-						<option value="contents">내용</option>
-				</select>
-				</td>
-					<td>
-						<input type="text" id="_s_keyword" name="s_keyword"
-						value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
-					</td>
-				<td>
-				<span>
-						<button type="button" id="_btnSearch">검색</button>
-				</span>
-				</td>
-			</tr>
-		</table>
-
-
-
-
-
 	<div class="selectform" >
 		<form name="frmForm1" id="_frmFormSearch" method="get"
 			action="QnAlist.do">
@@ -104,7 +74,7 @@ $(document).ready(function(){
 					</td>
 						<td>
 							<input type="text" class="searchtext" id="_s_keyword" name="s_keyword"
-							value="" placeholder="카테고리를 선택 후 검색해주세요"/>
+							value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
 						</td>
 					<td>
 					<span>

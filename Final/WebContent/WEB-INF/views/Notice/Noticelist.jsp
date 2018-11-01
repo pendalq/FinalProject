@@ -31,7 +31,7 @@
 <body>
 
 
-	<table>
+	<table style="text-align: center; width: 45%;">
 		<colgroup>
 			<col width="122" />
 			<col width="592" />
