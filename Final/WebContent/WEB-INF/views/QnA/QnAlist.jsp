@@ -25,12 +25,23 @@
 .selectbtn{
 	margin-left : auto;
    margin-right : auto;
+   align-content: center;
 
 }
 .selectitems , .searchtext{
 	
     margin-right: 20px;
     height: 25;
+}
+
+.list_table{
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_table td{
+	padding-top: 5px;
 }
 </style>
 
@@ -99,7 +110,7 @@ $(document).ready(function(){
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 55%;">
+	<table class="list_table" style="width:70%; height: auto">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: 100px;" />
@@ -168,7 +179,7 @@ $(document).ready(function(){
 
 		  	<c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
 				<div class="selectbtn" id="buttons_wrap">
-					<span class="button blue">
+					<span class="button blue" style="position: relative; left: 1032px;">
 						<button type="button" id="_btnAdd">글쓰기</button>
 					</span>
 				</div>

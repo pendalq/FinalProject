@@ -27,8 +27,7 @@
 </tr>
 <tr>
 	<th>내용</th>
-	<td style="text-align: left"><textarea rows="10" cols="50" 
-	name='content' id="_content">${qna.content}</textarea></td>
+	<td style="text-align: left">${qna.content}</td>
 </tr>
 </tbody>
 

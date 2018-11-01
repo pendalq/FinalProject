@@ -79,7 +79,7 @@
 							<ul class="main__menu">
 								<li class="drop"><a href="mainbbslist.do">Home</a></li>
 								<li><a href="./goodslist.do">상품정보</a></li>
-								<li class="drop"><a href="QNA">QNA</a>
+								<li class="drop"><a href="./Noticelist.do">고객센터</a>
 									<ul class="dropdown">
 										<li><a href="./Noticelist.do">공지사항</a></li>
 										<li><a href="./QnAlist.do">QNA</a></li>
@@ -92,7 +92,7 @@
 								<ul class="main__menu">
 									<li class="drop"><a href="mainbbslist.do">Home</a></li>
 									<li><a href="./goodslist.do">상품정보</a></li>
-									<li class="drop"><a href="QNA">QNA</a>
+									<li class="drop"><a href="./Noticelist.do">고객센터</a>
 										<ul class="dropdown">
 											<li><a href="./Noticelist.do">공지사항</a></li>
 											<li><a href="./QnAlist.do">QNA</a></li>
@@ -137,7 +137,7 @@
 							
 							<%if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth"))==4){ %>
-								<li><a href="#none" onclick="관리자" title="admin">Admin</a></li>
+								<li><a href="#none" onclick="goadmin()" title="admin">Admin</a></li>
 							<%} %>		
 
 							 <li class="toggle__menu d-none d-md-block"><span class="ti-menu"></span></li>
