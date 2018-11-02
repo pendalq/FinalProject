@@ -3,7 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
-<table class="list_table" style="width:85%;">
+
+<h1 style="position: relative;left:275px">문의글</h1>
+
+<table class="table table-bordered" style="width:65%;margin: 30px auto">
 <colgroup>
 <col style="width:200px;" />
 <col style="width:auto;" />
@@ -18,7 +21,7 @@
 <tr>
 	<th>제목</th>
 	<td style="text-align: left">
-		<input size="60" type="text" name="title" value='${qna.title}' >
+		${qna.title}
 	</td>
 </tr>
 <tr>
@@ -34,12 +37,12 @@
 </table>
 
 <hr/>
-<h3>답글</h3>
+<h1 style="position: relative;left:275px">답글</h1>
 
 <form name="frmForm" id="_frmForm" method="post" action="bbsreplyAf.do">
 <input type="hidden" name="seq"   value="${qna.seq}"/>
 <input type="hidden" name="category" value="${qna.category }">
-<table class="list_table" style="width:85%;">
+<table class="table table-bordered" style="width:65%;margin: 30px auto">
 <colgroup>
 <col style="width:200px;" />
 <col style="width:auto;" />

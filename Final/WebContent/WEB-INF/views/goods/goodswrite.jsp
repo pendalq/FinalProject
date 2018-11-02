@@ -6,7 +6,6 @@
 <fmt:requestEncoding value="UTF-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
 <style>
 table{
 margin-left: auto;
@@ -18,11 +17,8 @@ width: 57%;
 <form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
 
-<table class="list_table">
-<colgroup>
-<col style="width:100px;" />
-<col style="width:auto;" />
-</colgroup>
+<table class="table table-bordered" style="margin: 30px auto">
+
 
 <tr>
 <th>아이디</th>

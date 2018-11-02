@@ -16,6 +16,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="<%=request.getContextPath() %>/css/bootstrap.css">
+
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 <style type="text/css">
 /* .mypageTable table{
 	border: 0px; 
@@ -68,6 +72,7 @@ background-color:  #dddddd;
 	</div>
 <h2 style="text-align: center; margin-top: 30px">최근 렌탈 중인 상품 </h2>
 <div id="myRental" style="border: 1px solid black; padding: 10px">
+<ul class="item-ul">
 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
 				<c:if test = "${empty srental3 }">
 					<span>렌탈 중인 상품이 없습니다</span>
@@ -75,17 +80,21 @@ background-color:  #dddddd;
 					
 				<%-- 	${myrental3.seq }	 --%>
 				<div class="myrental3" style="border: 1px solid black; width: 300px; height: 300px">
-				<div style="width:300px; height:250px;">
+				
+				<li class="item">
+				<div class="item-image" style="width:300px; height:250px;">
 					<a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
-						${myrental3.imagename }
+						<em class="item-brand">${myrental3.imagename }</em>
 					</a>
 				</div>
-				<div style="width:300px; height: 50px; text-align:center; border-top: 1px solid black">
+				<div class="item-detail" style="width:300px; height: 50px; text-align:center; border-top: 1px solid black">
 						${myrental3.title }
 				</div>	
+				</li>
 				</div>
 				
 	</c:forEach>
+	</ul>
 </div> 
 
 

@@ -243,7 +243,7 @@ function memberlogout() {
 		location.href="admin.do";
 	}
 	function goMessage() {
-		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=400px');
+		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=420px');
 	}
 
 	

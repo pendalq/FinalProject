@@ -14,7 +14,7 @@
 
 <form name="frmForm" id="_frmForm" method="post" action="bbsupdate.do">
 
-<table class="list_table" style="width:85%;">
+<table class="table table-bordered" style="width:65%;margin: 30px auto">
 
 <input type="hidden" name="seq"   value="${qna.seq}"/>
 <colgroup>
@@ -60,7 +60,7 @@
 			<!-- 관리자가 로그인 했을 때 활성화 -->
 			<c:choose>
 			<c:when test="${auth==1 or auth==2 or auth==3 or auth==4 }">
-			<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
+			<a href="#none" id="_btnReply" title="답글달기">답글달기</a>
 			</c:when> 
 			</c:choose>
 		</span>
