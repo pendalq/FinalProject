@@ -40,18 +40,14 @@ public class MainBbsController {
 
 		List<ReviewDto> reviewList = mainbbsservice.getReviewforMain();
 		model.addAttribute("reviewlist", reviewList);
-
-		/*
-		 * String id = (String)req.getSession().getAttribute("loginID");
-		 * model.addAttribute("loginID", id);
-		 * 
-		 * int auth = (int)req.getSession().getAttribute("loginAuth");
-		 * model.addAttribute("loginAuth", auth);
-		 * 
-		 * if(id==null||auth==null) {
-		 * 
-		 * }
-		 */
+		
+		
+		for (int i = 0; i < reviewList.size(); i++) {
+			reviewList.get(i).setWdate(reviewList.get(i).getWdate().substring(0, 10));
+		}
+		
+		
+		
 		return "main.tiles";
 	}
 
@@ -75,6 +71,15 @@ public class MainBbsController {
 			ReviewDto reviewdto = mainbbsservice.getReviewDetail(seq);
 			List<ReviewDto> reviewdetaillist = mainbbsservice.getReviewDetailList(seq);
 			
+	//		System.out.println("dto = " + reviewdto.getWdate());
+			for (int i = 0; i < reviewdetaillist.size(); i++) {
+				reviewdetaillist.get(i).setWdate(reviewdetaillist.get(i).getWdate().substring(0, 10));
+			}
+			
+			goodsdto.setWdate(goodsdto.getWdate().substring(0, 10));
+			
+			
+			
 			model.addAttribute("goodsdetail", goodsdto);
 			model.addAttribute("interCheck", interdto);
 			model.addAttribute("reviewDetail", reviewdto);
@@ -91,6 +96,12 @@ public class MainBbsController {
 			ReviewDto reviewdto = mainbbsservice.getReviewDetail(seq);
 			List<ReviewDto> reviewdetaillist = mainbbsservice.getReviewDetailList(seq);
 		//	System.out.println("제품 정보가 나오는지 확인 하기 = " + goodsdto.toString());
+			
+			for (int i = 0; i < reviewdetaillist.size(); i++) {
+				reviewdetaillist.get(i).setWdate(reviewdetaillist.get(i).getWdate().substring(0, 10));
+			}
+			
+			goodsdto.setWdate(goodsdto.getWdate().substring(0, 10));
 			
 			model.addAttribute("goodsdetail", goodsdto);
 			model.addAttribute("reviewDetail", reviewdto);

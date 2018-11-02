@@ -641,12 +641,9 @@
 	<div style="text-align: center;"><h2>후기</h2></div>
 	<table id="keywords">
 		<thead>
-			<th><span>번호</span></th>
 			<th><span>아이디</span></th>
-			<th><span>물품번호</span></th>
 			<th><span>제목</span></th>
 			<th><span>등록일</span></th>
-			<th><span>조회수</span></th>
 		</thead>
 		<tbody>
 			<c:if test="${empty reviewlist }">
@@ -657,14 +654,11 @@
 			
 			<c:forEach items="${reviewlist }" var="rl" varStatus="vs3">
 				<tr>
-					<td class="lalign">${rl.seq }</td>
 					<td class="lalign">${rl.id }</td>
-					<td class="lalign">${rl.gseq }</td>
 					<td class="lalign">
 						<a href='goodsdetail.do?seq=${rl.gseq}'>
 						${rl.title }</a></td>
 					<td class="lalign">${rl.wdate }</td>
-					<td class="lalign">${rl.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

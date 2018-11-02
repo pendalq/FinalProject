@@ -14,6 +14,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script src="<c:out value="design/js/main.js"/>"></script>
 
 <link rel="shortcut icon" type="image/x-icon"
 	href="design/images/favicon.ico">
@@ -38,7 +39,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/design/css/custom.css">
 	
-	
+
 	
 	
 	<!-- 추가 -->
@@ -47,10 +48,11 @@
 	
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	
 
- <script src="<c:out value="design/js/main.js"/>"></script>
+ 
      <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:out value="design/js/popper.min.js"/>"></script>
     <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
@@ -144,8 +146,10 @@
 							
 							<%if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth"))==4){ %>
+
 								<li><a href="#none" onclick="관리자" title="admin">Admin</a></li>
 								<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
+
 							<%} %>		
 
 							 <li class="toggle__menu d-none d-md-block"><span class="ti-menu"></span></li>
@@ -251,7 +255,7 @@ function memberlogout() {
 		location.href="admin.do";
 	}
 	function goMessage() {
-		location.href="message.do";
+		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=400px');
 	}
 
 	

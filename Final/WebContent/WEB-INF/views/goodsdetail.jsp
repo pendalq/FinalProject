@@ -11,6 +11,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,26 +21,41 @@
 <!-- table css -->
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/design/_table.css">
 	   
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Bootstrap Fremwork Main Css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- All Plugins css -->
-    <link rel="stylesheet" href="css/plugins.css">
-    <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- User style -->
-    <link rel="stylesheet" href="css/custom.css">
+  
+<link rel="shortcut icon" type="image/x-icon"
+	href="design/images/favicon.ico">
+<link rel="apple-touch-icon" href="design/apple-touch-icon.png">
+<!-- table css -->
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/design/_table.css">
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+<!-- Bootstrap Fremwork Main Css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/css/bootstrap.min.css">
+<!-- All Plugins css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/css/plugins.css">
+<!-- Theme shortcodes/elements style -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/css/shortcode/shortcodes.css">
+<!-- Theme main style -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/style.css">
+<!-- Responsive css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/css/responsive.css">
+<!-- User style -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/design/css/custom.css">
 	
+	
+ <script src="<c:out value="design/js/main.js"/>"></script>
+     <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
+    <script src="<c:out value="design/js/popper.min.js"/>"></script>
+    <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
+    <script src="<c:out value="design/js/plugins.js"/>"></script>
+    
 	
 	
 
@@ -91,23 +109,33 @@
 
 
 
-	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
-	<input type="hidden" name="_id" id="_id" value="${loginID }">
-
-<table class="list_table" style="width: 90%" id="keywords">
 <form action="frm" id="_frm" method="post" action="putInterest.do">
 
-	<tbody>
+	<input type="hidden" name="seq" id="seq" value="${goodsdetail.seq }">
+	<input type="hidden" name="_id" id="_id" value="${loginID }">
+	<br>
+	<br>
+	
+
+<table class="list_table" style="width: 90%" id="keywords">
+
+	
+	
 	<%-- 	loginID:${loginID } --%>
 	 <%-- ${loginID }  --%>
 		<tr class="idAndimage">
 			<th rowspan="8" style="text-align: center;">
-				
+				<div style="height:360px; width: 360px">
 				${goodsdetail.imageName }
-				
+				</div>
 			</th>
 			<th style="text-align: left;">판매자아이디</th>
-			<td style="text-align: left;">${goodsdetail.id } | <a href="#" id="memberCheck">쪽지 보내기</a></td>
+			<td style="text-align: left;">${goodsdetail.id } | 
+			<form action="./messagewrite.do" id="sendmessage" method="post">
+				<input type="hidden" name="sendid" value="${loginID }">
+				<input type="hidden" name="receiveid" value="${goodsdetail.id }">
+			<a href="#none" id="sendM">쪽지 보내기</a>
+			</form></td>
 		</tr>
 		<tr class="name">
 			<th style="text-align: left;">업체이름</th>
@@ -179,7 +207,6 @@
 				</div>
 			</td>
 		</tr>
-	</tbody>	
 </table>
 
 
@@ -188,7 +215,6 @@
 		<th>글번호</th>
 		<th>제목</th>
 		<th>글쓴이</th>
-		<th>조회수</th>
 		<th>별점</th>
 		<th>등록일</th>		
 	</thead>
@@ -203,7 +229,6 @@
 			<td>${vs.count}</td>
 			<td id="reviewshow${vs.count }" class="reviewshow" onclick="func(${vs.count })">${rd.title }</td>
 			<td>${rd.id }</td>
-			<td>${rd.readcount }</td>
 			<td>
 				<c:choose>
 					<c:when test="${rd.liked==1 }">
@@ -244,16 +269,27 @@
 </form>
 
 <script type="text/javascript">
- 
-/* 
-$("#putInterest").click(function () {
-	alert("찜하기");
-	$("#_frm").attr({"target":"_self","action":"putInterest.do"}).submit();
+
+$("#sendM").click(function(){
+	
+	loc = "./messagewrite.do?sendid=${loginID}&receiveid=${goodsdetail.id}";
+
+	window.open(loc, 'POP', 'top=100px, left=100px, height=400px, width=420px');
+
+	$('#sendmessage').submit();
 });
 
-  */
+$("#updateRental").click(function() {
+	//렌탈수정하기  
+ 
+
+/* $("#putInterest").click(function () {
+	alert("찜하기");
+	$("#_frm").attr({"target":"_self","action":"putInterest.do"}).submit();
+}); */
+});
+
 $(document).ready(function () {
-	
 
 
   $(function () {
@@ -306,7 +342,7 @@ $(document).ready(function () {
 	 
    
  $("#doRental").click(function () {
-	$("#_frm").attr({ "target":"_self", "action":"gotoRental.do"}).submit();
+	$("#_frm").attr({ "target":"_self", "action":"rental.do"}).submit();
 });
  
  
@@ -316,7 +352,6 @@ $(document).ready(function () {
  
 
  $(document).ready(function () {
-	 
 	 for(i = 1;i< ${reviewDetailList.size()} + 1; i++){
 //	 alert("reviewshow1");
 		$("#_reviewcontent"+i).hide();
@@ -367,6 +402,6 @@ $("#goodsDelete").click(function () {
      <script src="<c:out value="design/js/vendor/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:out value="design/js/popper.min.js"/>"></script>
     <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
-    <script src="<c:out value="design/js/plugins.js"/>"></script> --%>
+    <script src="<c:out value="design/js/plugins.js"/>"></script>  --%>
 </body>
 </html>
