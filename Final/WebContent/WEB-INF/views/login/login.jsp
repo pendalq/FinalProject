@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-<style type="text/css">
  
 .titleArea{
 	margin: 0px auto 50px; 
@@ -17,11 +16,13 @@
     text-align: center;
     margin-top: 40px;
 	margin-bottom: 50px;
+	background-color: #e6e6e6;
 }
 .loginForm{
 	margin: 0px auto 50px;
 	width: 100%;
     text-align: center;
+   
 }
 .loginAllArea{
   
@@ -106,12 +107,12 @@ h3{
 						<div class="inputtag" style="height: 80px; ">
 							<div class="fa-user">
 								<span class="usericon"></span>
-								<input type="text" name="id" id="id"><br>
+								<input type="text" name="id" id="id" placeholder="아이디"><br>
 								
 							</div>
 							<div class="fa-pw">
 								<span class="pwicon"><img scr="<%=request.getContextPath()%>/views/login/loginpw.png"></span>
-								<input type="password" name="pw" id="pw"> <!-- style="border-bottom: 30px;" -->
+								<input type="password" name="pw" id="pw" placeholder="비밀번호"> <!-- style="border-bottom: 30px;" -->
 								
 							</div>
 						</div>	

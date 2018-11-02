@@ -77,7 +77,7 @@ public class NoitceController {
 			NoticeDTO dto = null;
 			dto=NoitceService.getviewlist(seq);
 			NoitceService.readCount(seq);
-			
+			dto.setWdate(dto.getWdate().substring(0, 10));
 			System.out.println(dto.toString() + "view 를 불러왔을 떄 dto");
 			
 			model.addAttribute("dto", dto);

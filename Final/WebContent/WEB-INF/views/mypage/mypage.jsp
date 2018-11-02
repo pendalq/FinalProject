@@ -46,6 +46,10 @@
 background-color:  #dddddd;
 }
   */
+  .mypageTable{
+  	margin-left: auto;
+  	margin-right: auto;
+  }
   
   table th, table td{
    text-align: center;

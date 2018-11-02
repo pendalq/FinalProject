@@ -123,9 +123,11 @@ h3{
 }
 input[type="text"]{
 	padding: 5px;
+
 }
 input[type="password"]{
 	padding: 5px;
+	 
 }
  
 

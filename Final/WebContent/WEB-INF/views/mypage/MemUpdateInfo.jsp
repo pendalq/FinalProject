@@ -5,13 +5,101 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보수정</title>
+
+<style type="text/css">
+.content_table th{
+	padding: 11px 1px 10px 18px;
+    border: 1px solid #ddd;
+    border-bottom-width: 0;
+    color: #353535;
+    text-align:   center;
+   /*  background: #eeeeee;  */
+   background-color: #fafafa;
+    font-weight:bold !important;
+    font-size: smaller;
+    vertical-align: middle; 
+	width: 30%;
+
+
+}
+.content_table td{
+	padding: 11px 10px 10px;
+    border-top: 1px solid #ddd;
+    color: #353535;
+    vertical-align: middle;
+
+
+}
+
+ input[type=button] { 
+    background: #fff;
+    color: #444!important;
+    border-color: #ddd;   
+	cursor: pointer;	
+} 
+
+.updateInfoForm{
+	margin-left : auto;
+	margin-right : auto;  
+	padding: 30px 30px;
+	width : 60%;
+}
+
+.movelinkbutton a{
+text-decoration :none;
+    border: 1px solid #d5d5d5;
+    color: #4b4b4b;
+    font-size: 20px;
+    height: 45px;
+    letter-spacing: 2px;
+    line-height: 45px;
+    padding: 0 70px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 40px;
+
+}
+.movelinkbutton a:hover{
+	border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+   font-family: 'Poppins', sans-serif;	
+}
+
+
+
+input[type="text"]{
+	padding: 5px;
+		border : none;
+}
+input[type="password"]{
+	padding: 5px;
+		border : none;
+}
+h3{
+	margin-left : auto;
+	margin-right : auto;  
+	margin-bottom : 20px;
+	font-family: '나눔고딕','Nanum Gothic';
+  	font-style: italic;
+  	font-size: 24px;
+  	
+  	
+}
+#_userid{
+boder="none";
+}
+ 
+</style>
 </head>
 <body>
 
+<div class="updateInfoForm">
 <c:if test="${memdto.auth eq 1}">
 
 		<form action="" method="post" id="_updateForm" name="updateForm">	
+			<div class="updateInfotb">
+				<h3>회원 정보 수정</h3>
 				<table class="content_table" style="width: 75%">
 					<colgroup>
 						<col style="width:30%">
@@ -23,7 +111,7 @@
 						<th>아이디</th>
 						<td>
 							<input type="hidden" value="${memdto.auth }">
-							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }">
+							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }" boder="none">
 						</td>	
 					</tr>
 					
@@ -35,8 +123,8 @@
 						</td>	
 					</tr>
 					<tr>
-						<th>패스워드 확인</th>
-						<td>
+						<th height="60">패스워드 확인</th>
+						<td style="height: 65">
 							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를2"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
                         	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
@@ -60,20 +148,23 @@
 					<tr>
 						<th>주소</th>
 						<td>
-							<input type="text" name="address" id="_address" size="60" data-msg="주소를 " value="${memdto.address} ">
+							<input type="text" name="address" id="_address" size="50" data-msg="주소를 " value="${memdto.address} ">
 							<input type="button" onclick="execDaumPostcode()" value="주소 검색"><br>
 							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 						</td>	
 					</tr>
 					<tr>
-						<td>
+						<td colspan="2" height="40px;" ,margin-top: 20px;">
+							<div class="movelinkbutton" style="text-align: center">
 							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
-							<a href="mypage.do">마이페이지로</a>
+							<a href="mypage.do" id="gomypage">마이페이지로</a>
+							</div>
 						</td>	
 					</tr>			
 				</table>
-			</form>
-			</c:if>
+			</div>	
+		</form>
+</c:if>
 			
 			
 			
@@ -133,16 +224,21 @@
 						</td>	
 					</tr>
 					<tr>
-						<td>
+						<div class="movelinkbutton" style="text-align: center">
+						<td colspan="2">
+							
 							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
-							<a href="mypage.do">마이페이지로</a>
-						</td>	
+							<a href="mypage.do" id="gomypage" title="미이페이지로">마이페이지로</a>
+							
+						</td>
+						</div>	
 					</tr>			
 				</table>
 			</form>
+		
 			</c:if>
 			
-		 
+</div>		 
 <script type="text/javascript">
 //회원가입버튼 눌렀을때
 $("#updateInfo").click(function() {
