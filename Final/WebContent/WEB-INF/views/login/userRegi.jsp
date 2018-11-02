@@ -11,11 +11,14 @@
 	margin-left : auto;
 	margin-right : auto;  
 	padding: 30px 40px;
+	width: 60%
 	 
 }
 .UserRegitb{
+	width : 100%;
 	padding-top: 20px;
     padding-bottom: 40px; 
+  
       
 }
 .UserRegitb th{
@@ -69,10 +72,22 @@
      font-family:'NanumBarunGothicWeb'; */
 }
  input[type=button] { 
-    background: #fff;
+    /* background: #fff;
     color: #444!important;
     border-color: #ddd;   
-	cursor: pointer;	
+	cursor: pointer; */
+	
+	    text-decoration: none;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 10px 3px 10px;
+    background: #f7f7f7;
+    color: #a2a2a2;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    line-height: 100%;
+    overflow: hidden;
+    transition: all 0.5s	
 } 
  input[type=button]:hover { 
     background: #eeeeee;
@@ -81,7 +96,7 @@
 	cursor: pointer;	
 } 
 
-.movelinkbutton a{
+ .movelinkbutton a{
 	text-decoration:none;
     font-size: 11px;
     curcor: pointer;
@@ -96,36 +111,64 @@
     font-size: 15px;	
    
   
-}
+} 
+
+.movelinkbutton a:hover{
+border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;	
+   
+  
+} 
 #regiBTN{
-	background: #000;
-	color: #e7e7e7;
-	border: 1px solid #000;
-}	
+	color: #353535;
+    background: #ffffff;
+    border: 1px solid #cbcbcb;
+    
+    
+}
 #regiBTN:hover{
-	background-color : yellow;
-	color: black;
-	border: 1px solid #cbcbcb;
+   border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+	
+	
 }
 #cancelBTN{
-    /* background: #f7f7f7;
-    color: #a2a2a2; */
     color: #353535;
     background: #ffffff;
     border: 1px solid #cbcbcb;
 }
+#cancelBTN:hover{
+    border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+	
+}
+
+
+
 h3{
 	margin-left : auto;
 	margin-right : auto;  
-	padding: 30px 40px;
+	margin-bottom : 20px;
 	font-family: '나눔고딕','Nanum Gothic';
-  	font-weight: 800;
+  	font-style: italic;
+  	font-size: 24px;
+  	
 }
 input[type="text"]{
 	padding: 5px;
+	width: 80%; 
+
 }
 input[type="password"]{
 	padding: 5px;
+	width: 80%; 
+
 }
  
 
@@ -161,8 +204,8 @@ input[type="password"]{
 						</td>	
 					</tr>
 					<tr>
-						<th style="height: 72px;">패스워드 확인</th>
-						<td>
+						<th height="60">패스워드 확인</th>
+						<td height="60">
 							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
                         	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
