@@ -66,6 +66,7 @@
 			value="/WEB-INF/views/login/login.jsp" />
 	</definition>
 
+
 	<definition name="regi.tiles" extends="main.tiles">
 		<put-attribute name="main"
 			value="/WEB-INF/views/login/regi.jsp" />
