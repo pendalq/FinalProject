@@ -80,7 +80,7 @@
 				<div class="row">
 					<div class="col-md-2 col-lg-2 col-6">
 						<div class="logo">
-							<a href="mainbbslist.do"> <img src="image/logos.png"
+							<a href="mainbbslist.do"> <img src="image/logoss__s.png"
 								alt="logo">
 							</a>
 						</div>
@@ -175,7 +175,7 @@
 				</div>
 				<div class="off__contact">
 					<div class="logo">
-						<a href="mainbbslist.do"> <img src="images/logo/uniqlo.png"
+						<a href="mainbbslist.do"> <img src="image/logoss__s.png"
 							alt="logo">
 						</a>
 					</div>
