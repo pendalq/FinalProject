@@ -67,7 +67,7 @@ background-color:  #dddddd;
  
 
 <div class="mypageTable">
-	<div style="margin-top: 50px; width:15%; position: relative; left: 1360px">
+	<div style="margin-top: 50px; width:15%; position: relative; left: 1254px">
 		${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
 	</div>
 <h2 style="text-align: center; margin-top: 30px">최근 렌탈 중인 상품 </h2>
