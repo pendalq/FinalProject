@@ -1,5 +1,23 @@
+/* ---------------------------------- */
+/*               REGI                 */
+/* -----------------------------------*/
 .choiceRegiArea{
-	height: 100%;
+  height: 80%; 
+  color: #606468;
+  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+  margin-left : 15%;
+  margin-right : 15%;
+  margin-top: 50px;
+}
+.CRtitle{
+	margin: 15px;
+	
+}
+.CRhref{
+	/* margin: 20px; */
+	margin-left: auto;
+	margin-right: auto;
+	
 }
 .btn-backImage{
     position: relative;
@@ -8,34 +26,35 @@
     width: 50%;
     height: 100%;
 }
-
 .regi1{
-	
-	background:url(../views/login/regi1.png) no-repeat;
+	display: inline-block;
+    width: 340px;
+    height: 390px;
+	background:url(../image/member/regi1.png) no-repeat;
 	background-size: cover;
+	margin-right: 15px;
 	
 }
 .regi2{
-	
-	background:url(../views/login/regi2.png) no-repeat;
-	 background-size: cover;
+	display: inline-block;
+    width: 340px;
+    height: 390px;
+	background:url(../image/member/regi2.png) no-repeat;
+	background-size: cover;
 }
 
-/* 버튼 이미지쓰는법
-#btn_search{
-    position: absolute;
-    left: 20px;
-    top: 12px;
-    background: url(../image/goodsAllList/search-hover.svg) no-repeat;
-    background-size: 23px 23px;
-    border: none;
-    width: 23px;
-    height: 23px;
-    z-index: 20;
+/* .CRleft{
+	float: left;	
+	left: 30px;
+}
+.CRRight{
+ 	float: right;
 } */
 
+
+
 /* ---------------------------------- */
-/*      REGI                          */
+/*      USER REGI , SELLER REGI       */
 /* -----------------------------------*/
 .UserRegiForm{
 	margin-left : auto;
