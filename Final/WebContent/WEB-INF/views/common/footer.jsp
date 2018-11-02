@@ -30,16 +30,14 @@
                             <div class="newsletter__form">
                                 <div class="input__box">
                                     <div id="mc_embed_signup">
-                                        <form action="sendMail.do" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
+                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
                                             <div id="mc_embed_signup_scroll" class="htc__news__inner">
                                                 <div class="news__input">
                                                     <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
                                                 </div>
-                                                
                                                 <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
 
                                                 </div>
-                                                
                                             </div>
                                         </form>
                                     </div>

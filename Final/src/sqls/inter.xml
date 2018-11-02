@@ -12,7 +12,7 @@
   </insert>
   
   <select id="interCheck" parameterType="kh.com.a.model.InterDto" resultType="kh.com.a.model.InterDto">
-  	SELECT SEQ, ID, GSEQ
+  	SELECT DISTINCT ID, GSEQ
   	FROM INTER
   	WHERE ID=#{id} AND GSEQ=#{gseq}
   </select>

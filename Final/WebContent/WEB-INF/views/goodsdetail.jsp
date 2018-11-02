@@ -252,21 +252,25 @@ $("#putInterest").click(function () {
 });
 
   */
+$(document).ready(function () {
+	
 
 
   $(function () {
-		
+		var data1={
+				"command":"putInterest",
+				"id":$("#_id").val(),
+				"gseq":$("#seq").val()	
+				
+		};
 //		alert($("#_id").val());
 		
 		$("#putInterest").click(function () {
 			$.ajax({
 				url:"putInterest.do",
 				type:"POST",
-				data:{
-					"command":"putInterest",
-					"id":$("#_id").val(),
-					"gseq":$("#seq").val()
-				},
+				datatype:"json",
+				data:data1,
 				success:function (data) {
 					alert("관심상품 목록에 추가되었습니다");
 				},
@@ -305,6 +309,10 @@ $("#putInterest").click(function () {
 	$("#_frm").attr({ "target":"_self", "action":"gotoRental.do"}).submit();
 });
  
+ 
+});
+ </script>
+ <script>
  
 
  $(document).ready(function () {
