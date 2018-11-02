@@ -53,7 +53,13 @@
     <script src="<c:out value="design/js/bootstrap.min.js"/>"></script>
     <script src="<c:out value="design/js/plugins.js"/>"></script>
     
-    
+
+<style type="text/css">
+		table{
+		width: 80% !important;
+	}
+
+</style>
     
 
 
