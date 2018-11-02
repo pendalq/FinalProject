@@ -110,10 +110,6 @@ h3{
 
 
 								<input type="text" name="id" id="id" placeholder="아이디"><br>
-
-
-								<input type="text" name="id" id="id" placeholder="　아이디"><br>
-
 								
 							</div>
 							<div class="fa-pw">
@@ -121,10 +117,6 @@ h3{
 
 
 								<input type="password" name="pw" id="pw" placeholder="비밀번호"> <!-- style="border-bottom: 30px;" -->
-
-
-
-								<input type="password" name="pw" id="pw" placeholder="　비밀번호"> <!-- style="border-bottom: 30px;" -->
 
 								
 							</div>
