@@ -8,30 +8,35 @@
 <title>회원정보수정</title>
 
 <style type="text/css">
+.updateInfoForm{
+	margin-left : auto;
+	margin-right : auto;  
+	padding: 30px 30px;
+	width : 60%;
+}
+.updateInfotb{
+	width: 100%;
+	padding-top: 20px;
+    padding-bottom: 40px; 
+ 
+}
 .content_table th{
 	padding: 11px 1px 10px 18px;
-    border: 1px solid #ddd;
-    border-bottom-width: 0;
+    border: 1px solid #ddd; 
     color: #353535;
     text-align:   center;
-   /*  background: #eeeeee;  */
-   background-color: #fafafa;
+    background-color: #fafafa;
     font-weight:bold !important;
     font-size: smaller;
     vertical-align: middle; 
 	width: 30%;
-
-
 }
 .content_table td{
 	padding: 11px 10px 10px;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd; 
     color: #353535;
     vertical-align: middle;
-
-
 }
-
  input[type=button] { 
     background: #fff;
     color: #444!important;
@@ -39,42 +44,57 @@
 	cursor: pointer;	
 } 
 
-.updateInfoForm{
-	margin-left : auto;
-	margin-right : auto;  
-	padding: 30px 30px;
-	width : 60%;
+.movelinkbutton{
+	margin-top: 40px;
 }
-
-.movelinkbutton a{
-text-decoration :none;
-    border: 1px solid #d5d5d5;
-    color: #4b4b4b;
-    font-size: 20px;
-    height: 45px;
+.movelinkbutton a {
+    curcor: pointer;
+    line-height: 30px;
+    transition: all 0.5s;
+    padding: 10px;
     letter-spacing: 2px;
-    line-height: 45px;
-    padding: 0 70px;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 40px;
-
+    margin: 5px;
+    font-size: 15px;
+	border-radius: 3px;
 }
 .movelinkbutton a:hover{
+border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;	
+   
+  
+} 
+#updateInfo{
+	color: #353535;
+    background: #ffffff;
+    border: 1px solid #cbcbcb;
+}
+.#updateInfo:hover{
 	border: 1px solid #ff4136;
     color: #fff;
     background: #ff4136;
-   font-family: 'Poppins', sans-serif;	
+    font-family: 'Poppins', sans-serif;
 }
-
-
+#gomypage{
+	color: #353535;
+    background: #ffffff;
+    border: 1px solid #cbcbcb;
+}
+#gomypage:hover{
+	border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+    font-family: 'Poppins', sans-serif;
+}
 
 input[type="text"]{
 	padding: 5px;
-		border : none;
+	width: 80%; 	
 }
 input[type="password"]{
 	padding: 5px;
-		border : none;
+	width: 80%; 
 }
 h3{
 	margin-left : auto;
@@ -83,13 +103,34 @@ h3{
 	font-family: '나눔고딕','Nanum Gothic';
   	font-style: italic;
   	font-size: 24px;
-  	
-  	
 }
 #_userid{
-boder="none";
+boder :"none";
 }
- 
+ input[type=button] { 
+    /* background: #fff;
+    color: #444!important;
+    border-color: #ddd;   
+	cursor: pointer; */
+	
+	    text-decoration: none;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 10px 3px 10px;
+    background: #f7f7f7;
+    color: #a2a2a2;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    line-height: 100%;
+    overflow: hidden;
+    transition: all 0.5s	
+} 
+ input[type=button]:hover { 
+    background: #eeeeee;
+    color: #444!important;
+    border-color: #ddd;   
+	cursor: pointer;	
+} 
 </style>
 </head>
 <body>
@@ -100,7 +141,8 @@ boder="none";
 		<form action="" method="post" id="_updateForm" name="updateForm">	
 			<div class="updateInfotb">
 				<h3>회원 정보 수정</h3>
-				<table class="content_table" style="width: 75%">
+				<div class="content_table">
+				<table style="width: 100%">
 					<colgroup>
 						<col style="width:30%">
 						<col style="width:70%">
@@ -111,7 +153,7 @@ boder="none";
 						<th>아이디</th>
 						<td>
 							<input type="hidden" value="${memdto.auth }">
-							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }" boder="none">
+							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }" style="border: none;">
 						</td>	
 					</tr>
 					
@@ -119,13 +161,13 @@ boder="none";
 					<tr>
 						<th>패스워드</th>
 						<td>
-							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를1"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 						</td>	
 					</tr>
 					<tr>
 						<th height="60">패스워드 확인</th>
 						<td style="height: 65">
-							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를2"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
                         	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 						</td>
@@ -153,26 +195,26 @@ boder="none";
 							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 						</td>	
 					</tr>
-					<tr>
-						<td colspan="2" height="40px;" ,margin-top: 20px;">
-							<div class="movelinkbutton" style="text-align: center">
+					</table>
+					</div>
+					<div class="movelinkbutton" style="text-align: center;" >				 
 							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
 							<a href="mypage.do" id="gomypage">마이페이지로</a>
-							</div>
-						</td>	
-					</tr>			
-				</table>
+					</div>			
+				
 			</div>	
 		</form>
 </c:if>
 			
+
 			
-			
-			
-			<c:if test="${memdto.auth eq 2 || memdto.auth eq 3 }">
+	<c:if test="${memdto.auth eq 2 || memdto.auth eq 3 }">
 
 		<form action="" method="post" id="_updateForm" name="updateForm" >	
-				<table class="content_table" style="width: 75%">
+			<div class="updateInfotb">
+				<h3>회원 정보 수정</h3>
+				<div class="content_table">
+				<table class="content_table" style="width: 100%">
 					<colgroup>
 						<col style="width:30%">
 						<col style="width:70%">
@@ -183,61 +225,53 @@ boder="none";
 						<th>아이디</th>
 						<td>
 							<input type="hidden" value="${memdto.auth }">
-							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }">
+							<input type="text" name="id" id="_userid" size="30"  readonly="readonly" value="${memdto.id }" style="border: none;">
 						</td>	
 					</tr>
 					<tr>
 						<th>패스워드</th>
 						<td>
-							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를3"  maxlength="14" placeholder="15자 이하의 비밀번호 입력" value="">
+							<input type="password" name="pw" id="_pw" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력" value="">
 						</td>	
 					</tr>
 					<tr>
 						<th>패스워드 확인</th>
 						<td>
-							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를4"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
+							<input type="password" name="pwck" id="_pwck" size="30" data-msg="패스워드를"  maxlength="14" placeholder="15자 이하의 비밀번호 입력">
 							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
                         	<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 						</td>
 						
 							
 					</tr>
-					
 					<tr>
-						<th>사업장 주소</th>
+						<th>사업장 명</th>
 						<td>
-							<input type="text" name="address" id="_address" size="30" required="required" value="${memdto.address }" autofocus="autofocus" value="${memdto.address} ">
+							<input type="text" name="name" id="_name" size="30" data-msg="사업장 명을" value="${memdto.name }" required="required" autofocus="autofocus">
 						</td>	
 					</tr>
-					
 					<tr>
 						<th>사업장 연락처</th>
 						<td>
-							<input type="text" name="phone" id="_phone" size="30" value="${memdto.phone} " required="required" autofocus="autofocus">
+							<input type="text" name="phone" id="_phone" size="30" data-msg="연락처를"  value="${memdto.phone} " required="required" autofocus="autofocus">
 						</td>	
 					</tr>
-					
 					<tr>
-						<th>기업 이름</th>
+						<th>사업장 주소</th>
 						<td>
-							<input type="text" name="name" id="_name" size="30" value="${memdto.name }" required="required" autofocus="autofocus">
+							<input type="text" name="address" id="_address" size="30" data-msg="주소를" required="required" value="${memdto.address }" autofocus="autofocus" value="${memdto.address} ">
+							<input type="button" onclick="execDaumPostcode()" value="주소 검색"><br>
+							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 						</td>	
 					</tr>
-					<tr>
-						<div class="movelinkbutton" style="text-align: center">
-						<td colspan="2">
-							
+					</table>			
+					</div>
+					<div class="movelinkbutton" style="text-align: center">				 
 							<a href="#none" id="updateInfo" title="정보수정">정보수정</a>
-							<a href="mypage.do" id="gomypage" title="미이페이지로">마이페이지로</a>
-							
-						</td>
-						</div>	
-					</tr>			
-				</table>
+							<a href="mypage.do" id="gomypage">마이페이지로</a>
+					</div>	
 			</form>
-		
-			</c:if>
-			
+		</c:if>	
 </div>		 
 <script type="text/javascript">
 //회원가입버튼 눌렀을때

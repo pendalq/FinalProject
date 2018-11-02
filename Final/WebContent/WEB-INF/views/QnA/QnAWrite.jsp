@@ -6,70 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
-	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <meta charset="UTF-8">
 <title>공지 글쓰기</title>
-<style type="text/css">
-#_frmForm{
- margin: 30px;
-  
-}
-
-.list_table,h1{
-	margin-top :50px;
-	 margin-left: auto;
- 	margin-right: auto;
- 	width: 80%;
-}
-
-.list_table{
-margin-bottom : 70px;
-}
-
-#_frmForm th{
-	float: right;
-    padding-right: 13px;
-    padding-top: 13px;
-
-    
-}
-#_btnLogin{
-	padding-top: 50px;
-}
-
-
-#_btnLogin a{
-text-decoration :none;
-    border: 1px solid #d5d5d5;
-    color: #4b4b4b;
-    font-size: 25px;
-    height: 40px;
-    letter-spacing: 2px;
-    line-height: 25px;
-    padding: 0 70px;
-    font-family: 'Poppins', sans-serif;
-    background: #fff;
-}
-#_btnLogin a:hover {
-	 border: 1px solid #ff4136;
-	 color: #fff;
-	 background: #ff4136;
-	 font-family: 'Poppins', sans-serif;
-	
-} 
-
-input[type="text"]{
-	height: 45px;
-}
-
-</style>
 </head>
 <body>
 
-<h1> Q & A </h1>
+
 <form name="frmForm" id="_frmForm" method="post" action="bbswriteAf.do">
 
 <table width="89%" class="list_table" style="width:85%;">
@@ -88,17 +33,16 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 
 
 <tbody>	
-	
 	<tr class="id">
 		<th>아이디</th>
 		<td style="text-align: left">
-			<input type="text" name="id" readonly="readonly" value=<%=loginId %> size="60" style="border: none;"/>
+			<input type="text" name="id" readonly="readonly" value=<%=loginId %> size="60"/>
 		</td>
 	</tr>
 	<tr>
 		<th>카테고리</th>
 		<td>
-			<select name="category" style="height: 45px;">
+			<select name="category">
 				<option value="냉장고" selected="selected">냉장고</option>
 				<option value="TV">TV</option>
 				<option value="정수기">정수기</option>
@@ -114,12 +58,12 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td style="text-align: left"><textarea rows="25" cols="20" name='content' id="ir1"></textarea>		</td>
+		<td style="text-align: left"><textarea rows="10" cols="50" name='content' id="ir1"></textarea>		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
 			<p id="_btnLogin" title="글쓰기" href="#none"><span id="_btnLogin" title="글쓰기" href="#none"><a href="#none" id="_btnLogin" title="글쓰기">		
-		   문의하기
+			  <img src="image/bwrite.png" alt="로그인" />
 		    </a>
 		    </span>
 	    </p></td>

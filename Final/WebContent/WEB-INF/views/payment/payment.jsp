@@ -7,14 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-<style>
-table td{
-vertical-align: middle !important;
-}
-</style>
-
-
-<table class="table table-bordered" style="width: 80%;margin-left: auto;margin-right: auto; margin-top: 20px">
+<table style="border: 2px solid black">
 	<tr>	
 		<th>상품 이미지</th>
 		<th>상품명</th>
@@ -26,7 +19,7 @@ vertical-align: middle !important;
 		<th>대여기간</th>
 	</tr>
 	<tr>
-		<td><div style="width: 100px;">${goods.imageName }</div></td>
+		<td>${goods.imageName }</td>
 		<td>${goods.title }</td>
 		<td>${goods.category }</td>
 		<td>월 ${goods.price }원</td>
@@ -46,10 +39,10 @@ vertical-align: middle !important;
 		</td>
 	</tr>
 	<tr>
-		<td colspan="8" style="text-align: right;">총 금액 : <span id="allprice">${goods.price }</span>원</td>
+		<td colspan="8">총 금액 : <span id="allprice" style="align: right;">${goods.price }</span>원</td>
 	</tr>
 	<tr>
-		<td colspan="8" style="text-align: right;"><button id="getpay" title="결제">결제</button></td>
+		<td colspan="8"><button id="getpay" title="결제" style="text-align: right">결제</button></td>
 	</tr>
 </table>
 

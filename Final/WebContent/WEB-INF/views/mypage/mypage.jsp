@@ -15,9 +15,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="<%=request.getContextPath() %>/css/bootstrap.css">
+
 <style type="text/css">
-/* .mypageTable table{
+.mypageTable table{
 	border: 0px; 
 	margin-left : auto;
 	margin-right : auto; 
@@ -45,21 +45,7 @@
 .trtag td a:hover{
 background-color:  #dddddd;
 }
-  */
-  .mypageTable{
-  	margin-left: auto;
-  	margin-right: auto;
-  }
-  
-  table th, table td{
-   text-align: center;
-  }
-  
-  #myRental{
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  }
+ 
 </style>
 
 </head>
@@ -80,40 +66,39 @@ background-color:  #dddddd;
 
 
 <h2 style="text-align: center;">최근 렌탈 중인 상품 </h2>
-<div id="myRental" style="border: 1px solid black; padding: 10px">
+<table class="retallist" > 	
+ 	<tr class="trtag">
 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
 				<c:if test = "${empty srental3 }">
-						<span>렌탈 중인 상품이 없습니다</span>
+					<td>
+						렌탈 중인 상품이 없습니다
+					</td>
 				</c:if>
+				<td>
 					
-				<%-- 	${myrental3.seq }	 --%>
-				<div class="myrental3" style="border: 1px solid black; width: 300px; height: 300px">
-				<div style="width:300px; height:250px;">
-					<a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
+				<%-- 	${myrental3.seq }	 --%>	
+						   <a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
 						${myrental3.imagename }
+						
 					</a>
-				</div>
-				<div style="width:300px; height: 50px; border: 1px solid black;">
-						${myrental3.title }
-				</div>	
-				</div>
-				
+					${myrental3.title }
+				</td>		
 	</c:forEach>
-</div> 
+	</tr>		 
 
-
+</table>
 
 <h2 style="text-align: center;">문의한 게시판</h2>
 <!-- 리스트 -->
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="table table-hover" style="width: 85%; margin-left: auto; margin-right: auto;">
+	<table class="list_table" style="width: 85%;">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
-			<col style="width: 200px;" />
+			<col style="width: 100px;" />
 			<col style="width: 100px;" />
 		</colgroup>
 
@@ -160,7 +145,7 @@ background-color:  #dddddd;
 	</table>
 
 	<!-- 페이징 처리 -->
-	<div id="paging_wrap" style="padding-bottom: 30px">
+	<div id="paging_wrap">
 		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
 			<jsp:param value="${pageNumber }" name="pageNumber" />
 			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
