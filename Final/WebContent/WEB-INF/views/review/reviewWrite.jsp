@@ -11,8 +11,9 @@
 <body>
 	<h1>리뷰 작성</h1>
     <form action="" method="post" id="reviewForm">
-        <input type="text" name="id" id="_id" value="${id }" readOnly>
-        <input type="text" name="gseq" id="_gseq" value="${gseq}" readOnly>
+        <input type="text" name="id" id="_id" value="${reviewDto.id }" readOnly>
+        <input type="text" name="gseq" id="_gseq" value="${reviewDto.gseq}" readOnly>
+        <input type="text" name="goodsName" id="_goodsName" value="${goodsName }" readOnly>
         <input type="text" name="title" id="_reviewTitle">
         <input type="text" name="liked" id="_liked" value="1">
         <textarea name="content" id="_content" cols="100" rows="20" style="resize: none; text-decoration: none; outline: none"></textarea>
@@ -23,7 +24,7 @@
     <script type="text/javascript">
 	$("#btn_reviewSubmit").click(function() {	
 		alert('글작성');	
-		$("#reviewForm").attr({ "target":"_self", "action":"reviewWriteAf.d" }).submit();	
+		$("#reviewForm").attr({ "target":"_self", "action":"reviewWriteAf.do" }).submit();	
 	});
 	</script>
 </body>

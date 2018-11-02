@@ -20,9 +20,12 @@
 	href="design/images/favicon.ico">
 <link rel="apple-touch-icon" href="design/apple-touch-icon.png">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<%-- 
 <!-- Bootstrap Fremwork Main Css -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath() %>/design/css/bootstrap.min.css">
+	href="<%=request.getContextPath() %>/design/css/bootstrap.min.css"> --%>
 <!-- All Plugins css -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/design/css/plugins.css">
@@ -86,20 +89,6 @@
 									</ul></li>
 							</ul>
 						</nav>
-
-						<div class="mobile-menu clearfix d-block d-lg-none">
-							<nav id="mobile_dropdown">
-								<ul class="main__menu">
-									<li class="drop"><a href="mainbbslist.do">Home</a></li>
-									<li><a href="./goodslist.do">상품정보</a></li>
-									<li class="drop"><a href="./Noticelist.do">고객센터</a>
-										<ul class="dropdown">
-											<li><a href="./Noticelist.do">공지사항</a></li>
-											<li><a href="./QnAlist.do">QNA</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</div>
 					</div>
 					<!-- End MAinmenu Ares -->
 					<div class="col-md-2 col-lg-2 col-6">

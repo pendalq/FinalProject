@@ -82,9 +82,6 @@
                     </div>
                     <!-- End Product MEnu -->
 
-
-
-
                     <div class="row product__list">
                         <!-- Start Single Product -->
                         <div class="col-md-3 single__pro col-lg-3 col-md-4 cat--1 col-sm-12">
@@ -671,10 +668,9 @@
 					<td>${rl.id }</td>
 					<td>${rl.gseq }</td>
 					<td>
-						<a href='goodsdetail.do?seq=${rl.gseq}'>
+						<a href='goodsdetail.do?seq=${rl.gseq}&reviewPageNumber=0'>
 						${rl.title }</a></td>
 					<td>${rl.wdate }</td>
-					<td>${rl.readcount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

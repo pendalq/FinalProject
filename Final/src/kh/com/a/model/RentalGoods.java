@@ -149,6 +149,13 @@ public class RentalGoods {
 
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
+	}
+
+	@Override
+	public String toString() {
+		return "RentalGoods [title=" + title + ", imagename=" + imagename + ", seq=" + seq + ", sdate=" + sdate
+				+ ", re_turn=" + re_turn + ", term=" + term + ", returndday=" + returndday + ", gseq=" + gseq + ", id="
+				+ id + ", brand=" + brand + ", price=" + price + ", options=" + options + ", wdate=" + wdate + "]";
 	} 
 
 }

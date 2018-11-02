@@ -91,4 +91,5 @@ $("#getpay").click(function(){
 $("#term").on("change",function(){
 	$("#allprice").text($("#term option:selected").val()*${goods.price});
 });
+
 </script>

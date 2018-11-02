@@ -16,10 +16,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="<%=request.getContextPath() %>/css/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
+<script type="text/javascript">
+if (${msg} == '1') {
+	alert("리뷰 작성을 완료하였습니다.");
+}
+</script>
+
 <style type="text/css">
 /* .mypageTable table{
 	border: 0px; 

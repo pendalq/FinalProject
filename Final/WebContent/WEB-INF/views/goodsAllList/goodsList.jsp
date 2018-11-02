@@ -240,7 +240,7 @@
 									${goods.imageName }<%-- <img src="<%=request.getContextPath()%>/image/titleImages/${goods.imageloc}" alt="삼성세탁기"> --%>
 								</div>
 								<div class="item-imageHover">
-									<a href="goodsdetail.do?seq=${goods.seq }" class="btn-rental"><span>렌탈 신청하기</span></a>
+									<a href="goodsdetail.do?seq=${goods.seq }&pageNumber=0" class="btn-rental"><span>렌탈 신청하기</span></a>
 								</div>
 								<div class="item-detail">
 									<em class="item-brand">${goods.brand}</em>
