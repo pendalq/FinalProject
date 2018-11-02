@@ -228,13 +228,13 @@ $("#sendM").click(function(){
 $("#updateRental").click(function() {
 	//렌탈수정하기  
  
-/* 
-$("#putInterest").click(function () {
+
+/* $("#putInterest").click(function () {
 	alert("찜하기");
 	$("#_frm").attr({"target":"_self","action":"putInterest.do"}).submit();
+}); */
 });
 
-  */
 
 
   $(function () {
@@ -285,7 +285,7 @@ $("#putInterest").click(function () {
 	 
    
  $("#doRental").click(function () {
-	$("#_frm").attr({ "target":"_self", "action":"gotoRental.do"}).submit();
+	$("#_frm").attr({ "target":"_self", "action":"rental.do"}).submit();
 });
  
  

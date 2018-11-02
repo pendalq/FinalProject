@@ -2,22 +2,26 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+<script src="<c:out value="design/js/main.js"/>"></script>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="<%=request.getContextPath() %>/css/bootstrap.css">
 
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 <style type="text/css">
-.mypageTable table{
+/* .mypageTable table{
 	border: 0px; 
 	margin-left : auto;
 	margin-right : auto; 
@@ -45,7 +49,17 @@
 .trtag td a:hover{
 background-color:  #dddddd;
 }
- 
+  */
+  
+  table th, table td{
+   text-align: center;
+  }
+  
+  #myRental{
+  width: 1123px;
+  margin-left: auto;
+  margin-right: auto;
+  }
 </style>
 
 </head>
@@ -53,52 +67,51 @@ background-color:  #dddddd;
  
 
 <div class="mypageTable">
-<h2>여기는_ 유저 _마이페이지</h2>
-<table>
-	<tr>
-		<td>
-			${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
-			
-		</td>
-	</tr>
-	
-</table>
-
-
-<h2 style="text-align: center;">최근 렌탈 중인 상품 </h2>
-<table class="retallist" > 	
- 	<tr class="trtag">
+	<div style="margin-top: 50px; width:15%; position: relative; left: 1254px">
+		${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
+	</div>
+<h2 style="text-align: center; margin-top: 30px">최근 렌탈 중인 상품 </h2>
+<div id="myRental" style="padding: 5px">
+<ul class="item-ul">
 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
 				<c:if test = "${empty srental3 }">
-					<td>
-						렌탈 중인 상품이 없습니다
-					</td>
+					<span>렌탈 중인 상품이 없습니다</span>
 				</c:if>
-				<td>
 					
-				<%-- 	${myrental3.seq }	 --%>	
-						   <a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
-						${myrental3.imagename }
-						
+				<%-- 	${myrental3.seq }	 --%>
+				
+				
+				<li class="item">
+				<div class="item-image">
+					<a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
+						<em class="item-brand">${myrental3.imagename }</em>
 					</a>
-					${myrental3.title }
-				</td>		
+				</div>
+				<div class="item-detail" style="text-align:center; background-color: #f2f2f2">
+						<em class="item-brand">${myrental3.brand}</em>
+						<em class="item-goods">${myrental3.title}</em>
+						<em class="item-price">₩${myrental3.price}/월</em>
+				</div>	
+				</li>
+			
+				
 	</c:forEach>
-	</tr>		 
+	</ul>
+</div> 
 
-</table>
+
 
 <h2 style="text-align: center;">문의한 게시판</h2>
 <!-- 리스트 -->
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 85%;">
+	<table class="table table-hover" style="width: 65%; margin: 20px auto">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
-			<col style="width: 100px;" />
+			<col style="width: 200px;" />
 			<col style="width: 100px;" />
 		</colgroup>
 
@@ -145,7 +158,7 @@ background-color:  #dddddd;
 	</table>
 
 	<!-- 페이징 처리 -->
-	<div id="paging_wrap">
+	<div id="paging_wrap" style="padding-bottom: 30px">
 		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
 			<jsp:param value="${pageNumber }" name="pageNumber" />
 			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />

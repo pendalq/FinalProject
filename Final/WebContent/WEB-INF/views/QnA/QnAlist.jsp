@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
+<script src="<c:out value="design/js/main.js"/>"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.css">
 <title>Insert title here</title>
 <style type="text/css">
@@ -24,13 +24,26 @@
 
 .selectbtn{
 	margin-left : auto;
-   margin-right : auto;
+	margin-right : auto;
+	align-content: center;
+	position: relative;
+    left: 260px;
 
 }
 .selectitems , .searchtext{
 	
     margin-right: 20px;
     height: 25;
+}
+
+.list_table{
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_table td{
+	padding-top: 5px;
 }
 </style>
 
@@ -99,13 +112,13 @@ $(document).ready(function(){
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 55%;">
+	<table class="table table-hover" style="width:70%; height: auto">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: 100px;" />
 			<col style="width: auto;" />
 			<col style="width: 100px;" />
-			<col style="width: 100px;" />
+			<col style="width: 150px;" />
 			<col style="width: 100px;" />
 		</colgroup>
 
@@ -154,9 +167,17 @@ $(document).ready(function(){
 			</tbody>
 	
 		</table>
+		
+		<c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
+				<div class="selectbtn" id="buttons_wrap">
+					<span class="button blue" style="position: relative; left: 1032px;">
+						<button type="button" id="_btnAdd">글쓰기</button>
+					</span>
+				</div>
+			</c:if> 
 
 			<!-- 페이징 처리 -->
-			<div id="paging_wrap">
+			<div id="paging_wrap" style="padding-bottom: 50px">
 				<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
 					<jsp:param value="${pageNumber }" name="pageNumber" />
 					<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
@@ -166,13 +187,7 @@ $(document).ready(function(){
 			</div>
 
 
-		  	<c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
-				<div class="selectbtn" id="buttons_wrap">
-					<span class="button blue">
-						<button type="button" id="_btnAdd">글쓰기</button>
-					</span>
-				</div>
-			</c:if> 
+		  	
 
 	
 	

@@ -6,15 +6,19 @@
 <fmt:requestEncoding value="UTF-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<style>
+table{
+margin-left: auto;
+margin-right: auto;
+width: 57%;
+}
+</style>
 
 <form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
 
-<table class="list_table">
-<colgroup>
-<col style="width:100px;" />
-<col style="width:auto;" />
-</colgroup>
+<table class="table table-bordered" style="margin: 30px auto">
+
 
 <tr>
 <th>아이디</th>
@@ -107,7 +111,7 @@ value="${loginID }"  size="50"/></td>
 
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
-	<span><a href="#none" id="_btnLogin" title="글쓰기"><img src="image/bwrite.png" alt="로그인" /></a>
+	<span><a href="#none" id="_btnLogin" title="글쓰기">글쓰기</a>
 </span>
 </td>
 </tr>
