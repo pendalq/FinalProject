@@ -55,7 +55,7 @@
 				<tr class="_hover_tr">
 					<td>${mbl.seq }</td>
 					<td>${mbl.imageName }</td>
-					<td><a href="goodsdetail.do?seq=${mbl.seq }"> ${mbl.title }
+					<td><a href="goodsdetail.do?seq=${mbl.seq }&reviewPageNumber=0">
 					</a></td>
 					<td>${mbl.category }</td>
 					<td>${mbl.brand }</td>
@@ -98,7 +98,7 @@
 				<tr class="_hover_tr">
 					<td>${mbl2.seq }</td>
 					<td>${mbl2.imageName }</td>
-					<td><a href='goodsdetail.do?seq=${mbl2.seq }'> ${mbl2.title }
+					<td><a href='goodsdetail.do?seq=${mbl2.seq }&reviewPageNumber=0'> ${mbl2.title }
 					</a></td>
 					<td>${mbl2.category }</td>
 					<td>${mbl2.brand }</td>
@@ -143,7 +143,7 @@
 					<td>${rl.id }</td>
 					<td>${rl.gseq }</td>
 					<td>
-						<a href='goodsdetail.do?seq=${rl.gseq}'>
+						<a href='goodsdetail.do?seq=${rl.gseq}&reviewPageNumber=0'>
 						${rl.title }</a></td>
 					<td>${rl.wdate }</td>
 				</tr>

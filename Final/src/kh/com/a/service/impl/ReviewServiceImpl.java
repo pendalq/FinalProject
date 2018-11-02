@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.com.a.dao.ReviewDao;
+import kh.com.a.insertPatemeter.getUrentalList;
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
 import kh.com.a.service.ReviewService;
@@ -21,6 +22,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewDto> getReviewPagingList(ReviewParam param) throws Exception {
 
 		return reviewDao.getReviewPagingList(param);
+	}
+	// 게시물 10개 출력 및 페이징 처리 ajax
+	@Override
+	public List<ReviewParam> getReviewPagingListAjax(ReviewParam param) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewDao.getReviewPagingListAjax(param);
 	}
 
 	// 상품에 등록 된 리뷰게시물 개수 출력
@@ -73,5 +80,13 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.reviewDelete(seq);
 
 	}
+
+	// 리뷰 중복 작성을 막기 위한 작성한 리뷰 개수 출력
+	@Override
+	public int getReviewWriteCount(getUrentalList dto) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewDao.getReviewWriteCount(dto);
+	}
+
 
 }

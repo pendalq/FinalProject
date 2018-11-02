@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.com.a.dao.ReviewDao;
+import kh.com.a.insertPatemeter.getUrentalList;
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
 
@@ -29,6 +30,18 @@ public class ReviewDaoImpl implements ReviewDao {
 			System.out.println("DAO  getReviewPagingList[" + i + "]:" + list.get(i).toString());
 		}
 
+		return list;
+	}
+	
+	@Override
+	public List<ReviewParam> getReviewPagingListAjax(ReviewParam param) throws Exception {
+		
+		System.out.println("DAO GoodParam : " + param.toString());
+		List<ReviewParam> list = sqlSession.selectList(namespace + "getReviewPagingListAjax", param);
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("DAO  getReviewPagingListAjax[" + i + "]:" + list.get(i).toString());
+		}
+		
 		return list;
 	}
 
@@ -81,6 +94,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	// 수정 할려고 하는 게시물 출력
 	@Override
 	public ReviewDto getReviewOne(int seq) {
+		System.out.println("DAO 수정을 위한 게시물 출력 시퀀스 넘버 : " + seq);
 		return sqlSession.selectOne(namespace + "getReviewOne", seq);
 	}
 
@@ -95,7 +109,16 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public void reviewDelete(int seq) {
 		sqlSession.delete(namespace + "reviewDelete", seq);
-
 	}
+
+	// 리뷰 중복 작성을 막기 위한 작성한 리뷰 개수 출력
+	@Override
+	public int getReviewWriteCount(getUrentalList dto) throws Exception {
+		System.out.println("DAO getReviewWriteCount id 확인 : " + dto.toString());
+		int reWriteCount = sqlSession.selectOne(namespace + "getReviewWriteCount", dto);
+		
+		return reWriteCount;
+	}
+	
 
 }

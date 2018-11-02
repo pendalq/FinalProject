@@ -4,19 +4,38 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<!-- 리뷰에 필요한 css  -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 리뷰에 필요한 css  -->
 <script src="<%=request.getContextPath()%>/js/reviewList.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/reviewList.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/reviewWrite.css">
+
+
+
+<script type="text/javascript">
+//수정 및 삭제 시 알림창 
+var msg = '${msg}';
+if (msg == '1') {
+		alert("삭제를 완료하였습니다.");
+	}else if(msg == '2'){
+			alert("수정을 완료하였습니다.");
+};
+</script>
+
+
 
 <style type="text/css">
 	textarea{
@@ -130,9 +149,11 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 
 <!-- ------------------------review html start ----------------------------- -->
 <section id="reviewList">
-        <h2>후기</h2>
+        <div id="reviewH2_box"><h2 id="reviewH2">고객님들의 솔직한 후기 이야기 입니다.</h2></div>
         <c:if test="${totalRecordCount == 0}">
-		<h2>등록된 후기가 없습니다.</h2>
+		<div id="review_none">
+			<h2>등록된 후기가 없습니다.</h2>
+		</div>
 		</c:if>
 		<c:if test="${totalRecordCount >= 1}">
         <div class="review_q">
@@ -205,14 +226,17 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 					<c:if test="${sessionId == review.id }">
                     <div class="review_item_footer item_main">
                         <form id="reviewForm" action="" method="post">
-                            <input type="hidden" name="seq" value="${review.seq }">
-                            <input type="hidden" name="gseq" value="${review.gseq }">
-                            <input type="hidden" name="searchNum" id="_searchNum" value="${searchNum}">
+                           <!-- goodsDetail을 위한 폼 벨류 -->
+                            <input type="hidden" name="seq" value="${goodsdetail.seq }">
+                            <input type="hidden" name="gseq"  value="${review.gseq }">
+                            <!-- 리뷰 삭제를 위한 리뷰 시퀀스 벨류 -->
+                            <input type="hidden" name="delSeq" id="_delSeq" value="${review.seq }">
+                            <!-- 페이징을 위한 폼 벨류 -->
                             <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
                             <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
                         </form>
-                        <button type="button" class="btn_review" value="update">수정하기</button>
-                        <button type="button" class="btn_review" value="delete">삭제하기</button>
+                        <button type="button" onclick="reviewUp(${review.seq })" class="btn_review_modal" data-toggle="modal" data-target="#myModal" >수정하기</button>
+                        <button type="button" class="btn_reviewDel" onclick="reviewDel(${review.seq })">삭제하기</button>
                     </div>
                     </c:if>
                 </div>
@@ -230,9 +254,6 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 			</jsp:include>
 		</div>
 		</c:if>
-		<span>${sessionId}</span>
-		<span>${review.id }</span>
-		<button type="button" id="btn_reviewWrite">글쓰기</button>
 </section>
 <!-- ------------------------review html end ----------------------------- -->
 <%} %>
@@ -306,9 +327,11 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 
 <!-- ------------------------review html start ----------------------------- -->
   <section id="reviewList">
-        <h2>후기</h2>
+        <div id="reviewH2_box"><h2 id="reviewH2">고객님들의 솔직한 후기 이야기 입니다.</h2></div>
         <c:if test="${totalRecordCount == 0}">
-		<h2>등록된 후기가 없습니다.</h2>
+		<div id="review_none">
+			<h2>등록된 후기가 없습니다.</h2>
+		</div>
 		</c:if>
 		<c:if test="${totalRecordCount >= 1}">
         <div class="review_q">
@@ -381,14 +404,17 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 					<c:if test="${sessionId == review.id }">
                     <div class="review_item_footer item_main">
                         <form id="reviewForm" action="" method="post">
-                            <input type="hidden" name="seq" value="${review.seq }">
-                            <input type="hidden" name="gseq" value="${review.gseq }">
-                            <input type="hidden" name="searchNum" id="_searchNum" value="${searchNum}">
+                            <!-- goodsDetail을 위한 폼 벨류 -->
+                            <input type="hidden" name="seq" value="${goodsdetail.seq }">
+                            <input type="hidden" name="gseq"  value="${review.gseq }">
+                            <!-- 리뷰 삭제를 위한 리뷰 시퀀스 벨류 -->
+                            <input type="hidden" name="delSeq" id="_delSeq" value="${review.seq }">
+                            <!-- 페이징을 위한 폼 벨류 -->
                             <input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}" />
                             <input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}" />
                         </form>
-                        <button type="button" class="btn_review" value="update">수정하기</button>
-                        <button type="button" class="btn_review" value="delete">삭제하기</button>
+                        <button type="button" onclick="reviewUp(${review.seq })" class="btn_review_modal" data-toggle="modal" data-target="#myModal">수정하기</button>
+                        <button type="button" class="btn_reviewDel" onclick="reviewDel(${review.seq })">삭제하기</button>
                     </div>
                     </c:if>
                 </div>
@@ -411,20 +437,114 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 <!-- ------------------------review html end ----------------------------- -->
 <%}    %>
 
+
+<!-- ------------------------review 수정 모달 start  ----------------------------- -->
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="myModalLabel">후기를 수정하세요.</h2>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="reviewUpForm" class="align-center">
+                        <div class="formMain">
+                            <span class="goods_text">상품</span>
+                            <input class="item" type="text" name="goodsName" id="_goodsName" value="${goodsdetail.title }" readOnly>
+                            <span class="id_text">작성자</span>
+                            <input class="item" type="text" name="id" id="_rId" value="" readOnly>
+                            <span class="title_text">제목</span>
+                            <input class="item" type="text" name="title" id="_reviewTitle" placeholder="" autocomplete="off" required="required" >
+                            <span class="content_text">내용</span>
+                            <textarea class="item" name="content" id="_content" placeholder="" required="required"></textarea>
+                            <span class="liked_text">만족도</span>
+                            <div id="liked_radio">
+                                <input type="radio" name="liked" id="_liked1" class="a11y-hidden" value="1">
+                                <label for="_liked1" class="_liked1"></label>
+                                <input type="radio" name="liked" id="_liked2" class="a11y-hidden" value="2">
+                                <label for="_liked2" class="_liked2"></label>
+                                <input type="radio" name="liked" id="_liked3" class="a11y-hidden" value="3">
+                                <label for="_liked3" class="_liked3"></label>
+                                <input type="radio" name="liked" id="_liked4" class="a11y-hidden" value="4">
+                                <label for="_liked4" class="_liked4"></label>
+                                <input type="radio" name="liked" id="_liked5" class="a11y-hidden" value="5" checked>
+                                <label for="_liked5" class="_liked5"></label>
+                                <input type="hidden" name="seq" id="_seq" value="" readOnly>
+                                <input type="hidden" name="ggseq" id="_ggseq" value="${goodsdetail.seq }" readOnly>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn_box">
+                        <button type="reset" class="btn_reviewWrite">초기화</button>
+                        <button type="button" id="btn_reviewUp" class="btn_reviewWrite">수정 완료</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ------------------------review 수정 모달 end  ----------------------------- -->
+
 <script type="text/javascript">
 
-$(".btn_review").click(function() {
-	if ($(this).val() == "update") {
-		alert("수정하기");
-		$("#reviewForm").attr({ "target":"_self", "action":"reviewUpdate.do" }).submit();
-	}else if($(this).val() == "delete"){
-		alert("삭제하기");
+/* -------------------------------------------은택 review Script start------------------------------ */
+	
+//리뷰 페이징
+function goPage(pageNumber) {
+	$("#_pageNumber").val(pageNumber);
+	$("#reviewForm").attr("target", "_self").attr("action",
+		"goodsdetail.do").submit();
+}
+
+
+
+//리뷰삭제
+function reviewDel(seq) {
+	var num = seq;
+	var str = confirm("후기를 삭제하시겠습니까?");
+	if (str == true) {
+		$('#_delSeq').val(num);
 		$("#reviewForm").attr({ "target":"_self", "action":"reviewDelete.do" }).submit();
 	}else{
-		alert("수정/삭제 오류");
 		return false;
 	}
+};
+
+//리뷰 모달창 
+function reviewUp(seq) {
+	var num = seq;
+	var str = confirm("후기를 수정 하시겠습니까?");
+	if (str == true) {
+		$.ajax({
+			url:"reviewUpdateAjax.do",
+			type:"POST",
+			dataType:"JSON",
+			data: {"delSeq":num},
+			success:function (data) {
+				console.log(data);
+				$('#_rId').val(data.id) 
+				$('#_reviewTitle').val(data.title)
+				$('#_content').val(data.content);
+				$('#_seq').val(data.seq);
+			},
+			error:function (request, error) {
+			         alert("통신 실패");
+			}
+		});
+	}else{
+		return false;
+	}
+} ;
+
+$("#btn_reviewUp").click(function() {
+	
+	$("#reviewUpForm").attr({ "target":"_self", "action":"reviewUpdateAf.do" }).submit();
 });
+
+
+/* -------------------------------------------은택 review Script end------------------------------ */
 
 $("#updateRental").click(function() {
 	//렌탈수정하기  

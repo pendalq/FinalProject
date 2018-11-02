@@ -22,7 +22,6 @@
   	</select> 
   
   	
-  	
   	  <select id="getReviewDetailList" parameterType="kh.com.a.model.ReviewDto" resultType="kh.com.a.model.ReviewDto">
   		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, LIKED 
   		FROM REVIEW
@@ -33,6 +32,17 @@
 	<select id="getReviewPagingList"
 		parameterType="kh.com.a.model.ReviewParam"
 		resultType="kh.com.a.model.ReviewDto">
+		SELECT * FROM(SELECT A.*, ROWNUM RNUM FROM (SELECT * FROM
+		REVIEW WHERE GSEQ LIKE #{gseq}
+		ORDER BY SEQ DESC)A) WHERE RNUM
+		BETWEEN
+		${start} AND ${end}
+	</select>
+	
+	
+	<select id="getReviewPagingListAjax"
+		parameterType="kh.com.a.model.ReviewParam"
+		resultType="kh.com.a.model.ReviewParam">
 		SELECT * FROM(SELECT A.*, ROWNUM RNUM FROM (SELECT * FROM
 		REVIEW WHERE GSEQ LIKE #{gseq}
 		ORDER BY SEQ DESC)A) WHERE RNUM
@@ -76,6 +86,11 @@
 	<delete id="reviewDelete" parameterType="kh.com.a.model.ReviewDto">
 		DELETE REVIEW WHERE SEQ=#{seq}
 	</delete>
-
-
+	
+	<select id="getReviewWriteCount"
+		parameterType="kh.com.a.insertPatemeter.getUrentalList"
+		resultType="_int">
+		SELECT COUNT(DECODE(ID,#{id},1)) FROM REVIEW WHERE GSEQ LIKE #{seq}
+	</select>
+	
 </mapper>

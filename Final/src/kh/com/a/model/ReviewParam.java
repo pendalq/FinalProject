@@ -16,6 +16,8 @@ public class ReviewParam {
 	private int pageNumber = 0;
 	private int start = 1;
 	private int end = 10;
+	private int  pageCountPerScreen = 10;
+	private int totalRecordCount =0;
 
 	public int getSeq() {
 		return seq;
@@ -112,12 +114,28 @@ public class ReviewParam {
 	public void setEnd(int end) {
 		this.end = end;
 	}
+	
+	public int getPageCountPerScreen() {
+		return pageCountPerScreen;
+	}
+
+	public void setPageCountPerScreen(int pageCountPerScreen) {
+		this.pageCountPerScreen = pageCountPerScreen;
+	}
+	public int getTotalRecordCount() {
+		return totalRecordCount;
+	}
+
+	public void setTotalRecordCount(int totalRecordCount) {
+		this.totalRecordCount = totalRecordCount;
+	}
+
 
 	@Override
 	public String toString() {
 		return "ReviewParam [seq=" + seq + ", gseq=" + gseq + ", id=" + id + ", goodsName=" + goodsName + ", title="
 				+ title + ", content=" + content + ", wdate=" + wdate + ", liked=" + liked + ", recordCountPerPage="
-				+ recordCountPerPage + ", pageNumber=" + pageNumber + ", start=" + start + ", end=" + end + "]";
+				+ recordCountPerPage + ", pageNumber=" + pageNumber + ", start=" + start + ", end=" + end + ", pageCountPerScreen=" + pageCountPerScreen + ", totalRecordCount=" + totalRecordCount + "]";
 	}
 
 }

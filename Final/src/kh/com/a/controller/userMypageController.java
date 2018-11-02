@@ -20,6 +20,7 @@ import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
 import kh.com.a.service.MemberService;
+import kh.com.a.service.ReviewService;
 import kh.com.a.service.userMypageService;
 
 @Controller
@@ -29,7 +30,8 @@ public class userMypageController {
 	
 	@Autowired
 	userMypageService userMyServ;
-	
+	@Autowired
+	ReviewService reviewService;
 	
  	@RequestMapping(value="mypage.do" , method= {RequestMethod.GET, RequestMethod.POST})
  	public String mypage(BbsParam param,Model model,HttpServletRequest req, String msg) throws Exception {
@@ -98,6 +100,13 @@ public class userMypageController {
 			
 		//mypage.jsp > retal detail.jsp
 		RentalGoods rDetail = userMyServ.getRentalDto(dto);
+		
+		//리뷰 1개 이상 작성 못하게 막기 위해 작성한 리뷰 카운터 출력
+		System.out.println("//리뷰 1개 이상 작성 못하게 막기 위해 작성한 리뷰 카운터 출력 id 확인:" + id);
+		int reWriteCount = reviewService.getReviewWriteCount(dto);
+		System.out.println("reWriteCount 확인 : " + reWriteCount);
+		
+		model.addAttribute("reWriteCount", reWriteCount);
 		
 		if(rDetail.getSdate() != null && rDetail.getRe_turn() != null) {
 			rDetail.setSdate(rDetail.getSdate().substring(0, 10));

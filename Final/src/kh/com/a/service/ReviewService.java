@@ -2,13 +2,17 @@ package kh.com.a.service;
 
 import java.util.List;
 
+import kh.com.a.insertPatemeter.getUrentalList;
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
 
 public interface ReviewService {
 
-	// 게시물 10개 출력 및 페이징 처리 .
+	// 게시물 10개 출력 및 페이징 처리 
 	List<ReviewDto> getReviewPagingList(ReviewParam param)throws Exception;
+	// 게시물 10개 출력 및 페이징 처리 ajax 
+	List<ReviewParam> getReviewPagingListAjax(ReviewParam param)throws Exception;
+	// 게시물 10개 출력 및 페이징 처리 .
 	// 상품에 등록 된 리뷰게시물 개수 출력
 	int getReviewCount(ReviewParam param)throws Exception;
 	// 상품 리뷰의 평균 만족도를 출력
@@ -23,6 +27,8 @@ public interface ReviewService {
 	void updateReview(ReviewDto reviewDto) throws Exception;
 	// 게시물 삭제 
 	void reviewDelete(int seq);
+	// 리뷰 중복 작성을 막기 위한 작성한 리뷰 개수 출력
+	int getReviewWriteCount(getUrentalList dto)throws Exception;
 
 
 }

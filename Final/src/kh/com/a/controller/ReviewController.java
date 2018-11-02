@@ -1,8 +1,12 @@
 package kh.com.a.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,9 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
+import kh.com.a.service.MainBbsService;
 import kh.com.a.service.ReviewService;
 
 @Controller
@@ -25,18 +31,13 @@ public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 
+	
+	
 	//게시물 리스트-------------------------------------
-	@RequestMapping(value = "reviewList.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewList(Model model, ReviewParam param, HttpSession session) throws Exception {
+	@RequestMapping(value = "reviewPagingAjax.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody Object reviewList(Model model, ReviewParam param) throws Exception {
 
-		logger.info("ReviewController reviewList" + new Date());
-		
-		
-	////////////////test 세션 값 임의 저장-----/////////////////////////////////////////////////////////
-		session.setAttribute("id", "admin");
-		
-	//////////////////////////////////////////////////////////////////////////////////////////////////
-		
+		logger.info("ReviewController reviewList" + new Date());		
 		
 		System.out.println("상품 시퀀스 넘버 확인 : " + param.getGseq());
 
@@ -51,27 +52,22 @@ public class ReviewController {
 		
 		// 게시물 카운트
 		int totalRecordCount = reviewService.getReviewCount(param);
-		double likedAvg = reviewService.getLikedAvg(param);
-		System.out.println("리뷰 평점 평균 : " + likedAvg);
 		// 게시물을 받아옴.
-		List<ReviewDto> reviewList = reviewService.getReviewPagingList(param);
-		model.addAttribute("reviewList", reviewList);
-		System.out.println("controller   reviewList success");
-		
-		// paging 처리 2
-		model.addAttribute("pageNumber", sn);
-		model.addAttribute("pageCountPerScreen", 15);
-		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
-		model.addAttribute("totalRecordCount", totalRecordCount);
-		model.addAttribute("likedAvg", likedAvg);
-		
-		System.out.println("recordCountPerPage: " + param.getRecordCountPerPage());
-
-		return "reviewList.tiles";
+		List<ReviewParam> reviewPaging = reviewService.getReviewPagingListAjax(param);
+		System.out.println("controller   reviewListAjax success");
+		for(int i = 0; i < reviewPaging.size(); i++) {
+			reviewPaging.get(i).setPageNumber(sn);
+			reviewPaging.get(i).setPageCountPerScreen(10);
+			reviewPaging.get(i).setRecordCountPerPage(param.getRecordCountPerPage());
+			reviewPaging.get(i).setTotalRecordCount(totalRecordCount);
+			
+			System.out.println("reviewPaging.get("+i+").toString() : " + reviewPaging.get(i).toString());
+		}	
+		return reviewPaging;
 	}
 
 	//게시물 작성-------------------------------------	
-	@RequestMapping(value = "reviewWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
+	/*@RequestMapping(value = "reviewWrite.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewWrite(Model model,ReviewDto reviewDto  ) {
 
 		logger.info("reviewWrite " + new Date());
@@ -88,7 +84,7 @@ public class ReviewController {
 		System.out.println("reviewWrite.do 완료");
 		return "reviewWrite.tiles";
 	}
-
+*/
 	//게시물 작성 후 -------------------------------------
 	@RequestMapping(value = "reviewWriteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewWriteAf(Model model, ReviewDto reviewDto) throws Exception {
@@ -111,38 +107,68 @@ public class ReviewController {
 		return "redirect:/mypage.do";
 	}
 	
-	@RequestMapping(value = "reviewUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewUpdate(Model model, ReviewDto reviewDto) throws Exception {
+	/*@RequestMapping(value = "reviewUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reviewUpdate(Model model, int delSeq) throws Exception {
 		
 		logger.info("reviewUpdate " + new Date());
-		System.out.println("수정을 위한 리뷰 번호 : " + reviewDto.getSeq());
+		System.out.println("수정을 위한 리뷰 번호 : " + delSeq);
 		
 		System.out.println("수정을 위한 리뷰 게시글 하나 뽑아오기 전");
-		ReviewDto updateDto = reviewService.getReviewOne(reviewDto.getSeq());
+		ReviewDto updateDto = reviewService.getReviewOne(delSeq);
 		
 		System.out.println("수정을 위한 리뷰 게시글 하나 뽑아오기 후 :" + updateDto.toString());
 		
 		model.addAttribute("reviewDto", updateDto);
 		
 		return "reviewUpdate.tiles";
+	}*/
+	
+	@RequestMapping(value = "reviewUpdateAjax.do")
+	public @ResponseBody Object reviewUpdate(int delSeq) throws Exception {
+		System.out.println("ajax : " + delSeq);
+		ReviewDto updateDto = reviewService.getReviewOne(delSeq);
+		
+		System.out.println(updateDto.toString());
+	
+		
+		return updateDto;
 	}
 	
 	@RequestMapping(value = "reviewUpdateAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewUpdateAf(Model model, ReviewDto reviewDto) throws Exception {
+	public String reviewUpdateAf(Model model, HttpServletRequest req, int ggseq, 
+			ReviewParam reviewParam, ReviewDto reviewDto) throws Exception {
 		logger.info("reviewUpdateAf " + new Date());
 		
 		System.out.println("리뷰 게시물 수정하기 전 ");
 		reviewService.updateReview(reviewDto);
 		System.out.println("리뷰 게시물 수정하기 후 ");
-		return "testWeb.tiles";
+		
+		String msg = "2";
+		model.addAttribute("msg", msg);
+		model.addAttribute("seq", ggseq);
+		model.addAttribute("reviewParam", reviewParam);
+		
+		return "redirect:/goodsdetail.do";
 	}
 	
 	@RequestMapping(value = "reviewDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewDelete(Model model, ReviewDto reviewDto) throws Exception {
+	public String reviewDelete(Model model,HttpServletRequest req, int seq, ReviewParam reviewParam,
+			@RequestParam("delSeq") int delSeq) throws Exception {
+		
+		
 		logger.info("reviewDelete " + new Date());
-		System.out.println("리뷰 게시물 삭제하기 전 :" + reviewDto.toString());
-		reviewService.reviewDelete(reviewDto.getSeq());
+		System.out.println("리뷰 게시물 삭제하기 전 :" + delSeq);
+		reviewService.reviewDelete(delSeq);
 		System.out.println("리뷰 게시물 삭제하기 후 ");
-		return "testWeb.tiles";
+		
+		
+		model.addAttribute("seq", seq);
+		model.addAttribute("reviewParam", reviewParam);
+		
+		// 삭제 완료 창을 위한 변수 전송 
+		String msg = "1";
+		model.addAttribute("msg", msg);
+		
+		return "redirect:/goodsdetail.do";
 	}
 }
