@@ -56,7 +56,7 @@ background-color:  #dddddd;
   }
   
   #myRental{
-  width: 60%;
+  width: 1123px;
   margin-left: auto;
   margin-right: auto;
   }
@@ -71,7 +71,7 @@ background-color:  #dddddd;
 		${sessionScope.loginID }님 환영합니다 <button type="button" class="memInfoUpdate">회원정보수정</button>
 	</div>
 <h2 style="text-align: center; margin-top: 30px">최근 렌탈 중인 상품 </h2>
-<div id="myRental" style="border: 1px solid black; padding: 10px">
+<div id="myRental" style="padding: 5px">
 <ul class="item-ul">
 	<c:forEach begin="0" end="2" step="1" items="${srental3 }" var="myrental3" varStatus="vs">
 				<c:if test = "${empty srental3 }">
@@ -79,19 +79,21 @@ background-color:  #dddddd;
 				</c:if>
 					
 				<%-- 	${myrental3.seq }	 --%>
-				<div class="myrental3" style="border: 1px solid black; width: 300px; height: 300px">
+				
 				
 				<li class="item">
-				<div class="item-image" style="width:300px; height:250px;">
+				<div class="item-image">
 					<a href='userRental.do?seq=${myrental3.seq }'> <!--gseq -->
 						<em class="item-brand">${myrental3.imagename }</em>
 					</a>
 				</div>
-				<div class="item-detail" style="width:300px; height: 50px; text-align:center; border-top: 1px solid black">
-						${myrental3.title }
+				<div class="item-detail" style="text-align:center; background-color: #f2f2f2">
+						<em class="item-brand">${myrental3.brand}</em>
+						<em class="item-goods">${myrental3.title}</em>
+						<em class="item-price">₩${myrental3.price}/월</em>
 				</div>	
 				</li>
-				</div>
+			
 				
 	</c:forEach>
 	</ul>
@@ -104,7 +106,7 @@ background-color:  #dddddd;
 
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="table table-hover" style="width: 85%; margin-left: auto; margin-right: auto;">
+	<table class="table table-hover" style="width: 65%; margin: 20px auto">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: auto;" />
