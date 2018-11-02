@@ -214,7 +214,7 @@ boder :"none";
 			<div class="updateInfotb">
 				<h3>회원 정보 수정</h3>
 				<div class="content_table">
-				<table class="content_table" style="width: 75%">
+				<table class="content_table" style="width: 100%">
 					<colgroup>
 						<col style="width:30%">
 						<col style="width:70%">
