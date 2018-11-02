@@ -11,24 +11,61 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>adminMypage</title>
+<style type="text/css">
+
+
+table tr th, table tr td {
+	width:150px;
+	text-align: center;
+	vertical-align:middle !important;
+} 
+
+/* body {
+	text-align: center;
+	margin-bottom: 100px;
+	margin-top: 100px;
+} */
+/* 버튼 css 적용한 곳   */
+.approval , .cancel{
+    text-decoration :none;
+    border: 1px solid #d5d5d5;
+    color: #4b4b4b;
+    font-size: 20px;
+    height: 40px;
+    letter-spacing: 2px;
+    line-height: 20px;
+    padding: 0 70px;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+}
+.approval:hover , .cancel:hover{
+    border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+}
+.adminclass{
+	margin-bottom: 50px;
+	margin-top: 50px;
+
+}
+
+
+
+</style>
 </head>
 <body>
 
-
-	<p>승인대기 중 목록</p>
-	<table>
-		<colgroup>
-			
-			<col width="70px;">
-			<col width="70px;">
-			<col width="70px;">
-			<col width="70px;">
-		</colgroup>
+<div>
+	
+	<h1 style="position: relative;left: 100;margin-top: 25px;">승인대기 중 목록</h1>
+	
+	<table class="table table-striped" style="width: 85%;margin:30px auto">
 		<tr>
 			<th>ID</th>
 			<th>주소</th>
 			<th>승인상태</th>
-			<th>승인</th>
+			<th>승인확인</th>
 		</tr>
 		
 	
@@ -47,21 +84,15 @@
 		
 
 	</table>
-	<p>판매자 승인 완료</p>
-	<table>
-		<colgroup>
-			
-			<col width="70px;">
-			<col width="70px;">
-			<col width="70px;">
-			<col width="70px;">
-		</colgroup>
+	<h1 style="position: relative;left: 100;margin-top: 25px;">판매자 승인 완료</h1>
+	
+	<table class="table table-striped" style="width: 85%;margin: 30px auto">
 
 		<tr>
-			<th>번호</th>
 			<th>ID</th>
-			<th>승인</th>
-			<th>승인완료</th>
+			<th>주소</th>
+			<th>승인상태</th>
+			<th>승인취소</th>                                                                                                                                                                                                                    
 		</tr>
 		<c:forEach items="${adD}" var="list" varStatus="vs">
 			<c:if test="${list.auth eq 2}">
@@ -79,6 +110,9 @@
 		</c:forEach>
 
 	</table>
+	
+	
+	</div>
 <!-- 밑에 javascript 해당 아이디를 가지고 가서 controller 에서 해당 id 의 auth 값을 증가 또는 감소 시켜준다 -->
 <script type="text/javascript">
 

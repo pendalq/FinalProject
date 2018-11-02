@@ -6,8 +6,8 @@
   <mapper namespace="review">
   
   	<select id="getReviewforMain" parameterType="kh.com.a.model.ReviewDto" resultType="kh.com.a.model.ReviewDto">
-  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, READCOUNT, LIKED 
-  		FROM (SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, READCOUNT, LIKED 
+  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, LIKED 
+  		FROM (SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, LIKED 
   			FROM REVIEW
   			ORDER BY ROWNUM DESC)
   		WHERE ROWNUM &lt;=5
@@ -15,7 +15,7 @@
   	</select>
   	
    <select id="getReviewDetail" parameterType="kh.com.a.model.ReviewDto" resultType="kh.com.a.model.ReviewDto">
-  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, READCOUNT, LIKED 
+  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, LIKED 
   		FROM REVIEW
   		WHERE SEQ=#{gseq}
   	</select> 
@@ -23,7 +23,7 @@
   	
   	
   	  <select id="getReviewDetailList" parameterType="kh.com.a.model.ReviewDto" resultType="kh.com.a.model.ReviewDto">
-  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, READCOUNT, LIKED 
+  		SELECT SEQ, ID, GSEQ, TITLE, CONTENT, WDATE, LIKED 
   		FROM REVIEW
   		WHERE GSEQ=#{gseq}
   		ORDER BY WDATE DESC
@@ -54,9 +54,9 @@
 	<insert id="reviewWrite"
 		parameterType="kh.com.a.model.ReviewDto">
 		INSERT INTO REVIEW
-		(SEQ,ID,GSEQ,TITLE,CONTENT,WDATE,READCOUNT,LIKED)
+		(SEQ,ID,GSEQ,TITLE,CONTENT,WDATE,LIKED)
 		VALUES(REVIEW_SEQ.NEXTVAL, #{id}, #{gseq}, #{title},
-		#{content}, SYSDATE, 0, #{liked}, 0)
+		#{content}, SYSDATE, #{liked})
 	</insert>
 
 	<select id="getReviewOne" parameterType="java.lang.Integer"

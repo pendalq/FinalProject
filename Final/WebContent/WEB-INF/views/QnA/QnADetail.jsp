@@ -95,7 +95,7 @@
 					</td>
 				</tr>
 				<tr class="BTN">
-					<td colspan="2" style="height:50px; text-align:center;">
+					<td colspan="2" style="height:50px; text-align:right;">
 					<span>
 
 					<!-- login id 와 해당 글 쓴 id 가 일치했을 때 뜸  -->
