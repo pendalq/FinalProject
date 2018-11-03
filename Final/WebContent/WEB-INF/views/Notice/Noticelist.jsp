@@ -6,31 +6,46 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>공지사항 리스트</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style type="text/css">
   table {
-    width: 100%;
+    width: 70%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top: auto;
+    margin-bottom: auto;
   }
   th, td {
     border-bottom: 1px solid #444444;
-    padding: 10px;
+    padding: 5px;
+   
   }
 
+thead {
+
+	background-color: #dee2e6;
+}
 
 </style>
-</head>
-<body>
 
-	<table style="text-align: center; width: 45%;">
+
+<div style="margin-top: 50px; margin-bottom: 50px">
+
+
+	<table 
+	class="table table-hover" style="width: 70%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;"
+ 	>
 		<colgroup>
 			<col width="122" />
 			<col width="592" />
@@ -70,7 +85,7 @@
 
 	</table>
 	<!-- 페이징 처리 -->
-	<div id="paging_wrap">
+	<div id="paging_wrap" style="padding-bottom: 30px">
 		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
 			<jsp:param value="${pageNumber }" name="pageNumber" />
 			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
@@ -80,6 +95,10 @@
 	</div>
 
 	<!-- 페이징 끝 -->
+</div>
+
+
+
 
 	<%!
 	String auth;
@@ -116,6 +135,3 @@
 					"Noticelist.do").submit();
 		}
 	</script>
-
-</body>
-</html>

@@ -25,6 +25,7 @@
 .selectbtn{
 	margin-left : auto;
    margin-right : auto;
+   align-content: center;
 
 }
 .selectitems , .searchtext{
@@ -32,6 +33,70 @@
     margin-right: 20px;
     height: 25;
 }
+
+.list_table{
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_table td{
+	padding-top: 5px;
+}
+
+
+.selectform{
+	
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+
+#_btnAdd {
+   text-decoration :none;
+   /* background: transparent none repeat scroll 0 0; */
+    border: 1px solid #d5d5d5;
+    color: #4b4b4b;
+    font-size: 20px;
+    height: 45px;
+    letter-spacing: 2px;
+    line-height: 45px;
+    padding: 0 70px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0px;
+    background: #fff;
+     
+}
+#_btnAdd:hover{
+    border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+}
+
+#_btnSearch {
+   text-decoration :none;
+   /* background: transparent none repeat scroll 0 0; */
+    border: 1px solid #d5d5d5;
+    color: #4b4b4b;
+    font-size: 20px;
+    height: 25px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    padding: 0 70px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0px;
+    background: #fff;
+     
+}
+#_btnSearch:hover{
+    border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+}
+
+
 </style>
 
 
@@ -65,23 +130,23 @@ $(document).ready(function(){
 		<form name="frmForm1" id="_frmFormSearch" method="get"
 			action="QnAlist.do">
 			<table class="searchArea">
-				<tr style="align-items: center;">
-					<td>
-					<select class="selectitems" id="_s_category" name="s_category">
-							<option value="" selected="selected">선택</option>
-							<option value="title">제목</option>
-							<option value="category">카테고리</option>
-							<option value="contents">내용</option>
-					</select>
+				<tr style="align-items: center; ">
+					<td style="padding-right: 10px">
+						<select class="selectitems" id="_s_category" name="s_category">
+								<option value="" selected="selected">선택</option>
+								<option value="title">제목</option>
+								<option value="category">카테고리</option>
+								<option value="contents">내용</option>
+						</select>
 					</td>
-						<td>
+						<td style="padding-right: 30px; margin-right: 0px" >
 							<input type="text" class="searchtext" id="_s_keyword" name="s_keyword"
-							value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
+													value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
 						</td>
 					<td>
-					<span>
-							<button type="button" id="_btnSearch">검색</button>
-					</span>
+						<span>
+								<button type="button" id="_btnSearch">검색</button>
+						</span>
 					</td>
 				</tr>
 			</table>
@@ -96,10 +161,10 @@ $(document).ready(function(){
 	<!-- 검색 view 끝 -->
 
 	<!-- 리스트 -->
-
+<div style="margin-top: 50px; margin-bottom: 50px;">
 	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
 
-	<table class="list_table" style="width: 55%;">
+	<table class="list_table" style="width:70%; height: auto; border: solid 1px; ">
 		<colgroup>
 			<col style="width: 70px;" />
 			<col style="width: 100px;" />
@@ -168,13 +233,13 @@ $(document).ready(function(){
 
 		  	<c:if test="${loginAuth == 1 or loginAuth == 2 or loginAuth == 3 or loginAuth == 4 }">
 				<div class="selectbtn" id="buttons_wrap">
-					<span class="button blue">
+					<span class="button blue" style="position: relative; left: 1032px;">
 						<button type="button" id="_btnAdd">글쓰기</button>
 					</span>
 				</div>
 			</c:if> 
 
-	
+	</div>
 	
 	
 	

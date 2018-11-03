@@ -11,61 +11,7 @@
 <title>QnAdetail</title>
 </head>
 <body>
-<div>
-	<form name="frmForm" id="_frmForm" method="post" action="bbsupdate.do">
-		<table class="list_table" style="width:85%;">
-			<input type="hidden" name="seq"   value="${qna.seq}"/>
-			<colgroup>
-			<col style="width:100px;" />
-			<col style="width:auto;" />
-			<col style="width:100px;" />
-			<col style="width:100px;" />
-			</colgroup>
-			
-			<tbody class="tbody">	
-				<tr class="id">
-					<th>아이디</th>
-					<td style="text-align: left" >${qna.id}</td>
-				</tr>
-				<tr>
-					<th>카테고리</th>
-					<td style="text-align: left">${qna.category }</td>
-				
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td style="text-align: left">${qna.title}</td>
-				</tr>
-				<tr>
-					<th>작성일</th>
-					<td style="text-align: left">${qna.wdate}</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td style="text-align: left">
-						${qna.content}
-					</td>
-				</tr>
-				<tr class="BTN">
-					<td colspan="2" style="height:50px; text-align:right;">
-					<span>
 
-					<!-- login id 와 해당 글 쓴 id 가 일치했을 때 뜸  -->
-						<c:if test="${qna.id eq loginid}">
-						<a href="#none" id="_btnUpdate" title="글수정하기">글 수정</a>
-						<a href="#none" id="_btnDel" title="삭제하기">글 삭제</a>
-						</c:if>
-						<!-- 관리자가 로그인 했을 때 활성화 -->
-						<c:choose>
-						<c:when test="${auth==1 or auth==2 or auth==3 or auth==4 }">
-						<a href="#none" id="_btnReply" title="답글달기">답변달기</a>
-						</c:when> 
-						</c:choose>
-					</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
 <form name="frmForm" id="_frmForm" method="post" action="bbsupdate.do">
 
 <table class="list_table" style="width:85%;">
