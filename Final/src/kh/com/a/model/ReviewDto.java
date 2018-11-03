@@ -82,7 +82,9 @@ public class ReviewDto {
 	@Override
 	public String toString() {
 		return "ReviewDto [seq=" + seq + ", gseq=" + gseq + ", id=" + id + ", title=" + title + ", content=" + content
+
 				+ ", wdate=" + wdate + ",  liked=" + liked + "]";
+
 	}
 
 	
