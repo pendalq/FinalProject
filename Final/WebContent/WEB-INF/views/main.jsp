@@ -658,12 +658,14 @@
 			<col style="70px" />
 		</colgroup>
 		<thead>
+		<tr>
 			<th>번호</th>
 			<th>아이디</th>
 			<th>물품번호</th>
 			<th>제목</th>
 			<th>등록일</th>
 			<th>조회수</th>
+		</tr>
 		</thead>
 		<tbody>
 			<c:if test="${empty reviewlist }">
