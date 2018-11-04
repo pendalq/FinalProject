@@ -14,7 +14,7 @@
                         <div class="ft__widget">
                             <div class="ft__logo">
                                 <a href="index.html">
-                                    <img src="image/logo_f.png" alt="footer logo">
+                                    <img src="image/logoss__s.png" alt="footer logo">
                                 </a>
                             </div>
                             <div class="footer__details">

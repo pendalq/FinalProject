@@ -3,12 +3,16 @@ package kh.com.a.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -175,5 +179,38 @@ public class MainBbsController {
 		System.out.println(ilist.toString());
 
 		return ilist;
+	}
+	
+	
+	@Autowired
+	JavaMailSender mailSender;
+	
+	@RequestMapping(value="sendMail.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public String sendMail(HttpServletRequest req) {
+		String setfrom = "tstqpwo@gmail.com";
+		String toWho=req.getParameter("subscribe");
+		String title = "더함의 소식을 받아봐주셔서 감사합니다^^";
+		String content = "메일 발송 진짜 되는지 궁금해서 이메일 적으셨죠? 된답니당ㅎ";
+		
+		
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			
+			messageHelper.setFrom(setfrom);
+			messageHelper.setTo(toWho);
+			messageHelper.setSubject(title);
+			messageHelper.setText(content);
+			
+			
+			mailSender.send(message);
+			
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		
+		return "main.tiles";
 	}
 }
