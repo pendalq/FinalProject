@@ -44,7 +44,7 @@
                                 </div>        
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <!-- End Single Footer Widget -->
                     <!-- Start Single Footer Widget -->
                     <div class="col-md-6 col-lg-3 col-sm-6 smt-30 xmt-30">

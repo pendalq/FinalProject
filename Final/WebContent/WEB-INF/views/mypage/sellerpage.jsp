@@ -52,7 +52,6 @@
 
 <h2 style="text-align: center;">등록되어있는 렌탈 상품 </h2>
 
-
 <table class="retalinglist" > 
  
 	 	<tr>

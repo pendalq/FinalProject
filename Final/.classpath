@@ -22,5 +22,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/asdz7/Downloads/javamail1_4_6/javamail-1.4.6/mail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
