@@ -58,7 +58,6 @@
 		table{
 		width: 80% !important;
 	}
-
 </style>
     
 

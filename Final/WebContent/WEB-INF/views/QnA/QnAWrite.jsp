@@ -104,7 +104,10 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td style="text-align: left"><td style="text-align: left"><textarea rows="25" cols="20" name='content' id="ir1"></textarea>			</td>
+		<td style="text-align: left">
+		<td style="text-align: left">
+		<textarea rows="25" cols="20" name='content' id="ir1"></textarea>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
