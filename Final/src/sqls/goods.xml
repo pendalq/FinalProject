@@ -23,8 +23,10 @@ ORDER BY WDATE DESC
 </select>
 
 <select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="java.lang.Integer">
+
 	SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
 	FROM GOODS
+	
 	WHERE SEQ=#{seq}
 </select>
 
