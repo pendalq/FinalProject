@@ -8,48 +8,54 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.css">
-<title>Insert title here</title>
+<<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">	
+<title> Q&A</title>
 <style type="text/css">
-
-
-.searchArea{
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	}
+#_frmFormSearch{
    margin-left : auto;
    margin-right : auto;
-   margin-bottom:  30px;
 }
 
-.selectbtn{
-	margin-left : auto;
+.searchArea{
+   margin : 30px;
+   margin-left : auto;
    margin-right : auto;
-   align-content: center;
 
-}
-.selectitems , .searchtext{
-	
-    margin-right: 20px;
-    height: 25;
+
+selectitems, #btnSearch, .searchtext{
+   height: 40px;  
 }
 
 .list_table{
 	text-align:center;
 	margin-left: auto;
 	margin-right: auto;
+	padding : 10%;
 }
+.list_table th{
+ 	padding :15px;
+	background-color: #f7f7f7;
+}
+
 
 .list_table td{
-	padding-top: 5px;
-}
+	padding: 10px;
+} 
+
+.list_table tr:hover{
+	border: 1px solid #e6e6e6;
+} 
 
 
-.selectform{
-	
-	margin-top: 50px;
-	margin-bottom: 50px;
-
+#paging_wrap{
+	padding-top: 15px;
+	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+	 font-size: 15px
 }
 
 #_btnAdd {
@@ -74,22 +80,21 @@
    font-family: 'Poppins', sans-serif;
 }
 
-#_btnSearch {
-   text-decoration :none;
-   /* background: transparent none repeat scroll 0 0; */
+#btnSearch {
+    text-decoration :none;
     border: 1px solid #d5d5d5;
     color: #4b4b4b;
     font-size: 20px;
-    height: 25px;
+     height: 40px;
     letter-spacing: 2px;
-    line-height: 25px;
+     line-height: 20px;
     padding: 0 70px;
     font-family: 'Poppins', sans-serif;
     margin-top: 0px;
     background: #fff;
      
 }
-#_btnSearch:hover{
+#btnSearch:hover{
     border: 1px solid #ff4136;
     color: #fff;
     background: #ff4136;
@@ -126,9 +131,9 @@ $(document).ready(function(){
 
 <!-- 검색 카테고리를 유지 end -->
 
-	<div class="selectform" >
-		<form name="frmForm1" id="_frmFormSearch" method="get"
-			action="QnAlist.do">
+	<div class="qnaListAll">
+<!-- 	<div class="searchArea" > -->	
+		<form name="frmForm1" id="_frmFormSearch" method="get" action="QnAlist.do">
 			<table class="searchArea">
 				<tr style="align-items: center; ">
 					<td style="padding-right: 10px">
@@ -139,13 +144,13 @@ $(document).ready(function(){
 								<option value="contents">내용</option>
 						</select>
 					</td>
-						<td style="padding-right: 30px; margin-right: 0px" >
+						<td style="width: 60%" >
 							<input type="text" class="searchtext" id="_s_keyword" name="s_keyword"
 													value="${s_keyword }" placeholder="카테고리를 선택 후 검색해주세요"/>
 						</td>
 					<td>
 						<span>
-								<button type="button" id="_btnSearch">검색</button>
+								<button type="button" id="btnSearch">검색</button>
 						</span>
 					</td>
 				</tr>
@@ -161,30 +166,28 @@ $(document).ready(function(){
 	<!-- 검색 view 끝 -->
 
 	<!-- 리스트 -->
-<div style="margin-top: 50px; margin-bottom: 50px;">
-	<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
-
-	<table class="list_table" style="width:70%; height: auto; border: solid 1px; ">
-		<colgroup>
-			<col style="width: 70px;" />
-			<col style="width: 100px;" />
-			<col style="width: auto;" />
-			<col style="width: 100px;" />
-			<col style="width: 100px;" />
-			<col style="width: 100px;" />
-		</colgroup>
-
+<div class="qnalisttb" style="margin-top: 50px; margin-bottom: 50px;">
+		<jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
+ 		<table class="list_table" style="width:70%; height: auto; ">
+			<colgroup>
+				<col style="width: 70px;" />
+				<col style="width: 100px;" />
+				<col style="width: auto;" />
+				<col style="width: 100px;" />
+				<col style="width: 150px;" />
+				<col style="width: 100px;" />
+			</colgroup>
 		<thead>
-			<tr>
-				<th>번호</th>
-				<th>카테고리</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성날짜</th>
-				<th>조회수</th>
-			</tr>
+				<tr>
+						<th>번호</th>
+						<th>카테고리</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성날짜</th>
+						<th>조회수</th>
+				</tr>
+			
 		</thead>
-
 		<tbody>
 			<c:if test="${empty QnAlist}">
 				<tr>
@@ -248,7 +251,8 @@ $(document).ready(function(){
 		
 		$(document).ready(function() {
 			$("._hover_tr").mouseover(function() {
-				$(this).children().css("background-color", "#F0F5FF");
+				$(this).children().css("background-color", "#f7f7f7");
+				$(this).children().css("border-color", "1px #e6e6e6");
 			}).mouseout(function() {
 				$(this).children().css("background-color", "#FFFFFF");
 			});

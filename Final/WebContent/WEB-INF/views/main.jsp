@@ -52,12 +52,16 @@
     
     
     <style type="text/css">
-    .list_table{
+    /* .list_table{
     	border-left: none;
     	border-right: none;
     	border-top: 1px solid black;
     	border-bottom: 1px solid black;
-    }
+    } */
+    
+    table{
+		width: 80% !important;
+	}
     
     </style>
 
