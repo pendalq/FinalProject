@@ -134,7 +134,7 @@
 			<form action="./messagewrite.do" id="sendmessage" method="post">
 				<input type="hidden" name="sendid" value="${loginID }">
 				<input type="hidden" name="receiveid" value="${goodsdetail.id }">
-			<a href="#none" id="sendM">쪽지 보내기</a>
+			<strong><a href="#none" id="sendM">쪽지 보내기</a></strong>
 			</form></td>
 		</tr>
 		<tr class="name">
@@ -170,30 +170,30 @@
 				<c:when test="${loginAuth eq 1 }">
 		
 				
-					<td><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></td>
+					<td><strong><a href="#none" id="doRental" title="렌탈하기">렌탈하기</a></strong></td>
 					<td>
 						<c:if test="${interCheck.id eq loginID && interCheck.gseq eq goodsdetail.seq}">
-							<a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a>
+							<strong><a href="#none" id="delInterest" title="관심상품삭제">관심상품삭제</a></strong>
 						</c:if>
 						<c:if test="${interCheck.id ne loginID || interCheck.gseq ne goodsdetail.seq }">
-							<a href="#none" id="putInterest" title="관심상품에저장">관심상품에저장</a>
+							<strong><a href="#none" id="putInterest" title="관심상품에저장">관심상품에저장</a></strong>
 						</c:if>
 					</td>
 					
 				</c:when>
 				<c:when test="${loginAuth eq 2 && loginID eq goodsdetail.id}">
 					<td>
-						<a href="#none" id="goodsUpdate" title="글 수정하기">글 수정하기</a>
+						<strong><a href="#none" id="goodsUpdate" title="글 수정하기">글 수정하기</a></strong>
 					</td>
 					<td>
-						<a href="#none" id="goodsDelete" title="글 삭제하기">글 삭제하기</a>
+						<strong><a href="#none" id="goodsDelete" title="글 삭제하기">글 삭제하기</a></strong>
 					</td>
 				</c:when>
 				<c:when test="${loginAuth eq 2 && loginID ne goodsdetail.id }">
 					<td></td>
 				</c:when>
 				<c:otherwise>
-					<td colspan="2"><a href="#none" id="gotoLogin" title="로그인하기">로그인하기</a></td>
+					<td colspan="2"><strong><a href="#none" id="gotoLogin" title="로그인하기">로그인하기</a></strong></td>
 				</c:otherwise>
 			</c:choose>
 			
