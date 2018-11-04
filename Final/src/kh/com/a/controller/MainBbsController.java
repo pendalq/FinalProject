@@ -3,13 +3,10 @@ package kh.com.a.controller;
 import java.util.Date;
 import java.util.List;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -19,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+
 import kh.com.a.model.GoodsDto;
 import kh.com.a.model.InterDto;
-import kh.com.a.model.MemberDto;
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
 import kh.com.a.service.MainBbsService;
