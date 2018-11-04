@@ -8,14 +8,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">	
 <title> Q&A</title>
+
+
 <style type="text/css">
+
+
 body{
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 15px;
 	}
+	
 #_frmFormSearch{
    margin-left : auto;
    margin-right : auto;

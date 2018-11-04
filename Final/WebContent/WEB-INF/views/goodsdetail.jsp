@@ -446,7 +446,7 @@ String sessionId = (String)request.getSession().getAttribute("loginID");
 			</jsp:include>
 		</div>
 		</c:if>
-		<button type="button" id="btn_reviewWrite">글쓰기</button>
+		
 </section>
 <!-------------------------review html end ------------------------------->
 <%}    %>
@@ -499,13 +499,15 @@ $("#sendM").click(function(){
                                 <input type="hidden" name="ggseq" id="_ggseq" value="${goodsdetail.seq }" readOnly>
                             </div>
                         </div>
+                     </form>
                 </div>
+                
                 <div class="modal-footer">
                     <div class="btn_box">
                         <button type="reset" class="btn_reviewWrite">초기화</button>
                         <button type="button" id="btn_reviewUp" class="btn_reviewWrite">수정</button>
                     </div>
-                    </form>
+                   
                 </div>
             </div>
         </div>
@@ -572,17 +574,13 @@ $("#btn_reviewUp").click(function() {
 
 $("#updateRental").click(function() {
 	//렌탈수정하기  
- 
-/* 
+});
+
 $("#putInterest").click(function () {
 	alert("찜하기");
 	$("#_frm").attr({"target":"_self","action":"putInterest.do"}).submit();
 });
 
-
-$('#btn_reviewWrite').click(function () {
-	alert('123123')
-});
 
   $(function () {
 		
