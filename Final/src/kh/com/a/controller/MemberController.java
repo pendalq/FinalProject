@@ -49,7 +49,7 @@ public class MemberController {
 		
 		if(auth == 1) {
 			return "userRegi.tiles";		
-		}if(auth ==2) {
+		}if(auth == 3) {
 			return "sellerRegi.tiles";		
 		}else {
 			return "userRegi.tiles";		
@@ -91,7 +91,7 @@ public class MemberController {
 				return "login.tiles";
 			}	
 
-		}else if(mem.getAuth() ==2 ){
+		}else if(mem.getAuth() == 3 ){
 			boolean b = memberService.addMember(mem);
 			if(b) {
 				//return "login.tiles";

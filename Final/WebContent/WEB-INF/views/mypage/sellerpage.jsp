@@ -137,20 +137,20 @@ $(".memInfoUpdate").click(function() {
 });
 
 $("#lentManage").click(function() {
-	alert("lentManage 함수 실행");
+	/* alert("lentManage 함수 실행"); */
 	location.href = "lentManage.do";
 });
 
 
 
 $("#sellerRegiGoods").click(function() {
-	alert("sellerRegiGoods 함수 실행");
+	/* alert("sellerRegiGoods 함수 실행"); */
 	location.href = "goodswrite.do";
 });
 
 $("#goQnADetail").click(function () {
 	
-	alert("QnADetail로 이동합니다");
+	/* alert("QnADetail로 이동합니다"); */
 	location.href = "QnADetail.do?seq="+$("#deseq").val();
 	
 });

@@ -84,16 +84,15 @@ RentalGoods rdto = (RentalGoods)request.getAttribute("rDetail");
          <td><%=rdto.getReturndday() %></td>
          <td>일</td>
       </tr>
-	<tr><td colspan="5"><button type="button" onclick="extension()">기간연장</button></td></tr>
 	<!-- -----------------------후기 1개 이상 작성 불가  ----------------------------- -->
 	<c:if test="${reWriteCount > 0 }">
 	<tr><td colspan="5"><p>후기를 작성하였습니다.</p></td></tr>
 	</c:if>
 	<c:if test="${reWriteCount == 0 }">
-	<tr><td colspan="5"><button type="button" data-toggle="modal" data-target="#myModal">후기작성</button></td></tr>
+	<tr><td colspan="5"><button type="button"  class="btn btn-default" data-toggle="modal" data-target="#myModal">후기작성</button></td></tr>
 	</c:if>
 	
-	<tr><td colspan="5"><button type="button" onclick="gomypage()">마이페이지로</button></td></tr>
+	<tr><td colspan="5"><button type="button"  class="btn btn-default" onclick="gomypage()">마이페이지로</button></td></tr>
 </table>
 
 
@@ -152,10 +151,10 @@ $("#btn_reviewSubmit").click(function() {
 	$("#reviewForm").attr({ "target":"_self", "action":"reviewWriteAf.do" }).submit();	
 });
 
-function extension() {
+/* function extension() {
 	alert("extension버튼 클릭");
 }
-
+ */
 /* 
 function writeReview() {
 	alert('후기 작성');

@@ -150,7 +150,7 @@ $("#loginBTN").click(function() {
 });
 
 $("#regiBTN").click(function() { 
-	alert("regiBTN");
+	/* alert("regiBTN"); */
 	location.href = "choiceRegi.do";
 });
 </script>

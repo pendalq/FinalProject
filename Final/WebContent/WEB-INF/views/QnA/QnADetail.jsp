@@ -20,9 +20,9 @@
 /*    border: 1px solid pink; */ /* 지워주세요 */
    
 }
-.BTN{
- border: none;
-}
+/* .BTN{
+ border:0;
+} */
 #_btnUpdate, #_btnDel, #_btnReply{
  	text-decoration :none;
     border: 1px solid #d5d5d5;
@@ -60,7 +60,7 @@
 
  <div>
 	<form name="frmForm" id="_frmForm" method="post" action="bbsupdate.do">
-		<table class="list_table" style="width:85%;">
+		<table class="table table-bordered" style="width:65%;margin: 30px auto">
 			<input type="hidden" name="seq"   value="${qna.seq}"/>
 			<colgroup>
 			<col style="width:100px;" />
@@ -93,9 +93,9 @@
 						${qna.content}
 					</td>
 				</tr>
-				<tr class="BTN">
+				<tr> 
 					<td colspan="2" style="height:50px; text-align:center;">
-					<span>
+					
  					<!-- login id 와 해당 글 쓴 id 가 일치했을 때 뜸  -->
 						<c:if test="${qna.id eq loginid}">
 						<a href="#none" id="_btnUpdate" title="글수정하기">글 수정</a>
@@ -107,7 +107,7 @@
 						<a href="#none" id="_btnReply" title="답글달기">답변달기</a>
 						</c:when> 
 						</c:choose>
-					</span>
+					
 					</td>
 				</tr>
 			</tbody>
@@ -118,11 +118,11 @@
 <script type="text/javascript">
 
 $("#_btnUpdate").click(function() {	
-	alert('글수정하기');		
+/* 	alert('글수정하기');	 */	
 	$("#_frmForm").attr({ "target":"_self", "action":"QnAUpdate.do" }).submit();
 });
 $("#_btnReply").click(function() {	
-	alert('답글달기');	
+	/* alert('답글달기');	 */
 	$("#_frmForm").attr({ "target":"_self", "action":"QnAreply.do" }).submit();
 });
 $("#_btnDel").click(function() {	

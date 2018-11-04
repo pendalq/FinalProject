@@ -23,7 +23,7 @@
     </form> 
     <script type="text/javascript">
 	$("#btn_reviewSubmit").click(function() {	
-		alert('글작성');	
+		/* alert('글작성');	 */
 		$("#reviewForm").attr({ "target":"_self", "action":"reviewWriteAf.do" }).submit();	
 	});
 	</script>

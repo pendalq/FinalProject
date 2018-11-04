@@ -8,11 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap.css">
+<style>
+table tr td{
+width:300px;
+text-align: center;
+}
+</style>
+
 </head>
 <body>
-
-
-	<table border="2">
 
 	<c:choose>
 		<c:when test="${loginID eq mdto.receiveid }">
@@ -23,25 +29,21 @@
 		</c:otherwise>	
 	</c:choose>
 	<table class="table table-bordered" style="margin: 5px auto">
-
 		<tr>
 			<th>보낸사람</th>
-			<td style="text-align: left"><input type="text" id='id' name='sendid' readonly="readonly" value="${mdto.sendid} " size="40"/>
+			<td style="text-align: left">${mdto.sendid}
 			</td>
 		</tr>
 		<tr>
 			<th>받는사람</th>
-			<td style="text-align: left"><input type="text" id='id' name='receiveid' readonly="readonly" value="${mdto.receiveid }" size="40"/>
+			<td style="text-align: left">${mdto.receiveid }
 		</tr>
 		<tr> 
 			<th>제목</th>
-			<td style="text-align: left"><input type="text" id="title" name='title' readonly="readonly" size="40"/ value="${mdto.title }"></td>
+			<td style="text-align: left">${mdto.title }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
-
-			<td style="text-align: left"><textarea id="content" name="content" style="height: 200px; width: 308px" readonly="readonly" >${mdto.content }</textarea></td>
-
 			<td style="text-align: left"><div style="height: 200px; width: 297px">${mdto.content }</div></td>
 		</tr>
 		<tr>
@@ -52,7 +54,6 @@
 			
 			
 			<a href="message.do" style="margin-right: 20px">돌아가기</a></td>
-
 		</tr>
 	</table>
 

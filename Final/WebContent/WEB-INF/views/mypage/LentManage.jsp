@@ -11,19 +11,6 @@
 <html>
 <head>
 
-<style type="text/css">
-
-.lentManage table{
-	border: 1px solid black;
-/* 	width: 100%; */
-}
-
-.lentManage table tr td{
-	border: 1px solid black;
-	 
-}
- 
-</style>
 
 <meta charset="UTF-8">
 <title>lentManage view</title>
@@ -33,7 +20,7 @@
  
 <h1>대여자가 렌탈 신청을 한 뒤 판매자에게 보이는 '대여관리 창'</h1>
 <div class="lentManage">
-<table>
+<table class="table table-striped" style="width: 80%; margin: 20px auto">
  <colgroup>
 	<col style="width: 100px;"/>
 	<col style="width: 100px;"/>

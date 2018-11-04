@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,9 +20,12 @@
 	href="design/images/favicon.ico">
 <link rel="apple-touch-icon" href="design/apple-touch-icon.png">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<%-- 
 <!-- Bootstrap Fremwork Main Css -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath() %>/design/css/bootstrap.min.css">
+	href="<%=request.getContextPath() %>/design/css/bootstrap.min.css"> --%>
 <!-- All Plugins css -->
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/design/css/plugins.css">
@@ -55,7 +59,7 @@
 }
 
 </style>
-<body style="padding: 0px">
+
 
 <div class="wrapper fixed__footer">
 	<!-- Start Header Style -->
@@ -67,7 +71,7 @@
 				<div class="row">
 					<div class="col-md-2 col-lg-2 col-6">
 						<div class="logo">
-							<a href="mainbbslist.do"> <img src="image/logoss__s.png"
+							<a href="mainbbslist.do"> <img src="image/logos.png"
 								alt="logo">
 							</a>
 						</div>
@@ -85,20 +89,6 @@
 									</ul></li>
 							</ul>
 						</nav>
-
-						<div class="mobile-menu clearfix d-block d-lg-none">
-							<nav id="mobile_dropdown">
-								<ul class="main__menu">
-									<li class="drop"><a href="mainbbslist.do">Home</a></li>
-									<li><a href="./goodslist.do">상품정보</a></li>
-									<li class="drop"><a href="./Noticelist.do">고객센터</a>
-										<ul class="dropdown">
-											<li><a href="./Noticelist.do">공지사항</a></li>
-											<li><a href="./QnAlist.do">QNA</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</div>
 					</div>
 					<!-- End MAinmenu Ares -->
 					<div class="col-md-2 col-lg-2 col-6">
@@ -114,26 +104,30 @@
 
 
 							<%if(request.getSession().getAttribute("loginID") != null && 
-               ((int)request.getSession().getAttribute("loginAuth")) == 1){ %>
+              						 ((int)request.getSession().getAttribute("loginAuth")) == 1){ %>
+               						<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="gotomypage()" title="MYPAGE">Mypage</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
 
 
 							<%if(request.getSession().getAttribute("loginID") != null && 
-                  ((int)request.getSession().getAttribute("loginAuth")) == 2){ %>
+              						    ((int)request.getSession().getAttribute("loginAuth")) == 2){ %>
+                  						<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="gosellerpage()" title="PROFILE">Profile</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
 							
 							<% if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth")) == 3){%>
+							<li><a href="#none" onclick="goMessage()" title="MESSAGE">Message</a></li>
 							<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>
 							
 							<%if(request.getSession().getAttribute("loginID") != null &&
 							((int)request.getSession().getAttribute("loginAuth"))==4){ %>
 								<li><a href="#none" onclick="goadmin()" title="admin">Admin</a></li>
+								<li><a href="#none" onclick="memberlogout()" title="LOGOUT">Logout</a></li>
 							<%} %>		
 
 							 <li class="toggle__menu d-none d-md-block"><span class="ti-menu"></span></li>
@@ -159,7 +153,7 @@
 				</div>
 				<div class="off__contact">
 					<div class="logo">
-						<a href="mainbbslist.do"> <img src="image/logoss__s.png"
+						<a href="mainbbslist.do"> <img src="images/logo/uniqlo.png"
 							alt="logo">
 						</a>
 					</div>
@@ -239,7 +233,7 @@ function memberlogout() {
 		location.href="admin.do";
 	}
 	function goMessage() {
-		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=400px');
+		window.open("message.do", '메세지', 'top=100px, left=100px, height=400px, width=420px');
 	}
 
 	
@@ -298,5 +292,3 @@ $(document).ready(function () {
 
 });
 </script>
-
-</body>

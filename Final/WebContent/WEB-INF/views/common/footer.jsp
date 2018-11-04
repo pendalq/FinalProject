@@ -51,7 +51,7 @@
                         <div class="ft__widget contact__us">
                             <h2 class="ft__title">Contact Us</h2>
                             <div class="footer__inner">
-                                <p> 서울시 역삼동 <br> kh </p>
+                                <p> 서울특별시 강남구 테헤란로14길 6 <br>1544-9970 THEHAM</p>
                             </div>
                         </div>
                     </div>

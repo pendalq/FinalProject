@@ -11,17 +11,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>GOODS ALL LIST</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
-	<script src="<%=request.getContextPath()%>/js/grid.js"></script>
-	<script src="<%=request.getContextPath()%>/js/viewEvents.js"></script> 
+	<script src="<%=request.getContextPath()%>/js/viewEvent.js"></script> 
 
 	<script type="text/javascript">
 		function goPage(pageNumber) {
 			$("#_pageNumber").val(pageNumber);
-			alert('1234');
+			/* alert('1234'); */
 			$("#form_search").attr("target", "_self").attr("action",
 				"goodslist.do").submit();
 		}
@@ -70,13 +69,13 @@
 				<%-- <c:out value="${c_category }"/> --%>
 
 				<!-- 카테고리 값에 따른 옵션창 on/off ---------------------------------- --> 
-				<c:if test="${c_category != null && c_category != '' }">
+				<c:if test="${ c_category ne null and c_category ne '' }">
 					<div class="option-header">
 						<button type="button" id="btn-option" class="btn-option" value="false">${categoryName}</button>
 						<div id="option-main" class="option-main">
 
 							<c:choose>
-								<c:when test="${c_category == '정수기'}">
+								<c:when test="${c_category eq '정수기'}">  <!-- 이부분문제같은데 음 맞는데? 틀린게 없어 보이는데  -->
 									<!-- ---------------------정수기 옵션-------------------- -->
 									<ul class="water-option ani-option">
 										<li class="water-brand">
@@ -113,7 +112,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == '냉장고'}">
+								<c:when test="${c_category eq '냉장고'}">
 									<!-- ---------------------냉장고 옵션-------------------- -->
 									<ul class="refrigerator-option ani-option">
 										<li class="refrigerator-brand">
@@ -153,7 +152,7 @@
 									</ul>
 								</c:when>
 								
-								<c:when test="${c_category == 'TV'}">
+								<c:when test="${c_category eq 'TV'}">
 									<!-- ---------------------TV 옵션-------------------- -->
 									<ul class="tv-option ani-option">
 										<li class="tv-brand">
@@ -201,7 +200,7 @@
 			<section id="container-main">
 
 				<!-- ---------- 카테고리가 null or '' 경우 카테고리 버튼 생성 -------------------- -->
-				<c:if test="${c_category == null || c_category == ''}">
+				<c:if test="${c_category eq null or c_category eq ''}">
 					<!-- 상품 카테고리 링크 버튼 -->
 					<div class="buttonBar">
 						<ul class="buttonBar-list">
@@ -282,9 +281,7 @@
 		</main>
 
 	</div>
-	<script type="text/javascript">
 
-	</script>
 </body>
 
 

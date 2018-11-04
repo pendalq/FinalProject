@@ -99,11 +99,11 @@ public class GoodsListController {
 
 		// 카테고리 한글이름으로 보냄
 		if (param.getCategory() != null) {
-			if (param.getCategory().equals("purifier")) {
+			if (param.getCategory().equals("정수기")) {
 				model.addAttribute("categoryName", "정수기 옵션");
-			} else if (param.getCategory().equals("refrigerator")) {
+			} else if (param.getCategory().equals("냉장고")) {
 				model.addAttribute("categoryName", "냉장고 옵션");
-			} else if (param.getCategory().equals("tv")) {
+			} else if (param.getCategory().equals("TV")) {
 				model.addAttribute("categoryName", "TV 옵션");
 			}else {
 				model.addAttribute("categoryName", "옵션");

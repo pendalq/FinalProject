@@ -11,6 +11,43 @@
 	<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <meta charset="UTF-8">
 <title>공지 글쓰기</title>
+<style type="text/css">
+
+.list_table{
+	margin-top :50px;
+	margin-left: auto;
+ 	margin-right: auto;
+ 	width: 60%;
+ 	margin-bottom :50px;
+ 	
+}
+
+
+ ._btnAdd {
+   text-decoration :none;
+    border: 1px solid #d5d5d5;
+    color: #4b4b4b;
+    font-size: 20px;
+    height: 45px;
+    letter-spacing: 2px;
+    line-height: 45px;
+    padding: 0 70px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0px;
+    background: #fff;
+     
+}
+._btnAdd:hover{
+    border: 1px solid #ff4136;
+    color: #fff;
+    background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+</style>
 </head>
 <body>
 
@@ -28,7 +65,7 @@
 	<tr>
 		<th>제목</th>
 			<td style="text-align: left">
-				<input type="text" name="title" size="60"/>
+				<input type="text" name="title" id="title" size="60"/>
 			</td>
 	</tr>
 	<tr>
@@ -38,9 +75,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2" style="height:50px; text-align:center;">
+		<td colspan="2" style="height:70px; text-align:center;">
 			<span>					
-	 			<a href="#none" id="_btnLogin" title="글쓰기">		
+	 			<a href="#none" id="_btnLogin" class="_btnAdd" title="글쓰기">		
 					글쓰기
 				</a>
 			</span>
@@ -55,8 +92,8 @@
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	
 	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	alert('글작성');	
-	$("#_frmForm").attr({ "target":"_self", "action":"writeAf.do" }).submit();	
+		$("#_frmForm").attr({ "target":"_self", "action":"writeAf.do" }).submit();	
+
 });
 </script>
 

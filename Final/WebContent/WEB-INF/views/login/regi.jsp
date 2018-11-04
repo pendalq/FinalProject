@@ -18,7 +18,7 @@
 		</div>
 		<div class="CRhref">
 	 		<a href="regi.do?auth=1" ><div class="regi1"></div></a>
-	 		<a href="regi.do?auth=2"><div class="regi2"></div></a>
+	 		<a href="regi.do?auth=3"><div class="regi2"></div></a>
 	 	</div>
 	</div>	
 </body> 

@@ -83,24 +83,24 @@ String sessionIdFalse = "fasle";
 	<script>
 	function goPage(pageNumber) {
 		$("#_pageNumber").val(pageNumber);
-		alert('페이징');
+		/* alert('페이징'); */
 		$("#reviewForm").attr("target", "_self").attr("action",
 			"reviewList.do").submit();
 	}
 
 
 		$("#btn_reviewWrite").click(function() {
-			alert('글쓰기');
+			/* alert('글쓰기'); */
 			//$("#_frmForm").attr({ "target":"_self", "action":"bbswrite.do" }).submit();
 			location.href = "reviewWrite.do?goodsSeq=70&goodsName=상품명입니다.";
 		});
 		
 		$(".btn_review").click(function() {
 			if ($(this).val() == "update") {
-				alert("수정하기");
+				/* alert("수정하기"); */
 				$("#reviewForm").attr({ "target":"_self", "action":"reviewUpdate.do" }).submit();
 			}else if($(this).val() == "delete"){
-				alert("삭제하기");
+				/* alert("삭제하기"); */
 				$("#reviewForm").attr({ "target":"_self", "action":"reviewDelete.do" }).submit();
 			}else{
 				alert("수정/삭제 오류");

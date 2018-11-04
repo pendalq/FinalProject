@@ -2,9 +2,13 @@ package kh.com.a.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,7 +81,7 @@ public class NoitceController {
 			NoticeDTO dto = null;
 			dto=NoitceService.getviewlist(seq);
 			NoitceService.readCount(seq);
-			
+		
 			System.out.println(dto.toString() + "view 를 불러왔을 떄 dto");
 			
 			model.addAttribute("dto", dto);

@@ -105,14 +105,14 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 	<tr>
 		<th>내용</th>
 		<td style="text-align: left">
-		<td style="text-align: left">
 		<textarea rows="25" cols="20" name='content' id="ir1"></textarea>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
-			<p id="_btnLogin" title="글쓰기" href="#none"><span id="_btnLogin" title="글쓰기" href="#none"><a href="#none" id="_btnLogin" title="글쓰기">		
-			  <img src="image/bwrite.png" alt="로그인" />
+			<p id="_btnLogin" title="글쓰기" href="#none">
+			<span id="_btnLogin" title="글쓰기" href="#none">
+			<a href="#none" id="_btnLogin" title="글쓰기">		
 			  문의하기
 		    </a>
 		    </span>
@@ -128,7 +128,7 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	
 	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	alert('글작성');	
+	/* alert('글작성');	 */
 	$("#_frmForm").attr({ "target":"_self", "action":"QnAWriteAf.do" }).submit();	
 });
 </script>

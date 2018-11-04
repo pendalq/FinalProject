@@ -212,19 +212,21 @@
 
 <table class="list_table" style="width: 90%" id="keywords">
    <thead style="text-align: center;">
-      <th>글번호</th>
-      <th>제목</th>
-      <th>글쓴이</th>
-      <th>별점</th>
-      <th>등록일</th>      
+	   <tr>
+	      <th>글번호</th>
+	      <th>제목</th>
+	      <th>글쓴이</th>
+	      <th>별점</th>
+	      <th>등록일</th>
+	   </tr>      
    </thead>
    
    <tbody>
-      <c:if test="${empty reviewDetail }">
+      <c:if test="${empty reviewList }">
          <td colspan="6" style="text-align: center;">작성된 후기가 없습니다</td>
       </c:if>
       
-      <c:forEach items="${reviewDetailList }" var="rd" varStatus="vs">
+      <c:forEach items="${reviewList }" var="rd" varStatus="vs">
       <tr class="review" style="text-align: center;">
          <td>${vs.count}</td>
          <td id="reviewshow${vs.count }" class="reviewshow" onclick="func(${vs.count })">${rd.title }</td>

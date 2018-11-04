@@ -225,7 +225,7 @@ input[type="password"]{
 		</div>
 	
 		<div class="movelinkbutton" style="text-align: center">
-			<input type="hidden" value="2" name="auth">
+			<input type="hidden" value="3" name="auth">
 			<a href="#none" id="regiBTN" title="회원가입">회원가입</a>
 			<a href="#none" id="cancelBTN" title="로그인">가입취소</a>
 		</div>					
@@ -382,7 +382,7 @@ function idCheckFunc(id) {
 		async:true,
 		data:"id=" + id,
 		success:function(msg){
-			alert("ajax success")
+			/* alert("ajax success") */
 			idCheckMsg(msg);
 		},
 	 	error : function(){
