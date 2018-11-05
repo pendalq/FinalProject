@@ -80,7 +80,11 @@ public class MainBbsDaoImpl implements MainBbsDao {
 		List<InterDto> list = sqlSession.selectList(namespace2 + "youAreInterestedIn", id);
 		return list;
 	}
-	
+
+	@Override
+	public void goodsDel(int seq) throws Exception {
+		sqlSession.delete(namespace + "goodsDel", seq);	
+	}
 	
 	
 

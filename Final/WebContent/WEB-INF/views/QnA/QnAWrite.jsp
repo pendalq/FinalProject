@@ -5,43 +5,30 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
-	
-<meta charset="UTF-8">
-<title>공지 글쓰기</title>
 <style type="text/css">
 #_frmForm{
  margin: 30px;
   
 }
-
-.list_table,h1{
+ .list_table,h1{
 	margin-top :50px;
 	 margin-left: auto;
  	margin-right: auto;
  	width: 80%;
 }
-
-.list_table{
+ .list_table{
 margin-bottom : 70px;
 }
-
-#_frmForm th{
+ #_frmForm th{
 	float: right;
     padding-right: 13px;
     padding-top: 13px;
-
-    
+     
 }
 #_btnLogin{
 	padding-top: 50px;
 }
-
-
-#_btnLogin a{
+ #_btnLogin a{
 text-decoration :none;
     border: 1px solid #d5d5d5;
     color: #4b4b4b;
@@ -60,12 +47,16 @@ text-decoration :none;
 	 font-family: 'Poppins', sans-serif;
 	
 } 
-
-input[type="text"]{
+ input[type="text"]{
 	height: 45px;
 }
-
-</style>
+ </style>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<meta charset="UTF-8">
+<title>공지 글쓰기</title>
 </head>
 <body>
 
@@ -88,7 +79,6 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 
 
 <tbody>	
-	
 	<tr class="id">
 		<th>아이디</th>
 		<td style="text-align: left">
@@ -114,12 +104,16 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td style="text-align: left"><textarea rows="25" cols="20" name='content' id="ir1"></textarea>		</td>
+		<td style="text-align: left">
+		<textarea rows="25" cols="20" name='content' id="ir1"></textarea>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height:50px; text-align:center;">
-			<p id="_btnLogin" title="글쓰기" href="#none"><span id="_btnLogin" title="글쓰기" href="#none"><a href="#none" id="_btnLogin" title="글쓰기">		
-		   문의하기
+			<p id="_btnLogin" title="글쓰기" href="#none">
+			<span id="_btnLogin" title="글쓰기" href="#none">
+			<a href="#none" id="_btnLogin" title="글쓰기">		
+			  문의하기
 		    </a>
 		    </span>
 	    </p></td>
@@ -134,7 +128,7 @@ loginId =String.valueOf(request.getSession().getAttribute("loginID"));
 <script type="text/javascript">
 $("#_btnLogin").click(function() {	
 	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	alert('글작성');	
+	/* alert('글작성');	 */
 	$("#_frmForm").attr({ "target":"_self", "action":"QnAWriteAf.do" }).submit();	
 });
 </script>

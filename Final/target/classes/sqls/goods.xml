@@ -23,8 +23,10 @@ ORDER BY WDATE DESC
 </select>
 
 <select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="java.lang.Integer">
+
 	SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
 	FROM GOODS
+	
 	WHERE SEQ=#{seq}
 </select>
 
@@ -33,7 +35,10 @@ ORDER BY WDATE DESC
 	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
 </insert>
 
-
+<delete id="goodsDel" parameterType="kh.com.a.model.GoodsDto">
+DELETE FROM GOODS
+WHERE SEQ=#{seq} 
+</delete>
 	
 
 </mapper>

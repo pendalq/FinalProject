@@ -52,7 +52,7 @@ public class RentalController {
 	public String paysuccess(RentalGoods rental) throws Exception {
 		
 		logger.info("RentalController paysuccess " + new Date());
-		
+		System.out.println(rental.toString());
 		rentalService.doRental(rental);
 		
 		return "redirect:/mainbbslist.do";

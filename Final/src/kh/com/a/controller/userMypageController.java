@@ -20,6 +20,7 @@ import kh.com.a.model.MemberDto;
 import kh.com.a.model.QnADto;
 import kh.com.a.model.RentalGoods;
 import kh.com.a.service.MemberService;
+import kh.com.a.service.ReviewService;
 import kh.com.a.service.userMypageService;
 
 @Controller
@@ -29,10 +30,11 @@ public class userMypageController {
 	
 	@Autowired
 	userMypageService userMyServ;
-	
+	@Autowired
+	ReviewService reviewService;
 	
  	@RequestMapping(value="mypage.do" , method= {RequestMethod.GET, RequestMethod.POST})
- 	public String mypage(BbsParam param,Model model,HttpServletRequest req) throws Exception {
+ 	public String mypage(BbsParam param,Model model,HttpServletRequest req, String msg) throws Exception {
  		logger.info("userMypageController mypage.do" + new Date());
 
  		//String id = ((MemberDto) req.getSession().getAttribute("login")).getId();
@@ -78,6 +80,7 @@ public class userMypageController {
  			model.addAttribute("pageCountPerScreen", 10);
  			model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
  			model.addAttribute("totalRecordCount", totalRecordCount);
+ 			model.addAttribute("msg", msg);
  		logger.info( "qnaList=" + myqnalist);
 
  		
@@ -92,10 +95,18 @@ public class userMypageController {
 		//insert parameter
 		String id =	(String) req.getSession().getAttribute("loginID");
 		getUrentalList dto = new getUrentalList(id,seq);
+		model.addAttribute("dto", dto);
 		logger.info( "getUrentalList는" + dto);
 			
 		//mypage.jsp > retal detail.jsp
 		RentalGoods rDetail = userMyServ.getRentalDto(dto);
+		
+		//리뷰 1개 이상 작성 못하게 막기 위해 작성한 리뷰 카운터 출력
+		System.out.println("//리뷰 1개 이상 작성 못하게 막기 위해 작성한 리뷰 카운터 출력 id 확인:" + id);
+		int reWriteCount = reviewService.getReviewWriteCount(dto);
+		System.out.println("reWriteCount 확인 : " + reWriteCount);
+		
+		model.addAttribute("reWriteCount", reWriteCount);
 		
 		if(rDetail.getSdate() != null && rDetail.getRe_turn() != null) {
 			rDetail.setSdate(rDetail.getSdate().substring(0, 10));
@@ -104,7 +115,10 @@ public class userMypageController {
 		
 		model.addAttribute("rDetail", rDetail);
 		logger.info( "rDetail=" + rDetail);
-
+		
+		//리뷰 작성에 필요한 id와 상품 seq 
+		model.addAttribute("getUrentalList", dto);
+		
 		return "userRental.tiles";
 		
 	}

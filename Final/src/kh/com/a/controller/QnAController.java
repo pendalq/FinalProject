@@ -129,7 +129,7 @@ public class QnAController {
 		logger.info("QnAUpdateAf.do 처리   중입니다!!!!!!!");
 		qnAService.updateBbs(qna);
 		logger.info("QnAUpdateAf.do 처리    완료입니다!!!!!!!");
-		return "redirect:/list.do";
+		return "redirect:/QnADetail.do?seq="+qna.getSeq();
 	}
 	//update 끝
 	

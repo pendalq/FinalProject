@@ -4,29 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member.css">
 	<link rel="stylesheet" type="text/css" href="member.css">
-<style type="text/css">
-h1 {
-	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
-}
-
-</style>
-
+	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">	
 </head>
+
 <body>  
-<div class="choiceRegiArea">
-	<div>
-		<h1> 원하시는 회원을 선택해 주세요 </h1> 
-	</div>
-	 
-		<a href="regi.do?auth=1"><div class="regi1"></div>회원가입</a>
-		
-		<a href="regi.do?auth=2"><div class="regi2"></div>회원가입2</a>
-		
-		<%-- <a href="regi.do?auth=2"><img src="<%=request.getContextPath()%>/WEB-INF/views/login/regi2.png" alt="판매자 회원가입">테스트a</a> --%>
-	 
-</div>	
+	<div class="choiceRegiArea">
+		<div class="CRtitle">
+			<h1 style="font-family: 'Noto Sans KR', sans-serif; text-align: center; width: 700px;"> 원하시는 회원을 선택해 주세요 </h1> 
+		</div>
+		<div class="CRhref">
+	 		<a href="regi.do?auth=1" ><div class="regi1"></div></a>
+	 		<a href="regi.do?auth=3"><div class="regi2"></div></a>
+	 	</div>
+	</div>	
 </body> 
 </html>         

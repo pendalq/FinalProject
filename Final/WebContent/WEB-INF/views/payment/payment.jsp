@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 $("#getpay").click(function(){
 	
-	var IMP = window.IMP;
+/* 	var IMP = window.IMP;
 	//IMP.request_pay(param, callback) 호출
 	IMP.request_pay({
 	    pg : 'kakao', // version 1.1.0부터 지원.
@@ -78,17 +78,18 @@ $("#getpay").click(function(){
 	    //m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	      var msg = '결제가 완료되었습니다.';
+	      var msg = '결제가 완료되었습니다.'; */
 	      location.href="./paysuccess.do?id=${loginID}&gseq=${goods.seq}&term="+$('#term option:selected').val();
-	    } else {
+/* 	    } else {
 	        var msg = '결제에 실패하였습니다.';
 	        msg += '에러내용 : ' + rsp.error_msg;
 	    }
 	    alert(msg);
-	});
-});
+	}); */
+}); 
 
 $("#term").on("change",function(){
 	$("#allprice").text($("#term option:selected").val()*${goods.price});
 });
+
 </script>

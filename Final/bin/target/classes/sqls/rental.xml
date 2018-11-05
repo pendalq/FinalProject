@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="rental">
+
+<insert id="doRental" parameterType="kh.com.a.model.RentalGoods">
+	INSERT INTO RENTAL
+	VALUES(RENTAL_SEQ.NEXTVAL, #{id}, #{gseq}, #{term}, NULL, NULL , SYSDATE,'a')
+</insert>
+
+<select id="getMember" parameterType="java.lang.String" resultType="kh.com.a.model.MemberDto">
+
+select id, pw, address, phone, name ,auth
+from member
+where id=#{id}
+
+
+</select>
+<select id="getGoodsDetail" parameterType="java.lang.Integer" resultType="kh.com.a.model.GoodsDto">
+select 
+seq,id, imageName, title ,category ,brand ,price, options, content,rentalcount ,wdate
+from goods
+where seq =#{seq}
+</select>
+
+<select id="getRentalInfo" parameterType="java.lang.Integer" resultType="kh.com.a.model.RentalGoods">
+SELECT SEQ, ID, GSEQ, TERM
+FROM RENTAL
+WHERE SEQ = #{seq}
+</select>
+
+<update id="updateSdate" parameterType="kh.com.a.model.RentalGoods">
+UPDATE RENTAL
+SET SDATE = SYSDATE,
+	RETURN = TO_DATE(#{re_turn}, 'YYYY-MM-DD')
+WHERE SEQ = #{seq}
+</update>
+
+<delete id="endRent" parameterType="java.lang.Integer">
+DELETE RENTAL
+WHERE SEQ = #{seq}
+</delete>
+
+</mapper>

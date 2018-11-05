@@ -29,6 +29,7 @@ public class RentalDaoImpl implements RentalDao {
 
 	@Override
 	public void doRental(RentalGoods rental) throws Exception {
+		System.out.println("DAO 확인 " + rental.toString());
 		sqlSession.insert( namespace +"doRental", rental);
 	}
 

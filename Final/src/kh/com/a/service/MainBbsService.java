@@ -24,4 +24,7 @@ public interface MainBbsService {
 	
 	public List<InterDto> youAreInterestedIn(String id) throws Exception;
 	
+	
+	public void goodsDel(int seq) throws Exception;
+	
 }

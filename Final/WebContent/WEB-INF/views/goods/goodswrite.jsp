@@ -6,15 +6,19 @@
 <fmt:requestEncoding value="UTF-8"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<style>
+table{
+margin-left: auto;
+margin-right: auto;
+
+}
+</style>
 
 <form name="frmForm" id="_frmForm" action="goodswriteAf.do" method="post" 
 enctype="multipart/form-data">
 
-<table class="list_table">
-<colgroup>
-<col style="width:100px;" />
-<col style="width:auto;" />
-</colgroup>
+<table class="table table-bordered" style="width: 57%;margin: 30px auto">
+
 
 <tr>
 <th>아이디</th>
@@ -54,7 +58,7 @@ value="${loginID }"  size="50"/></td>
 <tr>
 <th>옵션</th>
 <td id="option">
-<table>
+<table class='table table-bordered'>
 	<tr>
 		<th>제조사</th>
 		<td>
@@ -107,7 +111,7 @@ value="${loginID }"  size="50"/></td>
 
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
-	<span><a href="#none" id="_btnLogin" title="글쓰기"><img src="image/bwrite.png" alt="로그인" /></a>
+	<span><a href="#none" id="_btnLogin" title="글쓰기">글쓰기</a>
 </span>
 </td>
 </tr>
@@ -123,7 +127,7 @@ value="${loginID }"  size="50"/></td>
 <script type="text/javascript">
 $('#categorys').change(function(){
 	if(this.value == "냉장고"){
-		$('#option').empty().append("<table><tr><th>제조사</th><td><input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
+		$('#option').empty().append("<table class='table table-bordered'><tr><th>제조사</th><td><input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
 				+"<input type='radio' id='samsung' name='brands' value='SAMSUNG'>samsung "
 				+"<input type='radio' id='daewoo' name='brands' value='DAEWOO'>daewoo "
 				+"</td></tr><tr><th>품목</th><td>"
@@ -143,7 +147,7 @@ $('#categorys').change(function(){
 				+"<input type='hidden' id='brand' name='brand' value=''>"
 				+"<input type='hidden' id='options' name='options' value=''></table>");
 	}else if(this.value == "정수기"){
-		$('#option').empty().append("<table><tr><th>제조사</th><td>"
+		$('#option').empty().append("<table class='table table-bordered'><tr><th>제조사</th><td>"
 				+"<input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
 				+"<input type='radio' id='skmagic' name='brands' value='SK매직'>skmagic "
 				+"<input type='radio' id='picogram' name='brands' value='피코그램'>picogram "
@@ -159,7 +163,7 @@ $('#categorys').change(function(){
 				+"<input type='hidden' id='brand' name='brand' value=''>"
 				+"<input type='hidden' id='options' name='options' value=''></table>");
 	}else if(this.value == "TV"){
-		$('#option').empty().append("<table><tr><th>제조사</th><td>"
+		$('#option').empty().append("<table class='table table-bordered'><tr><th>제조사</th><td>"
 				+"<input type='radio' id='lg' name='brands' value='LG' checked='checked'>LG "
 				+"<input type='radio' id='samsung' name='brands' value='SAMSUNG'>samsung "
 				+"<input type='radio' id='sony' name='brands' value='SONY'>sony "

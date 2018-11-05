@@ -20,7 +20,7 @@
 
 
 	<form action="updateAf.do" method="get">
-		<table border="1px">
+		<table class="table table-bordered" style="width: 50%; margin: 20px auto">
 			<colgroup>
 				<col width="122" />
 				<col width="592" />

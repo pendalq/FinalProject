@@ -58,7 +58,6 @@
 		table{
 		width: 80% !important;
 	}
-
 </style>
     
 
@@ -67,7 +66,7 @@
 
 
 
-<body>
+<body style="padding: 0px">
 
 
  <!-- Start Our Product Area -->

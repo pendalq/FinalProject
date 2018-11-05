@@ -13,52 +13,52 @@ List<MessageDto> slist = (List<MessageDto>)request.getAttribute("slist");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap.css">
 <style>
 div{
-width: 100px;
-height: 50px;
 text-align: center;
-display: inline;
-cursor: pointer;
+margin-left:auto;
+margin-right:auto;
+margin-bottom: 20px;
+margin-top: 20px;
 }
 
 span{
-text-align: center;
+cursor: pointer;
 }
 
 #receivebtn{
+width: 20%;
+height: 50px;
 background-color: black;
-}
-
-#sendbtn{
-background-color: white;
-}
-
-#rtext{
 color: white;
 text-align: center;
 }
 
-#stext{
+#sendbtn{
+width: 20%;
+height: 50px;
+background-color: white;
 color: black;
 text-align: center;
 }
+
 </style>
 </head>
 <body>
-
-<div id="receivebtn">
-<span id="rtext">받은 편지함</span>
-</div>
-<div id="sendbtn" style="">
-<span id="stext">보낸 편지함</span>
+<div>
+<span id="receivebtn">받은 편지함</span>
+<span id="sendbtn">보낸 편지함</span>
 </div>
 <form action="rdel.do" id="rdelForm" method="post">
-<table id="receive" border="2">
+<table class="table table-hover" id="receive" >
 
-	<tr>
+	
+	<thead>
 		<th><input type="checkbox" name="rall" id="rallcheck"></th><th>글번호</th><th>제목</th><th>보낸사람</th><th>작성일</th>
-	</tr>
+	</thead>
+	
 	
 		<%
 		if(mlist.size() != 0){
@@ -69,17 +69,17 @@ text-align: center;
 				}
 				mNum++;
 		%>
-			<tr>
+			<tbody>
 				<td><input type="checkbox" name="rcheck" class="rcheck" value="<%=mlist.get(i).getSeq()%>"><td><%=mNum %></td><td><a href="./messagedetail.do?seq=<%=mlist.get(i).getSeq()%>"><%=mlist.get(i).getTitle() %></a></td><td><%=mlist.get(i).getSendid() %></td><td><%=mlist.get(i).getWdate().substring(0, 10) %></td>
-			</tr> 
+			</tbody>
 		<%
 				
 			}
 		}else{
 		%>
-			<tr>
-				<td></td><td></td><td>쪽지가 없습니다.</td><td></td><td></td>
-			</tr>
+			<tbody>
+				<td colspan="5">쪽지가 없습니다.</td>
+			</tbody>
 		<%
 		}
 	%>
@@ -89,10 +89,10 @@ text-align: center;
 </form>
 
 <form action="sdel.do" id="sdelForm" method="post">
-<table id="send" border="2">
-	<tr>
+<table class="table table-hover" id="send">
+	<thead>
 		<th><input type="checkbox" name="sall" id="sallcheck"></th><th>글번호</th><th>제목</th><th>받는사람</th><th>작성일</th>
-	</tr>
+	</thead>
 	<%
 		if(slist.size() != 0){
 			for(int i=0; i<slist.size();i++){
@@ -102,18 +102,18 @@ text-align: center;
 				}
 				mNum++;
 		%>
-			<tr>
+			<tbody>
 				<td><input type="checkbox" name="scheck" class="scheck" value="<%=slist.get(i).getSeq()%>"></td><td><%=mNum %></td><td><a href="./messagedetail.do?seq=<%=slist.get(i).getSeq()%>"><%=slist.get(i).getTitle() %></a></td><td><%=slist.get(i).getReceiveid() %></td><td><%=slist.get(i).getWdate().substring(0, 10) %></td>
 
-			</tr> 
+			</tbody> 
 		<%
 			
 			}
 		}else{
 		%>
-			<tr>
-				<td></td><td></td><td>쪽지가 없습니다.</td><td></td><td></td>
-			</tr>
+			<tbody>
+				<td colspan="5">쪽지가 없습니다.</td>
+			</tbody>
 		<%
 		}
 	%>
@@ -132,9 +132,9 @@ $(document).ready(function(){
 
 $("#receivebtn").click(function(){
 	$("#receivebtn").css("background-color", "black");
-	$("#rtext").css("color", "white");
+	$("#receivebtn").css("color", "white");
 	$("#sendbtn").css("background-color", "white");
-	$("#stext").css("color", "black");
+	$("#sendbtn").css("color", "black");
 	$("#send").hide();
 	$("#sdel").hide();
 	$("#receive").show();
@@ -143,9 +143,9 @@ $("#receivebtn").click(function(){
 
 $("#sendbtn").click(function(){
 	$("#sendbtn").css("background-color", "black");
-	$("#stext").css("color", "white");
+	$("#sendbtn").css("color", "white");
 	$("#receivebtn").css("background-color", "white");
-	$("#rtext").css("color", "black");
+	$("#receivebtn").css("color", "black");
 	$("#receive").hide();
 	$("#rdel").hide();
 	$("#send").show();

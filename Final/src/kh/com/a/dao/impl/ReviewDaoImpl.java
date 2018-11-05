@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.com.a.dao.ReviewDao;
+import kh.com.a.insertPatemeter.getUrentalList;
 import kh.com.a.model.ReviewDto;
 import kh.com.a.model.ReviewParam;
 
@@ -18,7 +19,7 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	private String namespace = "review.";
 
-	// 리뷰 10개 출력
+	// 게시물 10개 출력 및 페이징 처리
 	@Override
 	public List<ReviewDto> getReviewPagingList(ReviewParam param) throws Exception {
 
@@ -31,8 +32,20 @@ public class ReviewDaoImpl implements ReviewDao {
 
 		return list;
 	}
+	
+	@Override
+	public List<ReviewParam> getReviewPagingListAjax(ReviewParam param) throws Exception {
+		
+		System.out.println("DAO GoodParam : " + param.toString());
+		List<ReviewParam> list = sqlSession.selectList(namespace + "getReviewPagingListAjax", param);
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("DAO  getReviewPagingListAjax[" + i + "]:" + list.get(i).toString());
+		}
+		
+		return list;
+	}
 
-	// 리뷰 카운트
+	// 상품에 등록 된 리뷰게시물 개수 출력
 	@Override
 	public int getReviewCount(ReviewParam param) throws Exception {
 
@@ -44,14 +57,14 @@ public class ReviewDaoImpl implements ReviewDao {
 		return num;
 	}
 
-	// 리뷰 평점 평균 구함.
+	// 상품 리뷰의 평균 만족도를 출력
 	@Override
 	public double getLikedAvg(ReviewParam param) throws Exception {
 		System.out.println("리뷰 평점 평균 구하기 전 입니다.");
 		double likedAvg = 0;
 		try {
 			likedAvg = sqlSession.selectOne(namespace + "getLikedAvg", param);
-			
+
 		} catch (NullPointerException e) {
 			likedAvg = 0;
 		}
@@ -59,7 +72,16 @@ public class ReviewDaoImpl implements ReviewDao {
 		return likedAvg;
 	}
 
-	// 리뷰 작성
+	// 리뷰 작성 전 상품 이름 출력
+	@Override
+	public String getGoodsName(int gseq) {
+		
+		String goodsName = sqlSession.selectOne(namespace + "getGoodsName", gseq);
+		
+		return goodsName;
+	}
+
+	// 리뷰 게시물 작성
 	@Override
 	public boolean reviewWrite(ReviewDto reviewDto) throws Exception {
 		System.out.println("DAO reviewWrite :  " + reviewDto.toString());
@@ -69,24 +91,34 @@ public class ReviewDaoImpl implements ReviewDao {
 		return isS > 0 ? true : false;
 	}
 
+	// 수정 할려고 하는 게시물 출력
 	@Override
 	public ReviewDto getReviewOne(int seq) {
+		System.out.println("DAO 수정을 위한 게시물 출력 시퀀스 넘버 : " + seq);
 		return sqlSession.selectOne(namespace + "getReviewOne", seq);
 	}
-	
+
+	// 게시물 수정
 	@Override
 	public void updateReview(ReviewDto reviewDto) throws Exception {
 		System.out.println("DAO  수정을 위한 게시물 확인(updateAf) : " + reviewDto.toString());
-		sqlSession.update(namespace +"updateReview", reviewDto);
-		
-	}
+		sqlSession.update(namespace + "updateReview", reviewDto);
 
+	}
+	// 게시물 삭제
 	@Override
 	public void reviewDelete(int seq) {
 		sqlSession.delete(namespace + "reviewDelete", seq);
-		
 	}
 
-
+	// 리뷰 중복 작성을 막기 위한 작성한 리뷰 개수 출력
+	@Override
+	public int getReviewWriteCount(getUrentalList dto) throws Exception {
+		System.out.println("DAO getReviewWriteCount id 확인 : " + dto.toString());
+		int reWriteCount = sqlSession.selectOne(namespace + "getReviewWriteCount", dto);
+		
+		return reWriteCount;
+	}
+	
 
 }

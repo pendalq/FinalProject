@@ -107,12 +107,17 @@ h3{
 						<div class="inputtag" style="height: 80px; ">
 							<div class="fa-user">
 								<span class="usericon"></span>
+
+
 								<input type="text" name="id" id="id" placeholder="아이디"><br>
 								
 							</div>
 							<div class="fa-pw">
 								<span class="pwicon"><img scr="<%=request.getContextPath()%>/views/login/loginpw.png"></span>
+
+
 								<input type="password" name="pw" id="pw" placeholder="비밀번호"> <!-- style="border-bottom: 30px;" -->
+
 								
 							</div>
 						</div>	
@@ -130,8 +135,6 @@ h3{
 	</div>
 </div>
 
-</form>
-
 <script type="text/javascript">
 
 $("#loginBTN").click(function() {
@@ -147,7 +150,7 @@ $("#loginBTN").click(function() {
 });
 
 $("#regiBTN").click(function() { 
-	alert("regiBTN");
+	/* alert("regiBTN"); */
 	location.href = "choiceRegi.do";
 });
 </script>

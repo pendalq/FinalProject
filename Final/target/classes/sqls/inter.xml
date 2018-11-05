@@ -6,27 +6,27 @@
   <mapper namespace="inter">
   
   <insert id="putInterest" parameterType="kh.com.a.model.InterDto">
-  	INSERT INTO INTER(SEQ, ID, GSEQ)
-  	VALUES(INTER_SEQ.NEXTVAL, #{id}, #{gseq})
-  	
+     INSERT INTO INTER(SEQ, ID, GSEQ)
+     VALUES(INTER_SEQ.NEXTVAL, #{id}, #{gseq})
+     
   </insert>
   
   <select id="interCheck" parameterType="kh.com.a.model.InterDto" resultType="kh.com.a.model.InterDto">
-  	SELECT DISTINCT ID, GSEQ
-  	FROM INTER
-  	WHERE ID=#{id} AND GSEQ=#{gseq}
+     SELECT DISTINCT ID, GSEQ
+     FROM INTER
+     WHERE ID=#{id} AND GSEQ=#{gseq}
   </select>
   
   <delete id="delInterest" parameterType="kh.com.a.model.InterDto">
-  	DELETE INTER
-   	WHERE GSEQ=#{gseq} AND ID=#{id}
+     DELETE INTER
+      WHERE GSEQ=#{gseq} AND ID=#{id}
   </delete>
   
   <select id="youAreInterestedIn" parameterType="kh.com.a.model.InterDto" resultType="kh.com.a.model.InterDto">
-  	SELECT I.ID, I.SEQ, I.GSEQ, G.IMAGENAME
-	FROM INTER I, GOODS G
-	WHERE I.ID=#{id} AND I.GSEQ=G.SEQ
-	ORDER BY I.SEQ DESC 
+     SELECT I.ID, I.SEQ, I.GSEQ, G.IMAGENAME
+   FROM INTER I, GOODS G
+   WHERE I.ID=#{id} AND I.GSEQ=G.SEQ
+   ORDER BY I.SEQ DESC 
   </select>
   
   </mapper>

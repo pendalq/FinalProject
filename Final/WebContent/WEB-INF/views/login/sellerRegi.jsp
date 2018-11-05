@@ -7,16 +7,18 @@
 <html>
 <head>
 <style type="text/css">
-
 .UserRegiForm{
 	margin-left : auto;
 	margin-right : auto;  
 	padding: 30px 40px;
+	width: 60%
 	 
 }
 .UserRegitb{
+	width : 100%;
 	padding-top: 20px;
     padding-bottom: 40px; 
+  
       
 }
 .UserRegitb th{
@@ -70,10 +72,22 @@
      font-family:'NanumBarunGothicWeb'; */
 }
  input[type=button] { 
-    background: #fff;
+    /* background: #fff;
     color: #444!important;
     border-color: #ddd;   
-	cursor: pointer;	
+	cursor: pointer; */
+	
+	    text-decoration: none;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 10px 3px 10px;
+    background: #f7f7f7;
+    color: #a2a2a2;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    line-height: 100%;
+    overflow: hidden;
+    transition: all 0.5s	
 } 
  input[type=button]:hover { 
     background: #eeeeee;
@@ -99,36 +113,54 @@
   
 }
 #regiBTN{
-	background: #000;
-	color: #e7e7e7;
-	border: 1px solid #000;
+	color: #353535;
+    background: #ffffff;
+    border: 1px solid #cbcbcb;
+    
+    
 }	
 #regiBTN:hover{
-	background-color : yellow;
-	color: black;
-	border: 1px solid #cbcbcb;
+   border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+	
+	
 }
 #cancelBTN{
-    /* background: #f7f7f7;
-    color: #a2a2a2; */
     color: #353535;
     background: #ffffff;
     border: 1px solid #cbcbcb;
 }
+#cancelBTN:hover{
+    border: 1px solid #ff4136;
+   color: #fff;
+   background: #ff4136;
+   font-family: 'Poppins', sans-serif;
+	
+}
+
+
+
 h3{
 	margin-left : auto;
 	margin-right : auto;  
-	padding: 30px 40px;
+	margin-bottom : 20px;
 	font-family: '나눔고딕','Nanum Gothic';
-  	font-weight: 800;
+  	font-style: italic;
+  	font-size: 24px;
+  	
 }
 input[type="text"]{
 	padding: 5px;
+	width: 80%; 
+
 }
 input[type="password"]{
 	padding: 5px;
+	width: 80%; 
+
 }
- 
 </style>
 
 <meta charset="UTF-8">
@@ -193,7 +225,7 @@ input[type="password"]{
 		</div>
 	
 		<div class="movelinkbutton" style="text-align: center">
-			<input type="hidden" value="2" name="auth">
+			<input type="hidden" value="3" name="auth">
 			<a href="#none" id="regiBTN" title="회원가입">회원가입</a>
 			<a href="#none" id="cancelBTN" title="로그인">가입취소</a>
 		</div>					
@@ -350,7 +382,7 @@ function idCheckFunc(id) {
 		async:true,
 		data:"id=" + id,
 		success:function(msg){
-			alert("ajax success")
+			/* alert("ajax success") */
 			idCheckMsg(msg);
 		},
 	 	error : function(){
