@@ -315,7 +315,7 @@ function idCheckFunc(id) {
 		async:true,
 		data:"id=" + id,
 		success:function(msg){
-			alert("ajax success")
+		
 			idCheckMsg(msg);
 		},
 	 	error : function(){

@@ -474,7 +474,7 @@ $('.image-popup').magnificPopup({
 
 
 
-})(jQuery);
+});
 
 
 

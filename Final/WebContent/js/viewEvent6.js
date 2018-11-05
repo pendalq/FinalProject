@@ -325,7 +325,7 @@ $(document).ready(function () {
             	options += "/";
             }            
         }
-        alert(optionsArr.length + '/확인/' + options);
+        /*alert(optionsArr.length + '/확인/' + options);*/
         loc = "./goodslist.do?searchNum=4&category="+$("#_category").val().trim();
         if(brand != ''){
         	loc += "&brand="+brand;
@@ -348,7 +348,7 @@ $(document).ready(function () {
 		}else{
 			$('#_searchNum').val(3);
 			$('#_category').val($(this).val())
-			alert($(this).val() + ' ///  ' + $('#_category').val())
+		/*	alert($(this).val() + ' ///  ' + $('#_category').val())*/
 			$("#form_search").attr("target", "_self").attr("action",
 	    	"goodslist.do").submit();
 		}

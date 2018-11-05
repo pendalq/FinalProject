@@ -126,7 +126,7 @@ $("#_btnReply").click(function() {
 	$("#_frmForm").attr({ "target":"_self", "action":"QnAreply.do" }).submit();
 });
 $("#_btnDel").click(function() {	
-	alert('삭제하기');
+	alert('삭제합니다');
 	$("#_frmForm").attr({ "target":"_self", "action":"QnADelete.do" }).submit();
 });
 

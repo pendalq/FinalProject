@@ -18,7 +18,7 @@
 <body>
 
  
-<h1>대여자가 렌탈 신청을 한 뒤 판매자에게 보이는 '대여관리 창'</h1>
+
 <div class="lentManage">
 <table class="table table-striped" style="width: 80%; margin: 20px auto">
  <colgroup>
