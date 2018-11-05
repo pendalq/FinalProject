@@ -7,35 +7,38 @@
 
 <select id="getRecentGoods" resultType="kh.com.a.model.GoodsDto">
 SELECT G.WDATE, G.RENTALCOUNT, G.CONTENT, G.OPTIONS, G.PRICE, G.BRAND,
-	G.CATEGORY, G.TITLE, G.IMAGENAME, G.ID, G.SEQ, T.ALIKED LIKED
-	FROM GOODS G, (SELECT GSEQ, ALIKED FROM(SELECT GSEQ, NVL(AVG(LIKED),0) ALIKED
-					FROM REVIEW GROUP BY GSEQ)) T
+   G.CATEGORY, G.TITLE, G.IMAGENAME, G.ID, G.SEQ, T.ALIKED LIKED
+   FROM GOODS G, (SELECT GSEQ, ALIKED FROM(SELECT GSEQ, NVL(AVG(LIKED),0) ALIKED
+               FROM REVIEW GROUP BY GSEQ)) T
 WHERE 1=1 AND G.SEQ=T.GSEQ(+) AND ROWNUM &lt;=12
 ORDER BY WDATE DESC
 </select>
 
 <select id="getPopularGoods" resultType="kh.com.a.model.GoodsDto" parameterType="kh.com.a.model.GoodsDto">
-	SELECT SEQ, IMAGENAME, TITLE, CATEGORY, BRAND, OPTIONS, RENTALCOUNT, WDATE
-	FROM (SELECT SEQ, IMAGENAME, TITLE, CATEGORY, BRAND, OPTIONS, RENTALCOUNT, WDATE
-		FROM GOODS
-		ORDER BY RENTALCOUNT DESC)
-	WHERE ROWNUM &lt;=12
+   SELECT SEQ, IMAGENAME, TITLE, CATEGORY, BRAND, OPTIONS, RENTALCOUNT, WDATE
+   FROM (SELECT SEQ, IMAGENAME, TITLE, CATEGORY, BRAND, OPTIONS, RENTALCOUNT, WDATE
+      FROM GOODS
+      ORDER BY RENTALCOUNT DESC)
+   WHERE ROWNUM &lt;=12
 </select>
 
 <select id="getGoodsDetail" resultType="kh.com.a.model.GoodsDto" parameterType="java.lang.Integer">
 
-	SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
-	FROM GOODS
-	
-	WHERE SEQ=#{seq}
+   SELECT SEQ, ID, IMAGENAME, TITLE, CATEGORY, BRAND, PRICE, OPTIONS, CONTENT, RENTALCOUNT, WDATE
+   FROM GOODS
+   
+   WHERE SEQ=#{seq}
 </select>
 
 <insert id="writeGoods" parameterType="kh.com.a.model.GoodsDto">
-	INSERT INTO GOODS
-	VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
+   INSERT INTO GOODS
+   VALUES(GOODS_SEQ.NEXTVAL, #{id}, #{imageName}, #{title}, #{category}, #{brand}, #{price}, #{options}, #{content}, 0, SYSDATE)
 </insert>
 
-
-	
+<delete id="goodsDel" parameterType="kh.com.a.model.GoodsDto">
+DELETE FROM GOODS
+WHERE SEQ=#{seq} 
+</delete>
+   
 
 </mapper>

@@ -646,9 +646,11 @@
 	<div style="text-align: center;"><h2>후기</h2></div>
 	<table id="keywords">
 		<thead>
-			<th><span>아이디</span></th>
-			<th><span>제목</span></th>
-			<th><span>등록일</span></th>
+		  	<tr>
+				<th><span>아이디</span></th>
+				<th><span>제목</span></th>
+				<th><span>등록일</span></th>
+			</tr>
 		</thead>
 		<tbody>
 			<c:if test="${empty reviewlist }">

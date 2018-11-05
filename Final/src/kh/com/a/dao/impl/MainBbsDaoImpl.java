@@ -81,7 +81,11 @@ public class MainBbsDaoImpl implements MainBbsDao {
 		return list;
 	}
 	
-	
+	   @Override
+	   public void goodsDel(int seq) throws Exception {
+	      sqlSession.delete(namespace + "goodsDel", seq);   
+	   }
+	   
 	
 
 

@@ -81,26 +81,22 @@ $(document).ready(function () {
 
     // ------------------------------------------------------------------------------
     // 옵션 버튼 호버 이벤트
-    $('#btn-option').hover(function () {
-        $('#btn-option').css({ 'boxShadow': ' 0px 2px 4px rgba(0,0,0,0.1),0 4px 12px rgba(26, 26, 29, 0.08)' })
-    },
-        function () {
-            if ($('#btn-option').val() == 'true') {
-                $('#btn-option').css({ 'boxShadow': ' 0px 2px 4px rgba(0,0,0,0.1),0 4px 12px rgba(26, 26, 29, 0.08)' })
-            } else {
-                $('#btn-option').css({ 'boxShadow': 'none' })
-            }
-        }
-    );
+    $('#').hover(function () {
+    	  if ($('#btn-option').val() == 'true') {
+              $('#btn-option').css({ 'boxShadow': ' 0px 2px 4px rgba(0,0,0,0.1),0 4px 12px rgba(26, 26, 29, 0.08)' })
+          } else {
+              $('#btn-option').css({ 'boxShadow': 'none' })
+          }
+    });
 
     // 옵션 버튼 클릭 이벤트
     $('#btn-option').click(function () {
-        if ($(this).val() == 'false') {
+        if ($('#btn-option').val() == 'false') {
             $(this).attr('class', 'btn-optionFocus');
             $('#option-main').attr('class', 'option-mainFocus');
             $('.ani-option').css({ 'opacity': '1' })
             $(this).val('true');
-        } else {
+        } else if($('#btn-option').val() == 'true'){
             $(this).val('false');
             $(this).attr('class', 'btn-option');
             $('#option-main').attr('class', 'option-main');
@@ -112,7 +108,7 @@ $(document).ready(function () {
     });
 
     // 옵션 버튼 제외 영영 클릭 시 닫기
-    $('body').click(function (e) {
+   /* $('body').click(function (e) {
         if ($('#option-main').css('height') != '0px') {
             if (!$('#option-main').has(e.target).length) {
                 $('#option-main').attr('class', 'option-main');
@@ -124,7 +120,7 @@ $(document).ready(function () {
                 optionsArr = new Array();
             }
         }
-    });
+    });*/
     // ------------------------------------------------------------------------------
     // 카테고리옵션 클릭버튼
     $('.btn-categoryOp').click(function () {

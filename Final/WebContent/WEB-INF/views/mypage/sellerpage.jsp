@@ -12,6 +12,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>sellerpage</title>
     <link rel="stylesheet" href="css/sellerPage.css">
+   
+   <!-- QNA 게시판 테이블 --------------------------------------------------------------------------->
+    <style type="text/css">
+
+.sellerTable{
+	border: 0px; 
+	margin-left : auto;
+	margin-right : auto; 
+	margin-bottom : 30px; 
+	text-align: center;
+	border-collapse:collapse;
+	height : 150px;
+	width : 800px;
+}
+
+.sellerTable table tr td{
+	border: 1px solid #c7c7bc;
+	text-align: center;
+	line-height: 2.5em;
+	cursor: pointer;
+	width : 200px;	
+} 
+</style>
+<!-- QNA 게시판 테이블  끝 --------------------------------------------------------------------------->
 </head>
 
 <body>
@@ -20,7 +44,8 @@
    		<section id="seller_my">
             <div class="seller_myUp">
                 ${sessionScope.loginID }님 환영합니다
-                 <button type="button" class="memInfoUpdate">회원정보수정</button>
+                 <button type="button" class="btn btn-outline-danger" id="memInfoUpdate">회원정보수정</button>
+
             </div>
             <div class="seller_btn">
                 <button type="button" id="sellerRegiGoods" class="btn_renter">상품 등록하기</button>
@@ -32,9 +57,8 @@
         <section id="seller_rental">
             <h2>등록하신 상품</h2>
             <ul class="item-ul">
+            <c:forEach begin="0" end="2" step="1" items="${srental3 }" var="sellerRental3" varStatus="vs">
                 <li class="item">
-                <c:forEach begin="0" end="2" step="1" items="${srental3 }" var="sellerRental3" varStatus="vs">
-                
                     <c:if test="${empty srental3 }">
                      	<!-- 여기부분 꾸며줘야함 -->	
 		 				<div>
@@ -56,8 +80,8 @@
 	                        <em class="item-price">${sellerRental3.price }</em>
 	                    </div>
                     </c:if>
-     			</c:forEach>
      			</li>
+     			</c:forEach>
             </ul>
         </section>
 
@@ -68,63 +92,75 @@
             
             <jsp:useBean id="ubbs" class="kh.com.a.arrow.BbsArrow" />
             
-            <ul id="qna_box">
-            
-                    <li class="qna_header">
-                        <span class="qna_item">No</span>
-                        <span class="qna_item">제목</span>
-                       <div class="qna_item">
-                            <span>작성자</span>
-                            <span>작성일</span>
-                            <span>조회수</span>
-                       </div>
-                    </li>
-                    	<c:if test="${empty myqnalist}">
-                    	<!-- 여기 꾸며줘야 함 -->
-							<li>
-								<div>작성된 글이 없습니다.</div>	
-							</li>
-						<!-- 여기 꾸며줘야 함 -->	
-						</c:if>
-				<c:forEach items="${myqnalist}" var="myqnalist" varStatus="vs">
+            <!-- QNA 게시판 테이블 시작 --------------------------------------------------------------------------->
+            <table class="list_table" style="width: 85%;">
+		<colgroup>
+			<col style="width: 70px;" />
+			<col style="width: auto;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+			<col style="width: 100px;" />
+		</colgroup>
+
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성날짜</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<c:if test="${empty myqnalist}">
+				<tr>
+					<td colspan="3">작성된 글이 없습니다.</td>
+				</tr>
+			</c:if>
+
+			<c:forEach items="${myqnalist}" var="myqnalist" varStatus="vs">
 				<jsp:setProperty property="dept" name="ubbs" value="${myqnalist.dept}" />
+								
+				<tr class="_hover_tr">
+					<td>${vs.count}</td>
+
+					<td style="text-align: left">
+					
+						<jsp:getProperty property="arrow" name="ubbs" /> 
+							<c:if test="${myqnalist.del == 0 }">
+								<a href='QnADetail.do?seq=${myqnalist.seq}'> ${myqnalist.title} </a>
+							</c:if> 
+							<c:if test="${myqnalist.del == 1 }">
+									이 글은 작성자에 의해서 삭제 되었습니다
+										
+							</c:if>
 						
-		                    <li class="review_itemOff">
-		                        <a href="#" class="qna_click">
-		                            <div class="qna_item_a">
-		                                <span class="qna_no item_qna">${vs.count}</span>
-		                                <jsp:getProperty property="arrow" name="ubbs" /> 
-											<c:if test="${myqnalist.del == 0 }">
-				                                	<a href='QnADetail.do?seq=${myqnalist.seq}'> ${myqnalist.title} </a>       
-				                            </c:if> 
-											<c:if test="${myqnalist.del == 1 }">
-													이 글은 작성자에 의해서 삭제 되었습니다
-														
-											</c:if>   
-		                                <div class="item_qna">
-		                                    <span class="qna_id ">${myqnalist.id}</span>
-		                                    <time class="qna_wdate">${myqnalist.wdate }</time>
-		                                    <span class="qna_readCount">${myqnalist.readcount }</span>
-		                                </div>
-		                            </div>
-		                        </a>
-		                    </li>
-                   
-                    </c:forEach>
-                </ul>
-        </section>
-		<!-- 페이징 처리 -->
-		<div id="paging_wrap">
-			<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
-				<jsp:param value="${pageNumber }" name="pageNumber" />
-				<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
-				<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
-				<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
-			</jsp:include>
-		</div>
+					</td>
+
+					<td>${myqnalist.id}</td>
+					<td>${myqnalist.wdate }</td>
+					<td>${myqnalist.readcount }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
+
+	<!-- 페이징 처리 -->
+	<div id="paging_wrap">
+		<jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
+			<jsp:param value="${pageNumber }" name="pageNumber" />
+			<jsp:param value="${pageCountPerScreen }" name="pageCountPerScreen" />
+			<jsp:param value="${recordCountPerPage }" name="recordCountPerPage" />
+			<jsp:param value="${totalRecordCount }" name="totalRecordCount" />
+		</jsp:include>
 	</div>
+<!-- QNA 게시판 테이블 끝 --------------------------------------------------------------------------->
+            
 <script type="text/javascript">
-	function goPage(pageNumber) {
+<!-- QNA 게시판 테이블 자바스크립트 --------------------------------------------------------------------------->
+function goPage(pageNumber) {
 	$("#_pageNumber").val(pageNumber);
 	$("#_frmFormSearch").attr("target", "_self").attr("action",
 			"QnAlist.do").submit();
@@ -135,6 +171,39 @@ $(".memInfoUpdate").click(function() {
 	//alert("userInfoUpdate 함수 실행");
 	location.href = "updateInfo.do";
 });
+
+$("#lentManage").click(function() {
+	alert("lentManage 함수 실행");
+	location.href = "lentManage.do";
+});
+
+
+
+$("#sellerRegiGoods").click(function() {
+	alert("sellerRegiGoods 함수 실행");
+	location.href = "goodswrite.do";
+});
+
+$("#goQnADetail").click(function () {
+	
+	alert("QnADetail로 이동합니다");
+	location.href = "QnADetail.do?seq="+$("#deseq").val();
+	
+});
+<!-- QNA 게시판 테이블 자바스크립트 끝  --------------------------------------------------------------------------->
+
+
+	function goPage(pageNumber) {
+	$("#_pageNumber").val(pageNumber);
+	$("#_frmFormSearch").attr("target", "_self").attr("action",
+			"QnAlist.do").submit();
+}
+
+
+	$("#memInfoUpdate").click(function() {
+		   //alert("userInfoUpdate 함수 실행");
+		   location.href = "updateInfo.do";
+		});
 
 $("#lentManage").click(function() {
 	/* alert("lentManage 함수 실행"); */

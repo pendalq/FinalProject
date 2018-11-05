@@ -66,6 +66,9 @@ public class MainBbsServiceImpl implements MainBbsService {
 	public List<InterDto> youAreInterestedIn(String id) throws Exception {
 		return mainbbsdao.youAreInterestedIn(id);
 	}
-	
+	 @Override
+	   public void goodsDel(int seq) throws Exception {
+	      mainbbsdao.goodsDel(seq);
+	   }
 	
 }

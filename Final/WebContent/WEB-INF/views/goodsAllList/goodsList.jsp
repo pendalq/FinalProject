@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/goodsAllList.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/webfonts.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/grid.css">
-	<script src="<%=request.getContextPath()%>/js/viewEvent.js"></script> 
+	<script src="<%=request.getContextPath()%>/js/viewEvent6.js"></script> 
 
 	<script type="text/javascript">
 		function goPage(pageNumber) {

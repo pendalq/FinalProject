@@ -182,10 +182,7 @@
                
             </c:when>
             <c:when test="${loginAuth eq 2 && loginID eq goodsdetail.id}">
-               <td>
-                  <strong><a href="#none" id="goodsUpdate" title="글 수정하기">글 수정하기</a></strong>
-               </td>
-               <td>
+               <td colspan="2">
                   <strong><a href="#none" id="goodsDelete" title="글 삭제하기">글 삭제하기</a></strong>
                </td>
             </c:when>
@@ -212,13 +209,13 @@
 
 <table class="list_table" style="width: 90%" id="keywords">
    <thead style="text-align: center;">
-	   <tr>
-	      <th>글번호</th>
-	      <th>제목</th>
-	      <th>글쓴이</th>
-	      <th>별점</th>
-	      <th>등록일</th>
-	   </tr>      
+      <tr>
+         <th>글번호</th>
+         <th>제목</th>
+         <th>글쓴이</th>
+         <th>별점</th>
+         <th>등록일</th>
+      </tr>      
    </thead>
    
    <tbody>
@@ -354,7 +351,7 @@ $(document).ready(function () {
  
 
  $(document).ready(function () {
-    for(i = 1;i< ${reviewDetailList.size()} + 1; i++){
+    for(i = 1;i< ${reviewList.size()} + 1; i++){
 //    alert("reviewshow1");
       $("#_reviewcontent"+i).hide();
 //      alert("reviewshow2");
