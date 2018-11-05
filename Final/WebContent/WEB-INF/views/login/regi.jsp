@@ -9,6 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="member.css">
 	
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">	
+	<style type="text/css">
+.CRtitle , .CRhref {
+	position :relative;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.choiceRegiArea{
+	width: 100%;
+}
+	
+	
+	
+	
+	</style>
 </head>
 
 <body>  
